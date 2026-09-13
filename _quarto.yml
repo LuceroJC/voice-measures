@@ -8,10 +8,10 @@ book:
   author:
     - name: "Jorge C. Lucero"
       affiliation: "University of Brasília"
-      # orcid: "0000-0000-0000-0000"        # TODO: add your ORCID
+      orcid: "0000-0003-0597-3808"
   date: today
   # doi: "10.5281/zenodo.XXXXXXX"            # TODO: add after first Zenodo release
-  repo-url: "https://github.com/lucerojc/voice-measures"   # TODO: confirm repo name
+  repo-url: "https://github.com/LuceroJC/voice-measures"
   repo-actions: [edit, issue]
   sidebar:
     style: docked
