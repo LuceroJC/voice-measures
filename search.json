@@ -1,0 +1,160 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Acoustic Measures of Voice Quality",
+    "section": "",
+    "text": "Preface\nAcoustic Measures of Voice Quality is an open, living reference on how the acoustic measures used in voice assessment are computed and interpreted. It is written for speech-language pathologists, voice scientists, and students who want to understand not just what a number like CPPS or AVQI is, but how it is derived from the signal, what it captures, where it fails, and how to read it in practice.\nUnlike a printed textbook, this reference is versioned and continuously updated. Each release is archived with its own DOI, so you can cite a specific, frozen version while the living site continues to improve.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "index.html#how-to-cite",
+    "href": "index.html#how-to-cite",
+    "title": "Acoustic Measures of Voice Quality",
+    "section": "How to cite",
+    "text": "How to cite\n\nLucero, J. C. (2026). Acoustic Measures of Voice Quality: A Living Reference (Version 0.0.1). Zenodo. https://doi.org/10.5281/zenodo.XXXXXXX",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "index.html#license",
+    "href": "index.html#license",
+    "title": "Acoustic Measures of Voice Quality",
+    "section": "License",
+    "text": "License\nThe prose and figures are licensed under CC BY 4.0; the code examples are licensed under the MIT License. You are free to share, adapt, and translate this work with attribution.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "index.html#relationship-to-phonalab",
+    "href": "index.html#relationship-to-phonalab",
+    "title": "Acoustic Measures of Voice Quality",
+    "section": "Relationship to PhonaLab",
+    "text": "Relationship to PhonaLab\nThis reference is the methods companion to PhonaLab. Where this text explains what a measure is and how it is computed, PhonaLab lets you compute it on your own recording. Each measure chapter links to the corresponding PhonaLab tool, and PhonaLab links back here for the underlying method.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "1  About this reference",
+    "section": "",
+    "text": "1.1 Scope\nThis reference covers acoustic measures of voice quality — the quantities computed from a voice recording that characterize periodicity, noise, and spectral structure. It does not cover aerodynamic measurement, laryngeal imaging, or auditory-perceptual assessment, except where those are needed to interpret or validate an acoustic measure.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>About this reference</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html#who-this-is-for",
+    "href": "intro.html#who-this-is-for",
+    "title": "1  About this reference",
+    "section": "1.2 Who this is for",
+    "text": "1.2 Who this is for\nThe reference assumes you know what a spectrogram is and are comfortable reading a plot. It is not an introductory speech-science text. It is aimed at clinicians and researchers who use these measures and want to understand them precisely enough to apply, compare, or implement them.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>About this reference</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html#how-the-measures-are-organized",
+    "href": "intro.html#how-the-measures-are-organized",
+    "title": "1  About this reference",
+    "section": "1.3 How the measures are organized",
+    "text": "1.3 How the measures are organized\nMeasures are grouped by what they capture, not by algorithm family or by the pathology they detect:\n\nPart I — Foundations. The voice signal, recording quality, segmentation, and voicing detection: what must be true of a recording before any measure is trustworthy.\nPart II — Periodicity and stability. f0 estimation, jitter, shimmer, and the nonlinear dynamical measures.\nPart III — Noise and harmonic structure. HNR and its variants, GNE, CPPS, and spectral tilt measures.\nPart IV — Composite and clinical indices. AVQI, ABI, and how they are built from the Part II and Part III measures.\nPart V — Beyond the traditional measures. Machine-learning-derived features and where the field is going.\n\nEach measure is presented with a consistent structure: definition, computation, what it captures physiologically, known confounds, normative ranges, validation, and a runnable example.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>About this reference</span>"
+    ]
+  },
+  {
+    "objectID": "foundations-signal.html",
+    "href": "foundations-signal.html",
+    "title": "2  The voice signal",
+    "section": "",
+    "text": "2.1 A synthetic voiced signal\nThe code cell below generates a simple harmonic-rich signal, a stand-in for a sustained vowel, and plots a short segment. If this figure appears in the rendered site, your Jupyter/Python execution path is working.\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nfs = 16000                      # sample rate (Hz)\ndur = 0.5                       # seconds\nt = np.linspace(0, dur, int(fs * dur), endpoint=False)\nf0 = 120.0                      # fundamental frequency (Hz)\n\n# Sum of harmonics with 1/k amplitude decay\nsignal = sum((1.0 / k) * np.sin(2 * np.pi * f0 * k * t) for k in range(1, 20))\n\nfig, ax = plt.subplots(figsize=(7, 2.5))\nax.plot(t[:400], signal[:400], linewidth=1)\nax.set_xlabel(\"Time (s)\")\nax.set_ylabel(\"Amplitude\")\nfig.tight_layout()\nplt.show()\n\n\n\n\n\n\n\nFigure 2.1: A synthetic harmonic-rich signal (f0 = 120 Hz), first 25 ms.\nOnce real content replaces this stub, the same executable pattern will let every measure chapter compute and display results on real signals — ideally the same libraries PhonaLab uses, so the reference and the platform stay consistent.",
+    "crumbs": [
+      "Part I — Foundations",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>The voice signal</span>"
+    ]
+  },
+  {
+    "objectID": "avqi.html",
+    "href": "avqi.html",
+    "title": "3  Acoustic Voice Quality Index (AVQI)",
+    "section": "",
+    "text": "3.1 Definition\nWhat AVQI is, in one or two sentences. The Acoustic Voice Quality Index is a multivariate index combining several acoustic measures into a single estimate of overall voice quality (Maryn et al. 2010).",
+    "crumbs": [
+      "Part IV — Composite Indices",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Acoustic Voice Quality Index (AVQI)</span>"
+    ]
+  },
+  {
+    "objectID": "avqi.html#computation",
+    "href": "avqi.html#computation",
+    "title": "3  Acoustic Voice Quality Index (AVQI)",
+    "section": "3.2 Computation",
+    "text": "3.2 Computation\nThe component measures, how they are weighted, sustained-vowel vs. continuous speech input, software versions (AVQI-3, etc.).",
+    "crumbs": [
+      "Part IV — Composite Indices",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Acoustic Voice Quality Index (AVQI)</span>"
+    ]
+  },
+  {
+    "objectID": "avqi.html#what-it-captures",
+    "href": "avqi.html#what-it-captures",
+    "title": "3  Acoustic Voice Quality Index (AVQI)",
+    "section": "3.3 What it captures",
+    "text": "3.3 What it captures\nThe construct — overall dysphonia severity — and how it relates to auditory-perceptual ratings.",
+    "crumbs": [
+      "Part IV — Composite Indices",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Acoustic Voice Quality Index (AVQI)</span>"
+    ]
+  },
+  {
+    "objectID": "avqi.html#confounds-and-cautions",
+    "href": "avqi.html#confounds-and-cautions",
+    "title": "3  Acoustic Voice Quality Index (AVQI)",
+    "section": "3.4 Confounds and cautions",
+    "text": "3.4 Confounds and cautions\nRecording quality, sample type, language, microphone effects.",
+    "crumbs": [
+      "Part IV — Composite Indices",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Acoustic Voice Quality Index (AVQI)</span>"
+    ]
+  },
+  {
+    "objectID": "avqi.html#normative-data",
+    "href": "avqi.html#normative-data",
+    "title": "3  Acoustic Voice Quality Index (AVQI)",
+    "section": "3.5 Normative data",
+    "text": "3.5 Normative data\nCutoffs, age and sex effects, reported thresholds.",
+    "crumbs": [
+      "Part IV — Composite Indices",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Acoustic Voice Quality Index (AVQI)</span>"
+    ]
+  },
+  {
+    "objectID": "avqi.html#validation",
+    "href": "avqi.html#validation",
+    "title": "3  Acoustic Voice Quality Index (AVQI)",
+    "section": "3.6 Validation",
+    "text": "3.6 Validation\nKey validation studies across languages and populations.",
+    "crumbs": [
+      "Part IV — Composite Indices",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Acoustic Voice Quality Index (AVQI)</span>"
+    ]
+  },
+  {
+    "objectID": "avqi.html#compute-it-in-phonalab",
+    "href": "avqi.html#compute-it-in-phonalab",
+    "title": "3  Acoustic Voice Quality Index (AVQI)",
+    "section": "3.7 Compute it in PhonaLab",
+    "text": "3.7 Compute it in PhonaLab\n\nOpen the AVQI tool in PhonaLab →\nUpload a sustained vowel and continuous speech sample to compute AVQI on your own recording.\n\n\n\n\n\nMaryn, Youri, Marc De Bodt, and Nelson Roy. 2010. “The Acoustic Voice Quality Index: Toward Improved Treatment Outcomes Assessment in Voice Disorders.” Journal of Communication Disorders.",
+    "crumbs": [
+      "Part IV — Composite Indices",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Acoustic Voice Quality Index (AVQI)</span>"
+    ]
+  }
+]
