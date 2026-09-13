@@ -1,0 +1,56 @@
+project:
+  type: book
+  output-dir: _book
+
+book:
+  title: "Acoustic Measures of Voice Quality"
+  subtitle: "A Living Reference"
+  author:
+    - name: "Jorge C. Lucero"
+      affiliation: "University of Brasília"
+      # orcid: "0000-0000-0000-0000"        # TODO: add your ORCID
+  date: today
+  # doi: "10.5281/zenodo.XXXXXXX"            # TODO: add after first Zenodo release
+  repo-url: "https://github.com/lucerojc/voice-measures"   # TODO: confirm repo name
+  repo-actions: [edit, issue]
+  sidebar:
+    style: docked
+  page-footer:
+    left: "© 2026 Jorge C. Lucero · Text: CC BY 4.0 · Code: MIT"
+    right: "Built with [Quarto](https://quarto.org)"
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - part: "Part I — Foundations"
+      chapters:
+        - foundations-signal.qmd
+    - part: "Part IV — Composite Indices"
+      chapters:
+        - avqi.qmd
+
+bibliography: references.bib
+lang: en
+
+format:
+  html:
+    theme:
+      - cosmo
+      - theme.scss
+    toc: true
+  pdf:
+    documentclass: scrbook
+    keep-tex: true
+
+# freeze: auto means a document is only re-executed when it changes.
+# Commit the generated _freeze/ folder so CI reuses cached results.
+execute:
+  freeze: auto
+
+# ---------------------------------------------------------------------------
+# ADDING PORTUGUESE / SPANISH LATER
+# The cleanest multilingual path for a Quarto book is the `babelquarto`
+# approach: keep language variants in subfolders and generate a language
+# switcher. Do NOT restructure now — English-first is correct. When you are
+# ready, see https://docs.ropensci.org/babelquarto/ . Nothing in this scaffold
+# blocks it.
+# ---------------------------------------------------------------------------

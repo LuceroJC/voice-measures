@@ -1,0 +1,8 @@
+/.quarto/
+/_book/
+.DS_Store
+__pycache__/
+*.pyc
+# NOTE: do NOT ignore /_freeze/ — commit it so CI reuses cached execution.
+
+**/*.quarto_ipynb

@@ -1,0 +1,22 @@
+{
+  "title": "Acoustic Measures of Voice Quality: A Living Reference",
+  "description": "An open, living reference on the computation and clinical interpretation of acoustic measures of voice quality, for speech-language pathologists and voice scientists.",
+  "upload_type": "publication",
+  "publication_type": "book",
+  "access_right": "open",
+  "license": "cc-by-4.0",
+  "creators": [
+    {
+      "name": "Lucero, Jorge C.",
+      "affiliation": "University of Brasília"
+    }
+  ],
+  "keywords": [
+    "acoustic voice analysis",
+    "voice quality",
+    "dysphonia",
+    "AVQI",
+    "CPPS",
+    "speech-language pathology"
+  ]
+}

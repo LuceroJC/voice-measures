@@ -1,0 +1,37 @@
+# About this reference
+
+## Scope
+
+This reference covers **acoustic measures of voice quality** — the quantities
+computed from a voice recording that characterize periodicity, noise, and
+spectral structure. It does not cover aerodynamic measurement, laryngeal imaging,
+or auditory-perceptual assessment, except where those are needed to interpret or
+validate an acoustic measure.
+
+## Who this is for
+
+The reference assumes you know what a spectrogram is and are comfortable reading
+a plot. It is not an introductory speech-science text. It is aimed at clinicians
+and researchers who use these measures and want to understand them precisely
+enough to apply, compare, or implement them.
+
+## How the measures are organized
+
+Measures are grouped by **what they capture**, not by algorithm family or by the
+pathology they detect:
+
+- **Part I — Foundations.** The voice signal, recording quality, segmentation,
+  and voicing detection: what must be true of a recording before any measure is
+  trustworthy.
+- **Part II — Periodicity and stability.** f0 estimation, jitter, shimmer, and
+  the nonlinear dynamical measures.
+- **Part III — Noise and harmonic structure.** HNR and its variants, GNE, CPPS,
+  and spectral tilt measures.
+- **Part IV — Composite and clinical indices.** AVQI, ABI, and how they are built
+  from the Part II and Part III measures.
+- **Part V — Beyond the traditional measures.** Machine-learning-derived features
+  and where the field is going.
+
+Each measure is presented with a consistent structure: definition, computation,
+what it captures physiologically, known confounds, normative ranges, validation,
+and a runnable example.

@@ -1,0 +1,44 @@
+---
+title: "Acoustic Voice Quality Index (AVQI)"
+---
+
+::: {.callout-note}
+This is a **scaffold stub** showing the standard per-measure structure. This is
+your Month 1 content pair — the first measure to write, and the deep companion to
+PhonaLab's AVQI clinical page.
+:::
+
+## Definition
+
+*What AVQI is, in one or two sentences.* The Acoustic Voice Quality Index is a
+multivariate index combining several acoustic measures into a single estimate of
+overall voice quality [@maryn2010avqi].
+
+## Computation
+
+*The component measures, how they are weighted, sustained-vowel vs. continuous
+speech input, software versions (AVQI-3, etc.).*
+
+## What it captures
+
+*The construct — overall dysphonia severity — and how it relates to
+auditory-perceptual ratings.*
+
+## Confounds and cautions
+
+*Recording quality, sample type, language, microphone effects.*
+
+## Normative data
+
+*Cutoffs, age and sex effects, reported thresholds.*
+
+## Validation
+
+*Key validation studies across languages and populations.*
+
+## Compute it in PhonaLab
+
+> **[Open the AVQI tool in PhonaLab →](https://phonalab.com)**
+>
+> Upload a sustained vowel and continuous speech sample to compute AVQI on your
+> own recording.

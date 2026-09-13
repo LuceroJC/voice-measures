@@ -1,0 +1,42 @@
+---
+title: "The voice signal"
+---
+
+::: {.callout-note}
+This is a **scaffold stub**. It exists to prove the end-to-end pipeline —
+including executable code — renders and publishes correctly. Replace its content
+when you begin writing Part I.
+:::
+
+## A synthetic voiced signal
+
+The code cell below generates a simple harmonic-rich signal, a stand-in for a
+sustained vowel, and plots a short segment. If this figure appears in the
+rendered site, your Jupyter/Python execution path is working.
+
+```{python}
+#| label: fig-synthetic
+#| fig-cap: "A synthetic harmonic-rich signal (f0 = 120 Hz), first 25 ms."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+fs = 16000                      # sample rate (Hz)
+dur = 0.5                       # seconds
+t = np.linspace(0, dur, int(fs * dur), endpoint=False)
+f0 = 120.0                      # fundamental frequency (Hz)
+
+# Sum of harmonics with 1/k amplitude decay
+signal = sum((1.0 / k) * np.sin(2 * np.pi * f0 * k * t) for k in range(1, 20))
+
+fig, ax = plt.subplots(figsize=(7, 2.5))
+ax.plot(t[:400], signal[:400], linewidth=1)
+ax.set_xlabel("Time (s)")
+ax.set_ylabel("Amplitude")
+fig.tight_layout()
+plt.show()
+```
+
+Once real content replaces this stub, the same executable pattern will let every
+measure chapter compute and display results on real signals — ideally the same
+libraries PhonaLab uses, so the reference and the platform stay consistent.

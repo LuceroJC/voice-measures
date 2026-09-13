@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "If you use this reference, please cite it using the metadata below."
+title: "Acoustic Measures of Voice Quality: A Living Reference"
+authors:
+  - family-names: "Lucero"
+    given-names: "Jorge C."
+    affiliation: "University of Brasília"
+    # orcid: "https://orcid.org/0000-0000-0000-0000"   # TODO: add your ORCID
+repository-code: "https://github.com/lucerojc/voice-measures"
+url: "https://lucerojc.github.io/voice-measures"
+license: CC-BY-4.0
+version: "0.0.1"
+date-released: "2026-09-13"
+# The archived Zenodo record classifies this as a book (see .zenodo.json).
+# CFF's top-level type field only accepts software/dataset, so it is omitted here.
