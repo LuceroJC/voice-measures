@@ -24,9 +24,13 @@ book:
     - part: "Part I — Foundations"
       chapters:
         - foundations-signal.qmd
+    - part: "Part III — Noise and Harmonic Structure"
+      chapters:
+        - cpps.qmd
     - part: "Part IV — Composite Indices"
       chapters:
         - avqi.qmd
+        - abi.qmd
 
 bibliography: references.bib
 lang: en

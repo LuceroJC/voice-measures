@@ -1,0 +1,11 @@
+{
+  "hash": "71c8bfb5c361ea72336d1a2045da25da",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: \"The voice signal\"\n---\n\n::: {.callout-note}\nThis is a **scaffold stub**. It exists to prove the end-to-end pipeline —\nincluding executable code — renders and publishes correctly. Replace its content\nwhen you begin writing Part I.\n:::\n\n## A synthetic voiced signal\n\nThe code cell below generates a simple harmonic-rich signal, a stand-in for a\nsustained vowel, and plots a short segment. If this figure appears in the\nrendered site, your Jupyter/Python execution path is working.\n\n::: {.cell execution_count=1}\n``` {.python .cell-code}\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nfs = 16000                      # sample rate (Hz)\ndur = 0.5                       # seconds\nt = np.linspace(0, dur, int(fs * dur), endpoint=False)\nf0 = 120.0                      # fundamental frequency (Hz)\n\n# Sum of harmonics with 1/k amplitude decay\nsignal = sum((1.0 / k) * np.sin(2 * np.pi * f0 * k * t) for k in range(1, 20))\n\nfig, ax = plt.subplots(figsize=(7, 2.5))\nax.plot(t[:400], signal[:400], linewidth=1)\nax.set_xlabel(\"Time (s)\")\nax.set_ylabel(\"Amplitude\")\nfig.tight_layout()\nplt.show()\n```\n\n::: {.cell-output .cell-output-display}\n![A synthetic harmonic-rich signal (f0 = 120 Hz), first 25 ms.](foundations-signal_files/figure-pdf/fig-synthetic-output-1.pdf){#fig-synthetic fig-pos='H'}\n:::\n:::\n\n\nOnce real content replaces this stub, the same executable pattern will let every\nmeasure chapter compute and display results on real signals — ideally the same\nlibraries PhonaLab uses, so the reference and the platform stay consistent.\n\n",
+    "supporting": [
+      "foundations-signal_files/figure-pdf"
+    ],
+    "filters": []
+  }
+}

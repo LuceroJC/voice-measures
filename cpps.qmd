@@ -1,0 +1,198 @@
+---
+title: "Cepstral Peak Prominence (CPP and CPPS)"
+---
+
+::: {.callout-note}
+**Living draft.** This chapter reflects the sources cited below and will be
+revised as further sources are incorporated. Found an error? Use the *Report an
+issue* link in the sidebar.
+:::
+
+## Definition
+
+Cepstral peak prominence (CPP) quantifies how strongly the harmonic structure
+of a voice signal emerges from its background. The cepstrum used in voice
+analysis is obtained by transforming the waveform into a spectrum, taking the
+logarithm, and transforming again; its horizontal axis is a time-like dimension
+called *quefrency* [@murton2020cpp]. The periodic harmonic peaks of the
+spectrum collapse into a single dominant cepstral peak at the quefrency of the
+voice period. The height of that peak above a regression line through the whole
+cepstrum is the CPP, reported in decibels [@murton2020cpp]. The amplitude of
+the dominant cepstral peak (the first *rahmonic*) reflects the strength with
+which the fundamental frequency emerges from competing background frequencies
+[@maryn2009cepstral].
+
+Lower CPP values are associated with greater dysphonia severity
+[@murton2020cpp]. Two properties distinguish CPP from the classical
+perturbation measures. First, it can be extracted from connected speech as well
+as sustained vowels. Second, it does not require direct computation of the
+fundamental frequency, so no pitch detection or tracking is needed — which
+makes cepstral measures robust in dysphonic and particularly in breathy voices,
+where period-by-period analysis breaks down [@murton2020cpp; @barsties2018meta].
+The 2018 ASHA instrumental-assessment guidance recommended CPP as a general
+measure of dysphonia, replacing jitter, shimmer, and harmonics-to-noise ratio
+in that role [@murton2020cpp].
+
+## Computation
+
+The waveform is Fourier-transformed into a spectrum, the logarithm of the
+spectrum is taken, and a second (inverse) Fourier transform carries the result
+into the cepstral domain [@murton2020cpp]. A linear regression line relating
+quefrency to cepstral magnitude is fitted through the cepstrum, and CPP is the
+difference in amplitude between the cepstral peak and the point on the
+regression line directly below it [@maryn2009cepstral; @barsties2018meta].
+
+**CPP versus CPPS.** Averaging the cepstrum first across time and then across
+quefrency yields a *smoothed* cepstrum; the same peak-minus-regression-line
+measurement on the smoothed cepstrum is the smoothed cepstral peak prominence,
+CPPS [@maryn2009cepstral]. The smoothing was introduced by Hillenbrand and
+colleagues as a modification of their unsmoothed-cepstrum program SpeechTool
+[@maryn2009cepstral].
+
+**Software implementations.** Three computation algorithms dominate the
+clinical literature: Hillenbrand and Houde's CPPS algorithm, Praat's CPPS
+algorithm, and the CPP computation in Analysis of Dysphonia in Speech and Voice
+(ADSV, PENTAX Medical) [@murton2020cpp]. Their parameter choices differ in ways
+that matter:
+
+- ADSV applies a voicing activity detector, and frames with negative CPP
+  (cepstral peak below the regression line) are excluded from analysis
+  [@murton2020cpp].
+- Praat computes CPPS from a PowerCepstrogram and includes no voicing activity
+  detection. The reference configuration used by @murton2020cpp: 60-Hz pitch
+  floor, 2-ms time step, 5-kHz maximum frequency, pre-emphasis from 50 Hz,
+  time averaging window 0.01 s, quefrency averaging window 0.001 s, peak
+  search range 60–330 Hz, parabolic interpolation, straight tilt line over the
+  quefrency range 0.001–0 s, robust fit.
+
+Because of these differences, values from different programs live on different
+scales and are not interchangeable (see [Confounds and cautions]).
+
+## What it captures
+
+CPP behaves as a general index of overall dysphonia severity. In the
+Massachusetts Eye and Ear Infirmary (MEEI) data of @murton2020cpp, CPP values
+below task- and software-specific cutoffs indicated the presence of a voice
+disorder with up to 94.5% accuracy, and ADSV CPP estimated mean listener
+ratings of overall severity with *r*² from .5 to .74 depending on task (Praat
+CPPS: *r*² from .38 to .72). Regression lines allow a severity estimate from
+CPP; a Praat CPPS of 10 dB on sustained /a/ predicts a CAPE-V overall severity
+of approximately 54 [@murton2020cpp].
+
+Meta-analytically, CPP and CPPS are the best acoustic predictors of
+**breathiness**, and the only acoustic markers that reached the validity
+criterion for breathiness in both sustained vowels and continuous speech
+[@barsties2018meta]. Pooled effect sizes:
+
+| Perceptual dimension | Task | Measure | Weighted *r* | N |
+|---|---|---|---|---|
+| Breathiness | sustained vowel | CPP | .66 | 468 |
+| Breathiness | continuous speech | CPP | .73 | 98 |
+| Breathiness | sustained vowel | CPPS | .64 | 133 |
+| Breathiness | continuous speech | CPPS | .63 | 242 |
+| Roughness | continuous speech | CPPS | .60 | 217 |
+
+: Pooled meta-analytic correlations with perceptual ratings [@barsties2018meta]. {#tbl-cpp-meta}
+
+For **roughness**, CPPS reached the acceptability criterion only in continuous
+speech, where it was the only adequate predictor; CPPS does not, however,
+distinguish the subtypes roughness and breathiness from each other well
+[@barsties2018meta]. Although the cepstral measures were originally designed
+for breathiness, they proved to be the most accurate acoustic measures of
+overall dysphonia severity [@barsties2018meta].
+
+In severely aperiodic and alaryngeal voices, where perturbation measures fail
+for lack of a reliably detectable fundamental period, CPP remains computable:
+in tracheoesophageal speakers it was the strongest single acoustic correlate of
+overall voice quality (*r~s~* = .78, about 60% of variance explained), and a
+two-factor regression combining CPP with the height of the second spectral
+harmonic reached *r~s~* = .87 with listener rankings [@maryn2009cepstral]. That
+multivariate strategy is the same one the [AVQI](avqi.qmd) applies to laryngeal
+voice.
+
+## Normative data
+
+Cutoff values below which a voice disorder is probable, from 295 patients and
+50 vocally healthy controls of the MEEI Voice Disorders Database (English
+speakers) [@murton2020cpp]:
+
+| Task | Software | Cutoff | Classification accuracy |
+|---|---|---|---|
+| Sustained /a/ | ADSV CPP | 11.46 dB | 79.4% |
+| Rainbow Passage | ADSV CPP | 6.11 dB | 87.7% |
+| Sustained /a/ | Praat CPPS | 14.45 dB | 77.4% |
+| Rainbow Passage | Praat CPPS | 9.33 dB | 94.5% |
+
+: MEEI cutoffs of @murton2020cpp. {#tbl-cpp-cutoffs}
+
+Earlier cutoff studies, as tabulated by @murton2020cpp:
+
+| Study | Language | Algorithm | Sustained vowel | Running speech |
+|---|---|---|---|---|
+| Heman-Ackah et al. 2003 | English | CPPS (Hillenbrand) | 10 dB | 5 dB |
+| Heman-Ackah et al. 2014 | English | CPPS (Hillenbrand) | — | 4.0 dB |
+| Yu et al. 2018 | Korean | ADSV CPP | 12 dB | 7 dB |
+| Delgado-Hernández et al. 2019 | Spanish | Praat CPPS (AVQI configuration) | 13.96 dB | 8.37 dB |
+
+: Previously reported cutoffs, normal vs. dysphonic except Heman-Ackah 2003 (mild vs. severe). {#tbl-cpp-prior}
+
+**Every threshold in these tables is specific to its software, algorithm
+settings, and speech task.** A bare CPP number with no software and task
+attached is not interpretable, because different algorithms produce values in
+different ranges [@murton2020cpp].
+
+## Confounds and cautions
+
+**Software non-interchangeability.** On the same MEEI recordings, the
+sustained-vowel cutoff was 11.46 dB for ADSV and 14.45 dB for Praat. The
+algorithms can also diverge qualitatively: one speaker measured 11.7 dB in
+Praat CPPS but 3.5 dB in ADSV CPP, with phonation showing irregular, widely
+spaced pulses perceived as strain and vocal fry [@murton2020cpp].
+
+**Task effects.** CPP thresholds are consistently lower for continuous speech
+than for sustained vowels. CPP varies widely between different sentences,
+largely with the amount of voicing, so comparisons within or between speakers
+must use the same speech material; unvoiced frames included in the average
+artificially lower the CPP of consonant-heavy material [@murton2020cpp].
+
+**Aphonia and voicing detection.** Where aphonic segments are included, a low
+average CPP meaningfully reflects the aphonic quality — but very accurate
+voicing detection can paradoxically produce a higher-than-expected CPP in
+intermittent aphonia, because only the periodic voiced fragments enter the
+average [@murton2020cpp].
+
+**No established upper bound.** Rough voices with a strong subharmonic
+component may exhibit *high* CPP values, so a single lower cutoff does not
+capture all pathology [@murton2020cpp].
+
+**Vowel, loudness, sex, and age.** Low vowels such as /a/ tend to have higher
+CPP than high vowels such as /i/. CPP increases significantly with loudness
+without reflecting a change in underlying dysphonia. Male speakers tended to
+have higher CPP than female speakers, possibly through loudness. The MEEI
+controls were 22–59 years old; separate norms for older adults may be needed
+[@murton2020cpp].
+
+**Cutoff vicinity.** Published cutoffs are one possible estimate; values near a
+cutoff deserve further consideration rather than a binary reading
+[@murton2020cpp].
+
+**Recording conditions.** Hardware, microphone placement, environmental noise,
+and software are known to affect perturbation measures; their impact on CPP and
+CPPS remains unclear and needs further investigation [@barsties2018meta].
+
+## Validation
+
+The MEEI cutoff study [@murton2020cpp] and the roughness/breathiness
+meta-analysis [@barsties2018meta] anchor the evidence summarized above. The
+meta-analytic sustained-vowel breathiness effect sizes for CPP and CPPS pooled
+heterogeneous *r*-values; the authors retained these measures because they had
+the highest study counts and sample sizes [@barsties2018meta]. The
+tracheoesophageal findings of @maryn2009cepstral extend the measure's validity
+to alaryngeal voice.
+
+## Compute it in PhonaLab
+
+> **[Open PhonaLab →](https://phonalab.com)**
+>
+> Upload a sustained vowel or a reading passage and compute CPPS on your own
+> recording, with the software and task always reported alongside the value.

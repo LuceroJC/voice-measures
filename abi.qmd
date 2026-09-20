@@ -1,0 +1,157 @@
+---
+title: "Acoustic Breathiness Index (ABI)"
+---
+
+::: {.callout-note}
+**Living draft.** This chapter reflects the sources cited below and will be
+revised as further sources are incorporated. Found an error? Use the *Report an
+issue* link in the sidebar.
+:::
+
+## Definition
+
+The Acoustic Breathiness Index (ABI) is a multiparametric, nine-variable
+acoustic measure that quantifies the degree of perceived breathiness with a
+single score, computed from concatenated samples of continuous speech and the
+sustained vowel /a/ [@barsties2021abi]. Its perceptual target is breathiness:
+turbulent noise, excessively high in frequency, resulting from air leakage
+during incomplete glottal closure [@barsties2021abi; @delgado2018avqi]. Both
+speech tasks contribute three seconds of voiced material each, a design chosen
+for ecological validity [@barsties2021abi]. The index was first published in
+2017 for a Dutch-speaking population [@barsties2017abi; @barsties2021abi].
+
+Where the [AVQI](avqi.qmd) targets *overall* voice quality, the ABI isolates
+one perceptual dimension. The two indices share the concatenation protocol and
+several components.
+
+## Computation
+
+The ABI contains nine parameters [@delgado2018avqi]:
+
+| Parameter | Abbreviation | What it measures |
+|---|---|---|
+| Smoothed cepstral peak prominence | CPPS | Height of the first rahmonic's peak over the regression line through the smoothed cepstrum — see the [CPPS chapter](cpps.qmd) |
+| Jitter local | Jit | Average difference between successive periods, divided by the average period |
+| Glottal-to-noise excitation ratio | GNEmax-4500 Hz | Excitation due to vocal-fold oscillation versus excitation by turbulent noise; reliable even under strong amplitude and frequency perturbations |
+| High-frequency noise | Hfno-6000 Hz | Relative level of high-frequency noise between the energy from 0–6 kHz and from 6–10 kHz |
+| Harmonics-to-noise ratio of Dejonckere | HNR-D | Harmonic emergence of the spectral display in the 500–1500 Hz band |
+| Amplitude difference of the first two harmonics | H1–H2 | Indirect measure of the relative length of the open phase of glottal oscillation; H1 is relatively high in breathy voices |
+| Shimmer local dB | ShdB | Base-10 logarithm of the difference between amplitudes of successive periods, × 20 |
+| Shimmer local | Shim | Absolute mean difference between amplitudes of successive periods, divided by the average amplitude |
+| Period standard deviation | PSD | Variation in the standard deviation of periods |
+
+: The nine ABI components [@delgado2018avqi]. {#tbl-abi-components}
+
+The regression equation, as reported in the Spanish validation
+[@delgado2018avqi]:
+
+$$
+\begin{aligned}
+\text{ABI} = \bigl(5.0447740915 &- 0.172\,\text{CPPS} - 0.193\,\text{Jit}
+- 1.283\,\text{GNE}_{\max\text{-}4500}\\
+&- 0.396\,\text{Hfno}_{6000} + 0.01\,\text{HNR-D} + 0.017\,(\text{H1–H2})\\
+&+ 1.473\,\text{ShdB} - 0.088\,\text{Shim}
+- 68.295\,\text{PSD}\bigr) \times 2.9257400394
+\end{aligned}
+$$
+
+The score ranges from 0 to 10; the higher the ABI, the more severe the
+breathiness [@barsties2021abi].
+
+Signal processing uses Praat with the customised ABI script [@barsties2021abi].
+Analysis applies only to voiced segments of the continuous speech, extracted
+with an automated Praat detection script, with a three-second /a/ segment
+appended [@delgado2018avqi]. The continuous-speech part is standardised to a
+language-specific syllable count yielding three seconds of voiced speech: 34
+syllables in Dutch, 33 in Spanish, 30 in Japanese [@delgado2018avqi].
+
+## What it captures
+
+ABI scores correlate strongly with auditory-perceptual breathiness ratings:
+Spearman *r~s~* ranged from 0.746 to 0.890 across the six validation studies
+pooled in the meta-analysis [@barsties2021abi]. In Spanish, *r~s~* = 0.826,
+with ABI accounting for 68.2% of the variance in mean breathiness ratings
+[@delgado2018avqi]; in the original Dutch study, *r~s~* = 0.840
+[@delgado2018avqi].
+
+Unlike the CSID and AVQI, which assess overall voice quality, the ABI is
+particularly suitable for evaluating breathy voices — for example benign
+vocal-fold lesions dominantly characterised by breathiness (nodules of medium
+or large size), paralysis or paresis of the recurrent laryngeal nerve, and
+vocal-fold bowing associated with presbyphonia [@barsties2021abi]; acute
+laryngitis also belongs to this group [@delgado2018avqi]. Neither age and
+gender nor roughness significantly affects ABI in natural voices, and the index
+signals therapy-related voice quality changes with high sensitivity
+[@barsties2021abi].
+
+Independent meta-analysis of single measures supports the component choice:
+Hfno, H1–H2, HNR of Dejonckere, CPP, and CPPS all sit among the strongest
+single correlates of perceived breathiness, and only 12 of 85 acoustic measures
+predicted breathiness on sustained vowels with a weighted mean *r* of at least
+.60 [@barsties2018meta].
+
+## Normative data
+
+| Population / language | Threshold | Sensitivity | Specificity | AUC |
+|---|---|---|---|---|
+| Dutch (development study) | 3.44 | 82.4% | 92.9% | 0.948 |
+| Spanish (136 dysphonic, 47 healthy) | 3.40 | 73.7% | 95.4% | 0.921 |
+| Pooled, six studies at study-specific thresholds | per language | 0.84 (95% CI 0.83–0.85) | 0.92 (95% CI 0.89–0.94) | 0.94 (SROC) |
+| Weighted threshold across the six studies (Youden) | 3.40 | 0.86 (95% CI 0.84–0.87) | 0.90 (95% CI 0.88–0.92) | — |
+
+: ABI diagnostic thresholds [@delgado2018avqi; @barsties2021abi]. {#tbl-abi-thresholds}
+
+The six validation studies pooled by the meta-analysis cover Dutch, German,
+Spanish, Brazilian Portuguese, Korean, and Japanese — four language groups —
+over 467 vocally healthy and 3136 voice-disordered subjects [@barsties2021abi].
+
+## Confounds and cautions
+
+**Language dependence of the threshold.** Continuous speech is part of the
+index, so inter-language phonetic differences may influence the outcome;
+thresholds must come from a validation in the target language. The
+meta-analysis nevertheless found ABI relatively robust to phonetic
+inter-language differences such as stress timing, syllable timing, and
+intonation [@barsties2021abi].
+
+**Software requirement.** The validation evidence applies to signal processing
+in Praat with the customised ABI script; the meta-analysis excluded studies
+not using them [@barsties2021abi].
+
+**Equal task proportion.** ABI results based on unequal proportions of
+continuous speech and sustained vowel were treated as a risk of bias
+[@barsties2021abi].
+
+**Hardware and recording conditions.** Each validation study has unique
+acoustic settings and hardware, limiting comparability between studies
+[@barsties2021abi]. The Spanish validation recorded in a soundproof booth with
+a head-mounted condenser microphone at 44.1 kHz / 16 bit [@delgado2018avqi].
+
+**Evidence base.** The meta-analysis rests on six studies. Pooled sensitivity
+showed high heterogeneity (I² = 89.7%, *P* < .001), while specificity
+heterogeneity was low (I² = 45.5). The Brazilian Portuguese study reached only
+low inter-rater reliability (Fleiss κ < 0.41), with a sample skewed toward
+normal and mild breathiness (43% normal, 41% mild, 11% moderate, 5% severe)
+[@barsties2021abi].
+
+**Not a stand-alone screen.** Not all voice disorders are detected by ABI —
+that cannot be expected from a measure of one perceptual dimension; higher
+diagnostic accuracy requires combining measures of different dimensions
+[@barsties2021abi]. Further investigations of external and internal validity
+remain necessary [@delgado2018avqi].
+
+## Validation
+
+The development study established the Dutch threshold of 3.44 with AUC 0.948
+[@barsties2017abi; @delgado2018avqi]. The Spanish validation reported a
+threshold of 3.40 with AUC 0.921 [@delgado2018avqi]. The 2021 meta-analysis
+pooled six validation studies spanning more than 3600 voice samples and
+confirmed the ABI as a robust, valid objective measure of breathiness, with
+pooled sensitivity 0.84 and specificity 0.92 [@barsties2021abi].
+
+## Compute it in PhonaLab
+
+> **[Open PhonaLab →](https://phonalab.com)**
+>
+> Upload a sustained vowel and a continuous speech sample to compute ABI on
+> your own recording, alongside the AVQI computed from the same material.

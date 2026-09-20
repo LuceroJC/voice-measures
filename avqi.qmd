@@ -3,42 +3,176 @@ title: "Acoustic Voice Quality Index (AVQI)"
 ---
 
 ::: {.callout-note}
-This is a **scaffold stub** showing the standard per-measure structure. This is
-your Month 1 content pair — the first measure to write, and the deep companion to
-PhonaLab's AVQI clinical page.
+**Living draft.** This chapter reflects the sources cited below and will be
+revised as further sources are incorporated. Found an error? Use the *Report an
+issue* link in the sidebar.
 :::
 
 ## Definition
 
-*What AVQI is, in one or two sentences.* The Acoustic Voice Quality Index is a
-multivariate index combining several acoustic measures into a single estimate of
-overall voice quality [@maryn2010avqi].
+The Acoustic Voice Quality Index (AVQI) is an objective method to quantify the
+severity of overall voice quality in concatenated continuous speech and
+sustained phonation segments [@barsties2016avqi]. It is a multivariate
+construct based on linear regression that combines six acoustic markers into a
+single score for the whole voice sample [@barsties2016avqi]. That score
+represents the overall voice quality — the hoarseness level — of the sample
+[@delgado2018avqi].
+
+The index was developed by @maryn2010avqi and was one of the first measures to
+combine both speech types [@delgado2018avqi]. The rationale for the combination:
+sustained vowels are easily elicited and less affected by articulation and
+dialect, while continuous speech is more representative of a patient's daily
+voice [@delgado2018avqi].
 
 ## Computation
 
-*The component measures, how they are weighted, sustained-vowel vs. continuous
-speech input, software versions (AVQI-3, etc.).*
+### Speech material and concatenation
+
+The subject sustains the vowel [a:] for longer than 3 seconds, and a 3-second
+mid-vowel portion is selected. The subject also reads a phonetically balanced
+text aloud at comfortable pitch and loudness. For AVQI version 03.01 in Dutch,
+the continuous-speech part is trimmed to the first 34 syllables of the text,
+the 3-second [a:] segment is appended, and the result is saved as a single
+sound file [@barsties2016avqi]. Acoustic analysis is applied only to the voiced
+segments of the continuous speech — extracted by an automated Praat detection
+script — plus the appended vowel segment [@barsties2016avqi].
+
+### Component measures
+
+All six parameters are obtained in Praat from the concatenated signal
+[@barsties2016avqi; @delgado2018avqi]:
+
+| Parameter | Definition |
+|---|---|
+| Smoothed cepstral peak prominence (CPPS) | Distance between the first rahmonic's peak and the point of equal quefrency on the regression line through the smoothed cepstrum — see the [CPPS chapter](cpps.qmd) |
+| Harmonics-to-noise ratio (HNR) | Base-10 logarithm of the ratio between periodic energy and noise energy, × 10 |
+| Shimmer local (Shim) | Absolute mean difference between amplitudes of successive periods, divided by the average amplitude |
+| Shimmer local dB (ShdB) | Base-10 logarithm of the difference between amplitudes of successive periods, × 20 |
+| General slope of the spectrum (Slope) | Difference between the energy in 0–1000 Hz and in 1000–10000 Hz of the long-term average spectrum |
+| Tilt of the spectral trendline (Tilt) | The same difference computed on the trendline through the long-term average spectrum |
+
+: The six AVQI components [@barsties2016avqi]. {#tbl-avqi-components}
+
+### Regression equation (version 03.01)
+
+As printed by @barsties2016avqi:
+
+$$
+\text{AVQI}_{03.01} = \bigl(4.152 - 0.177\,\text{CPPS} - 0.006\,\text{HNR}
+- 0.037\,\text{Shim} + 0.941\,\text{ShdB}
++ 0.01\,\text{Slope} + 0.093\,\text{Tilt}\bigr) \times 2.8902
+$$
+
+The published Praat script displays the resulting score on a 0–10 axis, marked
+green below the Dutch threshold of 2.43 and red above it [@barsties2016avqi].
+
+::: {.callout-warning}
+The printed equation differs between validation papers: @barsties2016avqi print
+the HNR coefficient as 0.006 and the Tilt coefficient as 0.093 (and their
+appendix script uses the same values), while @delgado2018avqi print 0.0006 and
+0.0993 citing the same source. Use the coefficients from the official Praat
+script rather than retyping them from any paper.
+:::
+
+### Versions 02.02 and 03.01
+
+In the earlier AVQI versions the analyzed continuous-speech part was much
+shorter than the constant 3-second vowel part (1.53 s of voiced speech in
+Dutch, 1.99 s in Japanese) [@delgado2018avqi]. Version 03.01 balances the
+analyzed durations of the two speech types by expanding the continuous-speech
+sample from 17–22 syllables to around 34 syllables, for higher ecological
+validity and balanced internal consistency [@barsties2016avqi;
+@delgado2018avqi]. Early AVQI workflows required both SpeechTool and Praat;
+once CPPS was implemented in Praat, the index ran in Praat alone, with highly
+comparable outcomes [@barsties2016avqi].
+
+The regression-based combination of measures over a concatenated sample was
+explored for tracheoesophageal (alaryngeal) voice by @maryn2009cepstral, where
+a two-factor model combining CPP with the prominence of the second spectral
+harmonic reached *r~s~* = 0.87 with listener judgments.
 
 ## What it captures
 
-*The construct — overall dysphonia severity — and how it relates to
-auditory-perceptual ratings.*
+The AVQI quantifies overall voice quality as judged by the grade (G) of the
+GRBAS scale — the degree of hoarseness or voice abnormality [@barsties2016avqi;
+@delgado2018avqi]. Concurrent validity with mean perceptual G is strong:
+*r* = 0.815 in the Dutch external validation (66.4% of variance)
+[@barsties2016avqi] and *r* = 0.835 in Spanish (69.7% of variance)
+[@delgado2018avqi]. CPPS is the main factor in the multivariate model
+[@barsties2016avqi]; meta-analytic evidence independently confirms cepstral
+peak measures as among the most accurate acoustic measures of overall
+dysphonia severity [@barsties2018meta].
 
-## Confounds and cautions
-
-*Recording quality, sample type, language, microphone effects.*
+Earlier AVQI investigations reported high sensitivity to voice changes through
+therapy, supporting its use as a treatment outcome measure [@barsties2016avqi].
 
 ## Normative data
 
-*Cutoffs, age and sex effects, reported thresholds.*
+Diagnostic thresholds separate normophonic from hoarse voices, with hoarseness
+defined as mean perceptual grade G ≥ 0.5 [@barsties2016avqi]:
+
+| Population / language | Threshold | Sensitivity | Specificity | AUC |
+|---|---|---|---|---|
+| Dutch, internal validation (60 samples, as reported) | 2.43 | 0.936 | 1.00 | 0.98 |
+| Dutch, external validation (1058 samples) | 2.43 | 0.785 | 0.932 | 0.923 |
+| Spanish (136 dysphonic, 47 normal) | 2.28 | 0.748 | 0.946 | 0.905 |
+| Japanese (as reported) | 2.06 | 0.721 | 0.938 | 0.915 |
+
+: AVQI 03.01 diagnostic thresholds [@barsties2016avqi; @delgado2018avqi]. {#tbl-avqi-thresholds}
+
+Likelihood ratios at the optimal threshold: LR+ = 11.54, LR− = 0.23 (Dutch
+external validation) [@barsties2016avqi]; LR+ = 13.85, LR− = 0.26 (Spanish,
+threshold chosen by the Youden index) [@delgado2018avqi].
+
+## Confounds and cautions
+
+**Language-specific standardization is required.** The continuous-speech part
+must be trimmed to a syllable count that yields about 3 seconds of voiced
+speech, and the count differs by language: 34 syllables in Dutch, 33 in
+Spanish, 30 in Japanese [@delgado2018avqi].
+
+**Thresholds differ by language.** Reported optimal cutoffs are 2.43 (Dutch),
+2.28 (Spanish), and 2.06 (Japanese). The differences are small — AVQI appears
+relatively insulated from inter-language phonetic differences — but the
+language-specific cutoff should be used [@delgado2018avqi].
+
+**Recording conditions matter.** Validation recordings were made in sound-
+treated rooms with head-mounted condenser microphones at 44.1 kHz / 16 bit,
+with environmental noise verified against a signal-to-noise norm
+[@barsties2016avqi; @delgado2018avqi]. The AVQI script itself states that
+reliable analysis requires optimal data-acquisition conditions
+[@barsties2016avqi].
+
+**Report the version.** Versions 02.02 and 03.01 differ in the length of the
+continuous-speech part and in the regression weighting; scores are not
+comparable across versions [@barsties2016avqi].
+
+**Base rates affect ROC statistics.** The Dutch external validation sample
+contained 8% normophonia and 92% dysphonia; likelihood ratios were used
+because they are less vulnerable to base-rate differences than ROC statistics
+alone [@barsties2016avqi].
+
+**Voicing detection is part of the pipeline.** Voiced segments are extracted
+automatically before measurement, so results depend on that detection step
+[@barsties2016avqi].
 
 ## Validation
 
-*Key validation studies across languages and populations.*
+Across 1118 subjects in two studies, AVQI 03.01 showed a homogeneous weighted
+mean correlation of *r* = 0.821 with perceptual overall voice quality, against
+*r* = 0.790 for the initial AVQI model pooled over 507 subjects
+[@barsties2016avqi]. In the same pooled analysis, the Dysphonia Severity Index
+reached a heterogeneous weighted mean *r* = 0.524 and the Cepstral Spectral
+Index of Dysphonia *r* = 0.788 (sustained vowel) and 0.748 (continuous
+speech); AVQI 03.01 reached the highest concurrent validity among these
+multiparametric indices [@barsties2016avqi]. Language validations include
+Dutch [@barsties2016avqi] and Spanish [@delgado2018avqi], with Japanese
+figures reported in the latter.
 
 ## Compute it in PhonaLab
 
-> **[Open the AVQI tool in PhonaLab →](https://phonalab.com)**
+> **[Open PhonaLab →](https://phonalab.com)**
 >
-> Upload a sustained vowel and continuous speech sample to compute AVQI on your
-> own recording.
+> Upload a sustained vowel and a continuous speech sample to compute AVQI on
+> your own recording, with the version and language protocol reported alongside
+> the score.

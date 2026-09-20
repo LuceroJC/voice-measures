@@ -14,9 +14,8 @@ version while the living site continues to improve.
 ## How to cite {.unnumbered}
 
 > Lucero, J. C. (2026). *Acoustic Measures of Voice Quality: A Living Reference*
-> (Version 0.0.1). Zenodo. https://doi.org/10.5281/zenodo.XXXXXXX
+> (Version 0.0.1). Zenodo. https://doi.org/10.5281/zenodo.22739050
 
-<!-- TODO: replace the DOI once the first Zenodo release is minted. -->
 
 ## License {.unnumbered}
 
