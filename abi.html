@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Jorge C. Lucero">
-<meta name="dcterms.date" content="2026-09-20">
 
-<title>Acoustic Measures of Voice Quality</title>
+<title>5&nbsp; Acoustic Breathiness Index (ABI) – Acoustic Measures of Voice Quality</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -28,7 +26,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -38,7 +55,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./intro.html" rel="next">
+<link href="./avqi.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -77,6 +94,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -89,7 +135,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Preface</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./avqi.html">Part IV — Composite Indices</a></li><li class="breadcrumb-item"><a href="./abi.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Acoustic Breathiness Index (ABI)</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -119,7 +165,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
@@ -180,7 +226,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./abi.html" class="sidebar-item-text sidebar-link">
+  <a href="./abi.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Acoustic Breathiness Index (ABI)</span></span></a>
   </div>
 </li>
@@ -196,48 +242,29 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a>
-  <ul class="collapse">
-  <li><a href="#how-to-cite" id="toc-how-to-cite" class="nav-link" data-scroll-target="#how-to-cite">How to cite</a></li>
-  <li><a href="#license" id="toc-license" class="nav-link" data-scroll-target="#license">License</a></li>
-  <li><a href="#relationship-to-phonalab" id="toc-relationship-to-phonalab" class="nav-link" data-scroll-target="#relationship-to-phonalab">Relationship to PhonaLab</a></li>
-  </ul></li>
+  <li><a href="#definition" id="toc-definition" class="nav-link active" data-scroll-target="#definition"><span class="header-section-number">5.1</span> Definition</a></li>
+  <li><a href="#computation" id="toc-computation" class="nav-link" data-scroll-target="#computation"><span class="header-section-number">5.2</span> Computation</a></li>
+  <li><a href="#what-it-captures" id="toc-what-it-captures" class="nav-link" data-scroll-target="#what-it-captures"><span class="header-section-number">5.3</span> What it captures</a></li>
+  <li><a href="#normative-data" id="toc-normative-data" class="nav-link" data-scroll-target="#normative-data"><span class="header-section-number">5.4</span> Normative data</a></li>
+  <li><a href="#confounds-and-cautions" id="toc-confounds-and-cautions" class="nav-link" data-scroll-target="#confounds-and-cautions"><span class="header-section-number">5.5</span> Confounds and cautions</a></li>
+  <li><a href="#validation" id="toc-validation" class="nav-link" data-scroll-target="#validation"><span class="header-section-number">5.6</span> Validation</a></li>
+  <li><a href="#compute-it-in-phonalab" id="toc-compute-it-in-phonalab" class="nav-link" data-scroll-target="#compute-it-in-phonalab"><span class="header-section-number">5.7</span> Compute it in PhonaLab</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/LuceroJC/voice-measures/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/LuceroJC/voice-measures/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/LuceroJC/voice-measures/edit/main/abi.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/LuceroJC/voice-measures/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./avqi.html">Part IV — Composite Indices</a></li><li class="breadcrumb-item"><a href="./abi.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Acoustic Breathiness Index (ABI)</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Acoustic Measures of Voice Quality</h1>
-<p class="subtitle lead">A Living Reference</p>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Acoustic Breathiness Index (ABI)</span></h1>
 </div>
 
 
-<div class="quarto-title-meta-author">
-  <div class="quarto-title-meta-heading">Author</div>
-  <div class="quarto-title-meta-heading">Affiliation</div>
-  
-    <div class="quarto-title-meta-contents">
-    <p class="author">Jorge C. Lucero <a href="https://orcid.org/0000-0003-0597-3808" class="quarto-title-author-orcid" aria-label="ORCID profile for Jorge C. Lucero"> <img alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
-  </div>
-  <div class="quarto-title-meta-contents">
-        <p class="affiliation">
-            University of Brasília
-          </p>
-      </div>
-  </div>
 
 <div class="quarto-title-meta">
 
-      
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">September 20, 2026</p>
-    </div>
-  </div>
+    
   
     
   </div>
@@ -247,26 +274,207 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="preface" class="level1 unnumbered">
-<h1 class="unnumbered">Preface</h1>
-<p><em>Acoustic Measures of Voice Quality</em> is an open, <strong>living reference</strong> on how the acoustic measures used in voice assessment are computed and interpreted. It is written for speech-language pathologists, voice scientists, and students who want to understand not just <em>what</em> a number like CPPS or AVQI is, but <em>how</em> it is derived from the signal, what it captures, where it fails, and how to read it in practice.</p>
-<p>Unlike a printed textbook, this reference is versioned and continuously updated. Each release is archived with its own DOI, so you can cite a specific, frozen version while the living site continues to improve.</p>
-<section id="how-to-cite" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="how-to-cite">How to cite</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Living draft.</strong> This chapter reflects the sources cited below and will be revised as further sources are incorporated. Found an error? Use the <em>Report an issue</em> link in the sidebar.</p>
+</div>
+</div>
+<section id="definition" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="definition"><span class="header-section-number">5.1</span> Definition</h2>
+<p>The Acoustic Breathiness Index (ABI) is a multiparametric, nine-variable acoustic measure that quantifies the degree of perceived breathiness with a single score, computed from concatenated samples of continuous speech and the sustained vowel /a/ <span class="citation" data-cites="barsties2021abi">(<a href="#ref-barsties2021abi" role="doc-biblioref">Barsties v. Latoszek et al. 2021</a>)</span>. Its perceptual target is breathiness: turbulent noise, excessively high in frequency, resulting from air leakage during incomplete glottal closure <span class="citation" data-cites="barsties2021abi delgado2018avqi">(<a href="#ref-barsties2021abi" role="doc-biblioref">Barsties v. Latoszek et al. 2021</a>; <a href="#ref-delgado2018avqi" role="doc-biblioref">Delgado Hernández et al. 2018</a>)</span>. Both speech tasks contribute three seconds of voiced material each, a design chosen for ecological validity <span class="citation" data-cites="barsties2021abi">(<a href="#ref-barsties2021abi" role="doc-biblioref">Barsties v. Latoszek et al. 2021</a>)</span>. The index was first published in 2017 for a Dutch-speaking population <span class="citation" data-cites="barsties2017abi barsties2021abi">(<a href="#ref-barsties2017abi" role="doc-biblioref">Barsties v. Latoszek et al. 2017</a>, <a href="#ref-barsties2021abi" role="doc-biblioref">2021</a>)</span>.</p>
+<p>Where the <a href="./avqi.html">AVQI</a> targets <em>overall</em> voice quality, the ABI isolates one perceptual dimension. The two indices share the concatenation protocol and several components.</p>
+</section>
+<section id="computation" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="computation"><span class="header-section-number">5.2</span> Computation</h2>
+<p>The ABI contains nine parameters <span class="citation" data-cites="delgado2018avqi">(<a href="#ref-delgado2018avqi" role="doc-biblioref">Delgado Hernández et al. 2018</a>)</span>:</p>
+<div id="tbl-abi-components" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-abi-components-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;5.1: The nine ABI components <span class="citation" data-cites="delgado2018avqi">(<a href="#ref-delgado2018avqi" role="doc-biblioref">Delgado Hernández et al. 2018</a>)</span>.
+</figcaption>
+<div aria-describedby="tbl-abi-components-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Abbreviation</th>
+<th>What it measures</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Smoothed cepstral peak prominence</td>
+<td>CPPS</td>
+<td>Height of the first rahmonic’s peak over the regression line through the smoothed cepstrum — see the <a href="./cpps.html">CPPS chapter</a></td>
+</tr>
+<tr class="even">
+<td>Jitter local</td>
+<td>Jit</td>
+<td>Average difference between successive periods, divided by the average period</td>
+</tr>
+<tr class="odd">
+<td>Glottal-to-noise excitation ratio</td>
+<td>GNEmax-4500 Hz</td>
+<td>Excitation due to vocal-fold oscillation versus excitation by turbulent noise; reliable even under strong amplitude and frequency perturbations</td>
+</tr>
+<tr class="even">
+<td>High-frequency noise</td>
+<td>Hfno-6000 Hz</td>
+<td>Relative level of high-frequency noise between the energy from 0–6 kHz and from 6–10 kHz</td>
+</tr>
+<tr class="odd">
+<td>Harmonics-to-noise ratio of Dejonckere</td>
+<td>HNR-D</td>
+<td>Harmonic emergence of the spectral display in the 500–1500 Hz band</td>
+</tr>
+<tr class="even">
+<td>Amplitude difference of the first two harmonics</td>
+<td>H1–H2</td>
+<td>Indirect measure of the relative length of the open phase of glottal oscillation; H1 is relatively high in breathy voices</td>
+</tr>
+<tr class="odd">
+<td>Shimmer local dB</td>
+<td>ShdB</td>
+<td>Base-10 logarithm of the difference between amplitudes of successive periods, × 20</td>
+</tr>
+<tr class="even">
+<td>Shimmer local</td>
+<td>Shim</td>
+<td>Absolute mean difference between amplitudes of successive periods, divided by the average amplitude</td>
+</tr>
+<tr class="odd">
+<td>Period standard deviation</td>
+<td>PSD</td>
+<td>Variation in the standard deviation of periods</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>The regression equation, as reported in the Spanish validation <span class="citation" data-cites="delgado2018avqi">(<a href="#ref-delgado2018avqi" role="doc-biblioref">Delgado Hernández et al. 2018</a>)</span>:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\text{ABI} = \bigl(5.0447740915 &amp;- 0.172\,\text{CPPS} - 0.193\,\text{Jit}
+- 1.283\,\text{GNE}_{\max\text{-}4500}\\
+&amp;- 0.396\,\text{Hfno}_{6000} + 0.01\,\text{HNR-D} + 0.017\,(\text{H1–H2})\\
+&amp;+ 1.473\,\text{ShdB} - 0.088\,\text{Shim}
+- 68.295\,\text{PSD}\bigr) \times 2.9257400394
+\end{aligned}
+\]</span></p>
+<p>The score ranges from 0 to 10; the higher the ABI, the more severe the breathiness <span class="citation" data-cites="barsties2021abi">(<a href="#ref-barsties2021abi" role="doc-biblioref">Barsties v. Latoszek et al. 2021</a>)</span>.</p>
+<p>Signal processing uses Praat with the customised ABI script <span class="citation" data-cites="barsties2021abi">(<a href="#ref-barsties2021abi" role="doc-biblioref">Barsties v. Latoszek et al. 2021</a>)</span>. Analysis applies only to voiced segments of the continuous speech, extracted with an automated Praat detection script, with a three-second /a/ segment appended <span class="citation" data-cites="delgado2018avqi">(<a href="#ref-delgado2018avqi" role="doc-biblioref">Delgado Hernández et al. 2018</a>)</span>. The continuous-speech part is standardised to a language-specific syllable count yielding three seconds of voiced speech: 34 syllables in Dutch, 33 in Spanish, 30 in Japanese <span class="citation" data-cites="delgado2018avqi">(<a href="#ref-delgado2018avqi" role="doc-biblioref">Delgado Hernández et al. 2018</a>)</span>.</p>
+</section>
+<section id="what-it-captures" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="what-it-captures"><span class="header-section-number">5.3</span> What it captures</h2>
+<p>ABI scores correlate strongly with auditory-perceptual breathiness ratings: Spearman <em>r<sub>s</sub></em> ranged from 0.746 to 0.890 across the six validation studies pooled in the meta-analysis <span class="citation" data-cites="barsties2021abi">(<a href="#ref-barsties2021abi" role="doc-biblioref">Barsties v. Latoszek et al. 2021</a>)</span>. In Spanish, <em>r<sub>s</sub></em> = 0.826, with ABI accounting for 68.2% of the variance in mean breathiness ratings <span class="citation" data-cites="delgado2018avqi">(<a href="#ref-delgado2018avqi" role="doc-biblioref">Delgado Hernández et al. 2018</a>)</span>; in the original Dutch study, <em>r<sub>s</sub></em> = 0.840 <span class="citation" data-cites="delgado2018avqi">(<a href="#ref-delgado2018avqi" role="doc-biblioref">Delgado Hernández et al. 2018</a>)</span>.</p>
+<p>Unlike the CSID and AVQI, which assess overall voice quality, the ABI is particularly suitable for evaluating breathy voices — for example benign vocal-fold lesions dominantly characterised by breathiness (nodules of medium or large size), paralysis or paresis of the recurrent laryngeal nerve, and vocal-fold bowing associated with presbyphonia <span class="citation" data-cites="barsties2021abi">(<a href="#ref-barsties2021abi" role="doc-biblioref">Barsties v. Latoszek et al. 2021</a>)</span>; acute laryngitis also belongs to this group <span class="citation" data-cites="delgado2018avqi">(<a href="#ref-delgado2018avqi" role="doc-biblioref">Delgado Hernández et al. 2018</a>)</span>. Neither age and gender nor roughness significantly affects ABI in natural voices, and the index signals therapy-related voice quality changes with high sensitivity <span class="citation" data-cites="barsties2021abi">(<a href="#ref-barsties2021abi" role="doc-biblioref">Barsties v. Latoszek et al. 2021</a>)</span>.</p>
+<p>Independent meta-analysis of single measures supports the component choice: Hfno, H1–H2, HNR of Dejonckere, CPP, and CPPS all sit among the strongest single correlates of perceived breathiness, and only 12 of 85 acoustic measures predicted breathiness on sustained vowels with a weighted mean <em>r</em> of at least .60 <span class="citation" data-cites="barsties2018meta">(<a href="#ref-barsties2018meta" role="doc-biblioref">Barsties v. Latoszek et al. 2018</a>)</span>.</p>
+</section>
+<section id="normative-data" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="normative-data"><span class="header-section-number">5.4</span> Normative data</h2>
+<div id="tbl-abi-thresholds" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-abi-thresholds-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;5.2: ABI diagnostic thresholds <span class="citation" data-cites="delgado2018avqi barsties2021abi">(<a href="#ref-delgado2018avqi" role="doc-biblioref">Delgado Hernández et al. 2018</a>; <a href="#ref-barsties2021abi" role="doc-biblioref">Barsties v. Latoszek et al. 2021</a>)</span>.
+</figcaption>
+<div aria-describedby="tbl-abi-thresholds-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Population / language</th>
+<th>Threshold</th>
+<th>Sensitivity</th>
+<th>Specificity</th>
+<th>AUC</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Dutch (development study)</td>
+<td>3.44</td>
+<td>82.4%</td>
+<td>92.9%</td>
+<td>0.948</td>
+</tr>
+<tr class="even">
+<td>Spanish (136 dysphonic, 47 healthy)</td>
+<td>3.40</td>
+<td>73.7%</td>
+<td>95.4%</td>
+<td>0.921</td>
+</tr>
+<tr class="odd">
+<td>Pooled, six studies at study-specific thresholds</td>
+<td>per language</td>
+<td>0.84 (95% CI 0.83–0.85)</td>
+<td>0.92 (95% CI 0.89–0.94)</td>
+<td>0.94 (SROC)</td>
+</tr>
+<tr class="even">
+<td>Weighted threshold across the six studies (Youden)</td>
+<td>3.40</td>
+<td>0.86 (95% CI 0.84–0.87)</td>
+<td>0.90 (95% CI 0.88–0.92)</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>The six validation studies pooled by the meta-analysis cover Dutch, German, Spanish, Brazilian Portuguese, Korean, and Japanese — four language groups — over 467 vocally healthy and 3136 voice-disordered subjects <span class="citation" data-cites="barsties2021abi">(<a href="#ref-barsties2021abi" role="doc-biblioref">Barsties v. Latoszek et al. 2021</a>)</span>.</p>
+</section>
+<section id="confounds-and-cautions" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="confounds-and-cautions"><span class="header-section-number">5.5</span> Confounds and cautions</h2>
+<p><strong>Language dependence of the threshold.</strong> Continuous speech is part of the index, so inter-language phonetic differences may influence the outcome; thresholds must come from a validation in the target language. The meta-analysis nevertheless found ABI relatively robust to phonetic inter-language differences such as stress timing, syllable timing, and intonation <span class="citation" data-cites="barsties2021abi">(<a href="#ref-barsties2021abi" role="doc-biblioref">Barsties v. Latoszek et al. 2021</a>)</span>.</p>
+<p><strong>Software requirement.</strong> The validation evidence applies to signal processing in Praat with the customised ABI script; the meta-analysis excluded studies not using them <span class="citation" data-cites="barsties2021abi">(<a href="#ref-barsties2021abi" role="doc-biblioref">Barsties v. Latoszek et al. 2021</a>)</span>.</p>
+<p><strong>Equal task proportion.</strong> ABI results based on unequal proportions of continuous speech and sustained vowel were treated as a risk of bias <span class="citation" data-cites="barsties2021abi">(<a href="#ref-barsties2021abi" role="doc-biblioref">Barsties v. Latoszek et al. 2021</a>)</span>.</p>
+<p><strong>Hardware and recording conditions.</strong> Each validation study has unique acoustic settings and hardware, limiting comparability between studies <span class="citation" data-cites="barsties2021abi">(<a href="#ref-barsties2021abi" role="doc-biblioref">Barsties v. Latoszek et al. 2021</a>)</span>. The Spanish validation recorded in a soundproof booth with a head-mounted condenser microphone at 44.1 kHz / 16 bit <span class="citation" data-cites="delgado2018avqi">(<a href="#ref-delgado2018avqi" role="doc-biblioref">Delgado Hernández et al. 2018</a>)</span>.</p>
+<p><strong>Evidence base.</strong> The meta-analysis rests on six studies. Pooled sensitivity showed high heterogeneity (I² = 89.7%, <em>P</em> &lt; .001), while specificity heterogeneity was low (I² = 45.5). The Brazilian Portuguese study reached only low inter-rater reliability (Fleiss κ &lt; 0.41), with a sample skewed toward normal and mild breathiness (43% normal, 41% mild, 11% moderate, 5% severe) <span class="citation" data-cites="barsties2021abi">(<a href="#ref-barsties2021abi" role="doc-biblioref">Barsties v. Latoszek et al. 2021</a>)</span>.</p>
+<p><strong>Not a stand-alone screen.</strong> Not all voice disorders are detected by ABI — that cannot be expected from a measure of one perceptual dimension; higher diagnostic accuracy requires combining measures of different dimensions <span class="citation" data-cites="barsties2021abi">(<a href="#ref-barsties2021abi" role="doc-biblioref">Barsties v. Latoszek et al. 2021</a>)</span>. Further investigations of external and internal validity remain necessary <span class="citation" data-cites="delgado2018avqi">(<a href="#ref-delgado2018avqi" role="doc-biblioref">Delgado Hernández et al. 2018</a>)</span>.</p>
+</section>
+<section id="validation" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="validation"><span class="header-section-number">5.6</span> Validation</h2>
+<p>The development study established the Dutch threshold of 3.44 with AUC 0.948 <span class="citation" data-cites="barsties2017abi delgado2018avqi">(<a href="#ref-barsties2017abi" role="doc-biblioref">Barsties v. Latoszek et al. 2017</a>; <a href="#ref-delgado2018avqi" role="doc-biblioref">Delgado Hernández et al. 2018</a>)</span>. The Spanish validation reported a threshold of 3.40 with AUC 0.921 <span class="citation" data-cites="delgado2018avqi">(<a href="#ref-delgado2018avqi" role="doc-biblioref">Delgado Hernández et al. 2018</a>)</span>. The 2021 meta-analysis pooled six validation studies spanning more than 3600 voice samples and confirmed the ABI as a robust, valid objective measure of breathiness, with pooled sensitivity 0.84 and specificity 0.92 <span class="citation" data-cites="barsties2021abi">(<a href="#ref-barsties2021abi" role="doc-biblioref">Barsties v. Latoszek et al. 2021</a>)</span>.</p>
+</section>
+<section id="compute-it-in-phonalab" class="level2" data-number="5.7">
+<h2 data-number="5.7" class="anchored" data-anchor-id="compute-it-in-phonalab"><span class="header-section-number">5.7</span> Compute it in PhonaLab</h2>
 <blockquote class="blockquote">
-<p>Lucero, J. C. (2026). <em>Acoustic Measures of Voice Quality: A Living Reference</em> (Version 0.0.1). Zenodo. https://doi.org/10.5281/zenodo.22739050</p>
+<p><strong><a href="https://phonalab.com">Open PhonaLab →</a></strong></p>
+<p>Upload a sustained vowel and a continuous speech sample to compute ABI on your own recording, alongside the AVQI computed from the same material.</p>
 </blockquote>
-</section>
-<section id="license" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="license">License</h2>
-<p>The prose and figures are licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>; the code examples are licensed under the <a href="https://opensource.org/licenses/MIT">MIT License</a>. You are free to share, adapt, and translate this work with attribution.</p>
-</section>
-<section id="relationship-to-phonalab" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="relationship-to-phonalab">Relationship to PhonaLab</h2>
-<p>This reference is the <em>methods</em> companion to <a href="https://phonalab.com">PhonaLab</a>. Where this text explains what a measure is and how it is computed, PhonaLab lets you compute it on your own recording. Each measure chapter links to the corresponding PhonaLab tool, and PhonaLab links back here for the underlying method.</p>
 
 
-</section>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-barsties2021abi" class="csl-entry" role="listitem">
+Barsties v. Latoszek, Ben, Geun-Hyo Kim, Jonathan Delgado Hernández, et al. 2021. <span>“The Validity of the <span>Acoustic</span> <span>Breathiness</span> <span>Index</span> in the Evaluation of Breathy Voice Quality: A Meta-Analysis.”</span> <em>Clinical Otolaryngology</em> 46 (1): 31–40. <a href="https://doi.org/10.1111/coa.13629">https://doi.org/10.1111/coa.13629</a>.
+</div>
+<div id="ref-barsties2017abi" class="csl-entry" role="listitem">
+Barsties v. Latoszek, Ben, Youri Maryn, Ellen Gerrits, and Marc De Bodt. 2017. <span>“The <span>Acoustic</span> <span>Breathiness</span> <span>Index</span> (<span>ABI</span>): A Multivariate Acoustic Model for Breathiness.”</span> <em>Journal of Voice</em> 31 (4): 511.e11–27. <a href="https://doi.org/10.1016/j.jvoice.2016.11.017">https://doi.org/10.1016/j.jvoice.2016.11.017</a>.
+</div>
+<div id="ref-barsties2018meta" class="csl-entry" role="listitem">
+Barsties v. Latoszek, Ben, Youri Maryn, Ellen Gerrits, and Marc De Bodt. 2018. <span>“A Meta-Analysis: Acoustic Measurement of Roughness and Breathiness.”</span> <em>Journal of Speech, Language, and Hearing Research</em> 61 (2): 298–323. <a href="https://doi.org/10.1044/2017_JSLHR-S-16-0188">https://doi.org/10.1044/2017_JSLHR-S-16-0188</a>.
+</div>
+<div id="ref-delgado2018avqi" class="csl-entry" role="listitem">
+Delgado Hernández, Jonathan, Nieves M. León Gómez, Alejandra Jiménez, Laura M. Izquierdo, and Ben Barsties v. Latoszek. 2018. <span>“Validation of the <span>Acoustic</span> <span>Voice</span> <span>Quality</span> <span>Index</span> Version 03.01 and the <span>Acoustic</span> <span>Breathiness</span> <span>Index</span> in the <span>Spanish</span> Language.”</span> <em>Annals of Otology, Rhinology &amp; Laryngology</em> 127 (5): 317–26. <a href="https://doi.org/10.1177/0003489418761096">https://doi.org/10.1177/0003489418761096</a>.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->
@@ -672,11 +880,11 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./avqi.html" class="pagination-link" aria-label="Acoustic Voice Quality Index (AVQI)">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Acoustic Voice Quality Index (AVQI)</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./intro.html" class="pagination-link" aria-label="About this reference">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">About this reference</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
@@ -687,7 +895,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/LuceroJC/voice-measures/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/LuceroJC/voice-measures/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/LuceroJC/voice-measures/edit/main/abi.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/LuceroJC/voice-measures/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Built with <a href="https://quarto.org">Quarto</a></p>
 </div>

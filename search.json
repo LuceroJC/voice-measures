@@ -14,7 +14,7 @@
     "href": "index.html#how-to-cite",
     "title": "Acoustic Measures of Voice Quality",
     "section": "How to cite",
-    "text": "How to cite\n\nLucero, J. C. (2026). Acoustic Measures of Voice Quality: A Living Reference (Version 0.0.1). Zenodo. https://doi.org/10.5281/zenodo.XXXXXXX",
+    "text": "How to cite\n\nLucero, J. C. (2026). Acoustic Measures of Voice Quality: A Living Reference (Version 0.0.1). Zenodo. https://doi.org/10.5281/zenodo.22739050",
     "crumbs": [
       "Preface"
     ]
@@ -81,80 +81,234 @@
     ]
   },
   {
+    "objectID": "cpps.html",
+    "href": "cpps.html",
+    "title": "3  Cepstral Peak Prominence (CPP and CPPS)",
+    "section": "",
+    "text": "3.1 Definition\nCepstral peak prominence (CPP) quantifies how strongly the harmonic structure of a voice signal emerges from its background. The cepstrum used in voice analysis is obtained by transforming the waveform into a spectrum, taking the logarithm, and transforming again; its horizontal axis is a time-like dimension called quefrency (Murton et al. 2020). The periodic harmonic peaks of the spectrum collapse into a single dominant cepstral peak at the quefrency of the voice period. The height of that peak above a regression line through the whole cepstrum is the CPP, reported in decibels (Murton et al. 2020). The amplitude of the dominant cepstral peak (the first rahmonic) reflects the strength with which the fundamental frequency emerges from competing background frequencies (Maryn et al. 2009).\nLower CPP values are associated with greater dysphonia severity (Murton et al. 2020). Two properties distinguish CPP from the classical perturbation measures. First, it can be extracted from connected speech as well as sustained vowels. Second, it does not require direct computation of the fundamental frequency, so no pitch detection or tracking is needed — which makes cepstral measures robust in dysphonic and particularly in breathy voices, where period-by-period analysis breaks down (Murton et al. 2020; Barsties v. Latoszek et al. 2018). The 2018 ASHA instrumental-assessment guidance recommended CPP as a general measure of dysphonia, replacing jitter, shimmer, and harmonics-to-noise ratio in that role (Murton et al. 2020).",
+    "crumbs": [
+      "Part III — Noise and Harmonic Structure",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Cepstral Peak Prominence (CPP and CPPS)</span>"
+    ]
+  },
+  {
+    "objectID": "cpps.html#computation",
+    "href": "cpps.html#computation",
+    "title": "3  Cepstral Peak Prominence (CPP and CPPS)",
+    "section": "3.2 Computation",
+    "text": "3.2 Computation\nThe waveform is Fourier-transformed into a spectrum, the logarithm of the spectrum is taken, and a second (inverse) Fourier transform carries the result into the cepstral domain (Murton et al. 2020). A linear regression line relating quefrency to cepstral magnitude is fitted through the cepstrum, and CPP is the difference in amplitude between the cepstral peak and the point on the regression line directly below it (Maryn et al. 2009; Barsties v. Latoszek et al. 2018).\nCPP versus CPPS. Averaging the cepstrum first across time and then across quefrency yields a smoothed cepstrum; the same peak-minus-regression-line measurement on the smoothed cepstrum is the smoothed cepstral peak prominence, CPPS (Maryn et al. 2009). The smoothing was introduced by Hillenbrand and colleagues as a modification of their unsmoothed-cepstrum program SpeechTool (Maryn et al. 2009).\nSoftware implementations. Three computation algorithms dominate the clinical literature: Hillenbrand and Houde’s CPPS algorithm, Praat’s CPPS algorithm, and the CPP computation in Analysis of Dysphonia in Speech and Voice (ADSV, PENTAX Medical) (Murton et al. 2020). Their parameter choices differ in ways that matter:\n\nADSV applies a voicing activity detector, and frames with negative CPP (cepstral peak below the regression line) are excluded from analysis (Murton et al. 2020).\nPraat computes CPPS from a PowerCepstrogram and includes no voicing activity detection. The reference configuration used by Murton et al. (2020): 60-Hz pitch floor, 2-ms time step, 5-kHz maximum frequency, pre-emphasis from 50 Hz, time averaging window 0.01 s, quefrency averaging window 0.001 s, peak search range 60–330 Hz, parabolic interpolation, straight tilt line over the quefrency range 0.001–0 s, robust fit.\n\nBecause of these differences, values from different programs live on different scales and are not interchangeable (see Confounds and cautions).",
+    "crumbs": [
+      "Part III — Noise and Harmonic Structure",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Cepstral Peak Prominence (CPP and CPPS)</span>"
+    ]
+  },
+  {
+    "objectID": "cpps.html#what-it-captures",
+    "href": "cpps.html#what-it-captures",
+    "title": "3  Cepstral Peak Prominence (CPP and CPPS)",
+    "section": "3.3 What it captures",
+    "text": "3.3 What it captures\nCPP behaves as a general index of overall dysphonia severity. In the Massachusetts Eye and Ear Infirmary (MEEI) data of Murton et al. (2020), CPP values below task- and software-specific cutoffs indicated the presence of a voice disorder with up to 94.5% accuracy, and ADSV CPP estimated mean listener ratings of overall severity with r² from .5 to .74 depending on task (Praat CPPS: r² from .38 to .72). Regression lines allow a severity estimate from CPP; a Praat CPPS of 10 dB on sustained /a/ predicts a CAPE-V overall severity of approximately 54 (Murton et al. 2020).\nMeta-analytically, CPP and CPPS are the best acoustic predictors of breathiness, and the only acoustic markers that reached the validity criterion for breathiness in both sustained vowels and continuous speech (Barsties v. Latoszek et al. 2018). Pooled effect sizes:\n\n\n\nTable 3.1: Pooled meta-analytic correlations with perceptual ratings (Barsties v. Latoszek et al. 2018).\n\n\n\n\n\nPerceptual dimension\nTask\nMeasure\nWeighted r\nN\n\n\n\n\nBreathiness\nsustained vowel\nCPP\n.66\n468\n\n\nBreathiness\ncontinuous speech\nCPP\n.73\n98\n\n\nBreathiness\nsustained vowel\nCPPS\n.64\n133\n\n\nBreathiness\ncontinuous speech\nCPPS\n.63\n242\n\n\nRoughness\ncontinuous speech\nCPPS\n.60\n217\n\n\n\n\n\n\nFor roughness, CPPS reached the acceptability criterion only in continuous speech, where it was the only adequate predictor; CPPS does not, however, distinguish the subtypes roughness and breathiness from each other well (Barsties v. Latoszek et al. 2018). Although the cepstral measures were originally designed for breathiness, they proved to be the most accurate acoustic measures of overall dysphonia severity (Barsties v. Latoszek et al. 2018).\nIn severely aperiodic and alaryngeal voices, where perturbation measures fail for lack of a reliably detectable fundamental period, CPP remains computable: in tracheoesophageal speakers it was the strongest single acoustic correlate of overall voice quality (rs = .78, about 60% of variance explained), and a two-factor regression combining CPP with the height of the second spectral harmonic reached rs = .87 with listener rankings (Maryn et al. 2009). That multivariate strategy is the same one the AVQI applies to laryngeal voice.",
+    "crumbs": [
+      "Part III — Noise and Harmonic Structure",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Cepstral Peak Prominence (CPP and CPPS)</span>"
+    ]
+  },
+  {
+    "objectID": "cpps.html#normative-data",
+    "href": "cpps.html#normative-data",
+    "title": "3  Cepstral Peak Prominence (CPP and CPPS)",
+    "section": "3.4 Normative data",
+    "text": "3.4 Normative data\nCutoff values below which a voice disorder is probable, from 295 patients and 50 vocally healthy controls of the MEEI Voice Disorders Database (English speakers) (Murton et al. 2020):\n\n\n\nTable 3.2: MEEI cutoffs of Murton et al. (2020).\n\n\n\n\n\nTask\nSoftware\nCutoff\nClassification accuracy\n\n\n\n\nSustained /a/\nADSV CPP\n11.46 dB\n79.4%\n\n\nRainbow Passage\nADSV CPP\n6.11 dB\n87.7%\n\n\nSustained /a/\nPraat CPPS\n14.45 dB\n77.4%\n\n\nRainbow Passage\nPraat CPPS\n9.33 dB\n94.5%\n\n\n\n\n\n\nEarlier cutoff studies, as tabulated by Murton et al. (2020):\n\n\n\nTable 3.3: Previously reported cutoffs, normal vs. dysphonic except Heman-Ackah 2003 (mild vs. severe).\n\n\n\n\n\n\n\n\n\n\n\n\nStudy\nLanguage\nAlgorithm\nSustained vowel\nRunning speech\n\n\n\n\nHeman-Ackah et al. 2003\nEnglish\nCPPS (Hillenbrand)\n10 dB\n5 dB\n\n\nHeman-Ackah et al. 2014\nEnglish\nCPPS (Hillenbrand)\n—\n4.0 dB\n\n\nYu et al. 2018\nKorean\nADSV CPP\n12 dB\n7 dB\n\n\nDelgado-Hernández et al. 2019\nSpanish\nPraat CPPS (AVQI configuration)\n13.96 dB\n8.37 dB\n\n\n\n\n\n\nEvery threshold in these tables is specific to its software, algorithm settings, and speech task. A bare CPP number with no software and task attached is not interpretable, because different algorithms produce values in different ranges (Murton et al. 2020).",
+    "crumbs": [
+      "Part III — Noise and Harmonic Structure",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Cepstral Peak Prominence (CPP and CPPS)</span>"
+    ]
+  },
+  {
+    "objectID": "cpps.html#confounds-and-cautions",
+    "href": "cpps.html#confounds-and-cautions",
+    "title": "3  Cepstral Peak Prominence (CPP and CPPS)",
+    "section": "3.5 Confounds and cautions",
+    "text": "3.5 Confounds and cautions\nSoftware non-interchangeability. On the same MEEI recordings, the sustained-vowel cutoff was 11.46 dB for ADSV and 14.45 dB for Praat. The algorithms can also diverge qualitatively: one speaker measured 11.7 dB in Praat CPPS but 3.5 dB in ADSV CPP, with phonation showing irregular, widely spaced pulses perceived as strain and vocal fry (Murton et al. 2020).\nTask effects. CPP thresholds are consistently lower for continuous speech than for sustained vowels. CPP varies widely between different sentences, largely with the amount of voicing, so comparisons within or between speakers must use the same speech material; unvoiced frames included in the average artificially lower the CPP of consonant-heavy material (Murton et al. 2020).\nAphonia and voicing detection. Where aphonic segments are included, a low average CPP meaningfully reflects the aphonic quality — but very accurate voicing detection can paradoxically produce a higher-than-expected CPP in intermittent aphonia, because only the periodic voiced fragments enter the average (Murton et al. 2020).\nNo established upper bound. Rough voices with a strong subharmonic component may exhibit high CPP values, so a single lower cutoff does not capture all pathology (Murton et al. 2020).\nVowel, loudness, sex, and age. Low vowels such as /a/ tend to have higher CPP than high vowels such as /i/. CPP increases significantly with loudness without reflecting a change in underlying dysphonia. Male speakers tended to have higher CPP than female speakers, possibly through loudness. The MEEI controls were 22–59 years old; separate norms for older adults may be needed (Murton et al. 2020).\nCutoff vicinity. Published cutoffs are one possible estimate; values near a cutoff deserve further consideration rather than a binary reading (Murton et al. 2020).\nRecording conditions. Hardware, microphone placement, environmental noise, and software are known to affect perturbation measures; their impact on CPP and CPPS remains unclear and needs further investigation (Barsties v. Latoszek et al. 2018).",
+    "crumbs": [
+      "Part III — Noise and Harmonic Structure",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Cepstral Peak Prominence (CPP and CPPS)</span>"
+    ]
+  },
+  {
+    "objectID": "cpps.html#validation",
+    "href": "cpps.html#validation",
+    "title": "3  Cepstral Peak Prominence (CPP and CPPS)",
+    "section": "3.6 Validation",
+    "text": "3.6 Validation\nThe MEEI cutoff study (Murton et al. 2020) and the roughness/breathiness meta-analysis (Barsties v. Latoszek et al. 2018) anchor the evidence summarized above. The meta-analytic sustained-vowel breathiness effect sizes for CPP and CPPS pooled heterogeneous r-values; the authors retained these measures because they had the highest study counts and sample sizes (Barsties v. Latoszek et al. 2018). The tracheoesophageal findings of Maryn et al. (2009) extend the measure’s validity to alaryngeal voice.",
+    "crumbs": [
+      "Part III — Noise and Harmonic Structure",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Cepstral Peak Prominence (CPP and CPPS)</span>"
+    ]
+  },
+  {
+    "objectID": "cpps.html#compute-it-in-phonalab",
+    "href": "cpps.html#compute-it-in-phonalab",
+    "title": "3  Cepstral Peak Prominence (CPP and CPPS)",
+    "section": "3.7 Compute it in PhonaLab",
+    "text": "3.7 Compute it in PhonaLab\n\nOpen PhonaLab →\nUpload a sustained vowel or a reading passage and compute CPPS on your own recording, with the software and task always reported alongside the value.\n\n\n\n\n\nBarsties v. Latoszek, Ben, Youri Maryn, Ellen Gerrits, and Marc De Bodt. 2018. “A Meta-Analysis: Acoustic Measurement of Roughness and Breathiness.” Journal of Speech, Language, and Hearing Research 61 (2): 298–323. https://doi.org/10.1044/2017_JSLHR-S-16-0188.\n\n\nMaryn, Youri, Catherine Dick, Caroline Vandenbruaene, Tom Vauterin, and Tinne Jacobs. 2009. “Spectral, Cepstral, and Multivariate Exploration of Tracheoesophageal Voice Quality in Continuous Speech and Sustained Vowels.” The Laryngoscope 119 (12): 2384–94. https://doi.org/10.1002/lary.20620.\n\n\nMurton, Olivia, Robert Hillman, and Daryush Mehta. 2020. “Cepstral Peak Prominence Values for Clinical Voice Evaluation.” American Journal of Speech-Language Pathology 29 (3): 1596–607. https://doi.org/10.1044/2020_AJSLP-20-00001.",
+    "crumbs": [
+      "Part III — Noise and Harmonic Structure",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Cepstral Peak Prominence (CPP and CPPS)</span>"
+    ]
+  },
+  {
     "objectID": "avqi.html",
     "href": "avqi.html",
-    "title": "3  Acoustic Voice Quality Index (AVQI)",
+    "title": "4  Acoustic Voice Quality Index (AVQI)",
     "section": "",
-    "text": "3.1 Definition\nWhat AVQI is, in one or two sentences. The Acoustic Voice Quality Index is a multivariate index combining several acoustic measures into a single estimate of overall voice quality (Maryn et al. 2010).",
+    "text": "4.1 Definition\nThe Acoustic Voice Quality Index (AVQI) is an objective method to quantify the severity of overall voice quality in concatenated continuous speech and sustained phonation segments (Barsties and Maryn 2016). It is a multivariate construct based on linear regression that combines six acoustic markers into a single score for the whole voice sample (Barsties and Maryn 2016). That score represents the overall voice quality — the hoarseness level — of the sample (Delgado Hernández et al. 2018).\nThe index was developed by Maryn et al. (2010) and was one of the first measures to combine both speech types (Delgado Hernández et al. 2018). The rationale for the combination: sustained vowels are easily elicited and less affected by articulation and dialect, while continuous speech is more representative of a patient’s daily voice (Delgado Hernández et al. 2018).",
     "crumbs": [
       "Part IV — Composite Indices",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Acoustic Voice Quality Index (AVQI)</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Acoustic Voice Quality Index (AVQI)</span>"
     ]
   },
   {
     "objectID": "avqi.html#computation",
     "href": "avqi.html#computation",
-    "title": "3  Acoustic Voice Quality Index (AVQI)",
-    "section": "3.2 Computation",
-    "text": "3.2 Computation\nThe component measures, how they are weighted, sustained-vowel vs. continuous speech input, software versions (AVQI-3, etc.).",
+    "title": "4  Acoustic Voice Quality Index (AVQI)",
+    "section": "4.2 Computation",
+    "text": "4.2 Computation\n\n4.2.1 Speech material and concatenation\nThe subject sustains the vowel [a:] for longer than 3 seconds, and a 3-second mid-vowel portion is selected. The subject also reads a phonetically balanced text aloud at comfortable pitch and loudness. For AVQI version 03.01 in Dutch, the continuous-speech part is trimmed to the first 34 syllables of the text, the 3-second [a:] segment is appended, and the result is saved as a single sound file (Barsties and Maryn 2016). Acoustic analysis is applied only to the voiced segments of the continuous speech — extracted by an automated Praat detection script — plus the appended vowel segment (Barsties and Maryn 2016).\n\n\n4.2.2 Component measures\nAll six parameters are obtained in Praat from the concatenated signal (Barsties and Maryn 2016; Delgado Hernández et al. 2018):\n\n\n\nTable 4.1: The six AVQI components (Barsties and Maryn 2016).\n\n\n\n\n\nParameter\nDefinition\n\n\n\n\nSmoothed cepstral peak prominence (CPPS)\nDistance between the first rahmonic’s peak and the point of equal quefrency on the regression line through the smoothed cepstrum — see the CPPS chapter\n\n\nHarmonics-to-noise ratio (HNR)\nBase-10 logarithm of the ratio between periodic energy and noise energy, × 10\n\n\nShimmer local (Shim)\nAbsolute mean difference between amplitudes of successive periods, divided by the average amplitude\n\n\nShimmer local dB (ShdB)\nBase-10 logarithm of the difference between amplitudes of successive periods, × 20\n\n\nGeneral slope of the spectrum (Slope)\nDifference between the energy in 0–1000 Hz and in 1000–10000 Hz of the long-term average spectrum\n\n\nTilt of the spectral trendline (Tilt)\nThe same difference computed on the trendline through the long-term average spectrum\n\n\n\n\n\n\n\n\n4.2.3 Regression equation (version 03.01)\nAs printed by Barsties and Maryn (2016):\n\\[\n\\text{AVQI}_{03.01} = \\bigl(4.152 - 0.177\\,\\text{CPPS} - 0.006\\,\\text{HNR}\n- 0.037\\,\\text{Shim} + 0.941\\,\\text{ShdB}\n+ 0.01\\,\\text{Slope} + 0.093\\,\\text{Tilt}\\bigr) \\times 2.8902\n\\]\nThe published Praat script displays the resulting score on a 0–10 axis, marked green below the Dutch threshold of 2.43 and red above it (Barsties and Maryn 2016).\n\n\n\n\n\n\nWarning\n\n\n\nThe printed equation differs between validation papers: Barsties and Maryn (2016) print the HNR coefficient as 0.006 and the Tilt coefficient as 0.093 (and their appendix script uses the same values), while Delgado Hernández et al. (2018) print 0.0006 and 0.0993 citing the same source. Use the coefficients from the official Praat script rather than retyping them from any paper.\n\n\n\n\n4.2.4 Versions 02.02 and 03.01\nIn the earlier AVQI versions the analyzed continuous-speech part was much shorter than the constant 3-second vowel part (1.53 s of voiced speech in Dutch, 1.99 s in Japanese) (Delgado Hernández et al. 2018). Version 03.01 balances the analyzed durations of the two speech types by expanding the continuous-speech sample from 17–22 syllables to around 34 syllables, for higher ecological validity and balanced internal consistency (Barsties and Maryn 2016; Delgado Hernández et al. 2018). Early AVQI workflows required both SpeechTool and Praat; once CPPS was implemented in Praat, the index ran in Praat alone, with highly comparable outcomes (Barsties and Maryn 2016).\nThe regression-based combination of measures over a concatenated sample was explored for tracheoesophageal (alaryngeal) voice by Maryn et al. (2009), where a two-factor model combining CPP with the prominence of the second spectral harmonic reached rs = 0.87 with listener judgments.",
     "crumbs": [
       "Part IV — Composite Indices",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Acoustic Voice Quality Index (AVQI)</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Acoustic Voice Quality Index (AVQI)</span>"
     ]
   },
   {
     "objectID": "avqi.html#what-it-captures",
     "href": "avqi.html#what-it-captures",
-    "title": "3  Acoustic Voice Quality Index (AVQI)",
-    "section": "3.3 What it captures",
-    "text": "3.3 What it captures\nThe construct — overall dysphonia severity — and how it relates to auditory-perceptual ratings.",
+    "title": "4  Acoustic Voice Quality Index (AVQI)",
+    "section": "4.3 What it captures",
+    "text": "4.3 What it captures\nThe AVQI quantifies overall voice quality as judged by the grade (G) of the GRBAS scale — the degree of hoarseness or voice abnormality (Barsties and Maryn 2016; Delgado Hernández et al. 2018). Concurrent validity with mean perceptual G is strong: r = 0.815 in the Dutch external validation (66.4% of variance) (Barsties and Maryn 2016) and r = 0.835 in Spanish (69.7% of variance) (Delgado Hernández et al. 2018). CPPS is the main factor in the multivariate model (Barsties and Maryn 2016); meta-analytic evidence independently confirms cepstral peak measures as among the most accurate acoustic measures of overall dysphonia severity (Barsties v. Latoszek et al. 2018).\nEarlier AVQI investigations reported high sensitivity to voice changes through therapy, supporting its use as a treatment outcome measure (Barsties and Maryn 2016).",
     "crumbs": [
       "Part IV — Composite Indices",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Acoustic Voice Quality Index (AVQI)</span>"
-    ]
-  },
-  {
-    "objectID": "avqi.html#confounds-and-cautions",
-    "href": "avqi.html#confounds-and-cautions",
-    "title": "3  Acoustic Voice Quality Index (AVQI)",
-    "section": "3.4 Confounds and cautions",
-    "text": "3.4 Confounds and cautions\nRecording quality, sample type, language, microphone effects.",
-    "crumbs": [
-      "Part IV — Composite Indices",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Acoustic Voice Quality Index (AVQI)</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Acoustic Voice Quality Index (AVQI)</span>"
     ]
   },
   {
     "objectID": "avqi.html#normative-data",
     "href": "avqi.html#normative-data",
-    "title": "3  Acoustic Voice Quality Index (AVQI)",
-    "section": "3.5 Normative data",
-    "text": "3.5 Normative data\nCutoffs, age and sex effects, reported thresholds.",
+    "title": "4  Acoustic Voice Quality Index (AVQI)",
+    "section": "4.4 Normative data",
+    "text": "4.4 Normative data\nDiagnostic thresholds separate normophonic from hoarse voices, with hoarseness defined as mean perceptual grade G ≥ 0.5 (Barsties and Maryn 2016):\n\n\n\nTable 4.2: AVQI 03.01 diagnostic thresholds (Barsties and Maryn 2016; Delgado Hernández et al. 2018).\n\n\n\n\n\n\n\n\n\n\n\n\nPopulation / language\nThreshold\nSensitivity\nSpecificity\nAUC\n\n\n\n\nDutch, internal validation (60 samples, as reported)\n2.43\n0.936\n1.00\n0.98\n\n\nDutch, external validation (1058 samples)\n2.43\n0.785\n0.932\n0.923\n\n\nSpanish (136 dysphonic, 47 normal)\n2.28\n0.748\n0.946\n0.905\n\n\nJapanese (as reported)\n2.06\n0.721\n0.938\n0.915\n\n\n\n\n\n\nLikelihood ratios at the optimal threshold: LR+ = 11.54, LR− = 0.23 (Dutch external validation) (Barsties and Maryn 2016); LR+ = 13.85, LR− = 0.26 (Spanish, threshold chosen by the Youden index) (Delgado Hernández et al. 2018).",
     "crumbs": [
       "Part IV — Composite Indices",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Acoustic Voice Quality Index (AVQI)</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Acoustic Voice Quality Index (AVQI)</span>"
+    ]
+  },
+  {
+    "objectID": "avqi.html#confounds-and-cautions",
+    "href": "avqi.html#confounds-and-cautions",
+    "title": "4  Acoustic Voice Quality Index (AVQI)",
+    "section": "4.5 Confounds and cautions",
+    "text": "4.5 Confounds and cautions\nLanguage-specific standardization is required. The continuous-speech part must be trimmed to a syllable count that yields about 3 seconds of voiced speech, and the count differs by language: 34 syllables in Dutch, 33 in Spanish, 30 in Japanese (Delgado Hernández et al. 2018).\nThresholds differ by language. Reported optimal cutoffs are 2.43 (Dutch), 2.28 (Spanish), and 2.06 (Japanese). The differences are small — AVQI appears relatively insulated from inter-language phonetic differences — but the language-specific cutoff should be used (Delgado Hernández et al. 2018).\nRecording conditions matter. Validation recordings were made in sound- treated rooms with head-mounted condenser microphones at 44.1 kHz / 16 bit, with environmental noise verified against a signal-to-noise norm (Barsties and Maryn 2016; Delgado Hernández et al. 2018). The AVQI script itself states that reliable analysis requires optimal data-acquisition conditions (Barsties and Maryn 2016).\nReport the version. Versions 02.02 and 03.01 differ in the length of the continuous-speech part and in the regression weighting; scores are not comparable across versions (Barsties and Maryn 2016).\nBase rates affect ROC statistics. The Dutch external validation sample contained 8% normophonia and 92% dysphonia; likelihood ratios were used because they are less vulnerable to base-rate differences than ROC statistics alone (Barsties and Maryn 2016).\nVoicing detection is part of the pipeline. Voiced segments are extracted automatically before measurement, so results depend on that detection step (Barsties and Maryn 2016).",
+    "crumbs": [
+      "Part IV — Composite Indices",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Acoustic Voice Quality Index (AVQI)</span>"
     ]
   },
   {
     "objectID": "avqi.html#validation",
     "href": "avqi.html#validation",
-    "title": "3  Acoustic Voice Quality Index (AVQI)",
-    "section": "3.6 Validation",
-    "text": "3.6 Validation\nKey validation studies across languages and populations.",
+    "title": "4  Acoustic Voice Quality Index (AVQI)",
+    "section": "4.6 Validation",
+    "text": "4.6 Validation\nAcross 1118 subjects in two studies, AVQI 03.01 showed a homogeneous weighted mean correlation of r = 0.821 with perceptual overall voice quality, against r = 0.790 for the initial AVQI model pooled over 507 subjects (Barsties and Maryn 2016). In the same pooled analysis, the Dysphonia Severity Index reached a heterogeneous weighted mean r = 0.524 and the Cepstral Spectral Index of Dysphonia r = 0.788 (sustained vowel) and 0.748 (continuous speech); AVQI 03.01 reached the highest concurrent validity among these multiparametric indices (Barsties and Maryn 2016). Language validations include Dutch (Barsties and Maryn 2016) and Spanish (Delgado Hernández et al. 2018), with Japanese figures reported in the latter.",
     "crumbs": [
       "Part IV — Composite Indices",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Acoustic Voice Quality Index (AVQI)</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Acoustic Voice Quality Index (AVQI)</span>"
     ]
   },
   {
     "objectID": "avqi.html#compute-it-in-phonalab",
     "href": "avqi.html#compute-it-in-phonalab",
-    "title": "3  Acoustic Voice Quality Index (AVQI)",
-    "section": "3.7 Compute it in PhonaLab",
-    "text": "3.7 Compute it in PhonaLab\n\nOpen the AVQI tool in PhonaLab →\nUpload a sustained vowel and continuous speech sample to compute AVQI on your own recording.\n\n\n\n\n\nMaryn, Youri, Marc De Bodt, and Nelson Roy. 2010. “The Acoustic Voice Quality Index: Toward Improved Treatment Outcomes Assessment in Voice Disorders.” Journal of Communication Disorders.",
+    "title": "4  Acoustic Voice Quality Index (AVQI)",
+    "section": "4.7 Compute it in PhonaLab",
+    "text": "4.7 Compute it in PhonaLab\n\nOpen PhonaLab →\nUpload a sustained vowel and a continuous speech sample to compute AVQI on your own recording, with the version and language protocol reported alongside the score.\n\n\n\n\n\nBarsties, Ben, and Youri Maryn. 2016. “External Validation of the Acoustic Voice Quality Index Version 03.01 with Extended Representativity.” Annals of Otology, Rhinology & Laryngology 125 (7): 571–83. https://doi.org/10.1177/0003489416636131.\n\n\nBarsties v. Latoszek, Ben, Youri Maryn, Ellen Gerrits, and Marc De Bodt. 2018. “A Meta-Analysis: Acoustic Measurement of Roughness and Breathiness.” Journal of Speech, Language, and Hearing Research 61 (2): 298–323. https://doi.org/10.1044/2017_JSLHR-S-16-0188.\n\n\nDelgado Hernández, Jonathan, Nieves M. León Gómez, Alejandra Jiménez, Laura M. Izquierdo, and Ben Barsties v. Latoszek. 2018. “Validation of the Acoustic Voice Quality Index Version 03.01 and the Acoustic Breathiness Index in the Spanish Language.” Annals of Otology, Rhinology & Laryngology 127 (5): 317–26. https://doi.org/10.1177/0003489418761096.\n\n\nMaryn, Youri, Marc De Bodt, and Nelson Roy. 2010. “The Acoustic Voice Quality Index: Toward Improved Treatment Outcomes Assessment in Voice Disorders.” Journal of Communication Disorders 43 (3): 161–74. https://doi.org/10.1016/j.jcomdis.2009.12.004.\n\n\nMaryn, Youri, Catherine Dick, Caroline Vandenbruaene, Tom Vauterin, and Tinne Jacobs. 2009. “Spectral, Cepstral, and Multivariate Exploration of Tracheoesophageal Voice Quality in Continuous Speech and Sustained Vowels.” The Laryngoscope 119 (12): 2384–94. https://doi.org/10.1002/lary.20620.",
     "crumbs": [
       "Part IV — Composite Indices",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Acoustic Voice Quality Index (AVQI)</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Acoustic Voice Quality Index (AVQI)</span>"
+    ]
+  },
+  {
+    "objectID": "abi.html",
+    "href": "abi.html",
+    "title": "5  Acoustic Breathiness Index (ABI)",
+    "section": "",
+    "text": "5.1 Definition\nThe Acoustic Breathiness Index (ABI) is a multiparametric, nine-variable acoustic measure that quantifies the degree of perceived breathiness with a single score, computed from concatenated samples of continuous speech and the sustained vowel /a/ (Barsties v. Latoszek et al. 2021). Its perceptual target is breathiness: turbulent noise, excessively high in frequency, resulting from air leakage during incomplete glottal closure (Barsties v. Latoszek et al. 2021; Delgado Hernández et al. 2018). Both speech tasks contribute three seconds of voiced material each, a design chosen for ecological validity (Barsties v. Latoszek et al. 2021). The index was first published in 2017 for a Dutch-speaking population (Barsties v. Latoszek et al. 2017, 2021).\nWhere the AVQI targets overall voice quality, the ABI isolates one perceptual dimension. The two indices share the concatenation protocol and several components.",
+    "crumbs": [
+      "Part IV — Composite Indices",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Acoustic Breathiness Index (ABI)</span>"
+    ]
+  },
+  {
+    "objectID": "abi.html#computation",
+    "href": "abi.html#computation",
+    "title": "5  Acoustic Breathiness Index (ABI)",
+    "section": "5.2 Computation",
+    "text": "5.2 Computation\nThe ABI contains nine parameters (Delgado Hernández et al. 2018):\n\n\n\nTable 5.1: The nine ABI components (Delgado Hernández et al. 2018).\n\n\n\n\n\nParameter\nAbbreviation\nWhat it measures\n\n\n\n\nSmoothed cepstral peak prominence\nCPPS\nHeight of the first rahmonic’s peak over the regression line through the smoothed cepstrum — see the CPPS chapter\n\n\nJitter local\nJit\nAverage difference between successive periods, divided by the average period\n\n\nGlottal-to-noise excitation ratio\nGNEmax-4500 Hz\nExcitation due to vocal-fold oscillation versus excitation by turbulent noise; reliable even under strong amplitude and frequency perturbations\n\n\nHigh-frequency noise\nHfno-6000 Hz\nRelative level of high-frequency noise between the energy from 0–6 kHz and from 6–10 kHz\n\n\nHarmonics-to-noise ratio of Dejonckere\nHNR-D\nHarmonic emergence of the spectral display in the 500–1500 Hz band\n\n\nAmplitude difference of the first two harmonics\nH1–H2\nIndirect measure of the relative length of the open phase of glottal oscillation; H1 is relatively high in breathy voices\n\n\nShimmer local dB\nShdB\nBase-10 logarithm of the difference between amplitudes of successive periods, × 20\n\n\nShimmer local\nShim\nAbsolute mean difference between amplitudes of successive periods, divided by the average amplitude\n\n\nPeriod standard deviation\nPSD\nVariation in the standard deviation of periods\n\n\n\n\n\n\nThe regression equation, as reported in the Spanish validation (Delgado Hernández et al. 2018):\n\\[\n\\begin{aligned}\n\\text{ABI} = \\bigl(5.0447740915 &- 0.172\\,\\text{CPPS} - 0.193\\,\\text{Jit}\n- 1.283\\,\\text{GNE}_{\\max\\text{-}4500}\\\\\n&- 0.396\\,\\text{Hfno}_{6000} + 0.01\\,\\text{HNR-D} + 0.017\\,(\\text{H1–H2})\\\\\n&+ 1.473\\,\\text{ShdB} - 0.088\\,\\text{Shim}\n- 68.295\\,\\text{PSD}\\bigr) \\times 2.9257400394\n\\end{aligned}\n\\]\nThe score ranges from 0 to 10; the higher the ABI, the more severe the breathiness (Barsties v. Latoszek et al. 2021).\nSignal processing uses Praat with the customised ABI script (Barsties v. Latoszek et al. 2021). Analysis applies only to voiced segments of the continuous speech, extracted with an automated Praat detection script, with a three-second /a/ segment appended (Delgado Hernández et al. 2018). The continuous-speech part is standardised to a language-specific syllable count yielding three seconds of voiced speech: 34 syllables in Dutch, 33 in Spanish, 30 in Japanese (Delgado Hernández et al. 2018).",
+    "crumbs": [
+      "Part IV — Composite Indices",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Acoustic Breathiness Index (ABI)</span>"
+    ]
+  },
+  {
+    "objectID": "abi.html#what-it-captures",
+    "href": "abi.html#what-it-captures",
+    "title": "5  Acoustic Breathiness Index (ABI)",
+    "section": "5.3 What it captures",
+    "text": "5.3 What it captures\nABI scores correlate strongly with auditory-perceptual breathiness ratings: Spearman rs ranged from 0.746 to 0.890 across the six validation studies pooled in the meta-analysis (Barsties v. Latoszek et al. 2021). In Spanish, rs = 0.826, with ABI accounting for 68.2% of the variance in mean breathiness ratings (Delgado Hernández et al. 2018); in the original Dutch study, rs = 0.840 (Delgado Hernández et al. 2018).\nUnlike the CSID and AVQI, which assess overall voice quality, the ABI is particularly suitable for evaluating breathy voices — for example benign vocal-fold lesions dominantly characterised by breathiness (nodules of medium or large size), paralysis or paresis of the recurrent laryngeal nerve, and vocal-fold bowing associated with presbyphonia (Barsties v. Latoszek et al. 2021); acute laryngitis also belongs to this group (Delgado Hernández et al. 2018). Neither age and gender nor roughness significantly affects ABI in natural voices, and the index signals therapy-related voice quality changes with high sensitivity (Barsties v. Latoszek et al. 2021).\nIndependent meta-analysis of single measures supports the component choice: Hfno, H1–H2, HNR of Dejonckere, CPP, and CPPS all sit among the strongest single correlates of perceived breathiness, and only 12 of 85 acoustic measures predicted breathiness on sustained vowels with a weighted mean r of at least .60 (Barsties v. Latoszek et al. 2018).",
+    "crumbs": [
+      "Part IV — Composite Indices",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Acoustic Breathiness Index (ABI)</span>"
+    ]
+  },
+  {
+    "objectID": "abi.html#normative-data",
+    "href": "abi.html#normative-data",
+    "title": "5  Acoustic Breathiness Index (ABI)",
+    "section": "5.4 Normative data",
+    "text": "5.4 Normative data\n\n\n\nTable 5.2: ABI diagnostic thresholds (Delgado Hernández et al. 2018; Barsties v. Latoszek et al. 2021).\n\n\n\n\n\n\n\n\n\n\n\n\nPopulation / language\nThreshold\nSensitivity\nSpecificity\nAUC\n\n\n\n\nDutch (development study)\n3.44\n82.4%\n92.9%\n0.948\n\n\nSpanish (136 dysphonic, 47 healthy)\n3.40\n73.7%\n95.4%\n0.921\n\n\nPooled, six studies at study-specific thresholds\nper language\n0.84 (95% CI 0.83–0.85)\n0.92 (95% CI 0.89–0.94)\n0.94 (SROC)\n\n\nWeighted threshold across the six studies (Youden)\n3.40\n0.86 (95% CI 0.84–0.87)\n0.90 (95% CI 0.88–0.92)\n—\n\n\n\n\n\n\nThe six validation studies pooled by the meta-analysis cover Dutch, German, Spanish, Brazilian Portuguese, Korean, and Japanese — four language groups — over 467 vocally healthy and 3136 voice-disordered subjects (Barsties v. Latoszek et al. 2021).",
+    "crumbs": [
+      "Part IV — Composite Indices",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Acoustic Breathiness Index (ABI)</span>"
+    ]
+  },
+  {
+    "objectID": "abi.html#confounds-and-cautions",
+    "href": "abi.html#confounds-and-cautions",
+    "title": "5  Acoustic Breathiness Index (ABI)",
+    "section": "5.5 Confounds and cautions",
+    "text": "5.5 Confounds and cautions\nLanguage dependence of the threshold. Continuous speech is part of the index, so inter-language phonetic differences may influence the outcome; thresholds must come from a validation in the target language. The meta-analysis nevertheless found ABI relatively robust to phonetic inter-language differences such as stress timing, syllable timing, and intonation (Barsties v. Latoszek et al. 2021).\nSoftware requirement. The validation evidence applies to signal processing in Praat with the customised ABI script; the meta-analysis excluded studies not using them (Barsties v. Latoszek et al. 2021).\nEqual task proportion. ABI results based on unequal proportions of continuous speech and sustained vowel were treated as a risk of bias (Barsties v. Latoszek et al. 2021).\nHardware and recording conditions. Each validation study has unique acoustic settings and hardware, limiting comparability between studies (Barsties v. Latoszek et al. 2021). The Spanish validation recorded in a soundproof booth with a head-mounted condenser microphone at 44.1 kHz / 16 bit (Delgado Hernández et al. 2018).\nEvidence base. The meta-analysis rests on six studies. Pooled sensitivity showed high heterogeneity (I² = 89.7%, P &lt; .001), while specificity heterogeneity was low (I² = 45.5). The Brazilian Portuguese study reached only low inter-rater reliability (Fleiss κ &lt; 0.41), with a sample skewed toward normal and mild breathiness (43% normal, 41% mild, 11% moderate, 5% severe) (Barsties v. Latoszek et al. 2021).\nNot a stand-alone screen. Not all voice disorders are detected by ABI — that cannot be expected from a measure of one perceptual dimension; higher diagnostic accuracy requires combining measures of different dimensions (Barsties v. Latoszek et al. 2021). Further investigations of external and internal validity remain necessary (Delgado Hernández et al. 2018).",
+    "crumbs": [
+      "Part IV — Composite Indices",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Acoustic Breathiness Index (ABI)</span>"
+    ]
+  },
+  {
+    "objectID": "abi.html#validation",
+    "href": "abi.html#validation",
+    "title": "5  Acoustic Breathiness Index (ABI)",
+    "section": "5.6 Validation",
+    "text": "5.6 Validation\nThe development study established the Dutch threshold of 3.44 with AUC 0.948 (Barsties v. Latoszek et al. 2017; Delgado Hernández et al. 2018). The Spanish validation reported a threshold of 3.40 with AUC 0.921 (Delgado Hernández et al. 2018). The 2021 meta-analysis pooled six validation studies spanning more than 3600 voice samples and confirmed the ABI as a robust, valid objective measure of breathiness, with pooled sensitivity 0.84 and specificity 0.92 (Barsties v. Latoszek et al. 2021).",
+    "crumbs": [
+      "Part IV — Composite Indices",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Acoustic Breathiness Index (ABI)</span>"
+    ]
+  },
+  {
+    "objectID": "abi.html#compute-it-in-phonalab",
+    "href": "abi.html#compute-it-in-phonalab",
+    "title": "5  Acoustic Breathiness Index (ABI)",
+    "section": "5.7 Compute it in PhonaLab",
+    "text": "5.7 Compute it in PhonaLab\n\nOpen PhonaLab →\nUpload a sustained vowel and a continuous speech sample to compute ABI on your own recording, alongside the AVQI computed from the same material.\n\n\n\n\n\nBarsties v. Latoszek, Ben, Geun-Hyo Kim, Jonathan Delgado Hernández, et al. 2021. “The Validity of the Acoustic Breathiness Index in the Evaluation of Breathy Voice Quality: A Meta-Analysis.” Clinical Otolaryngology 46 (1): 31–40. https://doi.org/10.1111/coa.13629.\n\n\nBarsties v. Latoszek, Ben, Youri Maryn, Ellen Gerrits, and Marc De Bodt. 2017. “The Acoustic Breathiness Index (ABI): A Multivariate Acoustic Model for Breathiness.” Journal of Voice 31 (4): 511.e11–27. https://doi.org/10.1016/j.jvoice.2016.11.017.\n\n\nBarsties v. Latoszek, Ben, Youri Maryn, Ellen Gerrits, and Marc De Bodt. 2018. “A Meta-Analysis: Acoustic Measurement of Roughness and Breathiness.” Journal of Speech, Language, and Hearing Research 61 (2): 298–323. https://doi.org/10.1044/2017_JSLHR-S-16-0188.\n\n\nDelgado Hernández, Jonathan, Nieves M. León Gómez, Alejandra Jiménez, Laura M. Izquierdo, and Ben Barsties v. Latoszek. 2018. “Validation of the Acoustic Voice Quality Index Version 03.01 and the Acoustic Breathiness Index in the Spanish Language.” Annals of Otology, Rhinology & Laryngology 127 (5): 317–26. https://doi.org/10.1177/0003489418761096.",
+    "crumbs": [
+      "Part IV — Composite Indices",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Acoustic Breathiness Index (ABI)</span>"
     ]
   }
 ]
