@@ -41,9 +41,9 @@ format:
       - cosmo
       - theme.scss
     toc: true
-  pdf:
-    documentclass: scrbook
-    keep-tex: true
+  # pdf:
+  #   documentclass: scrbook
+  #   keep-tex: true
 
 # freeze: auto means a document is only re-executed when it changes.
 # Commit the generated _freeze/ folder so CI reuses cached results.
