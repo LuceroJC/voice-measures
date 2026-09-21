@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>4&nbsp; Acoustic Voice Quality Index (AVQI) – Acoustic Measures of Voice Quality</title>
+<title>19&nbsp; Acoustic Voice Quality Index (AVQI) – Acoustic Measures of Voice Quality</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -56,7 +56,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./abi.html" rel="next">
-<link href="./cpps.html" rel="prev">
+<link href="./spectral-tilt.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -136,7 +136,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./avqi.html">Part IV — Composite Indices</a></li><li class="breadcrumb-item"><a href="./avqi.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Acoustic Voice Quality Index (AVQI)</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./avqi.html">Part IV — Composite Indices</a></li><li class="breadcrumb-item"><a href="./avqi.html"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Acoustic Voice Quality Index (AVQI)</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -167,13 +167,13 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Preface</span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Acoustic Measures of Voice Quality</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">About this reference</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -188,7 +188,37 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./foundations-signal.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">The voice signal</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Signal Fundamentals</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./foundations-recording.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Recording Protocol</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./foundations-signal-typing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Signal Typing</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./foundations-f0-detection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Fundamental Frequency Detection</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./foundations-tasks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Voice Tasks</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./foundations-perceptual-anchors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Perceptual Anchors (GRBAS, CAPE-V)</span></span></a>
   </div>
 </li>
       </ul>
@@ -196,7 +226,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Part III — Noise and Harmonic Structure</span></a>
+ <span class="menu-text">Part II — Periodicity and Stability</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -204,8 +234,32 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./cpps.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Cepstral Peak Prominence (CPP and CPPS)</span></span></a>
+  <a href="./f0-measures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">F0 Measures</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./jitter.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Jitter</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./shimmer.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Shimmer</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./voice-breaks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Voice Breaks</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./perturbation-caveats.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Perturbation Caveats</span></span></a>
   </div>
 </li>
       </ul>
@@ -213,7 +267,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Part IV — Composite Indices</span></a>
+ <span class="menu-text">Part III — Noise and Harmonic Structure</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -221,14 +275,125 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./hnr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Harmonics-to-Noise Ratio</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./nhr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Noise-to-Harmonic Ratio</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./gne.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Glottal-to-Noise Excitation Ratio</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cpps.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Cepstral Peak Prominence (CPP and CPPS)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./spectral-tilt.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Spectral Tilt</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part IV — Composite Indices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./avqi.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Acoustic Voice Quality Index (AVQI)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Acoustic Voice Quality Index (AVQI)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./abi.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Acoustic Breathiness Index (ABI)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Acoustic Breathiness Index (ABI)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./dsi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Dysphonia Severity Index</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./composite-caveats.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Composite-Index Caveats</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part V — ML-derived Measures</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ml-landscape.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">The ML Landscape for Voice</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ml-feature-based.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Feature-Based ML Example</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ml-end-to-end.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">End-to-End ML Example</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Back matter</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix-adjunct-methods.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Adjunct Methods</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix-reproducibility.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Reproducibility Notes</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix-glossary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Glossary</span></span></a>
   </div>
 </li>
       </ul>
@@ -243,28 +408,28 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#definition" id="toc-definition" class="nav-link active" data-scroll-target="#definition"><span class="header-section-number">4.1</span> Definition</a></li>
-  <li><a href="#computation" id="toc-computation" class="nav-link" data-scroll-target="#computation"><span class="header-section-number">4.2</span> Computation</a>
+  <li><a href="#definition" id="toc-definition" class="nav-link active" data-scroll-target="#definition"><span class="header-section-number">19.1</span> Definition</a></li>
+  <li><a href="#computation" id="toc-computation" class="nav-link" data-scroll-target="#computation"><span class="header-section-number">19.2</span> Computation</a>
   <ul class="collapse">
-  <li><a href="#speech-material-and-concatenation" id="toc-speech-material-and-concatenation" class="nav-link" data-scroll-target="#speech-material-and-concatenation"><span class="header-section-number">4.2.1</span> Speech material and concatenation</a></li>
-  <li><a href="#component-measures" id="toc-component-measures" class="nav-link" data-scroll-target="#component-measures"><span class="header-section-number">4.2.2</span> Component measures</a></li>
-  <li><a href="#regression-equation-version-03.01" id="toc-regression-equation-version-03.01" class="nav-link" data-scroll-target="#regression-equation-version-03.01"><span class="header-section-number">4.2.3</span> Regression equation (version 03.01)</a></li>
-  <li><a href="#versions-02.02-and-03.01" id="toc-versions-02.02-and-03.01" class="nav-link" data-scroll-target="#versions-02.02-and-03.01"><span class="header-section-number">4.2.4</span> Versions 02.02 and 03.01</a></li>
+  <li><a href="#speech-material-and-concatenation" id="toc-speech-material-and-concatenation" class="nav-link" data-scroll-target="#speech-material-and-concatenation"><span class="header-section-number">19.2.1</span> Speech material and concatenation</a></li>
+  <li><a href="#component-measures" id="toc-component-measures" class="nav-link" data-scroll-target="#component-measures"><span class="header-section-number">19.2.2</span> Component measures</a></li>
+  <li><a href="#regression-equation-version-03.01" id="toc-regression-equation-version-03.01" class="nav-link" data-scroll-target="#regression-equation-version-03.01"><span class="header-section-number">19.2.3</span> Regression equation (version 03.01)</a></li>
+  <li><a href="#versions-02.02-and-03.01" id="toc-versions-02.02-and-03.01" class="nav-link" data-scroll-target="#versions-02.02-and-03.01"><span class="header-section-number">19.2.4</span> Versions 02.02 and 03.01</a></li>
   </ul></li>
-  <li><a href="#what-it-captures" id="toc-what-it-captures" class="nav-link" data-scroll-target="#what-it-captures"><span class="header-section-number">4.3</span> What it captures</a></li>
-  <li><a href="#normative-data" id="toc-normative-data" class="nav-link" data-scroll-target="#normative-data"><span class="header-section-number">4.4</span> Normative data</a></li>
-  <li><a href="#confounds-and-cautions" id="toc-confounds-and-cautions" class="nav-link" data-scroll-target="#confounds-and-cautions"><span class="header-section-number">4.5</span> Confounds and cautions</a></li>
-  <li><a href="#validation" id="toc-validation" class="nav-link" data-scroll-target="#validation"><span class="header-section-number">4.6</span> Validation</a></li>
-  <li><a href="#compute-it-in-phonalab" id="toc-compute-it-in-phonalab" class="nav-link" data-scroll-target="#compute-it-in-phonalab"><span class="header-section-number">4.7</span> Compute it in PhonaLab</a></li>
+  <li><a href="#what-it-captures" id="toc-what-it-captures" class="nav-link" data-scroll-target="#what-it-captures"><span class="header-section-number">19.3</span> What it captures</a></li>
+  <li><a href="#normative-data" id="toc-normative-data" class="nav-link" data-scroll-target="#normative-data"><span class="header-section-number">19.4</span> Normative data</a></li>
+  <li><a href="#confounds-and-cautions" id="toc-confounds-and-cautions" class="nav-link" data-scroll-target="#confounds-and-cautions"><span class="header-section-number">19.5</span> Confounds and cautions</a></li>
+  <li><a href="#validation" id="toc-validation" class="nav-link" data-scroll-target="#validation"><span class="header-section-number">19.6</span> Validation</a></li>
+  <li><a href="#compute-it-in-phonalab" id="toc-compute-it-in-phonalab" class="nav-link" data-scroll-target="#compute-it-in-phonalab"><span class="header-section-number">19.7</span> Compute it in PhonaLab</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/LuceroJC/voice-measures/edit/main/avqi.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/LuceroJC/voice-measures/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./avqi.html">Part IV — Composite Indices</a></li><li class="breadcrumb-item"><a href="./avqi.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Acoustic Voice Quality Index (AVQI)</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./avqi.html">Part IV — Composite Indices</a></li><li class="breadcrumb-item"><a href="./avqi.html"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Acoustic Voice Quality Index (AVQI)</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Acoustic Voice Quality Index (AVQI)</span></h1>
+<h1 class="title"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Acoustic Voice Quality Index (AVQI)</span></h1>
 </div>
 
 
@@ -294,24 +459,24 @@ Note
 <p><strong>Living draft.</strong> This chapter reflects the sources cited below and will be revised as further sources are incorporated. Found an error? Use the <em>Report an issue</em> link in the sidebar.</p>
 </div>
 </div>
-<section id="definition" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="definition"><span class="header-section-number">4.1</span> Definition</h2>
+<section id="definition" class="level2" data-number="19.1">
+<h2 data-number="19.1" class="anchored" data-anchor-id="definition"><span class="header-section-number">19.1</span> Definition</h2>
 <p>The Acoustic Voice Quality Index (AVQI) is an objective method to quantify the severity of overall voice quality in concatenated continuous speech and sustained phonation segments <span class="citation" data-cites="barsties2016avqi">(<a href="#ref-barsties2016avqi" role="doc-biblioref">Barsties and Maryn 2016</a>)</span>. It is a multivariate construct based on linear regression that combines six acoustic markers into a single score for the whole voice sample <span class="citation" data-cites="barsties2016avqi">(<a href="#ref-barsties2016avqi" role="doc-biblioref">Barsties and Maryn 2016</a>)</span>. That score represents the overall voice quality — the hoarseness level — of the sample <span class="citation" data-cites="delgado2018avqi">(<a href="#ref-delgado2018avqi" role="doc-biblioref">Delgado Hernández et al. 2018</a>)</span>.</p>
 <p>The index was developed by <span class="citation" data-cites="maryn2010avqi">Maryn et al. (<a href="#ref-maryn2010avqi" role="doc-biblioref">2010</a>)</span> and was one of the first measures to combine both speech types <span class="citation" data-cites="delgado2018avqi">(<a href="#ref-delgado2018avqi" role="doc-biblioref">Delgado Hernández et al. 2018</a>)</span>. The rationale for the combination: sustained vowels are easily elicited and less affected by articulation and dialect, while continuous speech is more representative of a patient’s daily voice <span class="citation" data-cites="delgado2018avqi">(<a href="#ref-delgado2018avqi" role="doc-biblioref">Delgado Hernández et al. 2018</a>)</span>.</p>
 </section>
-<section id="computation" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="computation"><span class="header-section-number">4.2</span> Computation</h2>
-<section id="speech-material-and-concatenation" class="level3" data-number="4.2.1">
-<h3 data-number="4.2.1" class="anchored" data-anchor-id="speech-material-and-concatenation"><span class="header-section-number">4.2.1</span> Speech material and concatenation</h3>
+<section id="computation" class="level2" data-number="19.2">
+<h2 data-number="19.2" class="anchored" data-anchor-id="computation"><span class="header-section-number">19.2</span> Computation</h2>
+<section id="speech-material-and-concatenation" class="level3" data-number="19.2.1">
+<h3 data-number="19.2.1" class="anchored" data-anchor-id="speech-material-and-concatenation"><span class="header-section-number">19.2.1</span> Speech material and concatenation</h3>
 <p>The subject sustains the vowel [a:] for longer than 3 seconds, and a 3-second mid-vowel portion is selected. The subject also reads a phonetically balanced text aloud at comfortable pitch and loudness. For AVQI version 03.01 in Dutch, the continuous-speech part is trimmed to the first 34 syllables of the text, the 3-second [a:] segment is appended, and the result is saved as a single sound file <span class="citation" data-cites="barsties2016avqi">(<a href="#ref-barsties2016avqi" role="doc-biblioref">Barsties and Maryn 2016</a>)</span>. Acoustic analysis is applied only to the voiced segments of the continuous speech — extracted by an automated Praat detection script — plus the appended vowel segment <span class="citation" data-cites="barsties2016avqi">(<a href="#ref-barsties2016avqi" role="doc-biblioref">Barsties and Maryn 2016</a>)</span>.</p>
 </section>
-<section id="component-measures" class="level3" data-number="4.2.2">
-<h3 data-number="4.2.2" class="anchored" data-anchor-id="component-measures"><span class="header-section-number">4.2.2</span> Component measures</h3>
+<section id="component-measures" class="level3" data-number="19.2.2">
+<h3 data-number="19.2.2" class="anchored" data-anchor-id="component-measures"><span class="header-section-number">19.2.2</span> Component measures</h3>
 <p>All six parameters are obtained in Praat from the concatenated signal <span class="citation" data-cites="barsties2016avqi delgado2018avqi">(<a href="#ref-barsties2016avqi" role="doc-biblioref">Barsties and Maryn 2016</a>; <a href="#ref-delgado2018avqi" role="doc-biblioref">Delgado Hernández et al. 2018</a>)</span>:</p>
 <div id="tbl-avqi-components" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-avqi-components-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;4.1: The six AVQI components <span class="citation" data-cites="barsties2016avqi">(<a href="#ref-barsties2016avqi" role="doc-biblioref">Barsties and Maryn 2016</a>)</span>.
+Table&nbsp;19.1: The six AVQI components <span class="citation" data-cites="barsties2016avqi">(<a href="#ref-barsties2016avqi" role="doc-biblioref">Barsties and Maryn 2016</a>)</span>.
 </figcaption>
 <div aria-describedby="tbl-avqi-components-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
@@ -352,8 +517,8 @@ Table&nbsp;4.1: The six AVQI components <span class="citation" data-cites="barst
 </figure>
 </div>
 </section>
-<section id="regression-equation-version-03.01" class="level3" data-number="4.2.3">
-<h3 data-number="4.2.3" class="anchored" data-anchor-id="regression-equation-version-03.01"><span class="header-section-number">4.2.3</span> Regression equation (version 03.01)</h3>
+<section id="regression-equation-version-03.01" class="level3" data-number="19.2.3">
+<h3 data-number="19.2.3" class="anchored" data-anchor-id="regression-equation-version-03.01"><span class="header-section-number">19.2.3</span> Regression equation (version 03.01)</h3>
 <p>As printed by <span class="citation" data-cites="barsties2016avqi">Barsties and Maryn (<a href="#ref-barsties2016avqi" role="doc-biblioref">2016</a>)</span>:</p>
 <p><span class="math display">\[
 \text{AVQI}_{03.01} = \bigl(4.152 - 0.177\,\text{CPPS} - 0.006\,\text{HNR}
@@ -375,24 +540,24 @@ Warning
 </div>
 </div>
 </section>
-<section id="versions-02.02-and-03.01" class="level3" data-number="4.2.4">
-<h3 data-number="4.2.4" class="anchored" data-anchor-id="versions-02.02-and-03.01"><span class="header-section-number">4.2.4</span> Versions 02.02 and 03.01</h3>
+<section id="versions-02.02-and-03.01" class="level3" data-number="19.2.4">
+<h3 data-number="19.2.4" class="anchored" data-anchor-id="versions-02.02-and-03.01"><span class="header-section-number">19.2.4</span> Versions 02.02 and 03.01</h3>
 <p>In the earlier AVQI versions the analyzed continuous-speech part was much shorter than the constant 3-second vowel part (1.53 s of voiced speech in Dutch, 1.99 s in Japanese) <span class="citation" data-cites="delgado2018avqi">(<a href="#ref-delgado2018avqi" role="doc-biblioref">Delgado Hernández et al. 2018</a>)</span>. Version 03.01 balances the analyzed durations of the two speech types by expanding the continuous-speech sample from 17–22 syllables to around 34 syllables, for higher ecological validity and balanced internal consistency <span class="citation" data-cites="barsties2016avqi delgado2018avqi">(<a href="#ref-barsties2016avqi" role="doc-biblioref">Barsties and Maryn 2016</a>; <a href="#ref-delgado2018avqi" role="doc-biblioref">Delgado Hernández et al. 2018</a>)</span>. Early AVQI workflows required both SpeechTool and Praat; once CPPS was implemented in Praat, the index ran in Praat alone, with highly comparable outcomes <span class="citation" data-cites="barsties2016avqi">(<a href="#ref-barsties2016avqi" role="doc-biblioref">Barsties and Maryn 2016</a>)</span>.</p>
 <p>The regression-based combination of measures over a concatenated sample was explored for tracheoesophageal (alaryngeal) voice by <span class="citation" data-cites="maryn2009cepstral">Maryn et al. (<a href="#ref-maryn2009cepstral" role="doc-biblioref">2009</a>)</span>, where a two-factor model combining CPP with the prominence of the second spectral harmonic reached <em>r<sub>s</sub></em> = 0.87 with listener judgments.</p>
 </section>
 </section>
-<section id="what-it-captures" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="what-it-captures"><span class="header-section-number">4.3</span> What it captures</h2>
+<section id="what-it-captures" class="level2" data-number="19.3">
+<h2 data-number="19.3" class="anchored" data-anchor-id="what-it-captures"><span class="header-section-number">19.3</span> What it captures</h2>
 <p>The AVQI quantifies overall voice quality as judged by the grade (G) of the GRBAS scale — the degree of hoarseness or voice abnormality <span class="citation" data-cites="barsties2016avqi delgado2018avqi">(<a href="#ref-barsties2016avqi" role="doc-biblioref">Barsties and Maryn 2016</a>; <a href="#ref-delgado2018avqi" role="doc-biblioref">Delgado Hernández et al. 2018</a>)</span>. Concurrent validity with mean perceptual G is strong: <em>r</em> = 0.815 in the Dutch external validation (66.4% of variance) <span class="citation" data-cites="barsties2016avqi">(<a href="#ref-barsties2016avqi" role="doc-biblioref">Barsties and Maryn 2016</a>)</span> and <em>r</em> = 0.835 in Spanish (69.7% of variance) <span class="citation" data-cites="delgado2018avqi">(<a href="#ref-delgado2018avqi" role="doc-biblioref">Delgado Hernández et al. 2018</a>)</span>. CPPS is the main factor in the multivariate model <span class="citation" data-cites="barsties2016avqi">(<a href="#ref-barsties2016avqi" role="doc-biblioref">Barsties and Maryn 2016</a>)</span>; meta-analytic evidence independently confirms cepstral peak measures as among the most accurate acoustic measures of overall dysphonia severity <span class="citation" data-cites="barsties2018meta">(<a href="#ref-barsties2018meta" role="doc-biblioref">Barsties v. Latoszek et al. 2018</a>)</span>.</p>
 <p>Earlier AVQI investigations reported high sensitivity to voice changes through therapy, supporting its use as a treatment outcome measure <span class="citation" data-cites="barsties2016avqi">(<a href="#ref-barsties2016avqi" role="doc-biblioref">Barsties and Maryn 2016</a>)</span>.</p>
 </section>
-<section id="normative-data" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="normative-data"><span class="header-section-number">4.4</span> Normative data</h2>
+<section id="normative-data" class="level2" data-number="19.4">
+<h2 data-number="19.4" class="anchored" data-anchor-id="normative-data"><span class="header-section-number">19.4</span> Normative data</h2>
 <p>Diagnostic thresholds separate normophonic from hoarse voices, with hoarseness defined as mean perceptual grade G ≥ 0.5 <span class="citation" data-cites="barsties2016avqi">(<a href="#ref-barsties2016avqi" role="doc-biblioref">Barsties and Maryn 2016</a>)</span>:</p>
 <div id="tbl-avqi-thresholds" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-avqi-thresholds-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;4.2: AVQI 03.01 diagnostic thresholds <span class="citation" data-cites="barsties2016avqi delgado2018avqi">(<a href="#ref-barsties2016avqi" role="doc-biblioref">Barsties and Maryn 2016</a>; <a href="#ref-delgado2018avqi" role="doc-biblioref">Delgado Hernández et al. 2018</a>)</span>.
+Table&nbsp;19.2: AVQI 03.01 diagnostic thresholds <span class="citation" data-cites="barsties2016avqi delgado2018avqi">(<a href="#ref-barsties2016avqi" role="doc-biblioref">Barsties and Maryn 2016</a>; <a href="#ref-delgado2018avqi" role="doc-biblioref">Delgado Hernández et al. 2018</a>)</span>.
 </figcaption>
 <div aria-describedby="tbl-avqi-thresholds-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
@@ -448,8 +613,8 @@ Table&nbsp;4.2: AVQI 03.01 diagnostic thresholds <span class="citation" data-cit
 </div>
 <p>Likelihood ratios at the optimal threshold: LR+ = 11.54, LR− = 0.23 (Dutch external validation) <span class="citation" data-cites="barsties2016avqi">(<a href="#ref-barsties2016avqi" role="doc-biblioref">Barsties and Maryn 2016</a>)</span>; LR+ = 13.85, LR− = 0.26 (Spanish, threshold chosen by the Youden index) <span class="citation" data-cites="delgado2018avqi">(<a href="#ref-delgado2018avqi" role="doc-biblioref">Delgado Hernández et al. 2018</a>)</span>.</p>
 </section>
-<section id="confounds-and-cautions" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="confounds-and-cautions"><span class="header-section-number">4.5</span> Confounds and cautions</h2>
+<section id="confounds-and-cautions" class="level2" data-number="19.5">
+<h2 data-number="19.5" class="anchored" data-anchor-id="confounds-and-cautions"><span class="header-section-number">19.5</span> Confounds and cautions</h2>
 <p><strong>Language-specific standardization is required.</strong> The continuous-speech part must be trimmed to a syllable count that yields about 3 seconds of voiced speech, and the count differs by language: 34 syllables in Dutch, 33 in Spanish, 30 in Japanese <span class="citation" data-cites="delgado2018avqi">(<a href="#ref-delgado2018avqi" role="doc-biblioref">Delgado Hernández et al. 2018</a>)</span>.</p>
 <p><strong>Thresholds differ by language.</strong> Reported optimal cutoffs are 2.43 (Dutch), 2.28 (Spanish), and 2.06 (Japanese). The differences are small — AVQI appears relatively insulated from inter-language phonetic differences — but the language-specific cutoff should be used <span class="citation" data-cites="delgado2018avqi">(<a href="#ref-delgado2018avqi" role="doc-biblioref">Delgado Hernández et al. 2018</a>)</span>.</p>
 <p><strong>Recording conditions matter.</strong> Validation recordings were made in sound- treated rooms with head-mounted condenser microphones at 44.1 kHz / 16 bit, with environmental noise verified against a signal-to-noise norm <span class="citation" data-cites="barsties2016avqi delgado2018avqi">(<a href="#ref-barsties2016avqi" role="doc-biblioref">Barsties and Maryn 2016</a>; <a href="#ref-delgado2018avqi" role="doc-biblioref">Delgado Hernández et al. 2018</a>)</span>. The AVQI script itself states that reliable analysis requires optimal data-acquisition conditions <span class="citation" data-cites="barsties2016avqi">(<a href="#ref-barsties2016avqi" role="doc-biblioref">Barsties and Maryn 2016</a>)</span>.</p>
@@ -457,12 +622,12 @@ Table&nbsp;4.2: AVQI 03.01 diagnostic thresholds <span class="citation" data-cit
 <p><strong>Base rates affect ROC statistics.</strong> The Dutch external validation sample contained 8% normophonia and 92% dysphonia; likelihood ratios were used because they are less vulnerable to base-rate differences than ROC statistics alone <span class="citation" data-cites="barsties2016avqi">(<a href="#ref-barsties2016avqi" role="doc-biblioref">Barsties and Maryn 2016</a>)</span>.</p>
 <p><strong>Voicing detection is part of the pipeline.</strong> Voiced segments are extracted automatically before measurement, so results depend on that detection step <span class="citation" data-cites="barsties2016avqi">(<a href="#ref-barsties2016avqi" role="doc-biblioref">Barsties and Maryn 2016</a>)</span>.</p>
 </section>
-<section id="validation" class="level2" data-number="4.6">
-<h2 data-number="4.6" class="anchored" data-anchor-id="validation"><span class="header-section-number">4.6</span> Validation</h2>
+<section id="validation" class="level2" data-number="19.6">
+<h2 data-number="19.6" class="anchored" data-anchor-id="validation"><span class="header-section-number">19.6</span> Validation</h2>
 <p>Across 1118 subjects in two studies, AVQI 03.01 showed a homogeneous weighted mean correlation of <em>r</em> = 0.821 with perceptual overall voice quality, against <em>r</em> = 0.790 for the initial AVQI model pooled over 507 subjects <span class="citation" data-cites="barsties2016avqi">(<a href="#ref-barsties2016avqi" role="doc-biblioref">Barsties and Maryn 2016</a>)</span>. In the same pooled analysis, the Dysphonia Severity Index reached a heterogeneous weighted mean <em>r</em> = 0.524 and the Cepstral Spectral Index of Dysphonia <em>r</em> = 0.788 (sustained vowel) and 0.748 (continuous speech); AVQI 03.01 reached the highest concurrent validity among these multiparametric indices <span class="citation" data-cites="barsties2016avqi">(<a href="#ref-barsties2016avqi" role="doc-biblioref">Barsties and Maryn 2016</a>)</span>. Language validations include Dutch <span class="citation" data-cites="barsties2016avqi">(<a href="#ref-barsties2016avqi" role="doc-biblioref">Barsties and Maryn 2016</a>)</span> and Spanish <span class="citation" data-cites="delgado2018avqi">(<a href="#ref-delgado2018avqi" role="doc-biblioref">Delgado Hernández et al. 2018</a>)</span>, with Japanese figures reported in the latter.</p>
 </section>
-<section id="compute-it-in-phonalab" class="level2" data-number="4.7">
-<h2 data-number="4.7" class="anchored" data-anchor-id="compute-it-in-phonalab"><span class="header-section-number">4.7</span> Compute it in PhonaLab</h2>
+<section id="compute-it-in-phonalab" class="level2" data-number="19.7">
+<h2 data-number="19.7" class="anchored" data-anchor-id="compute-it-in-phonalab"><span class="header-section-number">19.7</span> Compute it in PhonaLab</h2>
 <blockquote class="blockquote">
 <p><strong><a href="https://phonalab.com">Open PhonaLab →</a></strong></p>
 <p>Upload a sustained vowel and a continuous speech sample to compute AVQI on your own recording, with the version and language protocol reported alongside the score.</p>
@@ -891,13 +1056,13 @@ Maryn, Youri, Catherine Dick, Caroline Vandenbruaene, Tom Vauterin, and Tinne Ja
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./cpps.html" class="pagination-link" aria-label="Cepstral Peak Prominence (CPP and CPPS)">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Cepstral Peak Prominence (CPP and CPPS)</span></span>
+      <a href="./spectral-tilt.html" class="pagination-link" aria-label="Spectral Tilt">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Spectral Tilt</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./abi.html" class="pagination-link" aria-label="Acoustic Breathiness Index (ABI)">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Acoustic Breathiness Index (ABI)</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Acoustic Breathiness Index (ABI)</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>3&nbsp; Signal Fundamentals – Acoustic Measures of Voice Quality</title>
+<title>13&nbsp; Perturbation Caveats – Acoustic Measures of Voice Quality</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,26 +26,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -55,8 +36,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./foundations-recording.html" rel="next">
-<link href="./intro.html" rel="prev">
+<link href="./hnr.html" rel="next">
+<link href="./voice-breaks.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -95,35 +76,6 @@ div.csl-indent {
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -136,7 +88,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./foundations-signal.html">Part I — Foundations</a></li><li class="breadcrumb-item"><a href="./foundations-signal.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Signal Fundamentals</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./f0-measures.html">Part II — Periodicity and Stability</a></li><li class="breadcrumb-item"><a href="./perturbation-caveats.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Perturbation Caveats</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -187,7 +139,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./foundations-signal.html" class="sidebar-item-text sidebar-link active">
+  <a href="./foundations-signal.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Signal Fundamentals</span></span></a>
   </div>
 </li>
@@ -258,7 +210,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./perturbation-caveats.html" class="sidebar-item-text sidebar-link">
+  <a href="./perturbation-caveats.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Perturbation Caveats</span></span></a>
   </div>
 </li>
@@ -403,27 +355,15 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#what-every-acoustic-measure-sees" id="toc-what-every-acoustic-measure-sees" class="nav-link active" data-scroll-target="#what-every-acoustic-measure-sees"><span class="header-section-number">3.1</span> What every acoustic measure sees</a></li>
-  <li><a href="#signals-continuous-and-discrete" id="toc-signals-continuous-and-discrete" class="nav-link" data-scroll-target="#signals-continuous-and-discrete"><span class="header-section-number">3.2</span> Signals: continuous and discrete</a></li>
-  <li><a href="#sampling-and-nyquist" id="toc-sampling-and-nyquist" class="nav-link" data-scroll-target="#sampling-and-nyquist"><span class="header-section-number">3.3</span> Sampling and Nyquist</a></li>
-  <li><a href="#quantization" id="toc-quantization" class="nav-link" data-scroll-target="#quantization"><span class="header-section-number">3.4</span> Quantization</a></li>
-  <li><a href="#framing-and-windowing" id="toc-framing-and-windowing" class="nav-link" data-scroll-target="#framing-and-windowing"><span class="header-section-number">3.5</span> Framing and windowing</a></li>
-  <li><a href="#time-frequency-and-cepstral-domains" id="toc-time-frequency-and-cepstral-domains" class="nav-link" data-scroll-target="#time-frequency-and-cepstral-domains"><span class="header-section-number">3.6</span> Time, frequency, and cepstral domains</a></li>
-  <li><a href="#caveats" id="toc-caveats" class="nav-link" data-scroll-target="#caveats"><span class="header-section-number">3.7</span> Caveats</a></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/LuceroJC/voice-measures/edit/main/foundations-signal.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/LuceroJC/voice-measures/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./foundations-signal.html">Part I — Foundations</a></li><li class="breadcrumb-item"><a href="./foundations-signal.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Signal Fundamentals</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./f0-measures.html">Part II — Periodicity and Stability</a></li><li class="breadcrumb-item"><a href="./perturbation-caveats.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Perturbation Caveats</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Signal Fundamentals</span></h1>
+<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Perturbation Caveats</span></h1>
 </div>
 
 
@@ -440,156 +380,22 @@ window.Quarto = {
 </header>
 
 
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+Warning
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Living draft.</strong> This chapter defines the signal-processing vocabulary the rest of the reference uses. Later chapters cite it when they name a sampling rate, frame length, window, or transform. Found an error? Use the <em>Report an issue</em> link in the sidebar.</p>
+<p><strong>Placeholder.</strong> This chapter is planned but not yet written. See the <a href="https://github.com/LuceroJC/voice-measures/blob/main/PLAN.md">book plan</a> for its intended scope and target release. In the meantime, the <a href="./intro.html">Introduction</a> shows where this chapter sits in the reference.</p>
 </div>
 </div>
-<section id="what-every-acoustic-measure-sees" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="what-every-acoustic-measure-sees"><span class="header-section-number">3.1</span> What every acoustic measure sees</h2>
-<p>Every acoustic measure in this reference is computed on a digital signal — a sequence of numeric samples that represents the microphone’s continuous pressure waveform. The chain from a spoken vowel to a jitter value passes through five stages this chapter defines:</p>
-<ol type="1">
-<li><strong>Sampling</strong> — picking amplitude at regularly spaced time points.</li>
-<li><strong>Quantization</strong> — mapping continuous amplitude to a finite set of levels.</li>
-<li><strong>Framing</strong> — cutting the sample stream into short segments for time-varying analysis.</li>
-<li><strong>Windowing</strong> — tapering each frame to control spectral artefacts.</li>
-<li><strong>Spectral or cepstral transformation</strong> — moving from the time domain into a domain where harmonic structure and periodicity are visible.</li>
-</ol>
-<p>Each stage introduces choices (sampling rate, bit depth, frame length, window shape, transform length) that constrain what a downstream measure can and cannot say. Every measure chapter in Parts II–IV names the specific frame length and window it presupposes; this chapter is the reference those cross-references resolve to.</p>
-</section>
-<section id="signals-continuous-and-discrete" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="signals-continuous-and-discrete"><span class="header-section-number">3.2</span> Signals: continuous and discrete</h2>
-<p>An <strong>analog signal</strong> varies continuously in both time and amplitude — the voltage produced by a microphone as a vowel is spoken. A <strong>digital signal</strong> is discrete in both dimensions: time is discretized by sampling, amplitude by quantization <span class="citation" data-cites="ludlow2018measuring">(<a href="#ref-ludlow2018measuring" role="doc-biblioref">Ludlow et al. 2018</a>)</span>. The transformation from continuous to digital is analog-to-digital conversion (A/D); the reverse — needed to play a sample stream through a loudspeaker — is D/A conversion <span class="citation" data-cites="kent2002acoustic">(<a href="#ref-kent2002acoustic" role="doc-biblioref">Kent and Read 2002</a>)</span>.</p>
-<p>The digital sequence <em>x</em>[<em>n</em>] represents the analog signal <em>x</em>(<em>t</em>) at instants <em>t</em> = <em>nT</em>, where <em>T</em> is the sampling period. What was a function of continuous time becomes a numbered sequence.</p>
-</section>
-<section id="sampling-and-nyquist" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="sampling-and-nyquist"><span class="header-section-number">3.3</span> Sampling and Nyquist</h2>
-<p>The <strong>sampling rate</strong> is the number of samples per second, in hertz. A sampling rate of 10 kHz means the analog signal is sampled 10,000 times per second <span class="citation" data-cites="kent2002acoustic">(<a href="#ref-kent2002acoustic" role="doc-biblioref">Kent and Read 2002</a>)</span>.</p>
-<p><strong>Nyquist’s Sampling Theorem</strong> states that the sampling rate must be at least twice the highest frequency of interest in the signal <span class="citation" data-cites="kent2002acoustic rabiner2011theory">(<a href="#ref-kent2002acoustic" role="doc-biblioref">Kent and Read 2002</a>; <a href="#ref-rabiner2011theory" role="doc-biblioref">Rabiner and Schafer 2011</a>)</span>. For voice analysis this fixes the practical minimum:</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Sampling rate</th>
-<th>Maximum analysable frequency</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>44.1 kHz (CD quality)</td>
-<td>22.05 kHz</td>
-</tr>
-<tr class="even">
-<td>22.05 kHz</td>
-<td>11.025 kHz</td>
-</tr>
-<tr class="odd">
-<td>10 kHz</td>
-<td>5 kHz</td>
-</tr>
-<tr class="even">
-<td>8 kHz (telephone)</td>
-<td>4 kHz</td>
-</tr>
-</tbody>
-</table>
-<p>Sampling below the Nyquist rate produces <strong>aliasing</strong> — high-frequency energy folds down into the analysis band and misrepresents the signal. Aliasing is prevented by a <strong>pre-sampling (anti-alias) low-pass filter</strong> placed before the sampler, rejecting energy above the Nyquist frequency. A useful filter target for speech work is at most 0.5 dB pass-band ripple and at least −68 dB stop-band attenuation <span class="citation" data-cites="kent2002acoustic">(<a href="#ref-kent2002acoustic" role="doc-biblioref">Kent and Read 2002</a>)</span>.</p>
-</section>
-<section id="quantization" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="quantization"><span class="header-section-number">3.4</span> Quantization</h2>
-<p>Quantization discretizes amplitude. Instead of a continuous voltage, each sample is represented by an integer drawn from 2^<em>N</em> levels, where <em>N</em> is the <strong>bit depth</strong> <span class="citation" data-cites="ludlow2018measuring">(<a href="#ref-ludlow2018measuring" role="doc-biblioref">Ludlow et al. 2018</a>)</span>:</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Bit depth</th>
-<th>Levels</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>8</td>
-<td>256</td>
-</tr>
-<tr class="even">
-<td>10</td>
-<td>1,024</td>
-</tr>
-<tr class="odd">
-<td>12</td>
-<td>4,096</td>
-</tr>
-<tr class="even">
-<td>16</td>
-<td>65,536</td>
-</tr>
-<tr class="odd">
-<td>24</td>
-<td>16,777,216</td>
-</tr>
-</tbody>
-</table>
-<p>The greater the bit depth, the finer the amplitude gradation and the smaller the quantization error. For voice measurement, 16 bits (a signal-to-quantization-noise ratio around 96 dB) is the practical standard; <span class="citation" data-cites="baken2000clinical">Baken and Orlikoff (<a href="#ref-baken2000clinical" role="doc-biblioref">2000</a>)</span> treat 10 bits as a defensible minimum, and note that using as much of the converter’s input range as possible is at least as important as high bit depth, because quantization error is a fixed absolute quantity — a small signal wastes bit depth.</p>
-<p>Set the input gain conservatively (peak at ~80 % of full scale) and check for clipping in every recording. A clipped signal distorts every derived measure — F0, jitter, shimmer, HNR, CPP.</p>
-</section>
-<section id="framing-and-windowing" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="framing-and-windowing"><span class="header-section-number">3.5</span> Framing and windowing</h2>
-<p>Voice signals are non-stationary — the vocal-tract configuration and glottal source change from vowel to vowel and even within a single vowel. A single global Fourier transform of a long utterance therefore averages away most of what matters. <strong>Short-time analysis</strong> solves this by dividing the signal into overlapping short segments (<strong>frames</strong>) and analysing each frame as if it were locally stationary <span class="citation" data-cites="rabiner2011theory">(<a href="#ref-rabiner2011theory" role="doc-biblioref">Rabiner and Schafer 2011</a>)</span>.</p>
-<ul>
-<li><strong>Frame length</strong> is typically 20–40 ms for voice analysis: long enough to contain several pitch periods, short enough that the vocal-tract configuration doesn’t change appreciably across the frame.</li>
-<li><strong>Frame rate</strong> (or hop size) is how often frames are extracted, typically every 5–10 ms. Frames overlap by 50–75 %.</li>
-<li><strong>Windowing</strong> multiplies each frame by a tapered function before the Fourier transform, to suppress the spectral artefacts that a rectangular frame would produce.</li>
-</ul>
-<p>The <strong>Hamming window</strong> is the standard choice for voice work:</p>
-<p><span class="math display">\[
-w[n] = 0.54 - 0.46 \cos\!\left(\frac{2\pi n}{N-1}\right), \quad 0 \le n \le N-1
-\]</span></p>
-<p><span class="citation" data-cites="rabiner2011theory">(<a href="#ref-rabiner2011theory" role="doc-biblioref">Rabiner and Schafer 2011</a>)</span>. It suppresses the side lobes of a rectangular window at the cost of a slightly wider main lobe (worse frequency resolution). The <strong>Hanning (Hann) window</strong>, a related raised-cosine variant, is used equivalently in many systems. The rectangular window — no tapering — is used only when frame boundaries coincide with signal periods (rare in practice).</p>
-<p>The trade-off between frame length and frequency resolution is fixed by an uncertainty-like relation Δ<em>f</em> ≈ 1/<em>T</em>: a longer frame <em>T</em> gives finer frequency resolution Δ<em>f</em>, but averages over more temporal change. A 30-ms Hamming window at a 44.1 kHz sampling rate gives about 33 Hz frequency resolution, which is finer than a semitone at typical speaking F0.</p>
-</section>
-<section id="time-frequency-and-cepstral-domains" class="level2" data-number="3.6">
-<h2 data-number="3.6" class="anchored" data-anchor-id="time-frequency-and-cepstral-domains"><span class="header-section-number">3.6</span> Time, frequency, and cepstral domains</h2>
-<p>Three domains carry voice information, and different measures live in different domains:</p>
-<p><strong>Time domain.</strong> The sample sequence <em>x</em>[<em>n</em>]. Waveform-based measures (jitter, shimmer, autocorrelation-based F0 trackers) work here.</p>
-<p><strong>Frequency domain (spectrum).</strong> Obtained by applying a discrete Fourier transform (DFT, computed as an FFT) to a windowed frame. Magnitude gives the short-time magnitude spectrum; a series of such spectra across time is a spectrogram. Harmonics-to-noise ratio, spectral tilt, and formant measurements live here.</p>
-<p><strong>Cepstral domain (cepstrum).</strong> Obtained by taking the logarithm of the magnitude spectrum and applying an inverse Fourier transform to it <span class="citation" data-cites="rabiner2011theory">(<a href="#ref-rabiner2011theory" role="doc-biblioref">Rabiner and Schafer 2011</a>)</span>. Its independent variable is <strong>quefrency</strong> — a time-like dimension in units of seconds — and its dominant peak sits at the quefrency corresponding to the voice period. The cepstrum is where cepstral peak prominence lives; see the <a href="./cpps.html">CPPS chapter</a>.</p>
-<p>The mathematical definition of periodicity — <em>f</em>(<em>t</em> + <em>T</em>) = <em>f</em>(<em>t</em>), where <em>T</em> is the period — is what all of this ultimately measures against <span class="citation" data-cites="titze2000principles">(<a href="#ref-titze2000principles" role="doc-biblioref">Titze 2000</a>)</span>. When the periodicity condition fails, so do most of these measures; see the <a href="./foundations-signal-typing.html">Signal Typing chapter</a>.</p>
-</section>
-<section id="caveats" class="level2" data-number="3.7">
-<h2 data-number="3.7" class="anchored" data-anchor-id="caveats"><span class="header-section-number">3.7</span> Caveats</h2>
-<ul>
-<li><strong>Sampling rate and analysis bandwidth are not the same as the highest recovered frequency.</strong> A 44.1 kHz recording preserves energy up to 22 kHz in principle, but only if the anti-alias filter actually rejects energy above the Nyquist frequency to that fidelity.</li>
-<li><strong>Frame length gates what can be measured.</strong> A frame shorter than one voice period cannot support F0 or perturbation measurement. For a speaker at 100 Hz (10 ms per period), a 20 ms frame contains two periods — the minimum defensible for jitter or shimmer, well below the ≥30-cycle sample <span class="citation" data-cites="baken2000clinical">Baken and Orlikoff (<a href="#ref-baken2000clinical" role="doc-biblioref">2000</a>)</span> recommend for shimmer.</li>
-<li><strong>Window choice affects spectral tilt and formant measurements.</strong> A Hamming window’s main-lobe width is roughly 8π/<em>N</em> radians on a length-<em>N</em> frame; comparing measurements across studies requires the same window family and length.</li>
-<li><strong>Software defaults differ.</strong> Praat, ADSV, MDVP, and PhonaLab each ship with different default frame lengths, hop sizes, windows, and pre-emphasis coefficients. Every reported measure in this reference names its software and settings; a bare number without them is not comparable across systems.</li>
-<li><strong>Digitisation is not lossless.</strong> The finite sampling rate and bit depth set floors on what any downstream measure can resolve. Perturbation measures are especially sensitive to quantization noise at low bit depth <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000</a>)</span>.</li>
-</ul>
+<p><em>This page will be replaced with a full chapter in a later release.</em></p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list">
-<div id="ref-baken2000clinical" class="csl-entry" role="listitem">
-Baken, Ronald J., and Robert F. Orlikoff. 2000. <em>Clinical Measurement of Speech and Voice</em>. 2nd ed. Singular Thomson Learning.
-</div>
-<div id="ref-kent2002acoustic" class="csl-entry" role="listitem">
-Kent, Raymond D., and Charles Read. 2002. <em>The Acoustic Analysis of Speech</em>. 2nd ed. Singular Thomson Learning.
-</div>
-<div id="ref-ludlow2018measuring" class="csl-entry" role="listitem">
-Ludlow, Christy L., Raymond D. Kent, and Lincoln C. Gray. 2018. <em>Measuring Voice, Speech, and Swallowing in the Clinic and Laboratory</em>. Plural Publishing.
-</div>
-<div id="ref-rabiner2011theory" class="csl-entry" role="listitem">
-Rabiner, Lawrence R., and Ronald W. Schafer. 2011. <em>Theory and Applications of Digital Speech Processing</em>. Pearson.
-</div>
-<div id="ref-titze2000principles" class="csl-entry" role="listitem">
-Titze, Ingo R. 2000. <em>Principles of Voice Production</em>. Revised. National Center for Voice; Speech.
-</div>
-</div>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -994,13 +800,13 @@ Titze, Ingo R. 2000. <em>Principles of Voice Production</em>. Revised. National 
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./intro.html" class="pagination-link" aria-label="Introduction">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction</span></span>
+      <a href="./voice-breaks.html" class="pagination-link" aria-label="Voice Breaks">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Voice Breaks</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./foundations-recording.html" class="pagination-link" aria-label="Recording Protocol">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Recording Protocol</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./hnr.html" class="pagination-link" aria-label="Harmonics-to-Noise Ratio">
+        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Harmonics-to-Noise Ratio</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1012,7 +818,7 @@ Titze, Ingo R. 2000. <em>Principles of Voice Production</em>. Revised. National 
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/LuceroJC/voice-measures/edit/main/foundations-signal.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/LuceroJC/voice-measures/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.com/LuceroJC/voice-measures/edit/main/perturbation-caveats.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/LuceroJC/voice-measures/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Built with <a href="https://quarto.org">Quarto</a></p>
 </div>

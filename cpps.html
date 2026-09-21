@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>3&nbsp; Cepstral Peak Prominence (CPP and CPPS) – Acoustic Measures of Voice Quality</title>
+<title>17&nbsp; Cepstral Peak Prominence (CPP and CPPS) – Acoustic Measures of Voice Quality</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -55,8 +55,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./avqi.html" rel="next">
-<link href="./foundations-signal.html" rel="prev">
+<link href="./spectral-tilt.html" rel="next">
+<link href="./gne.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -107,7 +107,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./cpps.html">Part III — Noise and Harmonic Structure</a></li><li class="breadcrumb-item"><a href="./cpps.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Cepstral Peak Prominence (CPP and CPPS)</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./hnr.html">Part III — Noise and Harmonic Structure</a></li><li class="breadcrumb-item"><a href="./cpps.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Cepstral Peak Prominence (CPP and CPPS)</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -138,13 +138,13 @@ div.csl-indent {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Preface</span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Acoustic Measures of Voice Quality</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">About this reference</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -159,7 +159,37 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./foundations-signal.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">The voice signal</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Signal Fundamentals</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./foundations-recording.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Recording Protocol</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./foundations-signal-typing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Signal Typing</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./foundations-f0-detection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Fundamental Frequency Detection</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./foundations-tasks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Voice Tasks</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./foundations-perceptual-anchors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Perceptual Anchors (GRBAS, CAPE-V)</span></span></a>
   </div>
 </li>
       </ul>
@@ -167,7 +197,7 @@ div.csl-indent {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Part III — Noise and Harmonic Structure</span></a>
+ <span class="menu-text">Part II — Periodicity and Stability</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -175,8 +205,32 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./cpps.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Cepstral Peak Prominence (CPP and CPPS)</span></span></a>
+  <a href="./f0-measures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">F0 Measures</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./jitter.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Jitter</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./shimmer.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Shimmer</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./voice-breaks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Voice Breaks</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./perturbation-caveats.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Perturbation Caveats</span></span></a>
   </div>
 </li>
       </ul>
@@ -184,7 +238,7 @@ div.csl-indent {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Part IV — Composite Indices</span></a>
+ <span class="menu-text">Part III — Noise and Harmonic Structure</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -192,14 +246,125 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./hnr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Harmonics-to-Noise Ratio</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./nhr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Noise-to-Harmonic Ratio</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./gne.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Glottal-to-Noise Excitation Ratio</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cpps.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Cepstral Peak Prominence (CPP and CPPS)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./spectral-tilt.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Spectral Tilt</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part IV — Composite Indices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./avqi.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Acoustic Voice Quality Index (AVQI)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Acoustic Voice Quality Index (AVQI)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./abi.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Acoustic Breathiness Index (ABI)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Acoustic Breathiness Index (ABI)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./dsi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Dysphonia Severity Index</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./composite-caveats.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Composite-Index Caveats</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part V — ML-derived Measures</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ml-landscape.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">The ML Landscape for Voice</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ml-feature-based.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Feature-Based ML Example</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ml-end-to-end.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">End-to-End ML Example</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Back matter</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix-adjunct-methods.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Adjunct Methods</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix-reproducibility.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Reproducibility Notes</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix-glossary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Glossary</span></span></a>
   </div>
 </li>
       </ul>
@@ -214,22 +379,22 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#definition" id="toc-definition" class="nav-link active" data-scroll-target="#definition"><span class="header-section-number">3.1</span> Definition</a></li>
-  <li><a href="#computation" id="toc-computation" class="nav-link" data-scroll-target="#computation"><span class="header-section-number">3.2</span> Computation</a></li>
-  <li><a href="#what-it-captures" id="toc-what-it-captures" class="nav-link" data-scroll-target="#what-it-captures"><span class="header-section-number">3.3</span> What it captures</a></li>
-  <li><a href="#normative-data" id="toc-normative-data" class="nav-link" data-scroll-target="#normative-data"><span class="header-section-number">3.4</span> Normative data</a></li>
-  <li><a href="#confounds-and-cautions" id="toc-confounds-and-cautions" class="nav-link" data-scroll-target="#confounds-and-cautions"><span class="header-section-number">3.5</span> Confounds and cautions</a></li>
-  <li><a href="#validation" id="toc-validation" class="nav-link" data-scroll-target="#validation"><span class="header-section-number">3.6</span> Validation</a></li>
-  <li><a href="#compute-it-in-phonalab" id="toc-compute-it-in-phonalab" class="nav-link" data-scroll-target="#compute-it-in-phonalab"><span class="header-section-number">3.7</span> Compute it in PhonaLab</a></li>
+  <li><a href="#definition" id="toc-definition" class="nav-link active" data-scroll-target="#definition"><span class="header-section-number">17.1</span> Definition</a></li>
+  <li><a href="#computation" id="toc-computation" class="nav-link" data-scroll-target="#computation"><span class="header-section-number">17.2</span> Computation</a></li>
+  <li><a href="#what-it-captures" id="toc-what-it-captures" class="nav-link" data-scroll-target="#what-it-captures"><span class="header-section-number">17.3</span> What it captures</a></li>
+  <li><a href="#normative-data" id="toc-normative-data" class="nav-link" data-scroll-target="#normative-data"><span class="header-section-number">17.4</span> Normative data</a></li>
+  <li><a href="#confounds-and-cautions" id="toc-confounds-and-cautions" class="nav-link" data-scroll-target="#confounds-and-cautions"><span class="header-section-number">17.5</span> Confounds and cautions</a></li>
+  <li><a href="#validation" id="toc-validation" class="nav-link" data-scroll-target="#validation"><span class="header-section-number">17.6</span> Validation</a></li>
+  <li><a href="#compute-it-in-phonalab" id="toc-compute-it-in-phonalab" class="nav-link" data-scroll-target="#compute-it-in-phonalab"><span class="header-section-number">17.7</span> Compute it in PhonaLab</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/LuceroJC/voice-measures/edit/main/cpps.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/LuceroJC/voice-measures/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./cpps.html">Part III — Noise and Harmonic Structure</a></li><li class="breadcrumb-item"><a href="./cpps.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Cepstral Peak Prominence (CPP and CPPS)</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./hnr.html">Part III — Noise and Harmonic Structure</a></li><li class="breadcrumb-item"><a href="./cpps.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Cepstral Peak Prominence (CPP and CPPS)</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Cepstral Peak Prominence (CPP and CPPS)</span></h1>
+<h1 class="title"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Cepstral Peak Prominence (CPP and CPPS)</span></h1>
 </div>
 
 
@@ -259,13 +424,13 @@ Note
 <p><strong>Living draft.</strong> This chapter reflects the sources cited below and will be revised as further sources are incorporated. Found an error? Use the <em>Report an issue</em> link in the sidebar.</p>
 </div>
 </div>
-<section id="definition" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="definition"><span class="header-section-number">3.1</span> Definition</h2>
+<section id="definition" class="level2" data-number="17.1">
+<h2 data-number="17.1" class="anchored" data-anchor-id="definition"><span class="header-section-number">17.1</span> Definition</h2>
 <p>Cepstral peak prominence (CPP) quantifies how strongly the harmonic structure of a voice signal emerges from its background. The cepstrum used in voice analysis is obtained by transforming the waveform into a spectrum, taking the logarithm, and transforming again; its horizontal axis is a time-like dimension called <em>quefrency</em> <span class="citation" data-cites="murton2020cpp">(<a href="#ref-murton2020cpp" role="doc-biblioref">Murton et al. 2020</a>)</span>. The periodic harmonic peaks of the spectrum collapse into a single dominant cepstral peak at the quefrency of the voice period. The height of that peak above a regression line through the whole cepstrum is the CPP, reported in decibels <span class="citation" data-cites="murton2020cpp">(<a href="#ref-murton2020cpp" role="doc-biblioref">Murton et al. 2020</a>)</span>. The amplitude of the dominant cepstral peak (the first <em>rahmonic</em>) reflects the strength with which the fundamental frequency emerges from competing background frequencies <span class="citation" data-cites="maryn2009cepstral">(<a href="#ref-maryn2009cepstral" role="doc-biblioref">Maryn et al. 2009</a>)</span>.</p>
 <p>Lower CPP values are associated with greater dysphonia severity <span class="citation" data-cites="murton2020cpp">(<a href="#ref-murton2020cpp" role="doc-biblioref">Murton et al. 2020</a>)</span>. Two properties distinguish CPP from the classical perturbation measures. First, it can be extracted from connected speech as well as sustained vowels. Second, it does not require direct computation of the fundamental frequency, so no pitch detection or tracking is needed — which makes cepstral measures robust in dysphonic and particularly in breathy voices, where period-by-period analysis breaks down <span class="citation" data-cites="murton2020cpp barsties2018meta">(<a href="#ref-murton2020cpp" role="doc-biblioref">Murton et al. 2020</a>; <a href="#ref-barsties2018meta" role="doc-biblioref">Barsties v. Latoszek et al. 2018</a>)</span>. The 2018 ASHA instrumental-assessment guidance recommended CPP as a general measure of dysphonia, replacing jitter, shimmer, and harmonics-to-noise ratio in that role <span class="citation" data-cites="murton2020cpp">(<a href="#ref-murton2020cpp" role="doc-biblioref">Murton et al. 2020</a>)</span>.</p>
 </section>
-<section id="computation" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="computation"><span class="header-section-number">3.2</span> Computation</h2>
+<section id="computation" class="level2" data-number="17.2">
+<h2 data-number="17.2" class="anchored" data-anchor-id="computation"><span class="header-section-number">17.2</span> Computation</h2>
 <p>The waveform is Fourier-transformed into a spectrum, the logarithm of the spectrum is taken, and a second (inverse) Fourier transform carries the result into the cepstral domain <span class="citation" data-cites="murton2020cpp">(<a href="#ref-murton2020cpp" role="doc-biblioref">Murton et al. 2020</a>)</span>. A linear regression line relating quefrency to cepstral magnitude is fitted through the cepstrum, and CPP is the difference in amplitude between the cepstral peak and the point on the regression line directly below it <span class="citation" data-cites="maryn2009cepstral barsties2018meta">(<a href="#ref-maryn2009cepstral" role="doc-biblioref">Maryn et al. 2009</a>; <a href="#ref-barsties2018meta" role="doc-biblioref">Barsties v. Latoszek et al. 2018</a>)</span>.</p>
 <p><strong>CPP versus CPPS.</strong> Averaging the cepstrum first across time and then across quefrency yields a <em>smoothed</em> cepstrum; the same peak-minus-regression-line measurement on the smoothed cepstrum is the smoothed cepstral peak prominence, CPPS <span class="citation" data-cites="maryn2009cepstral">(<a href="#ref-maryn2009cepstral" role="doc-biblioref">Maryn et al. 2009</a>)</span>. The smoothing was introduced by Hillenbrand and colleagues as a modification of their unsmoothed-cepstrum program SpeechTool <span class="citation" data-cites="maryn2009cepstral">(<a href="#ref-maryn2009cepstral" role="doc-biblioref">Maryn et al. 2009</a>)</span>.</p>
 <p><strong>Software implementations.</strong> Three computation algorithms dominate the clinical literature: Hillenbrand and Houde’s CPPS algorithm, Praat’s CPPS algorithm, and the CPP computation in Analysis of Dysphonia in Speech and Voice (ADSV, PENTAX Medical) <span class="citation" data-cites="murton2020cpp">(<a href="#ref-murton2020cpp" role="doc-biblioref">Murton et al. 2020</a>)</span>. Their parameter choices differ in ways that matter:</p>
@@ -275,14 +440,14 @@ Note
 </ul>
 <p>Because of these differences, values from different programs live on different scales and are not interchangeable (see <a href="#confounds-and-cautions">Confounds and cautions</a>).</p>
 </section>
-<section id="what-it-captures" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="what-it-captures"><span class="header-section-number">3.3</span> What it captures</h2>
+<section id="what-it-captures" class="level2" data-number="17.3">
+<h2 data-number="17.3" class="anchored" data-anchor-id="what-it-captures"><span class="header-section-number">17.3</span> What it captures</h2>
 <p>CPP behaves as a general index of overall dysphonia severity. In the Massachusetts Eye and Ear Infirmary (MEEI) data of <span class="citation" data-cites="murton2020cpp">Murton et al. (<a href="#ref-murton2020cpp" role="doc-biblioref">2020</a>)</span>, CPP values below task- and software-specific cutoffs indicated the presence of a voice disorder with up to 94.5% accuracy, and ADSV CPP estimated mean listener ratings of overall severity with <em>r</em>² from .5 to .74 depending on task (Praat CPPS: <em>r</em>² from .38 to .72). Regression lines allow a severity estimate from CPP; a Praat CPPS of 10 dB on sustained /a/ predicts a CAPE-V overall severity of approximately 54 <span class="citation" data-cites="murton2020cpp">(<a href="#ref-murton2020cpp" role="doc-biblioref">Murton et al. 2020</a>)</span>.</p>
 <p>Meta-analytically, CPP and CPPS are the best acoustic predictors of <strong>breathiness</strong>, and the only acoustic markers that reached the validity criterion for breathiness in both sustained vowels and continuous speech <span class="citation" data-cites="barsties2018meta">(<a href="#ref-barsties2018meta" role="doc-biblioref">Barsties v. Latoszek et al. 2018</a>)</span>. Pooled effect sizes:</p>
 <div id="tbl-cpp-meta" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-cpp-meta-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;3.1: Pooled meta-analytic correlations with perceptual ratings <span class="citation" data-cites="barsties2018meta">(<a href="#ref-barsties2018meta" role="doc-biblioref">Barsties v. Latoszek et al. 2018</a>)</span>.
+Table&nbsp;17.1: Pooled meta-analytic correlations with perceptual ratings <span class="citation" data-cites="barsties2018meta">(<a href="#ref-barsties2018meta" role="doc-biblioref">Barsties v. Latoszek et al. 2018</a>)</span>.
 </figcaption>
 <div aria-describedby="tbl-cpp-meta-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
@@ -339,13 +504,13 @@ Table&nbsp;3.1: Pooled meta-analytic correlations with perceptual ratings <span 
 <p>For <strong>roughness</strong>, CPPS reached the acceptability criterion only in continuous speech, where it was the only adequate predictor; CPPS does not, however, distinguish the subtypes roughness and breathiness from each other well <span class="citation" data-cites="barsties2018meta">(<a href="#ref-barsties2018meta" role="doc-biblioref">Barsties v. Latoszek et al. 2018</a>)</span>. Although the cepstral measures were originally designed for breathiness, they proved to be the most accurate acoustic measures of overall dysphonia severity <span class="citation" data-cites="barsties2018meta">(<a href="#ref-barsties2018meta" role="doc-biblioref">Barsties v. Latoszek et al. 2018</a>)</span>.</p>
 <p>In severely aperiodic and alaryngeal voices, where perturbation measures fail for lack of a reliably detectable fundamental period, CPP remains computable: in tracheoesophageal speakers it was the strongest single acoustic correlate of overall voice quality (<em>r<sub>s</sub></em> = .78, about 60% of variance explained), and a two-factor regression combining CPP with the height of the second spectral harmonic reached <em>r<sub>s</sub></em> = .87 with listener rankings <span class="citation" data-cites="maryn2009cepstral">(<a href="#ref-maryn2009cepstral" role="doc-biblioref">Maryn et al. 2009</a>)</span>. That multivariate strategy is the same one the <a href="./avqi.html">AVQI</a> applies to laryngeal voice.</p>
 </section>
-<section id="normative-data" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="normative-data"><span class="header-section-number">3.4</span> Normative data</h2>
+<section id="normative-data" class="level2" data-number="17.4">
+<h2 data-number="17.4" class="anchored" data-anchor-id="normative-data"><span class="header-section-number">17.4</span> Normative data</h2>
 <p>Cutoff values below which a voice disorder is probable, from 295 patients and 50 vocally healthy controls of the MEEI Voice Disorders Database (English speakers) <span class="citation" data-cites="murton2020cpp">(<a href="#ref-murton2020cpp" role="doc-biblioref">Murton et al. 2020</a>)</span>:</p>
 <div id="tbl-cpp-cutoffs" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-cpp-cutoffs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;3.2: MEEI cutoffs of <span class="citation" data-cites="murton2020cpp">Murton et al. (<a href="#ref-murton2020cpp" role="doc-biblioref">2020</a>)</span>.
+Table&nbsp;17.2: MEEI cutoffs of <span class="citation" data-cites="murton2020cpp">Murton et al. (<a href="#ref-murton2020cpp" role="doc-biblioref">2020</a>)</span>.
 </figcaption>
 <div aria-describedby="tbl-cpp-cutoffs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
@@ -391,7 +556,7 @@ Table&nbsp;3.2: MEEI cutoffs of <span class="citation" data-cites="murton2020cpp
 <div id="tbl-cpp-prior" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-cpp-prior-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;3.3: Previously reported cutoffs, normal vs.&nbsp;dysphonic except Heman-Ackah 2003 (mild vs.&nbsp;severe).
+Table&nbsp;17.3: Previously reported cutoffs, normal vs.&nbsp;dysphonic except Heman-Ackah 2003 (mild vs.&nbsp;severe).
 </figcaption>
 <div aria-describedby="tbl-cpp-prior-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
@@ -447,8 +612,8 @@ Table&nbsp;3.3: Previously reported cutoffs, normal vs.&nbsp;dysphonic except He
 </div>
 <p><strong>Every threshold in these tables is specific to its software, algorithm settings, and speech task.</strong> A bare CPP number with no software and task attached is not interpretable, because different algorithms produce values in different ranges <span class="citation" data-cites="murton2020cpp">(<a href="#ref-murton2020cpp" role="doc-biblioref">Murton et al. 2020</a>)</span>.</p>
 </section>
-<section id="confounds-and-cautions" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="confounds-and-cautions"><span class="header-section-number">3.5</span> Confounds and cautions</h2>
+<section id="confounds-and-cautions" class="level2" data-number="17.5">
+<h2 data-number="17.5" class="anchored" data-anchor-id="confounds-and-cautions"><span class="header-section-number">17.5</span> Confounds and cautions</h2>
 <p><strong>Software non-interchangeability.</strong> On the same MEEI recordings, the sustained-vowel cutoff was 11.46 dB for ADSV and 14.45 dB for Praat. The algorithms can also diverge qualitatively: one speaker measured 11.7 dB in Praat CPPS but 3.5 dB in ADSV CPP, with phonation showing irregular, widely spaced pulses perceived as strain and vocal fry <span class="citation" data-cites="murton2020cpp">(<a href="#ref-murton2020cpp" role="doc-biblioref">Murton et al. 2020</a>)</span>.</p>
 <p><strong>Task effects.</strong> CPP thresholds are consistently lower for continuous speech than for sustained vowels. CPP varies widely between different sentences, largely with the amount of voicing, so comparisons within or between speakers must use the same speech material; unvoiced frames included in the average artificially lower the CPP of consonant-heavy material <span class="citation" data-cites="murton2020cpp">(<a href="#ref-murton2020cpp" role="doc-biblioref">Murton et al. 2020</a>)</span>.</p>
 <p><strong>Aphonia and voicing detection.</strong> Where aphonic segments are included, a low average CPP meaningfully reflects the aphonic quality — but very accurate voicing detection can paradoxically produce a higher-than-expected CPP in intermittent aphonia, because only the periodic voiced fragments enter the average <span class="citation" data-cites="murton2020cpp">(<a href="#ref-murton2020cpp" role="doc-biblioref">Murton et al. 2020</a>)</span>.</p>
@@ -457,12 +622,12 @@ Table&nbsp;3.3: Previously reported cutoffs, normal vs.&nbsp;dysphonic except He
 <p><strong>Cutoff vicinity.</strong> Published cutoffs are one possible estimate; values near a cutoff deserve further consideration rather than a binary reading <span class="citation" data-cites="murton2020cpp">(<a href="#ref-murton2020cpp" role="doc-biblioref">Murton et al. 2020</a>)</span>.</p>
 <p><strong>Recording conditions.</strong> Hardware, microphone placement, environmental noise, and software are known to affect perturbation measures; their impact on CPP and CPPS remains unclear and needs further investigation <span class="citation" data-cites="barsties2018meta">(<a href="#ref-barsties2018meta" role="doc-biblioref">Barsties v. Latoszek et al. 2018</a>)</span>.</p>
 </section>
-<section id="validation" class="level2" data-number="3.6">
-<h2 data-number="3.6" class="anchored" data-anchor-id="validation"><span class="header-section-number">3.6</span> Validation</h2>
+<section id="validation" class="level2" data-number="17.6">
+<h2 data-number="17.6" class="anchored" data-anchor-id="validation"><span class="header-section-number">17.6</span> Validation</h2>
 <p>The MEEI cutoff study <span class="citation" data-cites="murton2020cpp">(<a href="#ref-murton2020cpp" role="doc-biblioref">Murton et al. 2020</a>)</span> and the roughness/breathiness meta-analysis <span class="citation" data-cites="barsties2018meta">(<a href="#ref-barsties2018meta" role="doc-biblioref">Barsties v. Latoszek et al. 2018</a>)</span> anchor the evidence summarized above. The meta-analytic sustained-vowel breathiness effect sizes for CPP and CPPS pooled heterogeneous <em>r</em>-values; the authors retained these measures because they had the highest study counts and sample sizes <span class="citation" data-cites="barsties2018meta">(<a href="#ref-barsties2018meta" role="doc-biblioref">Barsties v. Latoszek et al. 2018</a>)</span>. The tracheoesophageal findings of <span class="citation" data-cites="maryn2009cepstral">Maryn et al. (<a href="#ref-maryn2009cepstral" role="doc-biblioref">2009</a>)</span> extend the measure’s validity to alaryngeal voice.</p>
 </section>
-<section id="compute-it-in-phonalab" class="level2" data-number="3.7">
-<h2 data-number="3.7" class="anchored" data-anchor-id="compute-it-in-phonalab"><span class="header-section-number">3.7</span> Compute it in PhonaLab</h2>
+<section id="compute-it-in-phonalab" class="level2" data-number="17.7">
+<h2 data-number="17.7" class="anchored" data-anchor-id="compute-it-in-phonalab"><span class="header-section-number">17.7</span> Compute it in PhonaLab</h2>
 <blockquote class="blockquote">
 <p><strong><a href="https://phonalab.com">Open PhonaLab →</a></strong></p>
 <p>Upload a sustained vowel or a reading passage and compute CPPS on your own recording, with the software and task always reported alongside the value.</p>
@@ -885,13 +1050,13 @@ Murton, Olivia, Robert Hillman, and Daryush Mehta. 2020. <span>“Cepstral Peak 
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./foundations-signal.html" class="pagination-link" aria-label="The voice signal">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">The voice signal</span></span>
+      <a href="./gne.html" class="pagination-link" aria-label="Glottal-to-Noise Excitation Ratio">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Glottal-to-Noise Excitation Ratio</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./avqi.html" class="pagination-link" aria-label="Acoustic Voice Quality Index (AVQI)">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Acoustic Voice Quality Index (AVQI)</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./spectral-tilt.html" class="pagination-link" aria-label="Spectral Tilt">
+        <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Spectral Tilt</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
