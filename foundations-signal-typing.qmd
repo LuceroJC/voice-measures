@@ -1,0 +1,133 @@
+---
+title: "Signal Typing"
+---
+
+::: {.callout-note}
+**Living draft.** This chapter presents the classification that gates every
+subsequent measure. Later chapters cross-reference the three types by number
+throughout their Caveats sections. Found an error? Use the *Report an issue*
+link in the sidebar.
+:::
+
+## Why signal typing comes first
+
+Fundamental frequency, jitter, shimmer, and harmonics-to-noise ratio all
+presuppose an identifiable repeating waveform. Disordered voices routinely
+violate that assumption. Applying a perturbation formula to a signal that has
+no periodic structure produces a number, but not a meaningful one
+[@baken2000clinical]. A three-category classification of voiced signals,
+originally proposed by @titze1995workshop at the NCVS Workshop on Acoustic
+Voice Analysis and formalised for the clinic by @baken2000clinical, addresses
+this by naming which kinds of vocal signal support which kinds of measurement.
+
+Every measure chapter in this reference relies on the classification. This
+chapter is the single authority those cross-references resolve to.
+
+## The three types
+
+The classification, with clinical subtypes added by @baken2000clinical shown
+in italics:
+
+### Type 1 — nearly periodic (or, in the ideal case, periodic)
+
+Waveforms that do not undergo qualitative changes during the analysis
+interval. Any modulating or subharmonic frequencies present carry energy at
+least one order of magnitude below the fundamental [@baken2000clinical].
+
+- *Subtype A*: minor random variation of F0 or waveshape.
+- *Subtype B*: minor monotonic modulation — F0 or amplitude steadily
+  increasing or decreasing.
+- *Subtype C*: minor cyclic variation (modulation) of F0 or amplitude.
+
+### Type 2 — organised but non-stationary
+
+Signals with sudden qualitative changes (bifurcations), or with modulating or
+subharmonic frequencies whose energy is comparable to that of the
+fundamental. The signal is clearly ordered and organised, but no single F0
+value validly characterises the entire segment [@baken2000clinical].
+
+- *Subtype A*: signal bifurcation(s) present.
+- *Subtype B*: F0 or amplitude discontinuity.
+- *Subtype C*: large-scale modulation of F0.
+
+### Type 3 — without apparent periodicity
+
+Signals without apparent periodicity, and hence not validly susceptible to F0
+measurement. Type 3 signals may nonetheless be chaotic in the technical
+sense — carrying a covert organising principle discoverable through
+dynamical-systems techniques [@baken2000clinical].
+
+- *Subtype A*: no observable structure.
+- *Subtype B*: deep-level (chaotic) organisation.
+
+## Applying the classification
+
+Signal typing is a visual-inspection step performed before perturbation
+measurement, not a numeric procedure. The vocal waveform (or a close
+correlate, such as an electroglottographic trace) is displayed and examined
+for the presence of bifurcations, modulations, discontinuities, and
+periodicity. The analysis window is chosen so that a single type applies
+across it [@baken2000clinical]. A computer-based analysis system will happily
+calculate a putative F0 for any signal, including aperiodic ones, but the
+number produced has no meaning if the signal is Type 3 [@baken2000clinical].
+
+The classification is signal-based, not disorder-based. A single speaker may
+produce all three types across a session, and the same disorder can present
+differently at different F0 or intensity levels. The underlying mathematical
+distinction is periodicity itself: a waveform is periodic when *f*(*t* + *T*)
+= *f*(*t*), so the waveform is an exact copy of itself after some period *T*
+has elapsed [@titze2000principles]. Any departure from this exact-repetition
+condition is aperiodicity of some kind.
+
+## Which measures apply to which types
+
+Signal type gates the measures that follow in Parts II–IV.
+
+| Type | Reliable | Marginal | Unreliable / undefined |
+|---|---|---|---|
+| Type 1 | Jitter, shimmer, HNR, CPPS, spectral tilt, F0, all composites | — | — |
+| Type 2 | CPPS, some spectral measures | HNR, spectral tilt | Jitter, shimmer, composite indices |
+| Type 3 | Cepstral-domain measures (CPPS); dynamical-systems methods | — | Any measure that requires F0 tracking |
+
+- **Perturbation measures require Type 1 signals.** For F0 evaluation to be
+  meaningful, the signal should within reasonable limits be classifiable as
+  Type 1, subtype A [@baken2000clinical]. Occasional discontinuities may be
+  less damaging than once believed for some software [@baken2000clinical],
+  but the general rule stands.
+- **Noise measures (HNR, NHR) presuppose a discernible periodic component**
+  to separate from the noise; they are unreliable on Type 2 and undefined on
+  Type 3.
+- **Cepstral peak prominence is robust across signal types.** CPP and CPPS
+  do not require pitch detection or tracking and can be extracted from
+  connected speech as well as sustained vowels. This is one of the practical
+  reasons ASHA recommended CPP as a general dysphonia measure in preference
+  to jitter, shimmer, and HNR (see the [CPPS chapter](cpps.qmd)).
+- **Composite indices inherit their components' signal-type constraints.**
+  Because AVQI and ABI include perturbation and HNR-like terms, they are
+  sensitive to non-Type-1 material; see the [AVQI](avqi.qmd) and
+  [ABI](abi.qmd) chapters.
+- **Type 3 signals need dynamical-systems methods**, not periodicity-based
+  measures, and that direction of investigation is one of the frontier
+  areas in acoustic voice analysis [@baken2000clinical].
+
+The practical workflow: display the signal, classify it, and if it is not
+Type 1 either shorten the analysis window until a Type 1 segment is
+isolated, switch to a signal-type-robust measure such as CPPS, or report the
+signal as unanalyzable by perturbation methods — rather than reporting a
+spurious number.
+
+## Caveats
+
+- The classification is human-judgment-based. Two clinicians may disagree at
+  the boundaries, particularly between Type 1 subtype C and Type 2 subtype C
+  (both involve F0 modulation; they differ in the magnitude relative to the
+  fundamental) [@baken2000clinical].
+- Software rarely refuses to compute perturbation values on non-Type-1
+  signals — the user must apply the type check themselves.
+- The analysis window matters. A speaker who produces Type 2 material during
+  a phrase transition and Type 1 material during a sustained vowel is both,
+  depending on which window is analysed.
+- The Baken and Orlikoff subtypes (A, B, C) are their own extension of
+  @titze1995workshop's three-type framework; other authors have used other
+  subdivisions or none at all. Cite the subtype only where the sensitivity
+  of the analysis warrants it.

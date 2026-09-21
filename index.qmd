@@ -1,33 +1,14 @@
-# Preface {.unnumbered}
+---
+title: "Acoustic Measures of Voice Quality"
+subtitle: "A Living Reference"
+---
 
-*Acoustic Measures of Voice Quality* is an open, **living reference** on how the
-acoustic measures used in voice assessment are computed and interpreted. It is
-written for speech-language pathologists, voice scientists, and students who want
-to understand not just *what* a number like CPPS or AVQI is, but *how* it is
-derived from the signal, what it captures, where it fails, and how to read it in
-practice.
+::: {.callout-note}
+**Version 0.1 draft.** This is an early release. Chapters marked *placeholder*
+outline the intended scope but are not yet written; the [Introduction](intro.qmd)
+explains how to read the reference and what each part covers.
+:::
 
-Unlike a printed textbook, this reference is versioned and continuously updated.
-Each release is archived with its own DOI, so you can cite a specific, frozen
-version while the living site continues to improve.
-
-## How to cite {.unnumbered}
-
-> Lucero, J. C. (2026). *Acoustic Measures of Voice Quality: A Living Reference*
-> (Version 0.0.1). Zenodo. https://doi.org/10.5281/zenodo.22739050
-
-
-## License {.unnumbered}
-
-The prose and figures are licensed under
-[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/); the code examples are
-licensed under the [MIT License](https://opensource.org/licenses/MIT). You are
-free to share, adapt, and translate this work with attribution.
-
-## Relationship to PhonaLab {.unnumbered}
-
-This reference is the *methods* companion to
-[PhonaLab](https://phonalab.com). Where this text explains what a measure is and
-how it is computed, PhonaLab lets you compute it on your own recording. Each
-measure chapter links to the corresponding PhonaLab tool, and PhonaLab links
-back here for the underlying method.
+Welcome to *Acoustic Measures of Voice Quality*, an open living reference by
+Jorge C. Lucero. Start with the [Introduction](intro.qmd), or jump straight
+to a specific measure via the sidebar.

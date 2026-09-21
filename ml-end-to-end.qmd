@@ -1,0 +1,12 @@
+---
+title: "End-to-End ML Example"
+---
+
+::: {.callout-warning}
+**Placeholder.** This chapter is planned but not yet written. See the
+[book plan](https://github.com/LuceroJC/voice-measures/blob/main/PLAN.md)
+for its intended scope and target release. In the meantime, the
+[Introduction](intro.qmd) shows where this chapter sits in the reference.
+:::
+
+*This page will be replaced with a full chapter in a later release.*

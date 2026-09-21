@@ -1,37 +1,99 @@
-# About this reference
+---
+title: "Introduction"
+---
 
-## Scope
+::: {.callout-note}
+**Living reference.** This book is versioned on Zenodo and revised on the
+web at [LuceroJC.github.io/voice-measures](https://LuceroJC.github.io/voice-measures).
+Each chapter cites primary sources with page anchors; findings you may
+want to check should be traceable to the exact page.
+:::
 
-This reference covers **acoustic measures of voice quality** — the quantities
-computed from a voice recording that characterize periodicity, noise, and
-spectral structure. It does not cover aerodynamic measurement, laryngeal imaging,
-or auditory-perceptual assessment, except where those are needed to interpret or
-validate an acoustic measure.
+## What this reference is
 
-## Who this is for
+*Acoustic Measures of Voice Quality* is a living open reference on the
+acoustic analysis of the human voice. It is written for speech-language
+pathologists, voice researchers, and users of computational voice-analysis
+tools who need authoritative, citation-backed answers about what an
+acoustic measure means, how it is computed, what it says clinically, and
+where it fails.
 
-The reference assumes you know what a spectrogram is and are comfortable reading
-a plot. It is not an introductory speech-science text. It is aimed at clinicians
-and researchers who use these measures and want to understand them precisely
-enough to apply, compare, or implement them.
+The reference is deliberately narrow. It covers **acoustic measures of
+voice quality** — measures derived from the acoustic signal alone.
+Aerodynamic instrumentation, laryngeal imaging, and perceptual scales are
+in scope only where they inform how an acoustic measure is defined, trained,
+or validated. Perceptual scales such as GRBAS and CAPE-V appear because
+composite indices (AVQI, ABI) are trained against them; that treatment is
+in the Foundations section.
 
-## How the measures are organized
+## How the reference is organised
 
-Measures are grouped by **what they capture**, not by algorithm family or by the
-pathology they detect:
+Five parts, ordered by what the measure captures rather than by clinical
+context. Chapters within each part follow a common template — definition,
+computation, normative values, clinical interpretation, caveats, and
+disagreements among sources when they arise.
 
-- **Part I — Foundations.** The voice signal, recording quality, segmentation,
-  and voicing detection: what must be true of a recording before any measure is
-  trustworthy.
-- **Part II — Periodicity and stability.** f0 estimation, jitter, shimmer, and
-  the nonlinear dynamical measures.
-- **Part III — Noise and harmonic structure.** HNR and its variants, GNE, CPPS,
-  and spectral tilt measures.
-- **Part IV — Composite and clinical indices.** AVQI, ABI, and how they are built
-  from the Part II and Part III measures.
-- **Part V — Beyond the traditional measures.** Machine-learning-derived features
-  and where the field is going.
+- **Part I — Foundations.** Signal fundamentals, recording protocol,
+  signal typing, F0 detection, voice tasks, perceptual anchors.
+- **Part II — Periodicity and stability.** F0 measures, jitter variants,
+  shimmer variants, voice breaks, and the shared perturbation-caveats
+  discussion.
+- **Part III — Noise and harmonic structure.** HNR and NHR, GNE, CPPS,
+  spectral tilt.
+- **Part IV — Composite indices.** AVQI, ABI, DSI, and the shared
+  composite-caveats discussion.
+- **Part V — ML-derived measures.** A landscape chapter plus two
+  representative example measures (feature-based and end-to-end).
 
-Each measure is presented with a consistent structure: definition, computation,
-what it captures physiologically, known confounds, normative ranges, validation,
-and a runnable example.
+Back matter includes appendices on adjunct methods (EGG and aerodynamic
+measures at the level they inform acoustic interpretation),
+reproducibility notes for Praat and PhonaLab, and a glossary.
+
+## How to use it
+
+Every chapter is self-contained and cites the primary sources. Three
+reading paths:
+
+- **Clinician looking up a specific measure.** Go straight to the measure
+  chapter — the Definition, Normative Values, and Clinical Interpretation
+  sections are what you need. The Caveats section is where the honest
+  cautions live; read it before reporting a value.
+- **Researcher tracing methodology.** The Computation section names the
+  algorithm variants and software; the reference list gives the primary
+  papers.
+- **PhonaLab user.** Each measure is paired with a PhonaLab clinical
+  landing page. The chapters here explain what the software computes and
+  why the number means what it means.
+
+Every factual claim carries a source. Where sources disagree, both are
+shown and the disagreement is called out — never silently averaged.
+
+## Versioning, DOIs, and citation
+
+Each release is deposited on Zenodo with a versioned DOI. Cite this
+reference as, for example:
+
+> Lucero, J. C. (2026). *Acoustic Measures of Voice Quality*, v0.1.
+> Zenodo. https://doi.org/10.5281/zenodo.XXXXXXX
+
+Where a specific chapter is cited, include the chapter title and section.
+The corresponding PDF and EPUB releases are also on Zenodo.
+
+## Licence
+
+The text is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/);
+any computational code shown in the reference is licensed under the
+[MIT License](https://opensource.org/licenses/MIT). Attribution: Jorge C.
+Lucero, University of Brasília.
+
+## Contributing and errata
+
+Corrections, additions, and disagreements are welcome. The reference is
+maintained on GitHub at
+[github.com/LuceroJC/voice-measures](https://github.com/LuceroJC/voice-measures)
+— open an issue with a specific chapter and page, and where possible cite
+a source. Contributed sections are credited in the changelog.
+
+The reference is written to be updated. Findings that survive on the site
+for a full release cycle without correction can be treated as verified;
+findings marked as *draft* are still under review.

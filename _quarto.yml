@@ -24,26 +24,55 @@ book:
     - part: "Part I — Foundations"
       chapters:
         - foundations-signal.qmd
+        - foundations-recording.qmd
+        - foundations-signal-typing.qmd
+        - foundations-f0-detection.qmd
+        - foundations-tasks.qmd
+        - foundations-perceptual-anchors.qmd
+    - part: "Part II — Periodicity and Stability"
+      chapters:
+        - f0-measures.qmd
+        - jitter.qmd
+        - shimmer.qmd
+        - voice-breaks.qmd
+        - perturbation-caveats.qmd
     - part: "Part III — Noise and Harmonic Structure"
       chapters:
+        - hnr.qmd
+        - nhr.qmd
+        - gne.qmd
         - cpps.qmd
+        - spectral-tilt.qmd
     - part: "Part IV — Composite Indices"
       chapters:
         - avqi.qmd
         - abi.qmd
+        - dsi.qmd
+        - composite-caveats.qmd
+    - part: "Part V — ML-derived Measures"
+      chapters:
+        - ml-landscape.qmd
+        - ml-feature-based.qmd
+        - ml-end-to-end.qmd
+    - part: "Back matter"
+      chapters:
+        - appendix-adjunct-methods.qmd
+        - appendix-reproducibility.qmd
+        - appendix-glossary.qmd
 
 bibliography: references.bib
 lang: en
 
+# HTML-only in CI; the runner has no LaTeX. To render a PDF locally, install
+# TinyTeX (`quarto install tinytex`) and run `quarto render --to pdf`, or add
+# the pdf format back here and switch the CI setup step to
+# `quarto-dev/quarto-actions/setup@v2` with `tinytex: true`.
 format:
   html:
     theme:
       - cosmo
       - theme.scss
     toc: true
-  # pdf:
-  #   documentclass: scrbook
-  #   keep-tex: true
 
 # freeze: auto means a document is only re-executed when it changes.
 # Commit the generated _freeze/ folder so CI reuses cached results.

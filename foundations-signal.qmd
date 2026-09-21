@@ -1,42 +1,184 @@
 ---
-title: "The voice signal"
+title: "Signal Fundamentals"
 ---
 
 ::: {.callout-note}
-This is a **scaffold stub**. It exists to prove the end-to-end pipeline —
-including executable code — renders and publishes correctly. Replace its content
-when you begin writing Part I.
+**Living draft.** This chapter defines the signal-processing vocabulary the
+rest of the reference uses. Later chapters cite it when they name a
+sampling rate, frame length, window, or transform. Found an error? Use the
+*Report an issue* link in the sidebar.
 :::
 
-## A synthetic voiced signal
+## What every acoustic measure sees
 
-The code cell below generates a simple harmonic-rich signal, a stand-in for a
-sustained vowel, and plots a short segment. If this figure appears in the
-rendered site, your Jupyter/Python execution path is working.
+Every acoustic measure in this reference is computed on a digital signal —
+a sequence of numeric samples that represents the microphone's continuous
+pressure waveform. The chain from a spoken vowel to a jitter value passes
+through five stages this chapter defines:
 
-```{python}
-#| label: fig-synthetic
-#| fig-cap: "A synthetic harmonic-rich signal (f0 = 120 Hz), first 25 ms."
+1. **Sampling** — picking amplitude at regularly spaced time points.
+2. **Quantization** — mapping continuous amplitude to a finite set of levels.
+3. **Framing** — cutting the sample stream into short segments for
+   time-varying analysis.
+4. **Windowing** — tapering each frame to control spectral artefacts.
+5. **Spectral or cepstral transformation** — moving from the time domain
+   into a domain where harmonic structure and periodicity are visible.
 
-import numpy as np
-import matplotlib.pyplot as plt
+Each stage introduces choices (sampling rate, bit depth, frame length,
+window shape, transform length) that constrain what a downstream measure
+can and cannot say. Every measure chapter in Parts II–IV names the specific
+frame length and window it presupposes; this chapter is the reference those
+cross-references resolve to.
 
-fs = 16000                      # sample rate (Hz)
-dur = 0.5                       # seconds
-t = np.linspace(0, dur, int(fs * dur), endpoint=False)
-f0 = 120.0                      # fundamental frequency (Hz)
+## Signals: continuous and discrete
 
-# Sum of harmonics with 1/k amplitude decay
-signal = sum((1.0 / k) * np.sin(2 * np.pi * f0 * k * t) for k in range(1, 20))
+An **analog signal** varies continuously in both time and amplitude — the
+voltage produced by a microphone as a vowel is spoken. A **digital signal**
+is discrete in both dimensions: time is discretized by sampling, amplitude
+by quantization [@ludlow2018measuring]. The transformation from continuous
+to digital is analog-to-digital conversion (A/D); the reverse — needed to
+play a sample stream through a loudspeaker — is D/A conversion
+[@kent2002acoustic].
 
-fig, ax = plt.subplots(figsize=(7, 2.5))
-ax.plot(t[:400], signal[:400], linewidth=1)
-ax.set_xlabel("Time (s)")
-ax.set_ylabel("Amplitude")
-fig.tight_layout()
-plt.show()
-```
+The digital sequence *x*[*n*] represents the analog signal *x*(*t*) at
+instants *t* = *nT*, where *T* is the sampling period. What was a function
+of continuous time becomes a numbered sequence.
 
-Once real content replaces this stub, the same executable pattern will let every
-measure chapter compute and display results on real signals — ideally the same
-libraries PhonaLab uses, so the reference and the platform stay consistent.
+## Sampling and Nyquist
+
+The **sampling rate** is the number of samples per second, in hertz. A
+sampling rate of 10 kHz means the analog signal is sampled 10,000 times
+per second [@kent2002acoustic].
+
+**Nyquist's Sampling Theorem** states that the sampling rate must be at
+least twice the highest frequency of interest in the signal
+[@kent2002acoustic; @rabiner2011theory]. For voice analysis this fixes the
+practical minimum:
+
+| Sampling rate | Maximum analysable frequency |
+|---|---|
+| 44.1 kHz (CD quality) | 22.05 kHz |
+| 22.05 kHz | 11.025 kHz |
+| 10 kHz | 5 kHz |
+| 8 kHz (telephone) | 4 kHz |
+
+Sampling below the Nyquist rate produces **aliasing** — high-frequency
+energy folds down into the analysis band and misrepresents the signal.
+Aliasing is prevented by a **pre-sampling (anti-alias) low-pass filter**
+placed before the sampler, rejecting energy above the Nyquist frequency. A
+useful filter target for speech work is at most 0.5 dB pass-band ripple and
+at least −68 dB stop-band attenuation [@kent2002acoustic].
+
+## Quantization
+
+Quantization discretizes amplitude. Instead of a continuous voltage, each
+sample is represented by an integer drawn from 2^*N* levels, where *N* is
+the **bit depth** [@ludlow2018measuring]:
+
+| Bit depth | Levels |
+|---|---|
+| 8 | 256 |
+| 10 | 1,024 |
+| 12 | 4,096 |
+| 16 | 65,536 |
+| 24 | 16,777,216 |
+
+The greater the bit depth, the finer the amplitude gradation and the
+smaller the quantization error. For voice measurement, 16 bits (a
+signal-to-quantization-noise ratio around 96 dB) is the practical standard;
+@baken2000clinical treat 10 bits as a defensible minimum, and note that
+using as much of the converter's input range as possible is at least as
+important as high bit depth, because quantization error is a fixed absolute
+quantity — a small signal wastes bit depth.
+
+Set the input gain conservatively (peak at ~80 % of full scale) and check
+for clipping in every recording. A clipped signal distorts every derived
+measure — F0, jitter, shimmer, HNR, CPP.
+
+## Framing and windowing
+
+Voice signals are non-stationary — the vocal-tract configuration and
+glottal source change from vowel to vowel and even within a single vowel.
+A single global Fourier transform of a long utterance therefore averages
+away most of what matters. **Short-time analysis** solves this by dividing
+the signal into overlapping short segments (**frames**) and analysing each
+frame as if it were locally stationary [@rabiner2011theory].
+
+- **Frame length** is typically 20–40 ms for voice analysis: long enough to
+  contain several pitch periods, short enough that the vocal-tract
+  configuration doesn't change appreciably across the frame.
+- **Frame rate** (or hop size) is how often frames are extracted, typically
+  every 5–10 ms. Frames overlap by 50–75 %.
+- **Windowing** multiplies each frame by a tapered function before the
+  Fourier transform, to suppress the spectral artefacts that a rectangular
+  frame would produce.
+
+The **Hamming window** is the standard choice for voice work:
+
+$$
+w[n] = 0.54 - 0.46 \cos\!\left(\frac{2\pi n}{N-1}\right), \quad 0 \le n \le N-1
+$$
+
+[@rabiner2011theory]. It suppresses the side lobes of a rectangular window
+at the cost of a slightly wider main lobe (worse frequency resolution). The
+**Hanning (Hann) window**, a related raised-cosine variant, is used
+equivalently in many systems. The rectangular window — no tapering — is
+used only when frame boundaries coincide with signal periods (rare in
+practice).
+
+The trade-off between frame length and frequency resolution is fixed by an
+uncertainty-like relation Δ*f* ≈ 1/*T*: a longer frame *T* gives finer
+frequency resolution Δ*f*, but averages over more temporal change. A 30-ms
+Hamming window at a 44.1 kHz sampling rate gives about 33 Hz frequency
+resolution, which is finer than a semitone at typical speaking F0.
+
+## Time, frequency, and cepstral domains
+
+Three domains carry voice information, and different measures live in
+different domains:
+
+**Time domain.** The sample sequence *x*[*n*]. Waveform-based measures
+(jitter, shimmer, autocorrelation-based F0 trackers) work here.
+
+**Frequency domain (spectrum).** Obtained by applying a discrete Fourier
+transform (DFT, computed as an FFT) to a windowed frame. Magnitude gives
+the short-time magnitude spectrum; a series of such spectra across time is
+a spectrogram. Harmonics-to-noise ratio, spectral tilt, and formant
+measurements live here.
+
+**Cepstral domain (cepstrum).** Obtained by taking the logarithm of the
+magnitude spectrum and applying an inverse Fourier transform to it
+[@rabiner2011theory]. Its independent variable is **quefrency** — a
+time-like dimension in units of seconds — and its dominant peak sits at
+the quefrency corresponding to the voice period. The cepstrum is where
+cepstral peak prominence lives; see the [CPPS chapter](cpps.qmd).
+
+The mathematical definition of periodicity — *f*(*t* + *T*) = *f*(*t*),
+where *T* is the period — is what all of this ultimately measures against
+[@titze2000principles]. When the periodicity condition fails, so do most
+of these measures; see the [Signal Typing chapter](foundations-signal-typing.qmd).
+
+## Caveats
+
+- **Sampling rate and analysis bandwidth are not the same as the highest
+  recovered frequency.** A 44.1 kHz recording preserves energy up to 22 kHz
+  in principle, but only if the anti-alias filter actually rejects energy
+  above the Nyquist frequency to that fidelity.
+- **Frame length gates what can be measured.** A frame shorter than one
+  voice period cannot support F0 or perturbation measurement. For a
+  speaker at 100 Hz (10 ms per period), a 20 ms frame contains two
+  periods — the minimum defensible for jitter or shimmer, well below the
+  ≥30-cycle sample @baken2000clinical recommend for shimmer.
+- **Window choice affects spectral tilt and formant measurements.** A
+  Hamming window's main-lobe width is roughly 8π/*N* radians on a length-*N*
+  frame; comparing measurements across studies requires the same window
+  family and length.
+- **Software defaults differ.** Praat, ADSV, MDVP, and PhonaLab each ship
+  with different default frame lengths, hop sizes, windows, and
+  pre-emphasis coefficients. Every reported measure in this reference
+  names its software and settings; a bare number without them is not
+  comparable across systems.
+- **Digitisation is not lossless.** The finite sampling rate and bit depth
+  set floors on what any downstream measure can resolve. Perturbation
+  measures are especially sensitive to quantization noise at low bit
+  depth [@baken2000clinical].
