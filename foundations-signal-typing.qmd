@@ -1,133 +1,298 @@
 ---
 title: "Signal Typing"
+execute:
+  echo: true
+jupyter: python3
+format:
+  html:
+    code-fold: true
+    code-summary: "Show the code for this figure"
 ---
 
 ::: {.callout-note}
 **Living draft.** This chapter presents the classification that gates every
-subsequent measure. Later chapters cross-reference the three types by number
-throughout their Caveats sections. Found an error? Use the *Report an issue*
-link in the sidebar.
+measure in Parts II to IV. Later chapters refer to the types by number in their
+Caveats sections. All example signals are synthetic; the code is shown under
+each figure and is MIT licensed. Found an error? Use the *Report an issue* link
+in the sidebar.
 :::
+
+```{python}
+#| label: setup
+#| include: false
+import sys, os
+sys.path.insert(0, os.path.abspath("_code"))
+import numpy as np
+import matplotlib.pyplot as plt
+import vmsynth as vs
+
+plt.rcParams.update({
+    "figure.dpi": 110, "savefig.dpi": 200,
+    "font.size": 9.5, "axes.titlesize": 9.5, "axes.titleweight": "bold",
+    "axes.titlelocation": "left", "axes.labelsize": 9,
+})
+FS = 16000
+examples = vs.type_examples(fs=FS, dur=0.6, f0=125.0)
+```
 
 ## Why signal typing comes first
 
-Fundamental frequency, jitter, shimmer, and harmonics-to-noise ratio all
-presuppose an identifiable repeating waveform. Disordered voices routinely
-violate that assumption. Applying a perturbation formula to a signal that has
-no periodic structure produces a number, but not a meaningful one
-[@baken2000clinical]. A three-category classification of voiced signals,
-originally proposed by @titze1995workshop at the NCVS Workshop on Acoustic
-Voice Analysis and formalised for the clinic by @baken2000clinical, addresses
-this by naming which kinds of vocal signal support which kinds of measurement.
+F0 is the rate at which a cyclic waveform repeats. An aperiodic signal has no
+repeating waveform and therefore has no F0 [@baken2000clinical, p. 152]. Jitter,
+shimmer and harmonics-to-noise ratio all start from an identified F0 or
+period, so they inherit this limit. The acoustic signals of many voice
+disorders do not have a periodicity that allows automatic measurement of F0
+or of cycle amplitudes [@ludlow2018measuring, p. 378].
 
-Every measure chapter in this reference relies on the classification. This
-chapter is the single authority those cross-references resolve to.
+Analysis software does not protect the user from this. A computer-based system
+may calculate a putative F0 for any signal, even an aperiodic one, and the
+number it displays need not have any meaning [@baken2000clinical, p. 152].
+Checking the signal is the user's responsibility. It is often skipped: Ludlow,
+Kent and Gray report a finding by Behrman (2005) that 60 % of clinicians using
+acoustic analysis did not examine the voice signal first to see whether
+periodic analysis was possible [@ludlow2018measuring, p. 378].
 
-## The three types
+Signal typing is that check. It sorts voice signals by how periodic they are
+over the interval to be analysed, so that each measure is applied only where it
+is valid.
 
-The classification, with clinical subtypes added by @baken2000clinical shown
-in italics:
+## Origin
 
-### Type 1 — nearly periodic (or, in the ideal case, periodic)
+The classification comes from the Workshop on Acoustic Voice Analysis, whose
+summary statement was written by Titze. The participants called a voice
+Type 1 when the periods and amplitudes of vibration are easily identified in
+the acoustic signal, and used Types 2 and 3 for the irregular signals typical
+of voice disorders [@ludlow2018measuring, p. 378]. Baken and Orlikoff adopted
+Titze's three categories for clinical use and added subtypes within each
+[@baken2000clinical, p. 152]. Sprecher and colleagues (2010) later tested
+whether the types could be identified from narrowband spectrograms. They found
+four categories, splitting noise-dominated signals off from Type 3 as a new
+Type 4 [@ludlow2018measuring, p. 378].
 
-Waveforms that do not undergo qualitative changes during the analysis
-interval. Any modulating or subharmonic frequencies present carry energy at
-least one order of magnitude below the fundamental [@baken2000clinical].
+## The types
+
+The definitions and subtypes for Types 1 to 3 are those of Baken and
+Orlikoff. Their subtypes are shown in italics.
+
+### Type 1: nearly periodic
+
+Nearly periodic (or, in the ideal case, periodic) waveforms that do not
+undergo qualitative changes during the interval analysed. Any modulating or
+subharmonic frequencies present have at least one order of magnitude less
+energy than the fundamental [@baken2000clinical, p. 152].
 
 - *Subtype A*: minor random variation of F0 or waveshape.
-- *Subtype B*: minor monotonic modulation — F0 or amplitude steadily
+- *Subtype B*: minor monotonic modulation, with F0 or amplitude steadily
   increasing or decreasing.
 - *Subtype C*: minor cyclic variation (modulation) of F0 or amplitude.
 
-### Type 2 — organised but non-stationary
+[@baken2000clinical, p. 152]
 
-Signals with sudden qualitative changes (bifurcations), or with modulating or
-subharmonic frequencies whose energy is comparable to that of the
-fundamental. The signal is clearly ordered and organised, but no single F0
-value validly characterises the entire segment [@baken2000clinical].
+### Type 2: organised, but no single F0
+
+Signals with sudden qualitative changes (bifurcations) in the interval
+analysed, or with modulating or subharmonic frequencies whose energy is
+comparable to that of the fundamental. Type 2 signals are clearly ordered and
+organised, but no single F0 value validly characterises the whole segment
+[@baken2000clinical, p. 153].
 
 - *Subtype A*: signal bifurcation(s) present.
 - *Subtype B*: F0 or amplitude discontinuity.
 - *Subtype C*: large-scale modulation of F0.
 
-### Type 3 — without apparent periodicity
+[@baken2000clinical, p. 153]
+
+A common Type 2 pattern is period doubling. Successive cycles alternate between
+two shapes, which puts a component at half the fundamental (F0/2) into the
+spectrum. The waveform then has two defensible periods: one per oscillation or
+one per pair [@baken2000clinical, p. 151].
+
+### Type 3: no apparent periodicity
 
 Signals without apparent periodicity, and hence not validly susceptible to F0
-measurement. Type 3 signals may nonetheless be chaotic in the technical
-sense — carrying a covert organising principle discoverable through
-dynamical-systems techniques [@baken2000clinical].
+measurement. A Type 3 signal may nonetheless be chaotic, with a covert
+organising principle that the techniques of dynamical systems theory might
+reveal [@baken2000clinical, p. 153].
 
 - *Subtype A*: no observable structure.
 - *Subtype B*: deep-level (chaotic) organisation.
 
+[@baken2000clinical, p. 153]
+
+### Type 4: dominated by noise
+
+Type 4 was added by Sprecher and colleagues for signals dominated by noise,
+separated from Type 3 [@ludlow2018measuring, p. 378]. Their example Type 4
+waveform is aperiodic and is described as stochastic noise
+[@ludlow2018measuring, p. 6].
+
+## What the types look like
+
+@fig-types shows one synthetic example of each type. Each is a pulse train
+passed through the same vowel filter; only the cycle-to-cycle pattern differs.
+The spectrograms use a long window, so harmonics show as horizontal lines when
+they exist.
+
+```{python}
+#| label: fig-types
+#| fig-cap: "Synthetic examples of the four signal types. Left: 60 ms of waveform. Right: narrowband spectrogram (50-ms Hamming window, 0–1.5 kHz) of the whole 0.6-s segment. Type 1: small random period and amplitude variation; harmonics are clean lines. Type 2: a bifurcation at 0.19 s (shaded) from period-1 to period-2 behaviour; new lines appear midway between the harmonics, at odd multiples of F0/2. Type 3: cycle lengths and amplitudes driven by a deterministic chaotic map; no stable harmonic lines. Type 4: weak irregular pulses buried in noise; energy is spread across frequency."
+#| fig-alt: "Four rows, one per signal type. Each row has a short waveform on the left and a spectrogram on the right. Type 1 shows a regular waveform and parallel harmonic lines. Type 2 shows alternating big and small cycles and, after about 0.19 seconds, extra lines between the harmonics. Type 3 shows irregular cycles and a smeared spectrogram. Type 4 shows a noise-like waveform and a diffuse spectrogram."
+
+split_t = 0.4 * 0.6
+fig, axes = plt.subplots(4, 2, figsize=(7.2, 7.6),
+                         gridspec_kw={"width_ratios": [1, 1.35]})
+for row, (name, x) in enumerate(examples.items()):
+    aw, asg = axes[row]
+    t0 = 0.40  # waveform excerpt start (s), after the Type 2 bifurcation
+    seg = x[int(t0 * FS): int((t0 + 0.06) * FS)]
+    aw.plot(np.arange(len(seg)) / FS * 1e3, seg, color=vs.INK, lw=0.8)
+    aw.set_ylim(-1.05, 1.05)
+    aw.set_yticks([])
+    aw.set_title(name, color=vs.INK)
+    vs.style_axes(aw, grid=False)
+    aw.spines["left"].set_visible(False)
+
+    vs.plot_spectrogram(asg, x, FS, win_s=0.050, fmax=1500, hop_s=0.002, dyn_db=50)
+    asg.set_ylim(0, 1.5)
+    asg.set_ylabel("kHz")
+    if name == "Type 2":
+        asg.axvline(split_t, color=vs.ORANGE, lw=1.2, ls="--")
+        asg.text(split_t + 0.01, 1.38, "bifurcation", color=vs.INK, fontsize=8)
+    vs.style_axes(asg, grid=False)
+axes[-1, 0].set_xlabel("Time (ms)")
+axes[-1, 1].set_xlabel("Time (s)")
+fig.tight_layout()
+plt.show()
+```
+
 ## Applying the classification
 
-Signal typing is a visual-inspection step performed before perturbation
-measurement, not a numeric procedure. The vocal waveform (or a close
-correlate, such as an electroglottographic trace) is displayed and examined
-for the presence of bifurcations, modulations, discontinuities, and
-periodicity. The analysis window is chosen so that a single type applies
-across it [@baken2000clinical]. A computer-based analysis system will happily
-calculate a putative F0 for any signal, including aperiodic ones, but the
-number produced has no meaning if the signal is Type 3 [@baken2000clinical].
+The type belongs to an analysis interval, not to a speaker or a diagnosis. Both
+Type 1 and Type 2 are defined by what happens during the interval to be
+analysed [@baken2000clinical, pp. 152--153], so the same phonation can contain
+a Type 1 stretch and a Type 2 stretch. The practical question is always whether
+the segment you intend to measure is Type 1.
 
-The classification is signal-based, not disorder-based. A single speaker may
-produce all three types across a session, and the same disorder can present
-differently at different F0 or intensity levels. The underlying mathematical
-distinction is periodicity itself: a waveform is periodic when *f*(*t* + *T*)
-= *f*(*t*), so the waveform is an exact copy of itself after some period *T*
-has elapsed [@titze2000principles]. Any departure from this exact-repetition
-condition is aperiodicity of some kind.
+Ludlow, Kent and Gray describe the procedure. Select a segment of a prolonged
+vowel that is quasiperiodic, so that the periods of vibration can be detected
+accurately. Examine it with a narrowband spectrogram to see whether F0 and its
+harmonics are visible. If they cannot be identified, the signal is probably
+Type 3 or Type 4 and is not suitable for perturbation analysis
+[@ludlow2018measuring, p. 378].
+
+@fig-tracker shows why the inspection cannot be delegated to the software. A
+simple autocorrelation F0 tracker without a voicing decision returns a value
+for every frame of every example. Only the Type 1 values describe the signal.
+
+```{python}
+#| label: fig-tracker
+#| fig-cap: "F0 returned every 10 ms by a naive autocorrelation tracker (40-ms frames, search range 60–400 Hz, no voicing decision) for the four synthetic signals of @fig-types. The dashed line is the 125-Hz rate of the pulse generator. Every frame gets a number. Type 1: the numbers describe the signal. Type 2: after the bifurcation the tracker settles on about 137 Hz, the rate of the shorter cycle of each pair; it describes neither the alternating pattern nor the 62.5-Hz pair rate. Types 3 and 4: the numbers are produced by the algorithm, not by any period in the signal."
+#| fig-alt: "Four small panels of F0 against time. Type 1 is a flat line at 125 Hz. Type 2 is flat at 125 Hz, then steps up to about 137 Hz. Type 3 scatters between about 95 and 150 Hz. Type 4 jumps between widely different values up to 400 Hz."
+
+fig, axes = plt.subplots(1, 4, figsize=(7.2, 2.6), sharey=True)
+for ax, (name, x) in zip(axes, examples.items()):
+    tt, f0 = vs.ac_f0_track(x, FS)
+    ax.axhline(125, color=vs.MUTED, lw=0.8, ls="--")
+    ax.plot(tt, f0, "o", color=vs.BLUE, ms=3)
+    ax.set_title(name, color=vs.INK)
+    ax.text(0.04, 0.03, f"mean {np.mean(f0):.0f} Hz\nSD {np.std(f0):.1f} Hz",
+            transform=ax.transAxes, va="bottom", fontsize=8, color=vs.INK)
+    ax.set_xlabel("Time (s)")
+    vs.style_axes(ax)
+axes[0].set_ylabel("Reported F0 (Hz)")
+axes[0].set_ylim(0, 420)
+fig.tight_layout()
+plt.show()
+```
+
+@fig-workflow summarises the decision.
+
+```{mermaid}
+%%| label: fig-workflow
+%%| fig-cap: "Signal-typing workflow before measurement. Branch labels follow the definitions of Baken and Orlikoff (2000, pp. 152–153) and the inspection procedure described by Ludlow, Kent and Gray (2018, p. 378)."
+flowchart TD
+    A["Select a quasiperiodic segment<br/>of the sustained vowel"] --> B["Inspect the waveform and a<br/>narrowband spectrogram"]
+    B --> C{"F0 and harmonics<br/>visible?"}
+    C -- "No" --> G["Type 3 or 4:<br/>no F0-based measures"]
+    C -- "Yes" --> D{"Qualitative change, subharmonics,<br/>or strong modulation<br/>in the interval?"}
+    D -- "No" --> E["Type 1:<br/>F0, perturbation and<br/>noise measures apply"]
+    D -- "Yes" --> F{"Can a shorter Type 1<br/>segment be isolated?"}
+    F -- "Yes" --> A
+    F -- "No" --> H["Type 2:<br/>report perturbation as<br/>not applicable"]
+    G --> I["Use measures that do not<br/>need F0, such as CPPS;<br/>describe the signal"]
+    H --> I
+```
 
 ## Which measures apply to which types
 
-Signal type gates the measures that follow in Parts II–IV.
+| Type | F0 | Perturbation (jitter, shimmer) |
+|---|---|---|
+| 1 | A single F0 characterises the interval. Evaluation of F0 presupposes Type 1, subtype A, within reasonable limits [@baken2000clinical, p. 153]. | Accurate [@ludlow2018measuring, p. 378]. |
+| 2 | No single F0 value validly characterises the segment [@baken2000clinical, p. 153]. | Accurate only in some Type 2 signals, those without bifurcation into two F0 values [@ludlow2018measuring, p. 378]. |
+| 3 | Not validly susceptible to F0 measurement [@baken2000clinical, p. 153]. | Not reliably measurable [@ludlow2018measuring, p. 378]. |
+| 4 | (Noise-dominated.) | Not reliably measurable [@ludlow2018measuring, p. 378]. |
 
-| Type | Reliable | Marginal | Unreliable / undefined |
-|---|---|---|---|
-| Type 1 | Jitter, shimmer, HNR, CPPS, spectral tilt, F0, all composites | — | — |
-| Type 2 | CPPS, some spectral measures | HNR, spectral tilt | Jitter, shimmer, composite indices |
-| Type 3 | Cepstral-domain measures (CPPS); dynamical-systems methods | — | Any measure that requires F0 tracking |
+: What each signal type supports. {#tbl-type-measures}
 
-- **Perturbation measures require Type 1 signals.** For F0 evaluation to be
-  meaningful, the signal should within reasonable limits be classifiable as
-  Type 1, subtype A [@baken2000clinical]. Occasional discontinuities may be
-  less damaging than once believed for some software [@baken2000clinical],
-  but the general rule stands.
-- **Noise measures (HNR, NHR) presuppose a discernible periodic component**
-  to separate from the noise; they are unreliable on Type 2 and undefined on
-  Type 3.
-- **Cepstral peak prominence is robust across signal types.** CPP and CPPS
-  do not require pitch detection or tracking and can be extracted from
-  connected speech as well as sustained vowels. This is one of the practical
-  reasons ASHA recommended CPP as a general dysphonia measure in preference
-  to jitter, shimmer, and HNR (see the [CPPS chapter](cpps.qmd)).
-- **Composite indices inherit their components' signal-type constraints.**
-  Because AVQI and ABI include perturbation and HNR-like terms, they are
-  sensitive to non-Type-1 material; see the [AVQI](avqi.qmd) and
+Other measure families relate to the types as follows.
+
+- **Harmonics-to-noise ratio.** HNR needs a filter that separates F0 and its
+  harmonics from the rest of the signal. Like jitter and shimmer, it can only
+  be applied to a steady phonation such as a prolonged vowel
+  [@ludlow2018measuring, p. 378]. It therefore shares their dependence on a
+  Type 1 segment.
+- **Cepstral peak prominence.** CPP does not require direct computation of
+  F0, and it can be extracted from connected speech as well as sustained
+  vowels [@murton2020cpp, p. 1596]. Because no pitch detection or tracking is
+  used, the cepstral measures are robust in dysphonic voices, particularly
+  breathy ones [@barsties2018meta, p. 316]. The 2018 ASHA guidance recommended
+  CPP as a general measure of dysphonia in place of jitter, shimmer and HNR
+  [@murton2020cpp, p. 1596]. See the [CPPS chapter](cpps.qmd).
+- **Composite indices.** AVQI includes shimmer local, shimmer local dB, and
+  HNR among its components [@barsties2016avqi, p. 574]. ABI includes jitter
+  local [@delgado2018avqi, p. 320]. These components carry the restrictions in
+  @tbl-type-measures into the composite. See the [AVQI](avqi.qmd) and
   [ABI](abi.qmd) chapters.
-- **Type 3 signals need dynamical-systems methods**, not periodicity-based
-  measures, and that direction of investigation is one of the frontier
-  areas in acoustic voice analysis [@baken2000clinical].
-
-The practical workflow: display the signal, classify it, and if it is not
-Type 1 either shorten the analysis window until a Type 1 segment is
-isolated, switch to a signal-type-robust measure such as CPPS, or report the
-signal as unanalyzable by perturbation methods — rather than reporting a
-spurious number.
+- **Dynamical-systems methods.** For Type 3 signals, any covert organisation
+  might be discoverable with the techniques of dynamical systems theory
+  [@baken2000clinical, p. 153].
 
 ## Caveats
 
-- The classification is human-judgment-based. Two clinicians may disagree at
-  the boundaries, particularly between Type 1 subtype C and Type 2 subtype C
-  (both involve F0 modulation; they differ in the magnitude relative to the
-  fundamental) [@baken2000clinical].
-- Software rarely refuses to compute perturbation values on non-Type-1
-  signals — the user must apply the type check themselves.
-- The analysis window matters. A speaker who produces Type 2 material during
-  a phrase transition and Type 1 material during a sustained vowel is both,
-  depending on which window is analysed.
-- The Baken and Orlikoff subtypes (A, B, C) are their own extension of
-  @titze1995workshop's three-type framework; other authors have used other
-  subdivisions or none at all. Cite the subtype only where the sensitivity
-  of the analysis warrants it.
+- **Typing is a judgement.** The types are defined by inspection, and the
+  boundary between Type 1 and Type 2 is stated as an energy ratio (an order of
+  magnitude below the fundamental versus comparable to it)
+  [@baken2000clinical, pp. 152--153]. None of the ingested sources reports
+  inter-rater agreement for signal typing.
+- **Perturbation can move the wrong way with treatment.** When a voice is very
+  irregular before treatment, few periods can be tracked, and jitter and
+  shimmer may come out low. As the voice improves, more periods are
+  identified and the measured values may rise
+  [@ludlow2018measuring, p. 378]. Type the signal at every session before
+  comparing perturbation values over time.
+- **Occasional discontinuities.** Occasional discontinuities may be less
+  damaging to perturbation measurement than was once believed, at least for
+  some software [@baken2000clinical, p. 153]. The requirement for a Type 1
+  segment still stands.
+- **Subtypes are an extension.** The A/B/C subtypes are Baken and Orlikoff's
+  addition to Titze's three categories [@baken2000clinical, p. 152]. Cite a
+  subtype only where the analysis depends on it.
+- **The original sources are not yet in the library.** The workshop summary
+  statement and the Sprecher et al. (2010) paper are cited here through
+  @baken2000clinical and @ludlow2018measuring.
+
+## Points of disagreement
+
+- **Date of the classification.** Baken and Orlikoff cite the scheme as Titze (1995)
+  [@baken2000clinical, p. 152]. Ludlow, Kent and Gray cite it as Titze (1994)
+  and refer to the workshop's summary statement
+  [@ludlow2018measuring, p. 378]. This reference uses 1995 for the summary
+  statement until the original is ingested.
+- **Character of Type 2 and Type 3.** Baken and Orlikoff define Type 2 by
+  bifurcations or strong modulating or subharmonic components, and Type 3 by
+  the absence of apparent periodicity, possibly with chaotic organisation
+  [@baken2000clinical, p. 153]. Ludlow, Kent and Gray describe Type 2 as highly
+  irregular periodicity with subharmonics and modulations such as tremor, and
+  Type 3 as chaotic and usually perceived as rough
+  [@ludlow2018measuring, p. 378]. This chapter uses the Baken and Orlikoff
+  definitions, which are signal-based rather than perceptual.

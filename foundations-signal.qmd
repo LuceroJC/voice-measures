@@ -1,81 +1,177 @@
 ---
 title: "Signal Fundamentals"
+execute:
+  echo: true
+jupyter: python3
+format:
+  html:
+    code-fold: true
+    code-summary: "Show the code for this figure"
 ---
 
 ::: {.callout-note}
 **Living draft.** This chapter defines the signal-processing vocabulary the
 rest of the reference uses. Later chapters cite it when they name a
-sampling rate, frame length, window, or transform. Found an error? Use the
-*Report an issue* link in the sidebar.
+sampling rate, frame length, window, or transform. All figures are computed
+from synthetic signals; the code is shown under each figure and is MIT
+licensed. Found an error? Use the *Report an issue* link in the sidebar.
 :::
+
+```{python}
+#| label: setup
+#| include: false
+import sys, os
+sys.path.insert(0, os.path.abspath("_code"))
+import numpy as np
+import matplotlib.pyplot as plt
+import vmsynth as vs
+
+plt.rcParams.update({
+    "figure.dpi": 110, "savefig.dpi": 200,
+    "font.size": 9.5, "axes.titlesize": 9.5, "axes.titleweight": "bold",
+    "axes.titlelocation": "left", "axes.labelsize": 9,
+})
+```
 
 ## What every acoustic measure sees
 
-Every acoustic measure in this reference is computed on a digital signal —
-a sequence of numeric samples that represents the microphone's continuous
-pressure waveform. The chain from a spoken vowel to a jitter value passes
-through five stages this chapter defines:
+Every acoustic measure in this reference is computed on a digital signal: a
+sequence of numbers that stands for the continuous pressure waveform at the
+microphone. The path from a sustained vowel to a jitter or CPPS value passes
+through five stages.
 
-1. **Sampling** — picking amplitude at regularly spaced time points.
-2. **Quantization** — mapping continuous amplitude to a finite set of levels.
-3. **Framing** — cutting the sample stream into short segments for
-   time-varying analysis.
-4. **Windowing** — tapering each frame to control spectral artefacts.
-5. **Spectral or cepstral transformation** — moving from the time domain
-   into a domain where harmonic structure and periodicity are visible.
+1. **Sampling** discretises time.
+2. **Quantization** discretises amplitude.
+3. **Framing** cuts the sample stream into short segments.
+4. **Windowing** tapers each segment before spectral analysis.
+5. **Transformation** moves the frame into the frequency or cepstral domain.
 
-Each stage introduces choices (sampling rate, bit depth, frame length,
-window shape, transform length) that constrain what a downstream measure
-can and cannot say. Every measure chapter in Parts II–IV names the specific
-frame length and window it presupposes; this chapter is the reference those
-cross-references resolve to.
+Sampling and quantization together are the essence of digitization
+[@kent2002acoustic, p. 62]. Each stage has parameters (sampling rate, bit
+depth, frame length, window shape) that limit what a downstream measure can
+report. Every measure chapter names the parameters it presupposes, and this
+chapter is where those names are defined.
 
-## Signals: continuous and discrete
+## Continuous and discrete signals
 
-An **analog signal** varies continuously in both time and amplitude — the
-voltage produced by a microphone as a vowel is spoken. A **digital signal**
-is discrete in both dimensions: time is discretized by sampling, amplitude
-by quantization [@ludlow2018measuring]. The transformation from continuous
-to digital is analog-to-digital conversion (A/D); the reverse — needed to
-play a sample stream through a loudspeaker — is D/A conversion
-[@kent2002acoustic].
+A continuous-time signal has a value at every instant. A discrete-time signal
+has values only at chosen instants, and can be derived from a continuous one
+by sampling [@ludlow2018measuring, p. 4]. The operation that turns the
+microphone's analog signal into a series of stored numbers is
+analog-to-digital (A/D) conversion. The reverse operation, needed to play a
+stored signal, is digital-to-analog (D/A) conversion [@kent2002acoustic, p. 63].
 
-The digital sequence *x*[*n*] represents the analog signal *x*(*t*) at
-instants *t* = *nT*, where *T* is the sampling period. What was a function
-of continuous time becomes a numbered sequence.
+In the notation used throughout this reference, the sampled sequence is
+$x[n] = x_a(nT)$, where $x_a(t)$ is the analog signal, $n$ is an integer
+sample index, and $T$ is the sampling period [@rabiner2011theory, p. 44].
+The sampling rate is $F_s = 1/T$.
 
-## Sampling and Nyquist
+## Sampling and aliasing
 
-The **sampling rate** is the number of samples per second, in hertz. A
-sampling rate of 10 kHz means the analog signal is sampled 10,000 times
-per second [@kent2002acoustic].
+The sampling rate is the number of samples taken per second. A rate of 10 kHz
+samples the analog signal 10,000 times per second [@kent2002acoustic, p. 62].
 
-**Nyquist's Sampling Theorem** states that the sampling rate must be at
-least twice the highest frequency of interest in the signal
-[@kent2002acoustic; @rabiner2011theory]. For voice analysis this fixes the
-practical minimum:
+The sampling theorem states the condition for a lossless representation. If
+the analog signal contains no energy at or above a frequency $F_N$, it can be
+reconstructed uniquely from its samples provided $F_s \ge 2F_N$
+[@rabiner2011theory, p. 44]. $F_N$ is the Nyquist frequency and $2F_N$ is the
+Nyquist rate [@baken2000clinical, p. 80]. When the condition fails, energy
+above half the sampling rate reappears at a lower, false frequency. This error
+is called aliasing [@kent2002acoustic, p. 65].
 
-| Sampling rate | Maximum analysable frequency |
-|---|---|
-| 44.1 kHz (CD quality) | 22.05 kHz |
-| 22.05 kHz | 11.025 kHz |
-| 10 kHz | 5 kHz |
-| 8 kHz (telephone) | 4 kHz |
+@fig-aliasing repeats a classic demonstration. A 100-Hz sine is sampled at
+four rates. At 250 samples/s there are only 2.5 samples per cycle, yet the
+100-Hz periodicity survives. At 160 samples/s there are fewer than two samples
+per cycle and the samples trace a slower wave [@baken2000clinical, p. 80].
 
-Sampling below the Nyquist rate produces **aliasing** — high-frequency
-energy folds down into the analysis band and misrepresents the signal.
-Aliasing is prevented by a **pre-sampling (anti-alias) low-pass filter**
-placed before the sampler, rejecting energy above the Nyquist frequency. A
-useful filter target for speech work is at most 0.5 dB pass-band ripple and
-at least −68 dB stop-band attenuation [@kent2002acoustic].
+```{python}
+#| label: fig-aliasing
+#| fig-cap: "Sampling a 100-Hz sine at four rates (after the demonstration in Baken and Orlikoff, 2000, p. 80). Dots are samples. At 160 samples/s the samples fall on a 60-Hz wave (dashed): 100 Hz has been aliased to 160 − 100 = 60 Hz."
+#| fig-alt: "Five stacked panels over 100 ms. The top panel shows a continuous 100-Hz sine. The next four show samples taken at 1000, 500, 250 and 160 samples per second. The first three still alternate ten times; the last traces a slower 60-Hz wave."
+
+f, dur = 100.0, 0.1
+t = np.linspace(0, dur, 4000, endpoint=False)
+rates = [1000, 500, 250, 160]
+
+fig, axes = plt.subplots(len(rates) + 1, 1, figsize=(7, 5.6), sharex=True)
+axes[0].plot(t * 1e3, np.sin(2 * np.pi * f * t), color=vs.INK, lw=1.4)
+axes[0].set_title("Analog signal: 100-Hz sine", color=vs.INK)
+for ax, fs in zip(axes[1:], rates):
+    n = np.arange(int(dur * fs))
+    tn = n / fs
+    xn = np.sin(2 * np.pi * f * tn)
+    ax.plot(t * 1e3, np.sin(2 * np.pi * f * t), color=vs.GRID, lw=1.0)
+    ax.plot(tn * 1e3, xn, color=vs.BLUE, lw=0.9, alpha=0.6)
+    ax.plot(tn * 1e3, xn, "o", color=vs.BLUE, ms=4)
+    title = f"Sampled at {fs} samples/s  ({fs / f:.1f} samples per cycle)"
+    if fs < 2 * f:
+        fa = abs(f - fs)
+        ax.plot(t * 1e3, -np.sin(2 * np.pi * fa * t), "--", color=vs.ORANGE, lw=1.4)
+        title += f": aliased to {fa:.0f} Hz"
+    ax.set_title(title, color=vs.INK)
+for ax in axes:
+    vs.style_axes(ax)
+    ax.set_ylim(-1.35, 1.35)
+    ax.set_yticks([-1, 0, 1])
+axes[-1].set_xlabel("Time (ms)")
+fig.tight_layout()
+plt.show()
+```
+
+### Choosing a sampling rate
+
+The sampling rate must be at least twice the highest frequency of interest
+[@kent2002acoustic, p. 64]. For voice work the highest frequency of interest
+is set by the harmonics and by any noise, not by F0. For a periodic
+physiological signal, the highest frequency of interest is usually about
+$10F_0$, and sampling a little above the Nyquist rate (about 20 % more) gives
+a margin for residual noise [@baken2000clinical, p. 81]. Baken and Orlikoff
+recommend at least 20,000 samples/s for speech, and for any signal with
+significant aperiodic energy such as turbulence noise
+[@baken2000clinical, p. 81]. For archiving, 44.1 kHz with 16-bit depth is
+agreed good practice, and 44.1 or 96 kHz with 24-bit depth is best practice
+[@ludlow2018measuring, p. 140].
+
+The analysable bandwidth follows from the theorem.
+
+| Sampling rate | Highest analysable frequency ($F_s/2$) | Typical use |
+|---|---|---|
+| 96 kHz | 48 kHz | archival best practice [@ludlow2018measuring, p. 140] |
+| 44.1 kHz | 22.05 kHz | archival good practice [@ludlow2018measuring, p. 140] |
+| 20 kHz | 10 kHz | recommended minimum for speech [@baken2000clinical, p. 81] |
+| 8 kHz | 4 kHz | narrowband telephony [@rabiner2011theory, p. 47] |
+
+### Anti-aliasing filter
+
+A sampling rate that looks adequate is not sufficient on its own. Any energy
+above the Nyquist frequency will alias, so the signal must be band-limited by
+a low-pass anti-aliasing filter before the A/D converter
+[@baken2000clinical, p. 81]. Ordinary low-pass filters roll off too gently for
+this purpose. A component one octave above the cutoff may be attenuated by only
+about 12 dB, so anti-aliasing filters need very steep roll-offs
+[@baken2000clinical, pp. 81--82]. Kent and Read give a working specification:
+pass-band ripple below 0.5 dB and stop-band attenuation of at least 68 dB
+[@kent2002acoustic, p. 64].
+
+### Pre-emphasis
+
+Most speech analysis chains apply pre-emphasis, a high-frequency boost, before
+spectral analysis. Most of the energy of speech lies at low frequencies and
+would otherwise dominate the analysis [@kent2002acoustic, p. 63]. Pre-emphasis
+is either a filter giving +6 dB/octave above a breakpoint between 100 and
+1000 Hz, or first differencing of the samples, $y[n] = x[n] - a\,x[n-1]$
+[@kent2002acoustic, pp. 63--64]. The two methods give comparable results. A
+system that differences digitally must not also be fed through a hardware
+pre-emphasis filter, or the signal is pre-emphasised twice
+[@kent2002acoustic, p. 64]. Pre-emphasis settings are one of the parameters
+to check when comparing values across software.
 
 ## Quantization
 
-Quantization discretizes amplitude. Instead of a continuous voltage, each
-sample is represented by an integer drawn from 2^*N* levels, where *N* is
-the **bit depth** [@ludlow2018measuring]:
+Quantization discretises amplitude. Each sample is stored as one of $2^N$
+levels, where $N$ is the number of bits [@ludlow2018measuring, p. 4].
 
-| Bit depth | Levels |
+| Bits ($N$) | Levels ($2^N$) |
 |---|---|
 | 8 | 256 |
 | 10 | 1,024 |
@@ -83,102 +179,370 @@ the **bit depth** [@ludlow2018measuring]:
 | 16 | 65,536 |
 | 24 | 16,777,216 |
 
-The greater the bit depth, the finer the amplitude gradation and the
-smaller the quantization error. For voice measurement, 16 bits (a
-signal-to-quantization-noise ratio around 96 dB) is the practical standard;
-@baken2000clinical treat 10 bits as a defensible minimum, and note that
-using as much of the converter's input range as possible is at least as
-important as high bit depth, because quantization error is a fixed absolute
-quantity — a small signal wastes bit depth.
+Rounding a smoothly varying signal to discrete levels adds spurious
+components called quantization noise. The noise is minimised by using as many
+quantization levels as possible [@baken2000clinical, p. 79]. As a rule, each
+additional bit adds about 6 dB to the signal-to-quantization-noise ratio
+[@rabiner2011theory, p. 688].
 
-Set the input gain conservatively (peak at ~80 % of full scale) and check
-for clipping in every recording. A clipped signal distorts every derived
-measure — F0, jitter, shimmer, HNR, CPP.
+Bit depth only helps if the signal uses it. The step size of the converter is
+fixed, so a signal that spans a fraction of the input range is quantized with
+fewer effective levels. In Baken and Orlikoff's example, a 2-V signal on a
+10-bit converter with a 0 to 5 V range uses only 9 of the 10 bits
+[@baken2000clinical, p. 79]. Equivalently, a signal that varies over only half
+the converter's range loses 6 dB of signal-to-quantization-noise ratio
+[@rabiner2011theory, p. 690]. @fig-quantization shows the effect.
 
-## Framing and windowing
+```{python}
+#| label: fig-quantization
+#| fig-cap: "A 4-bit (16-level) converter applied to the same vowel-like waveform at full scale (left) and at one quarter of full scale (right). Top: signal (gray) and quantized samples (blue). Bottom: quantization error. The step size is the same in both columns, so the quiet signal carries the same absolute error on a four-times smaller waveform."
+#| fig-alt: "Two columns of plots. On the left, a waveform filling the converter range is closely followed by its quantized version, with a small error trace below. On the right, the same waveform at one quarter of the range is coarsely stepped, and the error trace below is as large in absolute terms."
 
-Voice signals are non-stationary — the vocal-tract configuration and
-glottal source change from vowel to vowel and even within a single vowel.
-A single global Fourier transform of a long utterance therefore averages
-away most of what matters. **Short-time analysis** solves this by dividing
-the signal into overlapping short segments (**frames**) and analysing each
-frame as if it were locally stationary [@rabiner2011theory].
+fs = 16000
+per = np.full(8, 1 / 125)
+x = vs.synth_vowel(per, np.ones(8), fs)[: int(0.016 * fs)]
+t = np.arange(len(x)) / fs * 1e3
+bits = 4
+step = 2 / 2 ** bits  # full range is -1..+1
 
-- **Frame length** is typically 20–40 ms for voice analysis: long enough to
-  contain several pitch periods, short enough that the vocal-tract
-  configuration doesn't change appreciably across the frame.
-- **Frame rate** (or hop size) is how often frames are extracted, typically
-  every 5–10 ms. Frames overlap by 50–75 %.
-- **Windowing** multiplies each frame by a tapered function before the
-  Fourier transform, to suppress the spectral artefacts that a rectangular
-  frame would produce.
+fig, axes = plt.subplots(2, 2, figsize=(7, 4.2), sharex=True,
+                         gridspec_kw={"height_ratios": [2.2, 1]})
+for col, gain in enumerate([0.98, 0.245]):
+    xs = gain * x
+    xq = np.clip(np.round(xs / step) * step, -1, 1 - step)
+    top, bot = axes[0, col], axes[1, col]
+    for lev in np.arange(-1, 1 + 1e-9, step):
+        top.axhline(lev, color=vs.GRID, lw=0.5, zorder=0)
+    top.plot(t, xs, color=vs.MUTED, lw=1.2)
+    top.step(t, xq, where="mid", color=vs.BLUE, lw=1.1)
+    top.set_ylim(-1.05, 1.05)
+    top.set_title(("Full scale" if col == 0 else "One quarter of full scale")
+                  + f", {bits} bits", color=vs.INK)
+    bot.plot(t, xs - xq, color=vs.ORANGE, lw=0.9)
+    bot.set_ylim(-step, step)
+    bot.set_xlabel("Time (ms)")
+    vs.style_axes(top, grid=False)
+    vs.style_axes(bot)
+axes[0, 0].set_ylabel("Amplitude (full scale = ±1)")
+axes[1, 0].set_ylabel("Error")
+fig.tight_layout()
+plt.show()
+```
 
-The **Hamming window** is the standard choice for voice work:
+How many bits are enough depends on the measure and on the era of the
+recommendation. Baken and Orlikoff judged 12 bits adequate for clinical needs
+[@baken2000clinical, p. 79], and treat 10 bits as the minimum for shimmer
+measurement [@baken2000clinical, p. 132]. Current archival practice records at
+16 or 24 bits [@ludlow2018measuring, p. 140]. The practical rule is the same in
+every source that discusses it: amplify the signal so that its largest peaks
+are just below the converter's maximum input [@baken2000clinical, p. 79].
+
+Going past the maximum is worse than staying well below it. An amplifier or
+converter driven beyond its range flattens the tops of the waveform. This
+peak clipping is one of the most common errors made by novices, and it can
+make a speech recording unsuitable for analysis even when the distortion is
+hard to see [@baken2000clinical, p. 57].
+
+## Short-time analysis: frames and windows
+
+Speech properties change slowly compared with the sample-to-sample detail of
+the waveform, at rates on the order of 10 to 30 times per second. Short-time
+analysis exploits this: it isolates short segments (frames) and processes each
+as if it came from a sustained sound with fixed properties
+[@rabiner2011theory, p. 242]. Successive frames overlap to keep the analysis
+continuous, and each frame is multiplied by a window that reduces the effect
+of the abrupt cut at its edges [@ludlow2018measuring, p. 168].
+
+```{python}
+#| label: fig-framing
+#| fig-cap: "Short-time analysis of a synthetic vowel (F0 = 125 Hz). Top: three successive 30-ms frames with a 10-ms hop (67 % overlap), each drawn as its Hamming window. Bottom: the second frame after windowing, which is what the Fourier transform of that frame actually receives."
+#| fig-alt: "Top panel: 80 ms of a vowel waveform with three overlapping bell-shaped window outlines in different colors. Bottom panel: one 30-ms frame of the waveform tapered to zero at both ends."
+
+fs = 16000
+x = vs.synth_vowel(np.full(20, 1 / 125), np.ones(20), fs)[: int(0.08 * fs)]
+t = np.arange(len(x)) / fs * 1e3
+L, H = int(0.030 * fs), int(0.010 * fs)
+w = np.hamming(L)
+starts = [int(0.015 * fs) + k * H for k in range(3)]
+colors = [vs.BLUE, vs.ORANGE, vs.GREEN]
+
+fig, (a1, a2) = plt.subplots(2, 1, figsize=(7, 4.2), sharex=True)
+a1.plot(t, x, color=vs.MUTED, lw=0.9)
+for k, (s, c) in enumerate(zip(starts, colors)):
+    tt = t[s:s + L]
+    a1.plot(tt, w * 1.05, color=c, lw=1.6)
+    a1.text(tt[L // 2], 1.12, f"frame {k + 1}", color=vs.INK, ha="center", fontsize=8.5)
+a1.set_ylim(-1.1, 1.3)
+a1.set_title("Overlapping frames (30 ms long, 10 ms hop)", color=vs.INK)
+s = starts[1]
+a2.plot(t, np.zeros_like(t), color=vs.GRID, lw=0.8)
+a2.plot(t[s:s + L], x[s:s + L] * w, color=vs.ORANGE, lw=1.1)
+a2.set_title("Frame 2 after Hamming windowing", color=vs.INK)
+a2.set_xlabel("Time (ms)")
+for ax in (a1, a2):
+    vs.style_axes(ax)
+fig.tight_layout()
+plt.show()
+```
+
+### Frame length
+
+No single frame length is ideal. A frame on the order of one pitch period or
+shorter makes short-time measures fluctuate with the exact waveform detail. A
+frame of tens of pitch periods changes too slowly to follow the signal. Pitch
+periods range from about 2 ms (500 Hz, a child or high female voice) to about
+12.5 ms (80 Hz, a very low male voice). Rabiner and Schafer therefore suggest
+frames of 10 to 40 ms with 50 to 75 % overlap between successive frames
+[@rabiner2011theory, p. 248]. Ludlow, Kent and Gray describe frames on the
+order of 25 to 50 ms, long enough to include at least two pitch periods of a
+man's voice [@ludlow2018measuring, p. 168].
+
+### Window shape
+
+The window shape controls how energy at one frequency leaks into its
+neighbours. The Hamming window used by most voice software is
 
 $$
-w[n] = 0.54 - 0.46 \cos\!\left(\frac{2\pi n}{N-1}\right), \quad 0 \le n \le N-1
+w[n] = 0.54 - 0.46 \cos\!\left(\frac{2\pi n}{N-1}\right), \qquad 0 \le n \le N-1
 $$
 
-[@rabiner2011theory]. It suppresses the side lobes of a rectangular window
-at the cost of a slightly wider main lobe (worse frequency resolution). The
-**Hanning (Hann) window**, a related raised-cosine variant, is used
-equivalently in many systems. The rectangular window — no tapering — is
-used only when frame boundaries coincide with signal periods (rare in
-practice).
+[@rabiner2011theory, p. 57]. Two properties of a window's spectrum matter: the
+width of its main lobe and the height of its side lobes. The main-lobe width is
+inversely proportional to the window length, while the side-lobe level depends
+mainly on the window shape [@rabiner2011theory, p. 297].
 
-The trade-off between frame length and frequency resolution is fixed by an
-uncertainty-like relation Δ*f* ≈ 1/*T*: a longer frame *T* gives finer
-frequency resolution Δ*f*, but averages over more temporal change. A 30-ms
-Hamming window at a 44.1 kHz sampling rate gives about 33 Hz frequency
-resolution, which is finer than a semitone at typical speaking F0.
+| Window | Main-lobe width (length $L$ samples) | Highest side lobe | Source |
+|---|---|---|---|
+| Rectangular | about $2F_s/L$ | about 14 dB below the main lobe | [@rabiner2011theory, p. 297] |
+| Hamming | about $4F_s/L$ | 40 dB or more below the main lobe | [@rabiner2011theory, p. 298] |
+
+For the same length, the rectangular window has half the main-lobe width of
+the Hamming window, but its large side lobes let strong harmonics leak across
+the spectrum and offset that advantage [@rabiner2011theory, pp. 302--303].
+@fig-windows shows both windows and their spectra.
+
+```{python}
+#| label: fig-windows
+#| fig-cap: "Rectangular and Hamming windows of the same length (30 ms). Left: the windows in time. Right: their magnitude spectra in dB. The Hamming window has a main lobe about twice as wide but side lobes more than 40 dB down, against about 13 dB for the rectangular window."
+#| fig-alt: "Left: a flat rectangular window and a bell-shaped Hamming window over 30 ms. Right: two spectra centred on 0 Hz; the rectangular one has a narrow main lobe with high side lobes, the Hamming one a wider main lobe with much lower side lobes."
+
+fs = 16000
+L = int(0.030 * fs)
+nfft = 2 ** 16
+wins = {"Rectangular": (np.ones(L), vs.ORANGE), "Hamming": (np.hamming(L), vs.BLUE)}
+f = np.fft.fftshift(np.fft.fftfreq(nfft, 1 / fs))
+
+fig, (a1, a2) = plt.subplots(1, 2, figsize=(7, 3.0), gridspec_kw={"width_ratios": [1, 1.5]})
+for name, (w, c) in wins.items():
+    a1.plot(np.arange(L) / fs * 1e3, w, color=c, lw=1.6, label=name)
+    W = np.fft.fftshift(np.abs(np.fft.fft(w, nfft)))
+    WdB = 20 * np.log10(W / W.max() + 1e-12)
+    a2.plot(f, WdB, color=c, lw=1.3, label=name)
+a1.set_xlabel("Time (ms)")
+a1.set_ylim(-0.25, 1.1)
+a1.set_title("Windows", color=vs.INK)
+a2.set_xlim(-400, 400)
+a2.set_ylim(-80, 3)
+a2.set_xlabel("Frequency offset (Hz)")
+a2.set_ylabel("Magnitude (dB)")
+a2.set_title("Window spectra", color=vs.INK)
+for lvl in (-13.3, -42.7):
+    a2.axhline(lvl, color=vs.MUTED, lw=0.7, ls=":")
+a2.text(-395, -11.5, "−13 dB", ha="left", fontsize=8, color=vs.INK)
+a2.text(-395, -41, "−43 dB", ha="left", fontsize=8, color=vs.INK)
+a1.legend(frameon=False, fontsize=8.5, loc="lower center")
+for ax in (a1, a2):
+    vs.style_axes(ax)
+fig.tight_layout()
+plt.show()
+```
+
+### Narrowband and wideband analysis
+
+Frame length decides whether the analysis resolves harmonics or glottal
+cycles. When the window spans several pitch periods, its main lobe is narrower
+than the harmonic spacing and each harmonic appears as a separate peak. This is
+narrowband analysis. When the window spans about one pitch period, harmonics
+are not resolved, but individual glottal periods are resolved in time. This is
+wideband analysis [@rabiner2011theory, p. 299].
+
+Rabiner and Schafer's worked example makes the numbers concrete. A 31.25-ms
+Hamming window has a main lobe about 128 Hz wide. That is narrower than the
+148-Hz F0 of their speaker, so the harmonics separate
+[@rabiner2011theory, p. 299]. The same arithmetic shows why a 30-ms Hamming
+window does not resolve harmonics below about 130 Hz cleanly: $4/0.030 \approx
+133$ Hz. Longer windows are needed for low voices.
+
+```{python}
+#| label: fig-nb-wb
+#| fig-cap: "The same synthetic vowel, with F0 rising from 110 to 200 Hz over 0.35 s, analysed with a long and a short Hamming window. Left, narrowband (40 ms): horizontal lines are the harmonics, and they separate more clearly as F0 rises. Right, wideband (4 ms): harmonics merge into formant bands, and the vertical striations are individual glottal cycles."
+#| fig-alt: "Two spectrograms from 0 to 4 kHz over 0.35 seconds. The left one shows rising parallel harmonic lines. The right one shows broad dark formant bands crossed by fine vertical striations that get denser over time."
+
+fs = 16000
+dur = 0.35
+f0 = np.linspace(110, 200, 400)
+periods, tcur = [], 0.0
+while tcur < dur + 0.05:
+    p = 1 / np.interp(tcur, np.linspace(0, dur, 400), f0)
+    periods.append(p)
+    tcur += p
+x = vs.synth_vowel(np.array(periods), np.ones(len(periods)), fs, noise_rel_db=-40)[: int(dur * fs)]
+x = np.append(x[0], x[1:] - 0.94 * x[:-1])  # pre-emphasis for display
+
+fig, axes = plt.subplots(1, 2, figsize=(7, 3.1), sharey=True)
+for ax, (name, wl) in zip(axes, [("Narrowband: 40-ms window", 0.040),
+                                  ("Wideband: 4-ms window", 0.004)]):
+    vs.plot_spectrogram(ax, x, fs, win_s=wl, fmax=4000, hop_s=0.0005, dyn_db=60)
+    ax.set_xlabel("Time (s)")
+    ax.set_title(name, color=vs.INK)
+    vs.style_axes(ax, grid=False)
+axes[0].set_ylabel("Frequency (kHz)")
+fig.tight_layout()
+plt.show()
+```
 
 ## Time, frequency, and cepstral domains
 
-Three domains carry voice information, and different measures live in
-different domains:
+Periodicity has an exact definition. A waveform $f(t)$ is periodic with period
+$T$ when $f(t + T) = f(t)$ for every $t$: the waveform is an exact copy of
+itself after $T$ seconds [@titze2000principles, p. 96]. Periodicity in time and
+harmonicity in frequency are the same property seen from the two sides of the
+time-frequency relation [@titze2000principles, p. 95]. Voice measures look for
+this property in one of three domains (@fig-domains).
 
-**Time domain.** The sample sequence *x*[*n*]. Waveform-based measures
-(jitter, shimmer, autocorrelation-based F0 trackers) work here.
+**Time domain.** The sample sequence $x[n]$ itself. Waveform display, F0
+analysis, and jitter and shimmer analysis work here [@kent2002acoustic, p. 62].
 
-**Frequency domain (spectrum).** Obtained by applying a discrete Fourier
-transform (DFT, computed as an FFT) to a windowed frame. Magnitude gives
-the short-time magnitude spectrum; a series of such spectra across time is
-a spectrogram. Harmonics-to-noise ratio, spectral tilt, and formant
-measurements live here.
+**Frequency domain.** The magnitude of the discrete Fourier transform of a
+windowed frame is its short-time spectrum; a sequence of such spectra is a
+spectrogram. Spectrograms, FFT and LPC spectra, and signal-to-noise
+computations work here [@kent2002acoustic, p. 62].
 
-**Cepstral domain (cepstrum).** Obtained by taking the logarithm of the
-magnitude spectrum and applying an inverse Fourier transform to it
-[@rabiner2011theory]. Its independent variable is **quefrency** — a
-time-like dimension in units of seconds — and its dominant peak sits at
-the quefrency corresponding to the voice period. The cepstrum is where
-cepstral peak prominence lives; see the [CPPS chapter](cpps.qmd).
+**Cepstral domain.** The cepstrum of a discrete-time signal is the inverse
+Fourier transform of the logarithm of the magnitude of its Fourier transform.
+Its independent variable is called quefrency, and it has units of time
+[@rabiner2011theory, p. 399]. For a voiced frame, the cepstrum has a peak at the
+quefrency equal to the pitch period. A strong peak signals voicing, and its
+position estimates the period [@rabiner2011theory, p. 425]. Cepstral peak
+prominence measures the height of this peak; see the [CPPS chapter](cpps.qmd).
 
-The mathematical definition of periodicity — *f*(*t* + *T*) = *f*(*t*),
-where *T* is the period — is what all of this ultimately measures against
-[@titze2000principles]. When the periodicity condition fails, so do most
-of these measures; see the [Signal Typing chapter](foundations-signal-typing.qmd).
+```{python}
+#| label: fig-domains
+#| fig-cap: "One 40-ms frame of a synthetic vowel (F0 = 125 Hz, period 8 ms) in the three domains. Top: waveform, with the 8-ms period marked. Middle: log-magnitude spectrum, with harmonics every 125 Hz. Bottom: cepstrum, with its dominant peak at a quefrency of 8 ms."
+#| fig-alt: "Three stacked panels. The waveform repeats every 8 ms. The spectrum shows evenly spaced harmonic peaks shaped by formant humps. The cepstrum shows a single tall peak at 8 ms quefrency."
+
+fs = 16000
+f0 = 125.0
+x = vs.synth_vowel(np.full(12, 1 / f0), np.ones(12), fs, noise_rel_db=-40)
+L = int(0.040 * fs)
+fr = x[int(0.02 * fs): int(0.02 * fs) + L] * np.hamming(L)
+nfft = 4096
+X = np.fft.rfft(fr, nfft)
+logmag = 20 * np.log10(np.abs(X) + 1e-9)
+freq = np.fft.rfftfreq(nfft, 1 / fs)
+ceps = np.fft.irfft(logmag, nfft)
+q = np.arange(nfft) / fs * 1e3
+qmin, qmax = int(fs / 400), int(fs / 60)
+pk = qmin + np.argmax(ceps[qmin:qmax])
+
+fig, axes = plt.subplots(3, 1, figsize=(7, 6.0))
+t = np.arange(L) / fs * 1e3
+axes[0].plot(t, x[int(0.02 * fs): int(0.02 * fs) + L], color=vs.INK, lw=1.0)
+seg = x[int(0.02 * fs): int(0.02 * fs) + L]
+p1 = int(np.argmax(seg[: int(fs / f0)]))  # largest peak in the first cycle
+t1, t2 = t[p1] + 1e3 / f0, t[p1] + 2e3 / f0
+axes[0].annotate("", xy=(t1, 1.1), xytext=(t2, 1.1),
+                 arrowprops=dict(arrowstyle="<->", color=vs.ORANGE, lw=1.2))
+axes[0].text((t1 + t2) / 2, 1.17, "T = 8 ms", ha="center", color=vs.INK, fontsize=8.5)
+axes[0].set_ylim(-1.1, 1.35)
+axes[0].set_xlabel("Time (ms)")
+axes[0].set_title("Time domain: waveform", color=vs.INK)
+
+axes[1].plot(freq, logmag - logmag.max(), color=vs.BLUE, lw=0.9)
+axes[1].set_xlim(0, 4000)
+axes[1].set_ylim(-70, 3)
+axes[1].set_xlabel("Frequency (Hz)")
+axes[1].set_ylabel("dB")
+axes[1].set_title("Frequency domain: log-magnitude spectrum", color=vs.INK)
+
+axes[2].plot(q, ceps, color=vs.GREEN, lw=0.9)
+axes[2].plot(q[pk], ceps[pk], "o", color=vs.ORANGE, ms=6)
+axes[2].annotate(f"peak at {q[pk]:.1f} ms  (= 1/F0)", xy=(q[pk], ceps[pk]),
+                 xytext=(q[pk] + 2, ceps[pk] * 0.85), fontsize=8.5, color=vs.INK)
+axes[2].set_xlim(1, 20)
+axes[2].set_ylim(ceps[qmin:int(0.02 * fs)].min() * 1.1, ceps[pk] * 1.25)
+axes[2].set_xlabel("Quefrency (ms)")
+axes[2].set_title("Cepstral domain: cepstrum", color=vs.INK)
+for ax in axes:
+    vs.style_axes(ax)
+fig.tight_layout()
+plt.show()
+```
+
+When the periodicity condition fails badly, measures that depend on a period
+lose their meaning. The [Signal Typing chapter](foundations-signal-typing.qmd)
+describes how to recognise such signals before measuring them.
+
+## Sampling rate and cycle-level measures
+
+Jitter and shimmer are computed cycle by cycle, not frame by frame, so they
+have their own digitisation limits. A cycle boundary can be located only to
+within one sampling interval, $1/F_s$. That error is fixed while the period
+shortens as F0 rises, so the relative error grows in proportion to F0
+[@baken2000clinical, p. 193]. Baken and Orlikoff give the maximum jitter error
+due to sampling, after Titze, Horii and Scherer (1987), as
+$\pm 50\,F_0/F_s$ percent. At 25,000 samples/s this is 0.2 % for a 100-Hz voice
+and 0.6 % for a 300-Hz voice, which they call large compared with the jitter
+expected in a normal voice [@baken2000clinical, p. 194].
+
+| Mean F0 | Max. error at 25 kHz | at 44.1 kHz | at 96 kHz |
+|---|---|---|---|
+| 100 Hz | 0.20 % | 0.11 % | 0.05 % |
+| 200 Hz | 0.40 % | 0.23 % | 0.10 % |
+| 300 Hz | 0.60 % | 0.34 % | 0.16 % |
+
+: Maximum jitter error from the relation $\pm 50\,F_0/F_s$ %. The 25-kHz column is given by @baken2000clinical [p. 194]; the other columns apply the same relation. {#tbl-jitter-error}
+
+Interpolation between samples greatly reduces this limitation and makes
+ordinary sampling rates adequate for everyday practice
+[@baken2000clinical, p. 194]. Sample size also matters. For normal voices,
+as few as 30 consecutive cycles may be adequate for a jitter estimate
+[@baken2000clinical, p. 194], and at least 30 consecutive cycles should be
+included for shimmer [@baken2000clinical, p. 132]. For shimmer, any low-pass
+filter should have its cutoff at least one octave above F0, because filtering
+alters peak amplitudes [@baken2000clinical, p. 132].
 
 ## Caveats
 
-- **Sampling rate and analysis bandwidth are not the same as the highest
-  recovered frequency.** A 44.1 kHz recording preserves energy up to 22 kHz
-  in principle, but only if the anti-alias filter actually rejects energy
-  above the Nyquist frequency to that fidelity.
-- **Frame length gates what can be measured.** A frame shorter than one
-  voice period cannot support F0 or perturbation measurement. For a
-  speaker at 100 Hz (10 ms per period), a 20 ms frame contains two
-  periods — the minimum defensible for jitter or shimmer, well below the
-  ≥30-cycle sample @baken2000clinical recommend for shimmer.
-- **Window choice affects spectral tilt and formant measurements.** A
-  Hamming window's main-lobe width is roughly 8π/*N* radians on a length-*N*
-  frame; comparing measurements across studies requires the same window
-  family and length.
-- **Software defaults differ.** Praat, ADSV, MDVP, and PhonaLab each ship
-  with different default frame lengths, hop sizes, windows, and
-  pre-emphasis coefficients. Every reported measure in this reference
-  names its software and settings; a bare number without them is not
-  comparable across systems.
-- **Digitisation is not lossless.** The finite sampling rate and bit depth
-  set floors on what any downstream measure can resolve. Perturbation
-  measures are especially sensitive to quantization noise at low bit
-  depth [@baken2000clinical].
+- **Software defaults differ.** Different analysis systems can return
+  different jitter and shimmer values for the same signal, and software
+  characteristics do not account for all of the variability
+  [@baken2000clinical, pp. 132, 194]. Frame length, window, pre-emphasis and
+  interpolation are all candidates. Report the software and its settings with
+  every value.
+- **Check the whole chain, not only the file header.** A file saved at a high
+  sampling rate is only as good as the anti-aliasing filter and the gain
+  setting used when it was recorded [@baken2000clinical, pp. 79, 81].
+- **Clipping cannot be undone.** Peak clipping removes waveform detail at
+  recording time [@baken2000clinical, p. 57]. Inspect every recording for
+  flattened peaks before analysis.
+- **Frame length is a choice with consequences.** A window long enough to
+  resolve the harmonics of a low voice smears fast changes, and a short one
+  does the reverse [@rabiner2011theory, pp. 248, 299]. Measure chapters state
+  the frame length each measure assumes.
+
+## Points of disagreement
+
+The sources give different numerical recommendations for the same parameters.
+The differences reflect their dates and purposes rather than a conflict about
+the underlying theory.
+
+| Parameter | Recommendation | Source |
+|---|---|---|
+| Frame length | 10--40 ms, 50--75 % overlap (general speech processing) | @rabiner2011theory [p. 248] |
+| Frame length | 25--50 ms, at least two periods of a male voice | @ludlow2018measuring [p. 168] |
+| Bit depth | 12 bits meets clinical needs | @baken2000clinical [p. 79] |
+| Bit depth | 10 bits minimum for shimmer | @baken2000clinical [p. 132] |
+| Bit depth | 16 bits good practice; 24 bits best practice (archiving) | @ludlow2018measuring [p. 140] |
+| Sampling rate | at least 20 kHz for speech | @baken2000clinical [p. 81] |
+| Sampling rate | 44.1 kHz good practice; 44.1 or 96 kHz best practice (archiving) | @ludlow2018measuring [p. 140] |
