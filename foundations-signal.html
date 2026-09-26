@@ -26,6 +26,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 /* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
@@ -66,7 +101,7 @@ div.csl-indent {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-ab7d7586b2882c37acd8ad0c57eb290d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-5c01c0ce2b51dbeda25ce515ef8205e7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -409,12 +444,24 @@ window.Quarto = {
    
   <ul>
   <li><a href="#what-every-acoustic-measure-sees" id="toc-what-every-acoustic-measure-sees" class="nav-link active" data-scroll-target="#what-every-acoustic-measure-sees"><span class="header-section-number">3.1</span> What every acoustic measure sees</a></li>
-  <li><a href="#signals-continuous-and-discrete" id="toc-signals-continuous-and-discrete" class="nav-link" data-scroll-target="#signals-continuous-and-discrete"><span class="header-section-number">3.2</span> Signals: continuous and discrete</a></li>
-  <li><a href="#sampling-and-nyquist" id="toc-sampling-and-nyquist" class="nav-link" data-scroll-target="#sampling-and-nyquist"><span class="header-section-number">3.3</span> Sampling and Nyquist</a></li>
+  <li><a href="#continuous-and-discrete-signals" id="toc-continuous-and-discrete-signals" class="nav-link" data-scroll-target="#continuous-and-discrete-signals"><span class="header-section-number">3.2</span> Continuous and discrete signals</a></li>
+  <li><a href="#sampling-and-aliasing" id="toc-sampling-and-aliasing" class="nav-link" data-scroll-target="#sampling-and-aliasing"><span class="header-section-number">3.3</span> Sampling and aliasing</a>
+  <ul class="collapse">
+  <li><a href="#choosing-a-sampling-rate" id="toc-choosing-a-sampling-rate" class="nav-link" data-scroll-target="#choosing-a-sampling-rate"><span class="header-section-number">3.3.1</span> Choosing a sampling rate</a></li>
+  <li><a href="#anti-aliasing-filter" id="toc-anti-aliasing-filter" class="nav-link" data-scroll-target="#anti-aliasing-filter"><span class="header-section-number">3.3.2</span> Anti-aliasing filter</a></li>
+  <li><a href="#pre-emphasis" id="toc-pre-emphasis" class="nav-link" data-scroll-target="#pre-emphasis"><span class="header-section-number">3.3.3</span> Pre-emphasis</a></li>
+  </ul></li>
   <li><a href="#quantization" id="toc-quantization" class="nav-link" data-scroll-target="#quantization"><span class="header-section-number">3.4</span> Quantization</a></li>
-  <li><a href="#framing-and-windowing" id="toc-framing-and-windowing" class="nav-link" data-scroll-target="#framing-and-windowing"><span class="header-section-number">3.5</span> Framing and windowing</a></li>
+  <li><a href="#short-time-analysis-frames-and-windows" id="toc-short-time-analysis-frames-and-windows" class="nav-link" data-scroll-target="#short-time-analysis-frames-and-windows"><span class="header-section-number">3.5</span> Short-time analysis: frames and windows</a>
+  <ul class="collapse">
+  <li><a href="#frame-length" id="toc-frame-length" class="nav-link" data-scroll-target="#frame-length"><span class="header-section-number">3.5.1</span> Frame length</a></li>
+  <li><a href="#window-shape" id="toc-window-shape" class="nav-link" data-scroll-target="#window-shape"><span class="header-section-number">3.5.2</span> Window shape</a></li>
+  <li><a href="#narrowband-and-wideband-analysis" id="toc-narrowband-and-wideband-analysis" class="nav-link" data-scroll-target="#narrowband-and-wideband-analysis"><span class="header-section-number">3.5.3</span> Narrowband and wideband analysis</a></li>
+  </ul></li>
   <li><a href="#time-frequency-and-cepstral-domains" id="toc-time-frequency-and-cepstral-domains" class="nav-link" data-scroll-target="#time-frequency-and-cepstral-domains"><span class="header-section-number">3.6</span> Time, frequency, and cepstral domains</a></li>
-  <li><a href="#caveats" id="toc-caveats" class="nav-link" data-scroll-target="#caveats"><span class="header-section-number">3.7</span> Caveats</a></li>
+  <li><a href="#sampling-rate-and-cycle-level-measures" id="toc-sampling-rate-and-cycle-level-measures" class="nav-link" data-scroll-target="#sampling-rate-and-cycle-level-measures"><span class="header-section-number">3.7</span> Sampling rate and cycle-level measures</a></li>
+  <li><a href="#caveats" id="toc-caveats" class="nav-link" data-scroll-target="#caveats"><span class="header-section-number">3.8</span> Caveats</a></li>
+  <li><a href="#points-of-disagreement" id="toc-points-of-disagreement" class="nav-link" data-scroll-target="#points-of-disagreement"><span class="header-section-number">3.9</span> Points of disagreement</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/LuceroJC/voice-measures/edit/main/foundations-signal.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/LuceroJC/voice-measures/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -450,66 +497,133 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Living draft.</strong> This chapter defines the signal-processing vocabulary the rest of the reference uses. Later chapters cite it when they name a sampling rate, frame length, window, or transform. Found an error? Use the <em>Report an issue</em> link in the sidebar.</p>
+<p><strong>Living draft.</strong> This chapter defines the signal-processing vocabulary the rest of the reference uses. Later chapters cite it when they name a sampling rate, frame length, window, or transform. All figures are computed from synthetic signals; the code is shown under each figure and is MIT licensed. Found an error? Use the <em>Report an issue</em> link in the sidebar.</p>
 </div>
 </div>
 <section id="what-every-acoustic-measure-sees" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="what-every-acoustic-measure-sees"><span class="header-section-number">3.1</span> What every acoustic measure sees</h2>
-<p>Every acoustic measure in this reference is computed on a digital signal — a sequence of numeric samples that represents the microphone’s continuous pressure waveform. The chain from a spoken vowel to a jitter value passes through five stages this chapter defines:</p>
+<p>Every acoustic measure in this reference is computed on a digital signal: a sequence of numbers that stands for the continuous pressure waveform at the microphone. The path from a sustained vowel to a jitter or CPPS value passes through five stages.</p>
 <ol type="1">
-<li><strong>Sampling</strong> — picking amplitude at regularly spaced time points.</li>
-<li><strong>Quantization</strong> — mapping continuous amplitude to a finite set of levels.</li>
-<li><strong>Framing</strong> — cutting the sample stream into short segments for time-varying analysis.</li>
-<li><strong>Windowing</strong> — tapering each frame to control spectral artefacts.</li>
-<li><strong>Spectral or cepstral transformation</strong> — moving from the time domain into a domain where harmonic structure and periodicity are visible.</li>
+<li><strong>Sampling</strong> discretises time.</li>
+<li><strong>Quantization</strong> discretises amplitude.</li>
+<li><strong>Framing</strong> cuts the sample stream into short segments.</li>
+<li><strong>Windowing</strong> tapers each segment before spectral analysis.</li>
+<li><strong>Transformation</strong> moves the frame into the frequency or cepstral domain.</li>
 </ol>
-<p>Each stage introduces choices (sampling rate, bit depth, frame length, window shape, transform length) that constrain what a downstream measure can and cannot say. Every measure chapter in Parts II–IV names the specific frame length and window it presupposes; this chapter is the reference those cross-references resolve to.</p>
+<p>Sampling and quantization together are the essence of digitization <span class="citation" data-cites="kent2002acoustic">(<a href="#ref-kent2002acoustic" role="doc-biblioref">Kent and Read 2002, 62</a>)</span>. Each stage has parameters (sampling rate, bit depth, frame length, window shape) that limit what a downstream measure can report. Every measure chapter names the parameters it presupposes, and this chapter is where those names are defined.</p>
 </section>
-<section id="signals-continuous-and-discrete" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="signals-continuous-and-discrete"><span class="header-section-number">3.2</span> Signals: continuous and discrete</h2>
-<p>An <strong>analog signal</strong> varies continuously in both time and amplitude — the voltage produced by a microphone as a vowel is spoken. A <strong>digital signal</strong> is discrete in both dimensions: time is discretized by sampling, amplitude by quantization <span class="citation" data-cites="ludlow2018measuring">(<a href="#ref-ludlow2018measuring" role="doc-biblioref">Ludlow et al. 2018</a>)</span>. The transformation from continuous to digital is analog-to-digital conversion (A/D); the reverse — needed to play a sample stream through a loudspeaker — is D/A conversion <span class="citation" data-cites="kent2002acoustic">(<a href="#ref-kent2002acoustic" role="doc-biblioref">Kent and Read 2002</a>)</span>.</p>
-<p>The digital sequence <em>x</em>[<em>n</em>] represents the analog signal <em>x</em>(<em>t</em>) at instants <em>t</em> = <em>nT</em>, where <em>T</em> is the sampling period. What was a function of continuous time becomes a numbered sequence.</p>
+<section id="continuous-and-discrete-signals" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="continuous-and-discrete-signals"><span class="header-section-number">3.2</span> Continuous and discrete signals</h2>
+<p>A continuous-time signal has a value at every instant. A discrete-time signal has values only at chosen instants, and can be derived from a continuous one by sampling <span class="citation" data-cites="ludlow2018measuring">(<a href="#ref-ludlow2018measuring" role="doc-biblioref">Ludlow et al. 2018, 4</a>)</span>. The operation that turns the microphone’s analog signal into a series of stored numbers is analog-to-digital (A/D) conversion. The reverse operation, needed to play a stored signal, is digital-to-analog (D/A) conversion <span class="citation" data-cites="kent2002acoustic">(<a href="#ref-kent2002acoustic" role="doc-biblioref">Kent and Read 2002, 63</a>)</span>.</p>
+<p>In the notation used throughout this reference, the sampled sequence is <span class="math inline">\(x[n] = x_a(nT)\)</span>, where <span class="math inline">\(x_a(t)\)</span> is the analog signal, <span class="math inline">\(n\)</span> is an integer sample index, and <span class="math inline">\(T\)</span> is the sampling period <span class="citation" data-cites="rabiner2011theory">(<a href="#ref-rabiner2011theory" role="doc-biblioref">Rabiner and Schafer 2011, 44</a>)</span>. The sampling rate is <span class="math inline">\(F_s = 1/T\)</span>.</p>
 </section>
-<section id="sampling-and-nyquist" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="sampling-and-nyquist"><span class="header-section-number">3.3</span> Sampling and Nyquist</h2>
-<p>The <strong>sampling rate</strong> is the number of samples per second, in hertz. A sampling rate of 10 kHz means the analog signal is sampled 10,000 times per second <span class="citation" data-cites="kent2002acoustic">(<a href="#ref-kent2002acoustic" role="doc-biblioref">Kent and Read 2002</a>)</span>.</p>
-<p><strong>Nyquist’s Sampling Theorem</strong> states that the sampling rate must be at least twice the highest frequency of interest in the signal <span class="citation" data-cites="kent2002acoustic rabiner2011theory">(<a href="#ref-kent2002acoustic" role="doc-biblioref">Kent and Read 2002</a>; <a href="#ref-rabiner2011theory" role="doc-biblioref">Rabiner and Schafer 2011</a>)</span>. For voice analysis this fixes the practical minimum:</p>
+<section id="sampling-and-aliasing" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="sampling-and-aliasing"><span class="header-section-number">3.3</span> Sampling and aliasing</h2>
+<p>The sampling rate is the number of samples taken per second. A rate of 10 kHz samples the analog signal 10,000 times per second <span class="citation" data-cites="kent2002acoustic">(<a href="#ref-kent2002acoustic" role="doc-biblioref">Kent and Read 2002, 62</a>)</span>.</p>
+<p>The sampling theorem states the condition for a lossless representation. If the analog signal contains no energy at or above a frequency <span class="math inline">\(F_N\)</span>, it can be reconstructed uniquely from its samples provided <span class="math inline">\(F_s \ge 2F_N\)</span> <span class="citation" data-cites="rabiner2011theory">(<a href="#ref-rabiner2011theory" role="doc-biblioref">Rabiner and Schafer 2011, 44</a>)</span>. <span class="math inline">\(F_N\)</span> is the Nyquist frequency and <span class="math inline">\(2F_N\)</span> is the Nyquist rate <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000, 80</a>)</span>. When the condition fails, energy above half the sampling rate reappears at a lower, false frequency. This error is called aliasing <span class="citation" data-cites="kent2002acoustic">(<a href="#ref-kent2002acoustic" role="doc-biblioref">Kent and Read 2002, 65</a>)</span>.</p>
+<p><a href="#fig-aliasing" class="quarto-xref">Figure&nbsp;<span>3.1</span></a> repeats a classic demonstration. A 100-Hz sine is sampled at four rates. At 250 samples/s there are only 2.5 samples per cycle, yet the 100-Hz periodicity survives. At 160 samples/s there are fewer than two samples per cycle and the samples trace a slower wave <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000, 80</a>)</span>.</p>
+<div id="cell-fig-aliasing" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Show the code for this figure</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>f, dur <span class="op">=</span> <span class="fl">100.0</span>, <span class="fl">0.1</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> np.linspace(<span class="dv">0</span>, dur, <span class="dv">4000</span>, endpoint<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>rates <span class="op">=</span> [<span class="dv">1000</span>, <span class="dv">500</span>, <span class="dv">250</span>, <span class="dv">160</span>]</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="bu">len</span>(rates) <span class="op">+</span> <span class="dv">1</span>, <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="fl">5.6</span>), sharex<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].plot(t <span class="op">*</span> <span class="fl">1e3</span>, np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> f <span class="op">*</span> t), color<span class="op">=</span>vs.INK, lw<span class="op">=</span><span class="fl">1.4</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_title(<span class="st">"Analog signal: 100-Hz sine"</span>, color<span class="op">=</span>vs.INK)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax, fs <span class="kw">in</span> <span class="bu">zip</span>(axes[<span class="dv">1</span>:], rates):</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> np.arange(<span class="bu">int</span>(dur <span class="op">*</span> fs))</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    tn <span class="op">=</span> n <span class="op">/</span> fs</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    xn <span class="op">=</span> np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> f <span class="op">*</span> tn)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    ax.plot(t <span class="op">*</span> <span class="fl">1e3</span>, np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> f <span class="op">*</span> t), color<span class="op">=</span>vs.GRID, lw<span class="op">=</span><span class="fl">1.0</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    ax.plot(tn <span class="op">*</span> <span class="fl">1e3</span>, xn, color<span class="op">=</span>vs.BLUE, lw<span class="op">=</span><span class="fl">0.9</span>, alpha<span class="op">=</span><span class="fl">0.6</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    ax.plot(tn <span class="op">*</span> <span class="fl">1e3</span>, xn, <span class="st">"o"</span>, color<span class="op">=</span>vs.BLUE, ms<span class="op">=</span><span class="dv">4</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    title <span class="op">=</span> <span class="ss">f"Sampled at </span><span class="sc">{</span>fs<span class="sc">}</span><span class="ss"> samples/s  (</span><span class="sc">{</span>fs <span class="op">/</span> f<span class="sc">:.1f}</span><span class="ss"> samples per cycle)"</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> fs <span class="op">&lt;</span> <span class="dv">2</span> <span class="op">*</span> f:</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        fa <span class="op">=</span> <span class="bu">abs</span>(f <span class="op">-</span> fs)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>        ax.plot(t <span class="op">*</span> <span class="fl">1e3</span>, <span class="op">-</span>np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> fa <span class="op">*</span> t), <span class="st">"--"</span>, color<span class="op">=</span>vs.ORANGE, lw<span class="op">=</span><span class="fl">1.4</span>)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>        title <span class="op">+=</span> <span class="ss">f": aliased to </span><span class="sc">{</span>fa<span class="sc">:.0f}</span><span class="ss"> Hz"</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    ax.set_title(title, color<span class="op">=</span>vs.INK)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax <span class="kw">in</span> axes:</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    vs.style_axes(ax)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    ax.set_ylim(<span class="op">-</span><span class="fl">1.35</span>, <span class="fl">1.35</span>)</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    ax.set_yticks([<span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>])</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>axes[<span class="op">-</span><span class="dv">1</span>].set_xlabel(<span class="st">"Time (ms)"</span>)</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-aliasing" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Five stacked panels over 100 ms. The top panel shows a continuous 100-Hz sine. The next four show samples taken at 1000, 500, 250 and 160 samples per second. The first three still alternate ten times; the last traces a slower 60-Hz wave.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-aliasing-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="foundations-signal_files/figure-html/fig-aliasing-output-1.png" alt="Five stacked panels over 100 ms. The top panel shows a continuous 100-Hz sine. The next four show samples taken at 1000, 500, 250 and 160 samples per second. The first three still alternate ten times; the last traces a slower 60-Hz wave." width="760" height="605" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-aliasing-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.1: Sampling a 100-Hz sine at four rates (after the demonstration in Baken and Orlikoff, 2000, p.&nbsp;80). Dots are samples. At 160 samples/s the samples fall on a 60-Hz wave (dashed): 100 Hz has been aliased to 160 − 100 = 60 Hz.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<section id="choosing-a-sampling-rate" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="choosing-a-sampling-rate"><span class="header-section-number">3.3.1</span> Choosing a sampling rate</h3>
+<p>The sampling rate must be at least twice the highest frequency of interest <span class="citation" data-cites="kent2002acoustic">(<a href="#ref-kent2002acoustic" role="doc-biblioref">Kent and Read 2002, 64</a>)</span>. For voice work the highest frequency of interest is set by the harmonics and by any noise, not by F0. For a periodic physiological signal, the highest frequency of interest is usually about <span class="math inline">\(10F_0\)</span>, and sampling a little above the Nyquist rate (about 20 % more) gives a margin for residual noise <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000, 81</a>)</span>. Baken and Orlikoff recommend at least 20,000 samples/s for speech, and for any signal with significant aperiodic energy such as turbulence noise <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000, 81</a>)</span>. For archiving, 44.1 kHz with 16-bit depth is agreed good practice, and 44.1 or 96 kHz with 24-bit depth is best practice <span class="citation" data-cites="ludlow2018measuring">(<a href="#ref-ludlow2018measuring" role="doc-biblioref">Ludlow et al. 2018, 140</a>)</span>.</p>
+<p>The analysable bandwidth follows from the theorem.</p>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>Sampling rate</th>
-<th>Maximum analysable frequency</th>
+<th>Highest analysable frequency (<span class="math inline">\(F_s/2\)</span>)</th>
+<th>Typical use</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>44.1 kHz (CD quality)</td>
-<td>22.05 kHz</td>
+<td>96 kHz</td>
+<td>48 kHz</td>
+<td>archival best practice <span class="citation" data-cites="ludlow2018measuring">(<a href="#ref-ludlow2018measuring" role="doc-biblioref">Ludlow et al. 2018, 140</a>)</span></td>
 </tr>
 <tr class="even">
+<td>44.1 kHz</td>
 <td>22.05 kHz</td>
-<td>11.025 kHz</td>
+<td>archival good practice <span class="citation" data-cites="ludlow2018measuring">(<a href="#ref-ludlow2018measuring" role="doc-biblioref">Ludlow et al. 2018, 140</a>)</span></td>
 </tr>
 <tr class="odd">
+<td>20 kHz</td>
 <td>10 kHz</td>
-<td>5 kHz</td>
+<td>recommended minimum for speech <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000, 81</a>)</span></td>
 </tr>
 <tr class="even">
-<td>8 kHz (telephone)</td>
+<td>8 kHz</td>
 <td>4 kHz</td>
+<td>narrowband telephony <span class="citation" data-cites="rabiner2011theory">(<a href="#ref-rabiner2011theory" role="doc-biblioref">Rabiner and Schafer 2011, 47</a>)</span></td>
 </tr>
 </tbody>
 </table>
-<p>Sampling below the Nyquist rate produces <strong>aliasing</strong> — high-frequency energy folds down into the analysis band and misrepresents the signal. Aliasing is prevented by a <strong>pre-sampling (anti-alias) low-pass filter</strong> placed before the sampler, rejecting energy above the Nyquist frequency. A useful filter target for speech work is at most 0.5 dB pass-band ripple and at least −68 dB stop-band attenuation <span class="citation" data-cites="kent2002acoustic">(<a href="#ref-kent2002acoustic" role="doc-biblioref">Kent and Read 2002</a>)</span>.</p>
+</section>
+<section id="anti-aliasing-filter" class="level3" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="anti-aliasing-filter"><span class="header-section-number">3.3.2</span> Anti-aliasing filter</h3>
+<p>A sampling rate that looks adequate is not sufficient on its own. Any energy above the Nyquist frequency will alias, so the signal must be band-limited by a low-pass anti-aliasing filter before the A/D converter <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000, 81</a>)</span>. Ordinary low-pass filters roll off too gently for this purpose. A component one octave above the cutoff may be attenuated by only about 12 dB, so anti-aliasing filters need very steep roll-offs <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000, 81–82</a>)</span>. Kent and Read give a working specification: pass-band ripple below 0.5 dB and stop-band attenuation of at least 68 dB <span class="citation" data-cites="kent2002acoustic">(<a href="#ref-kent2002acoustic" role="doc-biblioref">Kent and Read 2002, 64</a>)</span>.</p>
+</section>
+<section id="pre-emphasis" class="level3" data-number="3.3.3">
+<h3 data-number="3.3.3" class="anchored" data-anchor-id="pre-emphasis"><span class="header-section-number">3.3.3</span> Pre-emphasis</h3>
+<p>Most speech analysis chains apply pre-emphasis, a high-frequency boost, before spectral analysis. Most of the energy of speech lies at low frequencies and would otherwise dominate the analysis <span class="citation" data-cites="kent2002acoustic">(<a href="#ref-kent2002acoustic" role="doc-biblioref">Kent and Read 2002, 63</a>)</span>. Pre-emphasis is either a filter giving +6 dB/octave above a breakpoint between 100 and 1000 Hz, or first differencing of the samples, <span class="math inline">\(y[n] = x[n] - a\,x[n-1]\)</span> <span class="citation" data-cites="kent2002acoustic">(<a href="#ref-kent2002acoustic" role="doc-biblioref">Kent and Read 2002, 63–64</a>)</span>. The two methods give comparable results. A system that differences digitally must not also be fed through a hardware pre-emphasis filter, or the signal is pre-emphasised twice <span class="citation" data-cites="kent2002acoustic">(<a href="#ref-kent2002acoustic" role="doc-biblioref">Kent and Read 2002, 64</a>)</span>. Pre-emphasis settings are one of the parameters to check when comparing values across software.</p>
+</section>
 </section>
 <section id="quantization" class="level2" data-number="3.4">
 <h2 data-number="3.4" class="anchored" data-anchor-id="quantization"><span class="header-section-number">3.4</span> Quantization</h2>
-<p>Quantization discretizes amplitude. Instead of a continuous voltage, each sample is represented by an integer drawn from 2^<em>N</em> levels, where <em>N</em> is the <strong>bit depth</strong> <span class="citation" data-cites="ludlow2018measuring">(<a href="#ref-ludlow2018measuring" role="doc-biblioref">Ludlow et al. 2018</a>)</span>:</p>
+<p>Quantization discretises amplitude. Each sample is stored as one of <span class="math inline">\(2^N\)</span> levels, where <span class="math inline">\(N\)</span> is the number of bits <span class="citation" data-cites="ludlow2018measuring">(<a href="#ref-ludlow2018measuring" role="doc-biblioref">Ludlow et al. 2018, 4</a>)</span>.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
-<th>Bit depth</th>
-<th>Levels</th>
+<th>Bits (<span class="math inline">\(N\)</span>)</th>
+<th>Levels (<span class="math inline">\(2^N\)</span>)</th>
 </tr>
 </thead>
 <tbody>
@@ -535,41 +649,414 @@ Note
 </tr>
 </tbody>
 </table>
-<p>The greater the bit depth, the finer the amplitude gradation and the smaller the quantization error. For voice measurement, 16 bits (a signal-to-quantization-noise ratio around 96 dB) is the practical standard; <span class="citation" data-cites="baken2000clinical">Baken and Orlikoff (<a href="#ref-baken2000clinical" role="doc-biblioref">2000</a>)</span> treat 10 bits as a defensible minimum, and note that using as much of the converter’s input range as possible is at least as important as high bit depth, because quantization error is a fixed absolute quantity — a small signal wastes bit depth.</p>
-<p>Set the input gain conservatively (peak at ~80 % of full scale) and check for clipping in every recording. A clipped signal distorts every derived measure — F0, jitter, shimmer, HNR, CPP.</p>
+<p>Rounding a smoothly varying signal to discrete levels adds spurious components called quantization noise. The noise is minimised by using as many quantization levels as possible <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000, 79</a>)</span>. As a rule, each additional bit adds about 6 dB to the signal-to-quantization-noise ratio <span class="citation" data-cites="rabiner2011theory">(<a href="#ref-rabiner2011theory" role="doc-biblioref">Rabiner and Schafer 2011, 688</a>)</span>.</p>
+<p>Bit depth only helps if the signal uses it. The step size of the converter is fixed, so a signal that spans a fraction of the input range is quantized with fewer effective levels. In Baken and Orlikoff’s example, a 2-V signal on a 10-bit converter with a 0 to 5 V range uses only 9 of the 10 bits <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000, 79</a>)</span>. Equivalently, a signal that varies over only half the converter’s range loses 6 dB of signal-to-quantization-noise ratio <span class="citation" data-cites="rabiner2011theory">(<a href="#ref-rabiner2011theory" role="doc-biblioref">Rabiner and Schafer 2011, 690</a>)</span>. <a href="#fig-quantization" class="quarto-xref">Figure&nbsp;<span>3.2</span></a> shows the effect.</p>
+<div id="cell-fig-quantization" class="cell" data-execution_count="3">
+<details class="code-fold">
+<summary>Show the code for this figure</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>fs <span class="op">=</span> <span class="dv">16000</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>per <span class="op">=</span> np.full(<span class="dv">8</span>, <span class="dv">1</span> <span class="op">/</span> <span class="dv">125</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> vs.synth_vowel(per, np.ones(<span class="dv">8</span>), fs)[: <span class="bu">int</span>(<span class="fl">0.016</span> <span class="op">*</span> fs)]</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> np.arange(<span class="bu">len</span>(x)) <span class="op">/</span> fs <span class="op">*</span> <span class="fl">1e3</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>bits <span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>step <span class="op">=</span> <span class="dv">2</span> <span class="op">/</span> <span class="dv">2</span> <span class="op">**</span> bits  <span class="co"># full range is -1..+1</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="fl">4.2</span>), sharex<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>                         gridspec_kw<span class="op">=</span>{<span class="st">"height_ratios"</span>: [<span class="fl">2.2</span>, <span class="dv">1</span>]})</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col, gain <span class="kw">in</span> <span class="bu">enumerate</span>([<span class="fl">0.98</span>, <span class="fl">0.245</span>]):</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    xs <span class="op">=</span> gain <span class="op">*</span> x</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    xq <span class="op">=</span> np.clip(np.<span class="bu">round</span>(xs <span class="op">/</span> step) <span class="op">*</span> step, <span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span> <span class="op">-</span> step)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    top, bot <span class="op">=</span> axes[<span class="dv">0</span>, col], axes[<span class="dv">1</span>, col]</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> lev <span class="kw">in</span> np.arange(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span> <span class="op">+</span> <span class="fl">1e-9</span>, step):</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>        top.axhline(lev, color<span class="op">=</span>vs.GRID, lw<span class="op">=</span><span class="fl">0.5</span>, zorder<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    top.plot(t, xs, color<span class="op">=</span>vs.MUTED, lw<span class="op">=</span><span class="fl">1.2</span>)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    top.step(t, xq, where<span class="op">=</span><span class="st">"mid"</span>, color<span class="op">=</span>vs.BLUE, lw<span class="op">=</span><span class="fl">1.1</span>)</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    top.set_ylim(<span class="op">-</span><span class="fl">1.05</span>, <span class="fl">1.05</span>)</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    top.set_title((<span class="st">"Full scale"</span> <span class="cf">if</span> col <span class="op">==</span> <span class="dv">0</span> <span class="cf">else</span> <span class="st">"One quarter of full scale"</span>)</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>                  <span class="op">+</span> <span class="ss">f", </span><span class="sc">{</span>bits<span class="sc">}</span><span class="ss"> bits"</span>, color<span class="op">=</span>vs.INK)</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    bot.plot(t, xs <span class="op">-</span> xq, color<span class="op">=</span>vs.ORANGE, lw<span class="op">=</span><span class="fl">0.9</span>)</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    bot.set_ylim(<span class="op">-</span>step, step)</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    bot.set_xlabel(<span class="st">"Time (ms)"</span>)</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    vs.style_axes(top, grid<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    vs.style_axes(bot)</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>, <span class="dv">0</span>].set_ylabel(<span class="st">"Amplitude (full scale = ±1)"</span>)</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>, <span class="dv">0</span>].set_ylabel(<span class="st">"Error"</span>)</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-quantization" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Two columns of plots. On the left, a waveform filling the converter range is closely followed by its quantized version, with a small error trace below. On the right, the same waveform at one quarter of the range is coarsely stepped, and the error trace below is as large in absolute terms.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-quantization-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="foundations-signal_files/figure-html/fig-quantization-output-1.png" alt="Two columns of plots. On the left, a waveform filling the converter range is closely followed by its quantized version, with a small error trace below. On the right, the same waveform at one quarter of the range is coarsely stepped, and the error trace below is as large in absolute terms." width="768" height="451" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-quantization-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.2: A 4-bit (16-level) converter applied to the same vowel-like waveform at full scale (left) and at one quarter of full scale (right). Top: signal (gray) and quantized samples (blue). Bottom: quantization error. The step size is the same in both columns, so the quiet signal carries the same absolute error on a four-times smaller waveform.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>How many bits are enough depends on the measure and on the era of the recommendation. Baken and Orlikoff judged 12 bits adequate for clinical needs <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000, 79</a>)</span>, and treat 10 bits as the minimum for shimmer measurement <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000, 132</a>)</span>. Current archival practice records at 16 or 24 bits <span class="citation" data-cites="ludlow2018measuring">(<a href="#ref-ludlow2018measuring" role="doc-biblioref">Ludlow et al. 2018, 140</a>)</span>. The practical rule is the same in every source that discusses it: amplify the signal so that its largest peaks are just below the converter’s maximum input <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000, 79</a>)</span>.</p>
+<p>Going past the maximum is worse than staying well below it. An amplifier or converter driven beyond its range flattens the tops of the waveform. This peak clipping is one of the most common errors made by novices, and it can make a speech recording unsuitable for analysis even when the distortion is hard to see <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000, 57</a>)</span>.</p>
 </section>
-<section id="framing-and-windowing" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="framing-and-windowing"><span class="header-section-number">3.5</span> Framing and windowing</h2>
-<p>Voice signals are non-stationary — the vocal-tract configuration and glottal source change from vowel to vowel and even within a single vowel. A single global Fourier transform of a long utterance therefore averages away most of what matters. <strong>Short-time analysis</strong> solves this by dividing the signal into overlapping short segments (<strong>frames</strong>) and analysing each frame as if it were locally stationary <span class="citation" data-cites="rabiner2011theory">(<a href="#ref-rabiner2011theory" role="doc-biblioref">Rabiner and Schafer 2011</a>)</span>.</p>
-<ul>
-<li><strong>Frame length</strong> is typically 20–40 ms for voice analysis: long enough to contain several pitch periods, short enough that the vocal-tract configuration doesn’t change appreciably across the frame.</li>
-<li><strong>Frame rate</strong> (or hop size) is how often frames are extracted, typically every 5–10 ms. Frames overlap by 50–75 %.</li>
-<li><strong>Windowing</strong> multiplies each frame by a tapered function before the Fourier transform, to suppress the spectral artefacts that a rectangular frame would produce.</li>
-</ul>
-<p>The <strong>Hamming window</strong> is the standard choice for voice work:</p>
+<section id="short-time-analysis-frames-and-windows" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="short-time-analysis-frames-and-windows"><span class="header-section-number">3.5</span> Short-time analysis: frames and windows</h2>
+<p>Speech properties change slowly compared with the sample-to-sample detail of the waveform, at rates on the order of 10 to 30 times per second. Short-time analysis exploits this: it isolates short segments (frames) and processes each as if it came from a sustained sound with fixed properties <span class="citation" data-cites="rabiner2011theory">(<a href="#ref-rabiner2011theory" role="doc-biblioref">Rabiner and Schafer 2011, 242</a>)</span>. Successive frames overlap to keep the analysis continuous, and each frame is multiplied by a window that reduces the effect of the abrupt cut at its edges <span class="citation" data-cites="ludlow2018measuring">(<a href="#ref-ludlow2018measuring" role="doc-biblioref">Ludlow et al. 2018, 168</a>)</span>.</p>
+<div id="cell-fig-framing" class="cell" data-execution_count="4">
+<details class="code-fold">
+<summary>Show the code for this figure</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>fs <span class="op">=</span> <span class="dv">16000</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> vs.synth_vowel(np.full(<span class="dv">20</span>, <span class="dv">1</span> <span class="op">/</span> <span class="dv">125</span>), np.ones(<span class="dv">20</span>), fs)[: <span class="bu">int</span>(<span class="fl">0.08</span> <span class="op">*</span> fs)]</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> np.arange(<span class="bu">len</span>(x)) <span class="op">/</span> fs <span class="op">*</span> <span class="fl">1e3</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>L, H <span class="op">=</span> <span class="bu">int</span>(<span class="fl">0.030</span> <span class="op">*</span> fs), <span class="bu">int</span>(<span class="fl">0.010</span> <span class="op">*</span> fs)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>w <span class="op">=</span> np.hamming(L)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>starts <span class="op">=</span> [<span class="bu">int</span>(<span class="fl">0.015</span> <span class="op">*</span> fs) <span class="op">+</span> k <span class="op">*</span> H <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>)]</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>colors <span class="op">=</span> [vs.BLUE, vs.ORANGE, vs.GREEN]</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>fig, (a1, a2) <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="fl">4.2</span>), sharex<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>a1.plot(t, x, color<span class="op">=</span>vs.MUTED, lw<span class="op">=</span><span class="fl">0.9</span>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k, (s, c) <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="bu">zip</span>(starts, colors)):</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    tt <span class="op">=</span> t[s:s <span class="op">+</span> L]</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    a1.plot(tt, w <span class="op">*</span> <span class="fl">1.05</span>, color<span class="op">=</span>c, lw<span class="op">=</span><span class="fl">1.6</span>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    a1.text(tt[L <span class="op">//</span> <span class="dv">2</span>], <span class="fl">1.12</span>, <span class="ss">f"frame </span><span class="sc">{</span>k <span class="op">+</span> <span class="dv">1</span><span class="sc">}</span><span class="ss">"</span>, color<span class="op">=</span>vs.INK, ha<span class="op">=</span><span class="st">"center"</span>, fontsize<span class="op">=</span><span class="fl">8.5</span>)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>a1.set_ylim(<span class="op">-</span><span class="fl">1.1</span>, <span class="fl">1.3</span>)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>a1.set_title(<span class="st">"Overlapping frames (30 ms long, 10 ms hop)"</span>, color<span class="op">=</span>vs.INK)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> starts[<span class="dv">1</span>]</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>a2.plot(t, np.zeros_like(t), color<span class="op">=</span>vs.GRID, lw<span class="op">=</span><span class="fl">0.8</span>)</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>a2.plot(t[s:s <span class="op">+</span> L], x[s:s <span class="op">+</span> L] <span class="op">*</span> w, color<span class="op">=</span>vs.ORANGE, lw<span class="op">=</span><span class="fl">1.1</span>)</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>a2.set_title(<span class="st">"Frame 2 after Hamming windowing"</span>, color<span class="op">=</span>vs.INK)</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>a2.set_xlabel(<span class="st">"Time (ms)"</span>)</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax <span class="kw">in</span> (a1, a2):</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    vs.style_axes(ax)</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-framing" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Top panel: 80 ms of a vowel waveform with three overlapping bell-shaped window outlines in different colors. Bottom panel: one 30-ms frame of the waveform tapered to zero at both ends.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-framing-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="foundations-signal_files/figure-html/fig-framing-output-1.png" alt="Top panel: 80 ms of a vowel waveform with three overlapping bell-shaped window outlines in different colors. Bottom panel: one 30-ms frame of the waveform tapered to zero at both ends." width="760" height="451" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-framing-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.3: Short-time analysis of a synthetic vowel (F0 = 125 Hz). Top: three successive 30-ms frames with a 10-ms hop (67 % overlap), each drawn as its Hamming window. Bottom: the second frame after windowing, which is what the Fourier transform of that frame actually receives.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<section id="frame-length" class="level3" data-number="3.5.1">
+<h3 data-number="3.5.1" class="anchored" data-anchor-id="frame-length"><span class="header-section-number">3.5.1</span> Frame length</h3>
+<p>No single frame length is ideal. A frame on the order of one pitch period or shorter makes short-time measures fluctuate with the exact waveform detail. A frame of tens of pitch periods changes too slowly to follow the signal. Pitch periods range from about 2 ms (500 Hz, a child or high female voice) to about 12.5 ms (80 Hz, a very low male voice). Rabiner and Schafer therefore suggest frames of 10 to 40 ms with 50 to 75 % overlap between successive frames <span class="citation" data-cites="rabiner2011theory">(<a href="#ref-rabiner2011theory" role="doc-biblioref">Rabiner and Schafer 2011, 248</a>)</span>. Ludlow, Kent and Gray describe frames on the order of 25 to 50 ms, long enough to include at least two pitch periods of a man’s voice <span class="citation" data-cites="ludlow2018measuring">(<a href="#ref-ludlow2018measuring" role="doc-biblioref">Ludlow et al. 2018, 168</a>)</span>.</p>
+</section>
+<section id="window-shape" class="level3" data-number="3.5.2">
+<h3 data-number="3.5.2" class="anchored" data-anchor-id="window-shape"><span class="header-section-number">3.5.2</span> Window shape</h3>
+<p>The window shape controls how energy at one frequency leaks into its neighbours. The Hamming window used by most voice software is</p>
 <p><span class="math display">\[
-w[n] = 0.54 - 0.46 \cos\!\left(\frac{2\pi n}{N-1}\right), \quad 0 \le n \le N-1
+w[n] = 0.54 - 0.46 \cos\!\left(\frac{2\pi n}{N-1}\right), \qquad 0 \le n \le N-1
 \]</span></p>
-<p><span class="citation" data-cites="rabiner2011theory">(<a href="#ref-rabiner2011theory" role="doc-biblioref">Rabiner and Schafer 2011</a>)</span>. It suppresses the side lobes of a rectangular window at the cost of a slightly wider main lobe (worse frequency resolution). The <strong>Hanning (Hann) window</strong>, a related raised-cosine variant, is used equivalently in many systems. The rectangular window — no tapering — is used only when frame boundaries coincide with signal periods (rare in practice).</p>
-<p>The trade-off between frame length and frequency resolution is fixed by an uncertainty-like relation Δ<em>f</em> ≈ 1/<em>T</em>: a longer frame <em>T</em> gives finer frequency resolution Δ<em>f</em>, but averages over more temporal change. A 30-ms Hamming window at a 44.1 kHz sampling rate gives about 33 Hz frequency resolution, which is finer than a semitone at typical speaking F0.</p>
+<p><span class="citation" data-cites="rabiner2011theory">(<a href="#ref-rabiner2011theory" role="doc-biblioref">Rabiner and Schafer 2011, 57</a>)</span>. Two properties of a window’s spectrum matter: the width of its main lobe and the height of its side lobes. The main-lobe width is inversely proportional to the window length, while the side-lobe level depends mainly on the window shape <span class="citation" data-cites="rabiner2011theory">(<a href="#ref-rabiner2011theory" role="doc-biblioref">Rabiner and Schafer 2011, 297</a>)</span>.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Window</th>
+<th>Main-lobe width (length <span class="math inline">\(L\)</span> samples)</th>
+<th>Highest side lobe</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Rectangular</td>
+<td>about <span class="math inline">\(2F_s/L\)</span></td>
+<td>about 14 dB below the main lobe</td>
+<td><span class="citation" data-cites="rabiner2011theory">(<a href="#ref-rabiner2011theory" role="doc-biblioref">Rabiner and Schafer 2011, 297</a>)</span></td>
+</tr>
+<tr class="even">
+<td>Hamming</td>
+<td>about <span class="math inline">\(4F_s/L\)</span></td>
+<td>40 dB or more below the main lobe</td>
+<td><span class="citation" data-cites="rabiner2011theory">(<a href="#ref-rabiner2011theory" role="doc-biblioref">Rabiner and Schafer 2011, 298</a>)</span></td>
+</tr>
+</tbody>
+</table>
+<p>For the same length, the rectangular window has half the main-lobe width of the Hamming window, but its large side lobes let strong harmonics leak across the spectrum and offset that advantage <span class="citation" data-cites="rabiner2011theory">(<a href="#ref-rabiner2011theory" role="doc-biblioref">Rabiner and Schafer 2011, 302–3</a>)</span>. <a href="#fig-windows" class="quarto-xref">Figure&nbsp;<span>3.4</span></a> shows both windows and their spectra.</p>
+<div id="cell-fig-windows" class="cell" data-execution_count="5">
+<details class="code-fold">
+<summary>Show the code for this figure</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>fs <span class="op">=</span> <span class="dv">16000</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span> <span class="bu">int</span>(<span class="fl">0.030</span> <span class="op">*</span> fs)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>nfft <span class="op">=</span> <span class="dv">2</span> <span class="op">**</span> <span class="dv">16</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>wins <span class="op">=</span> {<span class="st">"Rectangular"</span>: (np.ones(L), vs.ORANGE), <span class="st">"Hamming"</span>: (np.hamming(L), vs.BLUE)}</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> np.fft.fftshift(np.fft.fftfreq(nfft, <span class="dv">1</span> <span class="op">/</span> fs))</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>fig, (a1, a2) <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="fl">3.0</span>), gridspec_kw<span class="op">=</span>{<span class="st">"width_ratios"</span>: [<span class="dv">1</span>, <span class="fl">1.5</span>]})</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> name, (w, c) <span class="kw">in</span> wins.items():</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    a1.plot(np.arange(L) <span class="op">/</span> fs <span class="op">*</span> <span class="fl">1e3</span>, w, color<span class="op">=</span>c, lw<span class="op">=</span><span class="fl">1.6</span>, label<span class="op">=</span>name)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    W <span class="op">=</span> np.fft.fftshift(np.<span class="bu">abs</span>(np.fft.fft(w, nfft)))</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    WdB <span class="op">=</span> <span class="dv">20</span> <span class="op">*</span> np.log10(W <span class="op">/</span> W.<span class="bu">max</span>() <span class="op">+</span> <span class="fl">1e-12</span>)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    a2.plot(f, WdB, color<span class="op">=</span>c, lw<span class="op">=</span><span class="fl">1.3</span>, label<span class="op">=</span>name)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>a1.set_xlabel(<span class="st">"Time (ms)"</span>)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>a1.set_ylim(<span class="op">-</span><span class="fl">0.25</span>, <span class="fl">1.1</span>)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>a1.set_title(<span class="st">"Windows"</span>, color<span class="op">=</span>vs.INK)</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>a2.set_xlim(<span class="op">-</span><span class="dv">400</span>, <span class="dv">400</span>)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>a2.set_ylim(<span class="op">-</span><span class="dv">80</span>, <span class="dv">3</span>)</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>a2.set_xlabel(<span class="st">"Frequency offset (Hz)"</span>)</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>a2.set_ylabel(<span class="st">"Magnitude (dB)"</span>)</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>a2.set_title(<span class="st">"Window spectra"</span>, color<span class="op">=</span>vs.INK)</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> lvl <span class="kw">in</span> (<span class="op">-</span><span class="fl">13.3</span>, <span class="op">-</span><span class="fl">42.7</span>):</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    a2.axhline(lvl, color<span class="op">=</span>vs.MUTED, lw<span class="op">=</span><span class="fl">0.7</span>, ls<span class="op">=</span><span class="st">":"</span>)</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>a2.text(<span class="op">-</span><span class="dv">395</span>, <span class="op">-</span><span class="fl">11.5</span>, <span class="st">"−13 dB"</span>, ha<span class="op">=</span><span class="st">"left"</span>, fontsize<span class="op">=</span><span class="dv">8</span>, color<span class="op">=</span>vs.INK)</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>a2.text(<span class="op">-</span><span class="dv">395</span>, <span class="op">-</span><span class="dv">41</span>, <span class="st">"−43 dB"</span>, ha<span class="op">=</span><span class="st">"left"</span>, fontsize<span class="op">=</span><span class="dv">8</span>, color<span class="op">=</span>vs.INK)</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>a1.legend(frameon<span class="op">=</span><span class="va">False</span>, fontsize<span class="op">=</span><span class="fl">8.5</span>, loc<span class="op">=</span><span class="st">"lower center"</span>)</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax <span class="kw">in</span> (a1, a2):</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>    vs.style_axes(ax)</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-windows" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Left: a flat rectangular window and a bell-shaped Hamming window over 30 ms. Right: two spectra centred on 0 Hz; the rectangular one has a narrow main lobe with high side lobes, the Hamming one a wider main lobe with much lower side lobes.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-windows-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="foundations-signal_files/figure-html/fig-windows-output-1.png" alt="Left: a flat rectangular window and a bell-shaped Hamming window over 30 ms. Right: two spectra centred on 0 Hz; the rectangular one has a narrow main lobe with high side lobes, the Hamming one a wider main lobe with much lower side lobes." width="760" height="319" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-windows-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.4: Rectangular and Hamming windows of the same length (30 ms). Left: the windows in time. Right: their magnitude spectra in dB. The Hamming window has a main lobe about twice as wide but side lobes more than 40 dB down, against about 13 dB for the rectangular window.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="narrowband-and-wideband-analysis" class="level3" data-number="3.5.3">
+<h3 data-number="3.5.3" class="anchored" data-anchor-id="narrowband-and-wideband-analysis"><span class="header-section-number">3.5.3</span> Narrowband and wideband analysis</h3>
+<p>Frame length decides whether the analysis resolves harmonics or glottal cycles. When the window spans several pitch periods, its main lobe is narrower than the harmonic spacing and each harmonic appears as a separate peak. This is narrowband analysis. When the window spans about one pitch period, harmonics are not resolved, but individual glottal periods are resolved in time. This is wideband analysis <span class="citation" data-cites="rabiner2011theory">(<a href="#ref-rabiner2011theory" role="doc-biblioref">Rabiner and Schafer 2011, 299</a>)</span>.</p>
+<p>Rabiner and Schafer’s worked example makes the numbers concrete. A 31.25-ms Hamming window has a main lobe about 128 Hz wide. That is narrower than the 148-Hz F0 of their speaker, so the harmonics separate <span class="citation" data-cites="rabiner2011theory">(<a href="#ref-rabiner2011theory" role="doc-biblioref">Rabiner and Schafer 2011, 299</a>)</span>. The same arithmetic shows why a 30-ms Hamming window does not resolve harmonics below about 130 Hz cleanly: <span class="math inline">\(4/0.030 \approx
+133\)</span> Hz. Longer windows are needed for low voices.</p>
+<div id="cell-fig-nb-wb" class="cell" data-execution_count="6">
+<details class="code-fold">
+<summary>Show the code for this figure</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>fs <span class="op">=</span> <span class="dv">16000</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>dur <span class="op">=</span> <span class="fl">0.35</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>f0 <span class="op">=</span> np.linspace(<span class="dv">110</span>, <span class="dv">200</span>, <span class="dv">400</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>periods, tcur <span class="op">=</span> [], <span class="fl">0.0</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> tcur <span class="op">&lt;</span> dur <span class="op">+</span> <span class="fl">0.05</span>:</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    p <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> np.interp(tcur, np.linspace(<span class="dv">0</span>, dur, <span class="dv">400</span>), f0)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    periods.append(p)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    tcur <span class="op">+=</span> p</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> vs.synth_vowel(np.array(periods), np.ones(<span class="bu">len</span>(periods)), fs, noise_rel_db<span class="op">=-</span><span class="dv">40</span>)[: <span class="bu">int</span>(dur <span class="op">*</span> fs)]</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.append(x[<span class="dv">0</span>], x[<span class="dv">1</span>:] <span class="op">-</span> <span class="fl">0.94</span> <span class="op">*</span> x[:<span class="op">-</span><span class="dv">1</span>])  <span class="co"># pre-emphasis for display</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="fl">3.1</span>), sharey<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax, (name, wl) <span class="kw">in</span> <span class="bu">zip</span>(axes, [(<span class="st">"Narrowband: 40-ms window"</span>, <span class="fl">0.040</span>),</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>                                  (<span class="st">"Wideband: 4-ms window"</span>, <span class="fl">0.004</span>)]):</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    vs.plot_spectrogram(ax, x, fs, win_s<span class="op">=</span>wl, fmax<span class="op">=</span><span class="dv">4000</span>, hop_s<span class="op">=</span><span class="fl">0.0005</span>, dyn_db<span class="op">=</span><span class="dv">60</span>)</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">"Time (s)"</span>)</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    ax.set_title(name, color<span class="op">=</span>vs.INK)</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    vs.style_axes(ax, grid<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_ylabel(<span class="st">"Frequency (kHz)"</span>)</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-nb-wb" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Two spectrograms from 0 to 4 kHz over 0.35 seconds. The left one shows rising parallel harmonic lines. The right one shows broad dark formant bands crossed by fine vertical striations that get denser over time.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-nb-wb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="foundations-signal_files/figure-html/fig-nb-wb-output-1.png" alt="Two spectrograms from 0 to 4 kHz over 0.35 seconds. The left one shows rising parallel harmonic lines. The right one shows broad dark formant bands crossed by fine vertical striations that get denser over time." width="760" height="330" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-nb-wb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.5: The same synthetic vowel, with F0 rising from 110 to 200 Hz over 0.35 s, analysed with a long and a short Hamming window. Left, narrowband (40 ms): horizontal lines are the harmonics, and they separate more clearly as F0 rises. Right, wideband (4 ms): harmonics merge into formant bands, and the vertical striations are individual glottal cycles.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="time-frequency-and-cepstral-domains" class="level2" data-number="3.6">
 <h2 data-number="3.6" class="anchored" data-anchor-id="time-frequency-and-cepstral-domains"><span class="header-section-number">3.6</span> Time, frequency, and cepstral domains</h2>
-<p>Three domains carry voice information, and different measures live in different domains:</p>
-<p><strong>Time domain.</strong> The sample sequence <em>x</em>[<em>n</em>]. Waveform-based measures (jitter, shimmer, autocorrelation-based F0 trackers) work here.</p>
-<p><strong>Frequency domain (spectrum).</strong> Obtained by applying a discrete Fourier transform (DFT, computed as an FFT) to a windowed frame. Magnitude gives the short-time magnitude spectrum; a series of such spectra across time is a spectrogram. Harmonics-to-noise ratio, spectral tilt, and formant measurements live here.</p>
-<p><strong>Cepstral domain (cepstrum).</strong> Obtained by taking the logarithm of the magnitude spectrum and applying an inverse Fourier transform to it <span class="citation" data-cites="rabiner2011theory">(<a href="#ref-rabiner2011theory" role="doc-biblioref">Rabiner and Schafer 2011</a>)</span>. Its independent variable is <strong>quefrency</strong> — a time-like dimension in units of seconds — and its dominant peak sits at the quefrency corresponding to the voice period. The cepstrum is where cepstral peak prominence lives; see the <a href="./cpps.html">CPPS chapter</a>.</p>
-<p>The mathematical definition of periodicity — <em>f</em>(<em>t</em> + <em>T</em>) = <em>f</em>(<em>t</em>), where <em>T</em> is the period — is what all of this ultimately measures against <span class="citation" data-cites="titze2000principles">(<a href="#ref-titze2000principles" role="doc-biblioref">Titze 2000</a>)</span>. When the periodicity condition fails, so do most of these measures; see the <a href="./foundations-signal-typing.html">Signal Typing chapter</a>.</p>
+<p>Periodicity has an exact definition. A waveform <span class="math inline">\(f(t)\)</span> is periodic with period <span class="math inline">\(T\)</span> when <span class="math inline">\(f(t + T) = f(t)\)</span> for every <span class="math inline">\(t\)</span>: the waveform is an exact copy of itself after <span class="math inline">\(T\)</span> seconds <span class="citation" data-cites="titze2000principles">(<a href="#ref-titze2000principles" role="doc-biblioref">Titze 2000, 96</a>)</span>. Periodicity in time and harmonicity in frequency are the same property seen from the two sides of the time-frequency relation <span class="citation" data-cites="titze2000principles">(<a href="#ref-titze2000principles" role="doc-biblioref">Titze 2000, 95</a>)</span>. Voice measures look for this property in one of three domains (<a href="#fig-domains" class="quarto-xref">Figure&nbsp;<span>3.6</span></a>).</p>
+<p><strong>Time domain.</strong> The sample sequence <span class="math inline">\(x[n]\)</span> itself. Waveform display, F0 analysis, and jitter and shimmer analysis work here <span class="citation" data-cites="kent2002acoustic">(<a href="#ref-kent2002acoustic" role="doc-biblioref">Kent and Read 2002, 62</a>)</span>.</p>
+<p><strong>Frequency domain.</strong> The magnitude of the discrete Fourier transform of a windowed frame is its short-time spectrum; a sequence of such spectra is a spectrogram. Spectrograms, FFT and LPC spectra, and signal-to-noise computations work here <span class="citation" data-cites="kent2002acoustic">(<a href="#ref-kent2002acoustic" role="doc-biblioref">Kent and Read 2002, 62</a>)</span>.</p>
+<p><strong>Cepstral domain.</strong> The cepstrum of a discrete-time signal is the inverse Fourier transform of the logarithm of the magnitude of its Fourier transform. Its independent variable is called quefrency, and it has units of time <span class="citation" data-cites="rabiner2011theory">(<a href="#ref-rabiner2011theory" role="doc-biblioref">Rabiner and Schafer 2011, 399</a>)</span>. For a voiced frame, the cepstrum has a peak at the quefrency equal to the pitch period. A strong peak signals voicing, and its position estimates the period <span class="citation" data-cites="rabiner2011theory">(<a href="#ref-rabiner2011theory" role="doc-biblioref">Rabiner and Schafer 2011, 425</a>)</span>. Cepstral peak prominence measures the height of this peak; see the <a href="./cpps.html">CPPS chapter</a>.</p>
+<div id="cell-fig-domains" class="cell" data-execution_count="7">
+<details class="code-fold">
+<summary>Show the code for this figure</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>fs <span class="op">=</span> <span class="dv">16000</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>f0 <span class="op">=</span> <span class="fl">125.0</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> vs.synth_vowel(np.full(<span class="dv">12</span>, <span class="dv">1</span> <span class="op">/</span> f0), np.ones(<span class="dv">12</span>), fs, noise_rel_db<span class="op">=-</span><span class="dv">40</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span> <span class="bu">int</span>(<span class="fl">0.040</span> <span class="op">*</span> fs)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>fr <span class="op">=</span> x[<span class="bu">int</span>(<span class="fl">0.02</span> <span class="op">*</span> fs): <span class="bu">int</span>(<span class="fl">0.02</span> <span class="op">*</span> fs) <span class="op">+</span> L] <span class="op">*</span> np.hamming(L)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>nfft <span class="op">=</span> <span class="dv">4096</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.fft.rfft(fr, nfft)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>logmag <span class="op">=</span> <span class="dv">20</span> <span class="op">*</span> np.log10(np.<span class="bu">abs</span>(X) <span class="op">+</span> <span class="fl">1e-9</span>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>freq <span class="op">=</span> np.fft.rfftfreq(nfft, <span class="dv">1</span> <span class="op">/</span> fs)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>ceps <span class="op">=</span> np.fft.irfft(logmag, nfft)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> np.arange(nfft) <span class="op">/</span> fs <span class="op">*</span> <span class="fl">1e3</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>qmin, qmax <span class="op">=</span> <span class="bu">int</span>(fs <span class="op">/</span> <span class="dv">400</span>), <span class="bu">int</span>(fs <span class="op">/</span> <span class="dv">60</span>)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>pk <span class="op">=</span> qmin <span class="op">+</span> np.argmax(ceps[qmin:qmax])</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">3</span>, <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="fl">6.0</span>))</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> np.arange(L) <span class="op">/</span> fs <span class="op">*</span> <span class="fl">1e3</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].plot(t, x[<span class="bu">int</span>(<span class="fl">0.02</span> <span class="op">*</span> fs): <span class="bu">int</span>(<span class="fl">0.02</span> <span class="op">*</span> fs) <span class="op">+</span> L], color<span class="op">=</span>vs.INK, lw<span class="op">=</span><span class="fl">1.0</span>)</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>seg <span class="op">=</span> x[<span class="bu">int</span>(<span class="fl">0.02</span> <span class="op">*</span> fs): <span class="bu">int</span>(<span class="fl">0.02</span> <span class="op">*</span> fs) <span class="op">+</span> L]</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">=</span> <span class="bu">int</span>(np.argmax(seg[: <span class="bu">int</span>(fs <span class="op">/</span> f0)]))  <span class="co"># largest peak in the first cycle</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>t1, t2 <span class="op">=</span> t[p1] <span class="op">+</span> <span class="fl">1e3</span> <span class="op">/</span> f0, t[p1] <span class="op">+</span> <span class="fl">2e3</span> <span class="op">/</span> f0</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].annotate(<span class="st">""</span>, xy<span class="op">=</span>(t1, <span class="fl">1.1</span>), xytext<span class="op">=</span>(t2, <span class="fl">1.1</span>),</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>                 arrowprops<span class="op">=</span><span class="bu">dict</span>(arrowstyle<span class="op">=</span><span class="st">"&lt;-&gt;"</span>, color<span class="op">=</span>vs.ORANGE, lw<span class="op">=</span><span class="fl">1.2</span>))</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].text((t1 <span class="op">+</span> t2) <span class="op">/</span> <span class="dv">2</span>, <span class="fl">1.17</span>, <span class="st">"T = 8 ms"</span>, ha<span class="op">=</span><span class="st">"center"</span>, color<span class="op">=</span>vs.INK, fontsize<span class="op">=</span><span class="fl">8.5</span>)</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_ylim(<span class="op">-</span><span class="fl">1.1</span>, <span class="fl">1.35</span>)</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_xlabel(<span class="st">"Time (ms)"</span>)</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_title(<span class="st">"Time domain: waveform"</span>, color<span class="op">=</span>vs.INK)</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].plot(freq, logmag <span class="op">-</span> logmag.<span class="bu">max</span>(), color<span class="op">=</span>vs.BLUE, lw<span class="op">=</span><span class="fl">0.9</span>)</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].set_xlim(<span class="dv">0</span>, <span class="dv">4000</span>)</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].set_ylim(<span class="op">-</span><span class="dv">70</span>, <span class="dv">3</span>)</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].set_xlabel(<span class="st">"Frequency (Hz)"</span>)</span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].set_ylabel(<span class="st">"dB"</span>)</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].set_title(<span class="st">"Frequency domain: log-magnitude spectrum"</span>, color<span class="op">=</span>vs.INK)</span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">2</span>].plot(q, ceps, color<span class="op">=</span>vs.GREEN, lw<span class="op">=</span><span class="fl">0.9</span>)</span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">2</span>].plot(q[pk], ceps[pk], <span class="st">"o"</span>, color<span class="op">=</span>vs.ORANGE, ms<span class="op">=</span><span class="dv">6</span>)</span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">2</span>].annotate(<span class="ss">f"peak at </span><span class="sc">{</span>q[pk]<span class="sc">:.1f}</span><span class="ss"> ms  (= 1/F0)"</span>, xy<span class="op">=</span>(q[pk], ceps[pk]),</span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>                 xytext<span class="op">=</span>(q[pk] <span class="op">+</span> <span class="dv">2</span>, ceps[pk] <span class="op">*</span> <span class="fl">0.85</span>), fontsize<span class="op">=</span><span class="fl">8.5</span>, color<span class="op">=</span>vs.INK)</span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">2</span>].set_xlim(<span class="dv">1</span>, <span class="dv">20</span>)</span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">2</span>].set_ylim(ceps[qmin:<span class="bu">int</span>(<span class="fl">0.02</span> <span class="op">*</span> fs)].<span class="bu">min</span>() <span class="op">*</span> <span class="fl">1.1</span>, ceps[pk] <span class="op">*</span> <span class="fl">1.25</span>)</span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">2</span>].set_xlabel(<span class="st">"Quefrency (ms)"</span>)</span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">2</span>].set_title(<span class="st">"Cepstral domain: cepstrum"</span>, color<span class="op">=</span>vs.INK)</span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax <span class="kw">in</span> axes:</span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a>    vs.style_axes(ax)</span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-domains" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Three stacked panels. The waveform repeats every 8 ms. The spectrum shows evenly spaced harmonic peaks shaped by formant humps. The cepstrum shows a single tall peak at 8 ms quefrency.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-domains-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="foundations-signal_files/figure-html/fig-domains-output-1.png" alt="Three stacked panels. The waveform repeats every 8 ms. The spectrum shows evenly spaced harmonic peaks shaped by formant humps. The cepstrum shows a single tall peak at 8 ms quefrency." width="760" height="649" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-domains-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.6: One 40-ms frame of a synthetic vowel (F0 = 125 Hz, period 8 ms) in the three domains. Top: waveform, with the 8-ms period marked. Middle: log-magnitude spectrum, with harmonics every 125 Hz. Bottom: cepstrum, with its dominant peak at a quefrency of 8 ms.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>When the periodicity condition fails badly, measures that depend on a period lose their meaning. The <a href="./foundations-signal-typing.html">Signal Typing chapter</a> describes how to recognise such signals before measuring them.</p>
 </section>
-<section id="caveats" class="level2" data-number="3.7">
-<h2 data-number="3.7" class="anchored" data-anchor-id="caveats"><span class="header-section-number">3.7</span> Caveats</h2>
+<section id="sampling-rate-and-cycle-level-measures" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="sampling-rate-and-cycle-level-measures"><span class="header-section-number">3.7</span> Sampling rate and cycle-level measures</h2>
+<p>Jitter and shimmer are computed cycle by cycle, not frame by frame, so they have their own digitisation limits. A cycle boundary can be located only to within one sampling interval, <span class="math inline">\(1/F_s\)</span>. That error is fixed while the period shortens as F0 rises, so the relative error grows in proportion to F0 <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000, 193</a>)</span>. Baken and Orlikoff give the maximum jitter error due to sampling, after Titze, Horii and Scherer (1987), as <span class="math inline">\(\pm 50\,F_0/F_s\)</span> percent. At 25,000 samples/s this is 0.2 % for a 100-Hz voice and 0.6 % for a 300-Hz voice, which they call large compared with the jitter expected in a normal voice <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000, 194</a>)</span>.</p>
+<div id="tbl-jitter-error" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-jitter-error-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3.1: Maximum jitter error from the relation <span class="math inline">\(\pm 50\,F_0/F_s\)</span> %. The 25-kHz column is given by <span class="citation" data-cites="baken2000clinical">Baken and Orlikoff (<a href="#ref-baken2000clinical" role="doc-biblioref">2000, 194</a>)</span>; the other columns apply the same relation.
+</figcaption>
+<div aria-describedby="tbl-jitter-error-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Mean F0</th>
+<th>Max. error at 25 kHz</th>
+<th>at 44.1 kHz</th>
+<th>at 96 kHz</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>100 Hz</td>
+<td>0.20 %</td>
+<td>0.11 %</td>
+<td>0.05 %</td>
+</tr>
+<tr class="even">
+<td>200 Hz</td>
+<td>0.40 %</td>
+<td>0.23 %</td>
+<td>0.10 %</td>
+</tr>
+<tr class="odd">
+<td>300 Hz</td>
+<td>0.60 %</td>
+<td>0.34 %</td>
+<td>0.16 %</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Interpolation between samples greatly reduces this limitation and makes ordinary sampling rates adequate for everyday practice <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000, 194</a>)</span>. Sample size also matters. For normal voices, as few as 30 consecutive cycles may be adequate for a jitter estimate <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000, 194</a>)</span>, and at least 30 consecutive cycles should be included for shimmer <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000, 132</a>)</span>. For shimmer, any low-pass filter should have its cutoff at least one octave above F0, because filtering alters peak amplitudes <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000, 132</a>)</span>.</p>
+</section>
+<section id="caveats" class="level2" data-number="3.8">
+<h2 data-number="3.8" class="anchored" data-anchor-id="caveats"><span class="header-section-number">3.8</span> Caveats</h2>
 <ul>
-<li><strong>Sampling rate and analysis bandwidth are not the same as the highest recovered frequency.</strong> A 44.1 kHz recording preserves energy up to 22 kHz in principle, but only if the anti-alias filter actually rejects energy above the Nyquist frequency to that fidelity.</li>
-<li><strong>Frame length gates what can be measured.</strong> A frame shorter than one voice period cannot support F0 or perturbation measurement. For a speaker at 100 Hz (10 ms per period), a 20 ms frame contains two periods — the minimum defensible for jitter or shimmer, well below the ≥30-cycle sample <span class="citation" data-cites="baken2000clinical">Baken and Orlikoff (<a href="#ref-baken2000clinical" role="doc-biblioref">2000</a>)</span> recommend for shimmer.</li>
-<li><strong>Window choice affects spectral tilt and formant measurements.</strong> A Hamming window’s main-lobe width is roughly 8π/<em>N</em> radians on a length-<em>N</em> frame; comparing measurements across studies requires the same window family and length.</li>
-<li><strong>Software defaults differ.</strong> Praat, ADSV, MDVP, and PhonaLab each ship with different default frame lengths, hop sizes, windows, and pre-emphasis coefficients. Every reported measure in this reference names its software and settings; a bare number without them is not comparable across systems.</li>
-<li><strong>Digitisation is not lossless.</strong> The finite sampling rate and bit depth set floors on what any downstream measure can resolve. Perturbation measures are especially sensitive to quantization noise at low bit depth <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000</a>)</span>.</li>
+<li><strong>Software defaults differ.</strong> Different analysis systems can return different jitter and shimmer values for the same signal, and software characteristics do not account for all of the variability <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000, 132, 194</a>)</span>. Frame length, window, pre-emphasis and interpolation are all candidates. Report the software and its settings with every value.</li>
+<li><strong>Check the whole chain, not only the file header.</strong> A file saved at a high sampling rate is only as good as the anti-aliasing filter and the gain setting used when it was recorded <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000, 79, 81</a>)</span>.</li>
+<li><strong>Clipping cannot be undone.</strong> Peak clipping removes waveform detail at recording time <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000, 57</a>)</span>. Inspect every recording for flattened peaks before analysis.</li>
+<li><strong>Frame length is a choice with consequences.</strong> A window long enough to resolve the harmonics of a low voice smears fast changes, and a short one does the reverse <span class="citation" data-cites="rabiner2011theory">(<a href="#ref-rabiner2011theory" role="doc-biblioref">Rabiner and Schafer 2011, 248, 299</a>)</span>. Measure chapters state the frame length each measure assumes.</li>
 </ul>
+</section>
+<section id="points-of-disagreement" class="level2" data-number="3.9">
+<h2 data-number="3.9" class="anchored" data-anchor-id="points-of-disagreement"><span class="header-section-number">3.9</span> Points of disagreement</h2>
+<p>The sources give different numerical recommendations for the same parameters. The differences reflect their dates and purposes rather than a conflict about the underlying theory.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Recommendation</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Frame length</td>
+<td>10–40 ms, 50–75 % overlap (general speech processing)</td>
+<td><span class="citation" data-cites="rabiner2011theory">Rabiner and Schafer (<a href="#ref-rabiner2011theory" role="doc-biblioref">2011, 248</a>)</span></td>
+</tr>
+<tr class="even">
+<td>Frame length</td>
+<td>25–50 ms, at least two periods of a male voice</td>
+<td><span class="citation" data-cites="ludlow2018measuring">Ludlow et al. (<a href="#ref-ludlow2018measuring" role="doc-biblioref">2018, 168</a>)</span></td>
+</tr>
+<tr class="odd">
+<td>Bit depth</td>
+<td>12 bits meets clinical needs</td>
+<td><span class="citation" data-cites="baken2000clinical">Baken and Orlikoff (<a href="#ref-baken2000clinical" role="doc-biblioref">2000, 79</a>)</span></td>
+</tr>
+<tr class="even">
+<td>Bit depth</td>
+<td>10 bits minimum for shimmer</td>
+<td><span class="citation" data-cites="baken2000clinical">Baken and Orlikoff (<a href="#ref-baken2000clinical" role="doc-biblioref">2000, 132</a>)</span></td>
+</tr>
+<tr class="odd">
+<td>Bit depth</td>
+<td>16 bits good practice; 24 bits best practice (archiving)</td>
+<td><span class="citation" data-cites="ludlow2018measuring">Ludlow et al. (<a href="#ref-ludlow2018measuring" role="doc-biblioref">2018, 140</a>)</span></td>
+</tr>
+<tr class="even">
+<td>Sampling rate</td>
+<td>at least 20 kHz for speech</td>
+<td><span class="citation" data-cites="baken2000clinical">Baken and Orlikoff (<a href="#ref-baken2000clinical" role="doc-biblioref">2000, 81</a>)</span></td>
+</tr>
+<tr class="odd">
+<td>Sampling rate</td>
+<td>44.1 kHz good practice; 44.1 or 96 kHz best practice (archiving)</td>
+<td><span class="citation" data-cites="ludlow2018measuring">Ludlow et al. (<a href="#ref-ludlow2018measuring" role="doc-biblioref">2018, 140</a>)</span></td>
+</tr>
+</tbody>
+</table>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list">

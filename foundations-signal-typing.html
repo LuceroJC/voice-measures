@@ -26,6 +26,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 /* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
@@ -66,7 +101,7 @@ div.csl-indent {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-ab7d7586b2882c37acd8ad0c57eb290d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-5c01c0ce2b51dbeda25ce515ef8205e7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -94,6 +129,9 @@ div.csl-indent {
     "search-label": "Search"
   }
 }</script>
+<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 </head>
@@ -380,15 +418,19 @@ div.csl-indent {
    
   <ul>
   <li><a href="#why-signal-typing-comes-first" id="toc-why-signal-typing-comes-first" class="nav-link active" data-scroll-target="#why-signal-typing-comes-first"><span class="header-section-number">5.1</span> Why signal typing comes first</a></li>
-  <li><a href="#the-three-types" id="toc-the-three-types" class="nav-link" data-scroll-target="#the-three-types"><span class="header-section-number">5.2</span> The three types</a>
+  <li><a href="#origin" id="toc-origin" class="nav-link" data-scroll-target="#origin"><span class="header-section-number">5.2</span> Origin</a></li>
+  <li><a href="#the-types" id="toc-the-types" class="nav-link" data-scroll-target="#the-types"><span class="header-section-number">5.3</span> The types</a>
   <ul class="collapse">
-  <li><a href="#type-1-nearly-periodic-or-in-the-ideal-case-periodic" id="toc-type-1-nearly-periodic-or-in-the-ideal-case-periodic" class="nav-link" data-scroll-target="#type-1-nearly-periodic-or-in-the-ideal-case-periodic"><span class="header-section-number">5.2.1</span> Type 1 — nearly periodic (or, in the ideal case, periodic)</a></li>
-  <li><a href="#type-2-organised-but-non-stationary" id="toc-type-2-organised-but-non-stationary" class="nav-link" data-scroll-target="#type-2-organised-but-non-stationary"><span class="header-section-number">5.2.2</span> Type 2 — organised but non-stationary</a></li>
-  <li><a href="#type-3-without-apparent-periodicity" id="toc-type-3-without-apparent-periodicity" class="nav-link" data-scroll-target="#type-3-without-apparent-periodicity"><span class="header-section-number">5.2.3</span> Type 3 — without apparent periodicity</a></li>
+  <li><a href="#type-1-nearly-periodic" id="toc-type-1-nearly-periodic" class="nav-link" data-scroll-target="#type-1-nearly-periodic"><span class="header-section-number">5.3.1</span> Type 1: nearly periodic</a></li>
+  <li><a href="#type-2-organised-but-no-single-f0" id="toc-type-2-organised-but-no-single-f0" class="nav-link" data-scroll-target="#type-2-organised-but-no-single-f0"><span class="header-section-number">5.3.2</span> Type 2: organised, but no single F0</a></li>
+  <li><a href="#type-3-no-apparent-periodicity" id="toc-type-3-no-apparent-periodicity" class="nav-link" data-scroll-target="#type-3-no-apparent-periodicity"><span class="header-section-number">5.3.3</span> Type 3: no apparent periodicity</a></li>
+  <li><a href="#type-4-dominated-by-noise" id="toc-type-4-dominated-by-noise" class="nav-link" data-scroll-target="#type-4-dominated-by-noise"><span class="header-section-number">5.3.4</span> Type 4: dominated by noise</a></li>
   </ul></li>
-  <li><a href="#applying-the-classification" id="toc-applying-the-classification" class="nav-link" data-scroll-target="#applying-the-classification"><span class="header-section-number">5.3</span> Applying the classification</a></li>
-  <li><a href="#which-measures-apply-to-which-types" id="toc-which-measures-apply-to-which-types" class="nav-link" data-scroll-target="#which-measures-apply-to-which-types"><span class="header-section-number">5.4</span> Which measures apply to which types</a></li>
-  <li><a href="#caveats" id="toc-caveats" class="nav-link" data-scroll-target="#caveats"><span class="header-section-number">5.5</span> Caveats</a></li>
+  <li><a href="#what-the-types-look-like" id="toc-what-the-types-look-like" class="nav-link" data-scroll-target="#what-the-types-look-like"><span class="header-section-number">5.4</span> What the types look like</a></li>
+  <li><a href="#applying-the-classification" id="toc-applying-the-classification" class="nav-link" data-scroll-target="#applying-the-classification"><span class="header-section-number">5.5</span> Applying the classification</a></li>
+  <li><a href="#which-measures-apply-to-which-types" id="toc-which-measures-apply-to-which-types" class="nav-link" data-scroll-target="#which-measures-apply-to-which-types"><span class="header-section-number">5.6</span> Which measures apply to which types</a></li>
+  <li><a href="#caveats" id="toc-caveats" class="nav-link" data-scroll-target="#caveats"><span class="header-section-number">5.7</span> Caveats</a></li>
+  <li><a href="#points-of-disagreement" id="toc-points-of-disagreement" class="nav-link" data-scroll-target="#points-of-disagreement"><span class="header-section-number">5.8</span> Points of disagreement</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/LuceroJC/voice-measures/edit/main/foundations-signal-typing.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/LuceroJC/voice-measures/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -424,104 +466,252 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Living draft.</strong> This chapter presents the classification that gates every subsequent measure. Later chapters cross-reference the three types by number throughout their Caveats sections. Found an error? Use the <em>Report an issue</em> link in the sidebar.</p>
+<p><strong>Living draft.</strong> This chapter presents the classification that gates every measure in Parts II to IV. Later chapters refer to the types by number in their Caveats sections. All example signals are synthetic; the code is shown under each figure and is MIT licensed. Found an error? Use the <em>Report an issue</em> link in the sidebar.</p>
 </div>
 </div>
 <section id="why-signal-typing-comes-first" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="why-signal-typing-comes-first"><span class="header-section-number">5.1</span> Why signal typing comes first</h2>
-<p>Fundamental frequency, jitter, shimmer, and harmonics-to-noise ratio all presuppose an identifiable repeating waveform. Disordered voices routinely violate that assumption. Applying a perturbation formula to a signal that has no periodic structure produces a number, but not a meaningful one <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000</a>)</span>. A three-category classification of voiced signals, originally proposed by <span class="citation" data-cites="titze1995workshop">Titze (<a href="#ref-titze1995workshop" role="doc-biblioref">1995</a>)</span> at the NCVS Workshop on Acoustic Voice Analysis and formalised for the clinic by <span class="citation" data-cites="baken2000clinical">Baken and Orlikoff (<a href="#ref-baken2000clinical" role="doc-biblioref">2000</a>)</span>, addresses this by naming which kinds of vocal signal support which kinds of measurement.</p>
-<p>Every measure chapter in this reference relies on the classification. This chapter is the single authority those cross-references resolve to.</p>
+<p>F0 is the rate at which a cyclic waveform repeats. An aperiodic signal has no repeating waveform and therefore has no F0 <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000, 152</a>)</span>. Jitter, shimmer and harmonics-to-noise ratio all start from an identified F0 or period, so they inherit this limit. The acoustic signals of many voice disorders do not have a periodicity that allows automatic measurement of F0 or of cycle amplitudes <span class="citation" data-cites="ludlow2018measuring">(<a href="#ref-ludlow2018measuring" role="doc-biblioref">Ludlow et al. 2018, 378</a>)</span>.</p>
+<p>Analysis software does not protect the user from this. A computer-based system may calculate a putative F0 for any signal, even an aperiodic one, and the number it displays need not have any meaning <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000, 152</a>)</span>. Checking the signal is the user’s responsibility. It is often skipped: Ludlow, Kent and Gray report a finding by Behrman (2005) that 60 % of clinicians using acoustic analysis did not examine the voice signal first to see whether periodic analysis was possible <span class="citation" data-cites="ludlow2018measuring">(<a href="#ref-ludlow2018measuring" role="doc-biblioref">Ludlow et al. 2018, 378</a>)</span>.</p>
+<p>Signal typing is that check. It sorts voice signals by how periodic they are over the interval to be analysed, so that each measure is applied only where it is valid.</p>
 </section>
-<section id="the-three-types" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="the-three-types"><span class="header-section-number">5.2</span> The three types</h2>
-<p>The classification, with clinical subtypes added by <span class="citation" data-cites="baken2000clinical">Baken and Orlikoff (<a href="#ref-baken2000clinical" role="doc-biblioref">2000</a>)</span> shown in italics:</p>
-<section id="type-1-nearly-periodic-or-in-the-ideal-case-periodic" class="level3" data-number="5.2.1">
-<h3 data-number="5.2.1" class="anchored" data-anchor-id="type-1-nearly-periodic-or-in-the-ideal-case-periodic"><span class="header-section-number">5.2.1</span> Type 1 — nearly periodic (or, in the ideal case, periodic)</h3>
-<p>Waveforms that do not undergo qualitative changes during the analysis interval. Any modulating or subharmonic frequencies present carry energy at least one order of magnitude below the fundamental <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000</a>)</span>.</p>
+<section id="origin" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="origin"><span class="header-section-number">5.2</span> Origin</h2>
+<p>The classification comes from the Workshop on Acoustic Voice Analysis, whose summary statement was written by Titze. The participants called a voice Type 1 when the periods and amplitudes of vibration are easily identified in the acoustic signal, and used Types 2 and 3 for the irregular signals typical of voice disorders <span class="citation" data-cites="ludlow2018measuring">(<a href="#ref-ludlow2018measuring" role="doc-biblioref">Ludlow et al. 2018, 378</a>)</span>. Baken and Orlikoff adopted Titze’s three categories for clinical use and added subtypes within each <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000, 152</a>)</span>. Sprecher and colleagues (2010) later tested whether the types could be identified from narrowband spectrograms. They found four categories, splitting noise-dominated signals off from Type 3 as a new Type 4 <span class="citation" data-cites="ludlow2018measuring">(<a href="#ref-ludlow2018measuring" role="doc-biblioref">Ludlow et al. 2018, 378</a>)</span>.</p>
+</section>
+<section id="the-types" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="the-types"><span class="header-section-number">5.3</span> The types</h2>
+<p>The definitions and subtypes for Types 1 to 3 are those of Baken and Orlikoff. Their subtypes are shown in italics.</p>
+<section id="type-1-nearly-periodic" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="type-1-nearly-periodic"><span class="header-section-number">5.3.1</span> Type 1: nearly periodic</h3>
+<p>Nearly periodic (or, in the ideal case, periodic) waveforms that do not undergo qualitative changes during the interval analysed. Any modulating or subharmonic frequencies present have at least one order of magnitude less energy than the fundamental <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000, 152</a>)</span>.</p>
 <ul>
 <li><em>Subtype A</em>: minor random variation of F0 or waveshape.</li>
-<li><em>Subtype B</em>: minor monotonic modulation — F0 or amplitude steadily increasing or decreasing.</li>
+<li><em>Subtype B</em>: minor monotonic modulation, with F0 or amplitude steadily increasing or decreasing.</li>
 <li><em>Subtype C</em>: minor cyclic variation (modulation) of F0 or amplitude.</li>
 </ul>
+<p><span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000, 152</a>)</span></p>
 </section>
-<section id="type-2-organised-but-non-stationary" class="level3" data-number="5.2.2">
-<h3 data-number="5.2.2" class="anchored" data-anchor-id="type-2-organised-but-non-stationary"><span class="header-section-number">5.2.2</span> Type 2 — organised but non-stationary</h3>
-<p>Signals with sudden qualitative changes (bifurcations), or with modulating or subharmonic frequencies whose energy is comparable to that of the fundamental. The signal is clearly ordered and organised, but no single F0 value validly characterises the entire segment <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000</a>)</span>.</p>
+<section id="type-2-organised-but-no-single-f0" class="level3" data-number="5.3.2">
+<h3 data-number="5.3.2" class="anchored" data-anchor-id="type-2-organised-but-no-single-f0"><span class="header-section-number">5.3.2</span> Type 2: organised, but no single F0</h3>
+<p>Signals with sudden qualitative changes (bifurcations) in the interval analysed, or with modulating or subharmonic frequencies whose energy is comparable to that of the fundamental. Type 2 signals are clearly ordered and organised, but no single F0 value validly characterises the whole segment <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000, 153</a>)</span>.</p>
 <ul>
 <li><em>Subtype A</em>: signal bifurcation(s) present.</li>
 <li><em>Subtype B</em>: F0 or amplitude discontinuity.</li>
 <li><em>Subtype C</em>: large-scale modulation of F0.</li>
 </ul>
+<p><span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000, 153</a>)</span></p>
+<p>A common Type 2 pattern is period doubling. Successive cycles alternate between two shapes, which puts a component at half the fundamental (F0/2) into the spectrum. The waveform then has two defensible periods: one per oscillation or one per pair <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000, 151</a>)</span>.</p>
 </section>
-<section id="type-3-without-apparent-periodicity" class="level3" data-number="5.2.3">
-<h3 data-number="5.2.3" class="anchored" data-anchor-id="type-3-without-apparent-periodicity"><span class="header-section-number">5.2.3</span> Type 3 — without apparent periodicity</h3>
-<p>Signals without apparent periodicity, and hence not validly susceptible to F0 measurement. Type 3 signals may nonetheless be chaotic in the technical sense — carrying a covert organising principle discoverable through dynamical-systems techniques <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000</a>)</span>.</p>
+<section id="type-3-no-apparent-periodicity" class="level3" data-number="5.3.3">
+<h3 data-number="5.3.3" class="anchored" data-anchor-id="type-3-no-apparent-periodicity"><span class="header-section-number">5.3.3</span> Type 3: no apparent periodicity</h3>
+<p>Signals without apparent periodicity, and hence not validly susceptible to F0 measurement. A Type 3 signal may nonetheless be chaotic, with a covert organising principle that the techniques of dynamical systems theory might reveal <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000, 153</a>)</span>.</p>
 <ul>
 <li><em>Subtype A</em>: no observable structure.</li>
 <li><em>Subtype B</em>: deep-level (chaotic) organisation.</li>
 </ul>
+<p><span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000, 153</a>)</span></p>
+</section>
+<section id="type-4-dominated-by-noise" class="level3" data-number="5.3.4">
+<h3 data-number="5.3.4" class="anchored" data-anchor-id="type-4-dominated-by-noise"><span class="header-section-number">5.3.4</span> Type 4: dominated by noise</h3>
+<p>Type 4 was added by Sprecher and colleagues for signals dominated by noise, separated from Type 3 <span class="citation" data-cites="ludlow2018measuring">(<a href="#ref-ludlow2018measuring" role="doc-biblioref">Ludlow et al. 2018, 378</a>)</span>. Their example Type 4 waveform is aperiodic and is described as stochastic noise <span class="citation" data-cites="ludlow2018measuring">(<a href="#ref-ludlow2018measuring" role="doc-biblioref">Ludlow et al. 2018, 6</a>)</span>.</p>
 </section>
 </section>
-<section id="applying-the-classification" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="applying-the-classification"><span class="header-section-number">5.3</span> Applying the classification</h2>
-<p>Signal typing is a visual-inspection step performed before perturbation measurement, not a numeric procedure. The vocal waveform (or a close correlate, such as an electroglottographic trace) is displayed and examined for the presence of bifurcations, modulations, discontinuities, and periodicity. The analysis window is chosen so that a single type applies across it <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000</a>)</span>. A computer-based analysis system will happily calculate a putative F0 for any signal, including aperiodic ones, but the number produced has no meaning if the signal is Type 3 <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000</a>)</span>.</p>
-<p>The classification is signal-based, not disorder-based. A single speaker may produce all three types across a session, and the same disorder can present differently at different F0 or intensity levels. The underlying mathematical distinction is periodicity itself: a waveform is periodic when <em>f</em>(<em>t</em> + <em>T</em>) = <em>f</em>(<em>t</em>), so the waveform is an exact copy of itself after some period <em>T</em> has elapsed <span class="citation" data-cites="titze2000principles">(<a href="#ref-titze2000principles" role="doc-biblioref">Titze 2000</a>)</span>. Any departure from this exact-repetition condition is aperiodicity of some kind.</p>
+<section id="what-the-types-look-like" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="what-the-types-look-like"><span class="header-section-number">5.4</span> What the types look like</h2>
+<p><a href="#fig-types" class="quarto-xref">Figure&nbsp;<span>5.1</span></a> shows one synthetic example of each type. Each is a pulse train passed through the same vowel filter; only the cycle-to-cycle pattern differs. The spectrograms use a long window, so harmonics show as horizontal lines when they exist.</p>
+<div id="cell-fig-types" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Show the code for this figure</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>split_t <span class="op">=</span> <span class="fl">0.4</span> <span class="op">*</span> <span class="fl">0.6</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">4</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="fl">7.2</span>, <span class="fl">7.6</span>),</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>                         gridspec_kw<span class="op">=</span>{<span class="st">"width_ratios"</span>: [<span class="dv">1</span>, <span class="fl">1.35</span>]})</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> row, (name, x) <span class="kw">in</span> <span class="bu">enumerate</span>(examples.items()):</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    aw, asg <span class="op">=</span> axes[row]</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    t0 <span class="op">=</span> <span class="fl">0.40</span>  <span class="co"># waveform excerpt start (s), after the Type 2 bifurcation</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    seg <span class="op">=</span> x[<span class="bu">int</span>(t0 <span class="op">*</span> FS): <span class="bu">int</span>((t0 <span class="op">+</span> <span class="fl">0.06</span>) <span class="op">*</span> FS)]</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    aw.plot(np.arange(<span class="bu">len</span>(seg)) <span class="op">/</span> FS <span class="op">*</span> <span class="fl">1e3</span>, seg, color<span class="op">=</span>vs.INK, lw<span class="op">=</span><span class="fl">0.8</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    aw.set_ylim(<span class="op">-</span><span class="fl">1.05</span>, <span class="fl">1.05</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    aw.set_yticks([])</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    aw.set_title(name, color<span class="op">=</span>vs.INK)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    vs.style_axes(aw, grid<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    aw.spines[<span class="st">"left"</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    vs.plot_spectrogram(asg, x, FS, win_s<span class="op">=</span><span class="fl">0.050</span>, fmax<span class="op">=</span><span class="dv">1500</span>, hop_s<span class="op">=</span><span class="fl">0.002</span>, dyn_db<span class="op">=</span><span class="dv">50</span>)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    asg.set_ylim(<span class="dv">0</span>, <span class="fl">1.5</span>)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    asg.set_ylabel(<span class="st">"kHz"</span>)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> name <span class="op">==</span> <span class="st">"Type 2"</span>:</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>        asg.axvline(split_t, color<span class="op">=</span>vs.ORANGE, lw<span class="op">=</span><span class="fl">1.2</span>, ls<span class="op">=</span><span class="st">"--"</span>)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>        asg.text(split_t <span class="op">+</span> <span class="fl">0.01</span>, <span class="fl">1.38</span>, <span class="st">"bifurcation"</span>, color<span class="op">=</span>vs.INK, fontsize<span class="op">=</span><span class="dv">8</span>)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    vs.style_axes(asg, grid<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>axes[<span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>].set_xlabel(<span class="st">"Time (ms)"</span>)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>axes[<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>].set_xlabel(<span class="st">"Time (s)"</span>)</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-types" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Four rows, one per signal type. Each row has a short waveform on the left and a spectrogram on the right. Type 1 shows a regular waveform and parallel harmonic lines. Type 2 shows alternating big and small cycles and, after about 0.19 seconds, extra lines between the harmonics. Type 3 shows irregular cycles and a smeared spectrogram. Type 4 shows a noise-like waveform and a diffuse spectrogram.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-types-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="foundations-signal-typing_files/figure-html/fig-types-output-1.png" alt="Four rows, one per signal type. Each row has a short waveform on the left and a spectrogram on the right. Type 1 shows a regular waveform and parallel harmonic lines. Type 2 shows alternating big and small cycles and, after about 0.19 seconds, extra lines between the harmonics. Type 3 shows irregular cycles and a smeared spectrogram. Type 4 shows a noise-like waveform and a diffuse spectrogram." width="782" height="825" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-types-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.1: Synthetic examples of the four signal types. Left: 60 ms of waveform. Right: narrowband spectrogram (50-ms Hamming window, 0–1.5 kHz) of the whole 0.6-s segment. Type 1: small random period and amplitude variation; harmonics are clean lines. Type 2: a bifurcation at 0.19 s (shaded) from period-1 to period-2 behaviour; new lines appear midway between the harmonics, at odd multiples of F0/2. Type 3: cycle lengths and amplitudes driven by a deterministic chaotic map; no stable harmonic lines. Type 4: weak irregular pulses buried in noise; energy is spread across frequency.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
 </section>
-<section id="which-measures-apply-to-which-types" class="level2" data-number="5.4">
-<h2 data-number="5.4" class="anchored" data-anchor-id="which-measures-apply-to-which-types"><span class="header-section-number">5.4</span> Which measures apply to which types</h2>
-<p>Signal type gates the measures that follow in Parts II–IV.</p>
+<section id="applying-the-classification" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="applying-the-classification"><span class="header-section-number">5.5</span> Applying the classification</h2>
+<p>The type belongs to an analysis interval, not to a speaker or a diagnosis. Both Type 1 and Type 2 are defined by what happens during the interval to be analysed <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000, 152–53</a>)</span>, so the same phonation can contain a Type 1 stretch and a Type 2 stretch. The practical question is always whether the segment you intend to measure is Type 1.</p>
+<p>Ludlow, Kent and Gray describe the procedure. Select a segment of a prolonged vowel that is quasiperiodic, so that the periods of vibration can be detected accurately. Examine it with a narrowband spectrogram to see whether F0 and its harmonics are visible. If they cannot be identified, the signal is probably Type 3 or Type 4 and is not suitable for perturbation analysis <span class="citation" data-cites="ludlow2018measuring">(<a href="#ref-ludlow2018measuring" role="doc-biblioref">Ludlow et al. 2018, 378</a>)</span>.</p>
+<p><a href="#fig-tracker" class="quarto-xref">Figure&nbsp;<span>5.2</span></a> shows why the inspection cannot be delegated to the software. A simple autocorrelation F0 tracker without a voicing decision returns a value for every frame of every example. Only the Type 1 values describe the signal.</p>
+<div id="cell-fig-tracker" class="cell" data-execution_count="3">
+<details class="code-fold">
+<summary>Show the code for this figure</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">4</span>, figsize<span class="op">=</span>(<span class="fl">7.2</span>, <span class="fl">2.6</span>), sharey<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax, (name, x) <span class="kw">in</span> <span class="bu">zip</span>(axes, examples.items()):</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    tt, f0 <span class="op">=</span> vs.ac_f0_track(x, FS)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    ax.axhline(<span class="dv">125</span>, color<span class="op">=</span>vs.MUTED, lw<span class="op">=</span><span class="fl">0.8</span>, ls<span class="op">=</span><span class="st">"--"</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    ax.plot(tt, f0, <span class="st">"o"</span>, color<span class="op">=</span>vs.BLUE, ms<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    ax.set_title(name, color<span class="op">=</span>vs.INK)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    ax.text(<span class="fl">0.04</span>, <span class="fl">0.03</span>, <span class="ss">f"mean </span><span class="sc">{</span>np<span class="sc">.</span>mean(f0)<span class="sc">:.0f}</span><span class="ss"> Hz</span><span class="ch">\n</span><span class="ss">SD </span><span class="sc">{</span>np<span class="sc">.</span>std(f0)<span class="sc">:.1f}</span><span class="ss"> Hz"</span>,</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>            transform<span class="op">=</span>ax.transAxes, va<span class="op">=</span><span class="st">"bottom"</span>, fontsize<span class="op">=</span><span class="dv">8</span>, color<span class="op">=</span>vs.INK)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">"Time (s)"</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    vs.style_axes(ax)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_ylabel(<span class="st">"Reported F0 (Hz)"</span>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_ylim(<span class="dv">0</span>, <span class="dv">420</span>)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-tracker" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Four small panels of F0 against time. Type 1 is a flat line at 125 Hz. Type 2 is flat at 125 Hz, then steps up to about 137 Hz. Type 3 scatters between about 95 and 150 Hz. Type 4 jumps between widely different values up to 400 Hz.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-tracker-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="foundations-signal-typing_files/figure-html/fig-tracker-output-1.png" alt="Four small panels of F0 against time. Type 1 is a flat line at 125 Hz. Type 2 is flat at 125 Hz, then steps up to about 137 Hz. Type 3 scatters between about 95 and 150 Hz. Type 4 jumps between widely different values up to 400 Hz." width="782" height="275" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tracker-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.2: F0 returned every 10 ms by a naive autocorrelation tracker (40-ms frames, search range 60–400 Hz, no voicing decision) for the four synthetic signals of <a href="#fig-types" class="quarto-xref">Figure&nbsp;<span>5.1</span></a>. The dashed line is the 125-Hz rate of the pulse generator. Every frame gets a number. Type 1: the numbers describe the signal. Type 2: after the bifurcation the tracker settles on about 137 Hz, the rate of the shorter cycle of each pair; it describes neither the alternating pattern nor the 62.5-Hz pair rate. Types 3 and 4: the numbers are produced by the algorithm, not by any period in the signal.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><a href="#fig-workflow" class="quarto-xref">Figure&nbsp;<span>5.3</span></a> summarises the decision.</p>
+<div class="cell" data-layout-align="default">
+<details class="code-fold">
+<summary>Show the code for this figure</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>flowchart TD</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    A["Select a quasiperiodic segment&lt;br/&gt;of the sustained vowel"] --&gt; B["Inspect the waveform and a&lt;br/&gt;narrowband spectrogram"]</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    B --&gt; C{"F0 and harmonics&lt;br/&gt;visible?"}</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    C -- "No" --&gt; G["Type 3 or 4:&lt;br/&gt;no F0-based measures"]</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    C -- "Yes" --&gt; D{"Qualitative change, subharmonics,&lt;br/&gt;or strong modulation&lt;br/&gt;in the interval?"}</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    D -- "No" --&gt; E["Type 1:&lt;br/&gt;F0, perturbation and&lt;br/&gt;noise measures apply"]</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    D -- "Yes" --&gt; F{"Can a shorter Type 1&lt;br/&gt;segment be isolated?"}</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    F -- "Yes" --&gt; A</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    F -- "No" --&gt; H["Type 2:&lt;br/&gt;report perturbation as&lt;br/&gt;not applicable"]</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    G --&gt; I["Use measures that do not&lt;br/&gt;need F0, such as CPPS;&lt;br/&gt;describe the signal"]</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    H --&gt; I</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-workflow" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-workflow-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div>
+<pre class="mermaid mermaid-js" data-label="fig-workflow">flowchart TD
+    A["Select a quasiperiodic segment&lt;br/&gt;of the sustained vowel"] --&gt; B["Inspect the waveform and a&lt;br/&gt;narrowband spectrogram"]
+    B --&gt; C{"F0 and harmonics&lt;br/&gt;visible?"}
+    C -- "No" --&gt; G["Type 3 or 4:&lt;br/&gt;no F0-based measures"]
+    C -- "Yes" --&gt; D{"Qualitative change, subharmonics,&lt;br/&gt;or strong modulation&lt;br/&gt;in the interval?"}
+    D -- "No" --&gt; E["Type 1:&lt;br/&gt;F0, perturbation and&lt;br/&gt;noise measures apply"]
+    D -- "Yes" --&gt; F{"Can a shorter Type 1&lt;br/&gt;segment be isolated?"}
+    F -- "Yes" --&gt; A
+    F -- "No" --&gt; H["Type 2:&lt;br/&gt;report perturbation as&lt;br/&gt;not applicable"]
+    G --&gt; I["Use measures that do not&lt;br/&gt;need F0, such as CPPS;&lt;br/&gt;describe the signal"]
+    H --&gt; I
+</pre>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-workflow-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.3: Signal-typing workflow before measurement. Branch labels follow the definitions of Baken and Orlikoff (2000, pp.&nbsp;152–153) and the inspection procedure described by Ludlow, Kent and Gray (2018, p.&nbsp;378).
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="which-measures-apply-to-which-types" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="which-measures-apply-to-which-types"><span class="header-section-number">5.6</span> Which measures apply to which types</h2>
+<div id="tbl-type-measures" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-type-measures-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;5.1: What each signal type supports.
+</figcaption>
+<div aria-describedby="tbl-type-measures-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
 <colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
 </colgroup>
 <thead>
 <tr class="header">
 <th>Type</th>
-<th>Reliable</th>
-<th>Marginal</th>
-<th>Unreliable / undefined</th>
+<th>F0</th>
+<th>Perturbation (jitter, shimmer)</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Type 1</td>
-<td>Jitter, shimmer, HNR, CPPS, spectral tilt, F0, all composites</td>
-<td>—</td>
-<td>—</td>
+<td>1</td>
+<td>A single F0 characterises the interval. Evaluation of F0 presupposes Type 1, subtype A, within reasonable limits <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000, 153</a>)</span>.</td>
+<td>Accurate <span class="citation" data-cites="ludlow2018measuring">(<a href="#ref-ludlow2018measuring" role="doc-biblioref">Ludlow et al. 2018, 378</a>)</span>.</td>
 </tr>
 <tr class="even">
-<td>Type 2</td>
-<td>CPPS, some spectral measures</td>
-<td>HNR, spectral tilt</td>
-<td>Jitter, shimmer, composite indices</td>
+<td>2</td>
+<td>No single F0 value validly characterises the segment <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000, 153</a>)</span>.</td>
+<td>Accurate only in some Type 2 signals, those without bifurcation into two F0 values <span class="citation" data-cites="ludlow2018measuring">(<a href="#ref-ludlow2018measuring" role="doc-biblioref">Ludlow et al. 2018, 378</a>)</span>.</td>
 </tr>
 <tr class="odd">
-<td>Type 3</td>
-<td>Cepstral-domain measures (CPPS); dynamical-systems methods</td>
-<td>—</td>
-<td>Any measure that requires F0 tracking</td>
+<td>3</td>
+<td>Not validly susceptible to F0 measurement <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000, 153</a>)</span>.</td>
+<td>Not reliably measurable <span class="citation" data-cites="ludlow2018measuring">(<a href="#ref-ludlow2018measuring" role="doc-biblioref">Ludlow et al. 2018, 378</a>)</span>.</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>(Noise-dominated.)</td>
+<td>Not reliably measurable <span class="citation" data-cites="ludlow2018measuring">(<a href="#ref-ludlow2018measuring" role="doc-biblioref">Ludlow et al. 2018, 378</a>)</span>.</td>
 </tr>
 </tbody>
 </table>
+</div>
+</figure>
+</div>
+<p>Other measure families relate to the types as follows.</p>
 <ul>
-<li><strong>Perturbation measures require Type 1 signals.</strong> For F0 evaluation to be meaningful, the signal should within reasonable limits be classifiable as Type 1, subtype A <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000</a>)</span>. Occasional discontinuities may be less damaging than once believed for some software <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000</a>)</span>, but the general rule stands.</li>
-<li><strong>Noise measures (HNR, NHR) presuppose a discernible periodic component</strong> to separate from the noise; they are unreliable on Type 2 and undefined on Type 3.</li>
-<li><strong>Cepstral peak prominence is robust across signal types.</strong> CPP and CPPS do not require pitch detection or tracking and can be extracted from connected speech as well as sustained vowels. This is one of the practical reasons ASHA recommended CPP as a general dysphonia measure in preference to jitter, shimmer, and HNR (see the <a href="./cpps.html">CPPS chapter</a>).</li>
-<li><strong>Composite indices inherit their components’ signal-type constraints.</strong> Because AVQI and ABI include perturbation and HNR-like terms, they are sensitive to non-Type-1 material; see the <a href="./avqi.html">AVQI</a> and <a href="./abi.html">ABI</a> chapters.</li>
-<li><strong>Type 3 signals need dynamical-systems methods</strong>, not periodicity-based measures, and that direction of investigation is one of the frontier areas in acoustic voice analysis <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000</a>)</span>.</li>
+<li><strong>Harmonics-to-noise ratio.</strong> HNR needs a filter that separates F0 and its harmonics from the rest of the signal. Like jitter and shimmer, it can only be applied to a steady phonation such as a prolonged vowel <span class="citation" data-cites="ludlow2018measuring">(<a href="#ref-ludlow2018measuring" role="doc-biblioref">Ludlow et al. 2018, 378</a>)</span>. It therefore shares their dependence on a Type 1 segment.</li>
+<li><strong>Cepstral peak prominence.</strong> CPP does not require direct computation of F0, and it can be extracted from connected speech as well as sustained vowels <span class="citation" data-cites="murton2020cpp">(<a href="#ref-murton2020cpp" role="doc-biblioref">Murton et al. 2020, 1596</a>)</span>. Because no pitch detection or tracking is used, the cepstral measures are robust in dysphonic voices, particularly breathy ones <span class="citation" data-cites="barsties2018meta">(<a href="#ref-barsties2018meta" role="doc-biblioref">Barsties v. Latoszek et al. 2018, 316</a>)</span>. The 2018 ASHA guidance recommended CPP as a general measure of dysphonia in place of jitter, shimmer and HNR <span class="citation" data-cites="murton2020cpp">(<a href="#ref-murton2020cpp" role="doc-biblioref">Murton et al. 2020, 1596</a>)</span>. See the <a href="./cpps.html">CPPS chapter</a>.</li>
+<li><strong>Composite indices.</strong> AVQI includes shimmer local, shimmer local dB, and HNR among its components <span class="citation" data-cites="barsties2016avqi">(<a href="#ref-barsties2016avqi" role="doc-biblioref">Barsties and Maryn 2016, 574</a>)</span>. ABI includes jitter local <span class="citation" data-cites="delgado2018avqi">(<a href="#ref-delgado2018avqi" role="doc-biblioref">Delgado Hernández et al. 2018, 320</a>)</span>. These components carry the restrictions in <a href="#tbl-type-measures" class="quarto-xref">Table&nbsp;<span>5.1</span></a> into the composite. See the <a href="./avqi.html">AVQI</a> and <a href="./abi.html">ABI</a> chapters.</li>
+<li><strong>Dynamical-systems methods.</strong> For Type 3 signals, any covert organisation might be discoverable with the techniques of dynamical systems theory <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000, 153</a>)</span>.</li>
 </ul>
-<p>The practical workflow: display the signal, classify it, and if it is not Type 1 either shorten the analysis window until a Type 1 segment is isolated, switch to a signal-type-robust measure such as CPPS, or report the signal as unanalyzable by perturbation methods — rather than reporting a spurious number.</p>
 </section>
-<section id="caveats" class="level2" data-number="5.5">
-<h2 data-number="5.5" class="anchored" data-anchor-id="caveats"><span class="header-section-number">5.5</span> Caveats</h2>
+<section id="caveats" class="level2" data-number="5.7">
+<h2 data-number="5.7" class="anchored" data-anchor-id="caveats"><span class="header-section-number">5.7</span> Caveats</h2>
 <ul>
-<li>The classification is human-judgment-based. Two clinicians may disagree at the boundaries, particularly between Type 1 subtype C and Type 2 subtype C (both involve F0 modulation; they differ in the magnitude relative to the fundamental) <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000</a>)</span>.</li>
-<li>Software rarely refuses to compute perturbation values on non-Type-1 signals — the user must apply the type check themselves.</li>
-<li>The analysis window matters. A speaker who produces Type 2 material during a phrase transition and Type 1 material during a sustained vowel is both, depending on which window is analysed.</li>
-<li>The Baken and Orlikoff subtypes (A, B, C) are their own extension of <span class="citation" data-cites="titze1995workshop">Titze (<a href="#ref-titze1995workshop" role="doc-biblioref">1995</a>)</span>’s three-type framework; other authors have used other subdivisions or none at all. Cite the subtype only where the sensitivity of the analysis warrants it.</li>
+<li><strong>Typing is a judgement.</strong> The types are defined by inspection, and the boundary between Type 1 and Type 2 is stated as an energy ratio (an order of magnitude below the fundamental versus comparable to it) <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000, 152–53</a>)</span>. None of the ingested sources reports inter-rater agreement for signal typing.</li>
+<li><strong>Perturbation can move the wrong way with treatment.</strong> When a voice is very irregular before treatment, few periods can be tracked, and jitter and shimmer may come out low. As the voice improves, more periods are identified and the measured values may rise <span class="citation" data-cites="ludlow2018measuring">(<a href="#ref-ludlow2018measuring" role="doc-biblioref">Ludlow et al. 2018, 378</a>)</span>. Type the signal at every session before comparing perturbation values over time.</li>
+<li><strong>Occasional discontinuities.</strong> Occasional discontinuities may be less damaging to perturbation measurement than was once believed, at least for some software <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000, 153</a>)</span>. The requirement for a Type 1 segment still stands.</li>
+<li><strong>Subtypes are an extension.</strong> The A/B/C subtypes are Baken and Orlikoff’s addition to Titze’s three categories <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000, 152</a>)</span>. Cite a subtype only where the analysis depends on it.</li>
+<li><strong>The original sources are not yet in the library.</strong> The workshop summary statement and the Sprecher et al.&nbsp;(2010) paper are cited here through <span class="citation" data-cites="baken2000clinical">Baken and Orlikoff (<a href="#ref-baken2000clinical" role="doc-biblioref">2000</a>)</span> and <span class="citation" data-cites="ludlow2018measuring">Ludlow et al. (<a href="#ref-ludlow2018measuring" role="doc-biblioref">2018</a>)</span>.</li>
+</ul>
+</section>
+<section id="points-of-disagreement" class="level2" data-number="5.8">
+<h2 data-number="5.8" class="anchored" data-anchor-id="points-of-disagreement"><span class="header-section-number">5.8</span> Points of disagreement</h2>
+<ul>
+<li><strong>Date of the classification.</strong> Baken and Orlikoff cite the scheme as Titze (1995) <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000, 152</a>)</span>. Ludlow, Kent and Gray cite it as Titze (1994) and refer to the workshop’s summary statement <span class="citation" data-cites="ludlow2018measuring">(<a href="#ref-ludlow2018measuring" role="doc-biblioref">Ludlow et al. 2018, 378</a>)</span>. This reference uses 1995 for the summary statement until the original is ingested.</li>
+<li><strong>Character of Type 2 and Type 3.</strong> Baken and Orlikoff define Type 2 by bifurcations or strong modulating or subharmonic components, and Type 3 by the absence of apparent periodicity, possibly with chaotic organisation <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000, 153</a>)</span>. Ludlow, Kent and Gray describe Type 2 as highly irregular periodicity with subharmonics and modulations such as tremor, and Type 3 as chaotic and usually perceived as rough <span class="citation" data-cites="ludlow2018measuring">(<a href="#ref-ludlow2018measuring" role="doc-biblioref">Ludlow et al. 2018, 378</a>)</span>. This chapter uses the Baken and Orlikoff definitions, which are signal-based rather than perceptual.</li>
 </ul>
 
 
@@ -529,11 +719,20 @@ Note
 <div id="ref-baken2000clinical" class="csl-entry" role="listitem">
 Baken, Ronald J., and Robert F. Orlikoff. 2000. <em>Clinical Measurement of Speech and Voice</em>. 2nd ed. Singular Thomson Learning.
 </div>
-<div id="ref-titze1995workshop" class="csl-entry" role="listitem">
-Titze, Ingo R. 1995. <em>Workshop on Acoustic Voice Analysis: Summary Statement</em>. National Center for Voice; Speech.
+<div id="ref-barsties2016avqi" class="csl-entry" role="listitem">
+Barsties, Ben, and Youri Maryn. 2016. <span>“External Validation of the <span>Acoustic</span> <span>Voice</span> <span>Quality</span> <span>Index</span> Version 03.01 with Extended Representativity.”</span> <em>Annals of Otology, Rhinology &amp; Laryngology</em> 125 (7): 571–83. <a href="https://doi.org/10.1177/0003489416636131">https://doi.org/10.1177/0003489416636131</a>.
 </div>
-<div id="ref-titze2000principles" class="csl-entry" role="listitem">
-Titze, Ingo R. 2000. <em>Principles of Voice Production</em>. Revised. National Center for Voice; Speech.
+<div id="ref-barsties2018meta" class="csl-entry" role="listitem">
+Barsties v. Latoszek, Ben, Youri Maryn, Ellen Gerrits, and Marc De Bodt. 2018. <span>“A Meta-Analysis: Acoustic Measurement of Roughness and Breathiness.”</span> <em>Journal of Speech, Language, and Hearing Research</em> 61 (2): 298–323. <a href="https://doi.org/10.1044/2017_JSLHR-S-16-0188">https://doi.org/10.1044/2017_JSLHR-S-16-0188</a>.
+</div>
+<div id="ref-delgado2018avqi" class="csl-entry" role="listitem">
+Delgado Hernández, Jonathan, Nieves M. León Gómez, Alejandra Jiménez, Laura M. Izquierdo, and Ben Barsties v. Latoszek. 2018. <span>“Validation of the <span>Acoustic</span> <span>Voice</span> <span>Quality</span> <span>Index</span> Version 03.01 and the <span>Acoustic</span> <span>Breathiness</span> <span>Index</span> in the <span>Spanish</span> Language.”</span> <em>Annals of Otology, Rhinology &amp; Laryngology</em> 127 (5): 317–26. <a href="https://doi.org/10.1177/0003489418761096">https://doi.org/10.1177/0003489418761096</a>.
+</div>
+<div id="ref-ludlow2018measuring" class="csl-entry" role="listitem">
+Ludlow, Christy L., Raymond D. Kent, and Lincoln C. Gray. 2018. <em>Measuring Voice, Speech, and Swallowing in the Clinic and Laboratory</em>. Plural Publishing.
+</div>
+<div id="ref-murton2020cpp" class="csl-entry" role="listitem">
+Murton, Olivia, Robert Hillman, and Daryush Mehta. 2020. <span>“Cepstral Peak Prominence Values for Clinical Voice Evaluation.”</span> <em>American Journal of Speech-Language Pathology</em> 29 (3): 1596–607. <a href="https://doi.org/10.1044/2020_AJSLP-20-00001">https://doi.org/10.1044/2020_AJSLP-20-00001</a>.
 </div>
 </div>
 </section>
