@@ -512,46 +512,88 @@ Table&nbsp;18.1: Pooled meta-analytic correlations with perceptual ratings <span
 </section>
 <section id="normative-data" class="level2" data-number="18.4">
 <h2 data-number="18.4" class="anchored" data-anchor-id="normative-data"><span class="header-section-number">18.4</span> Normative data</h2>
-<p>Cutoff values below which a voice disorder is probable, from 295 patients and 50 vocally healthy controls of the MEEI Voice Disorders Database (English speakers) <span class="citation" data-cites="murton2020cpp">(<a href="#ref-murton2020cpp" role="doc-biblioref">Murton et al. 2020</a>)</span>:</p>
+<p>CPP values and cutoffs belong to the pipeline that produced them: the program, its version and settings, and the speech material. Each row below states its pipeline and the kind of evidence behind it; see <a href="./foundations-pipeline.html">Pipeline Dependence and Reference Values</a> for the classes. Compare a measured value only with a row whose pipeline matches.</p>
 <div id="tbl-cpp-cutoffs" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-cpp-cutoffs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;18.2: MEEI cutoffs of <span class="citation" data-cites="murton2020cpp">Murton et al. (<a href="#ref-murton2020cpp" role="doc-biblioref">2020</a>)</span>.
+Table&nbsp;18.2: Diagnostic cutoffs (voice disorder vs.&nbsp;typical voice). MEEI rows: <span class="citation" data-cites="murton2020cpp">Murton et al. (<a href="#ref-murton2020cpp" role="doc-biblioref">2020</a>)</span>. Second-sentence rows: <span class="citation" data-cites="sauder2017cpps">Sauder et al. (<a href="#ref-sauder2017cpps" role="doc-biblioref">2017</a>)</span>. Sustained /i/: <span class="citation" data-cites="buckley2023cpp">Buckley et al. (<a href="#ref-buckley2023cpp" role="doc-biblioref">2023</a>)</span>.
 </figcaption>
 <div aria-describedby="tbl-cpp-cutoffs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
 <thead>
 <tr class="header">
+<th>Population</th>
 <th>Task</th>
-<th>Software</th>
+<th>Pipeline</th>
 <th>Cutoff</th>
-<th>Classification accuracy</th>
+<th>Accuracy</th>
+<th>Evidence</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
+<td>MEEI, English; 295 patients, 50 controls</td>
 <td>Sustained /a/</td>
-<td>ADSV CPP</td>
+<td>ADSV 3.4.2 CPP, default settings</td>
 <td>11.46 dB</td>
 <td>79.4%</td>
+<td>primary</td>
 </tr>
 <tr class="even">
-<td>Rainbow Passage</td>
-<td>ADSV CPP</td>
+<td>MEEI, English; 291 patients, 50 controls</td>
+<td>Rainbow Passage, first 12 s</td>
+<td>ADSV 3.4.2 CPP, default settings</td>
 <td>6.11 dB</td>
 <td>87.7%</td>
+<td>primary</td>
 </tr>
 <tr class="odd">
+<td>MEEI, English; 295 patients, 50 controls</td>
 <td>Sustained /a/</td>
-<td>Praat CPPS</td>
+<td>Praat 6.0.40 CPPS, Watts et al.&nbsp;settings</td>
 <td>14.45 dB</td>
 <td>77.4%</td>
+<td>primary</td>
 </tr>
 <tr class="even">
-<td>Rainbow Passage</td>
-<td>Praat CPPS</td>
+<td>MEEI, English; 291 patients, 50 controls</td>
+<td>Rainbow Passage, first 12 s</td>
+<td>Praat 6.0.40 CPPS, Watts et al.&nbsp;settings</td>
 <td>9.33 dB</td>
 <td>94.5%</td>
+<td>primary</td>
+</tr>
+<tr class="odd">
+<td>English; 100 voice-disordered, 70 controls</td>
+<td>Rainbow Passage, second sentence</td>
+<td>ADSV CPPS, factory settings</td>
+<td>5.53 dB</td>
+<td>AUC 0.81</td>
+<td>primary</td>
+</tr>
+<tr class="even">
+<td>English; 100 voice-disordered, 70 controls</td>
+<td>Rainbow Passage, second sentence</td>
+<td>Praat 6.0.17 CPPS, factory settings</td>
+<td>19.10 dB</td>
+<td>AUC 0.91</td>
+<td>primary</td>
+</tr>
+<tr class="odd">
+<td>—</td>
+<td>Sustained /i/</td>
+<td>—</td>
+<td>No published cutoff in the sources reviewed</td>
+<td>—</td>
+<td>—</td>
 </tr>
 </tbody>
 </table>
@@ -567,19 +609,21 @@ Table&nbsp;18.3: Previously reported cutoffs, normal vs.&nbsp;dysphonic except H
 <div aria-describedby="tbl-cpp-prior-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
 <colgroup>
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
 </colgroup>
 <thead>
 <tr class="header">
 <th>Study</th>
 <th>Language</th>
-<th>Algorithm</th>
+<th>Pipeline</th>
 <th>Sustained vowel</th>
 <th>Running speech</th>
+<th>Evidence</th>
 </tr>
 </thead>
 <tbody>
@@ -589,6 +633,7 @@ Table&nbsp;18.3: Previously reported cutoffs, normal vs.&nbsp;dysphonic except H
 <td>CPPS (Hillenbrand)</td>
 <td>10 dB</td>
 <td>5 dB</td>
+<td>primary, as reported</td>
 </tr>
 <tr class="even">
 <td>Heman-Ackah et al.&nbsp;2014</td>
@@ -596,6 +641,7 @@ Table&nbsp;18.3: Previously reported cutoffs, normal vs.&nbsp;dysphonic except H
 <td>CPPS (Hillenbrand)</td>
 <td>—</td>
 <td>4.0 dB</td>
+<td>primary, as reported</td>
 </tr>
 <tr class="odd">
 <td>Yu et al.&nbsp;2018</td>
@@ -603,6 +649,7 @@ Table&nbsp;18.3: Previously reported cutoffs, normal vs.&nbsp;dysphonic except H
 <td>ADSV CPP</td>
 <td>12 dB</td>
 <td>7 dB</td>
+<td>primary, as reported</td>
 </tr>
 <tr class="even">
 <td>Delgado-Hernández et al.&nbsp;2019</td>
@@ -610,13 +657,73 @@ Table&nbsp;18.3: Previously reported cutoffs, normal vs.&nbsp;dysphonic except H
 <td>Praat CPPS (AVQI configuration)</td>
 <td>13.96 dB</td>
 <td>8.37 dB</td>
+<td>primary, as reported</td>
 </tr>
 </tbody>
 </table>
 </div>
 </figure>
 </div>
-<p><strong>Thresholds depend on software and task.</strong> Different algorithms produce CPP values in different ranges, and thresholds are lower for continuous speech than for sustained vowels <span class="citation" data-cites="murton2020cpp">(<a href="#ref-murton2020cpp" role="doc-biblioref">Murton et al. 2020</a>)</span>. Compare a CPP value with these tables only when its software and task match the row.</p>
+<p><span class="citation" data-cites="buckley2023cpp">Buckley et al. (<a href="#ref-buckley2023cpp" role="doc-biblioref">2023</a>)</span> measured 150 speakers without voice disorders, aged 18–91 years, and proposed normative lower limits at 2 SD below the group mean. Praat CPPS used the Watts et al.&nbsp;settings (version 6.0.50); ADSV used default settings except a CPP threshold of 1 dB and vocalic event detection.</p>
+<div id="tbl-cpp-norms" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-cpp-norms-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;18.4: Normative lower limits for typical speakers; evidence class primary <span class="citation" data-cites="buckley2023cpp">(<a href="#ref-buckley2023cpp" role="doc-biblioref">Buckley et al. 2023</a>)</span>.
+</figcaption>
+<div aria-describedby="tbl-cpp-norms-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Pipeline</th>
+<th>Males</th>
+<th>Females</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Sustained /a/, middle 1 s</td>
+<td>ADSV CPP</td>
+<td>8.86 dB</td>
+<td>8.09 dB</td>
+</tr>
+<tr class="even">
+<td>Sustained /a/, middle 1 s</td>
+<td>Praat CPPS</td>
+<td>11.72 dB</td>
+<td>11.05 dB</td>
+</tr>
+<tr class="odd">
+<td>Sustained /i/, middle 1 s</td>
+<td>ADSV CPP</td>
+<td>6.68 dB</td>
+<td>4.65 dB</td>
+</tr>
+<tr class="even">
+<td>Sustained /i/, middle 1 s</td>
+<td>Praat CPPS</td>
+<td>12.01 dB</td>
+<td>10.37 dB</td>
+</tr>
+<tr class="odd">
+<td>Rainbow Passage, sentences 2–3</td>
+<td>ADSV CPP</td>
+<td>5.40 dB</td>
+<td>5.04 dB</td>
+</tr>
+<tr class="even">
+<td>Rainbow Passage, sentences 2–3</td>
+<td>Praat CPPS</td>
+<td>6.40 dB</td>
+<td>6.49 dB</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>In that sample, 56% of females and 65.3% of males fell below the 9.33-dB Praat cutoff for the Rainbow Passage, and all fell below the 19.10-dB Praat cutoff <span class="citation" data-cites="buckley2023cpp">(<a href="#ref-buckley2023cpp" role="doc-biblioref">Buckley et al. 2023</a>)</span>.</p>
+<p><strong>Thresholds depend on software, settings and task.</strong> Different algorithms produce CPP values in different ranges, and thresholds are lower for continuous speech than for sustained vowels <span class="citation" data-cites="murton2020cpp">(<a href="#ref-murton2020cpp" role="doc-biblioref">Murton et al. 2020</a>)</span>. On the same samples, ADSV and Praat values correlate highly (<em>r</em> = 0.88), but their absolute values cannot be compared directly <span class="citation" data-cites="sauder2017cpps">(<a href="#ref-sauder2017cpps" role="doc-biblioref">Sauder et al. 2017</a>)</span>.</p>
 </section>
 <section id="confounds-and-cautions" class="level2" data-number="18.5">
 <h2 data-number="18.5" class="anchored" data-anchor-id="confounds-and-cautions"><span class="header-section-number">18.5</span> Confounds and cautions</h2>
@@ -644,11 +751,17 @@ Table&nbsp;18.3: Previously reported cutoffs, normal vs.&nbsp;dysphonic except H
 <div id="ref-barsties2018meta" class="csl-entry" role="listitem">
 Barsties v. Latoszek, Ben, Youri Maryn, Ellen Gerrits, and Marc De Bodt. 2018. <span>“A Meta-Analysis: Acoustic Measurement of Roughness and Breathiness.”</span> <em>Journal of Speech, Language, and Hearing Research</em> 61 (2): 298–323. <a href="https://doi.org/10.1044/2017_JSLHR-S-16-0188">https://doi.org/10.1044/2017_JSLHR-S-16-0188</a>.
 </div>
+<div id="ref-buckley2023cpp" class="csl-entry" role="listitem">
+Buckley, Daniel P., Defne Abur, and Cara E. Stepp. 2023. <span>“Normative Values of Cepstral Peak Prominence Measures in Typical Speakers by Sex, Speech Stimuli, and Software Type Across the Life Span.”</span> <em>American Journal of Speech-Language Pathology</em> 32 (4): 1565–77. <a href="https://doi.org/10.1044/2023_AJSLP-22-00264">https://doi.org/10.1044/2023_AJSLP-22-00264</a>.
+</div>
 <div id="ref-maryn2009cepstral" class="csl-entry" role="listitem">
 Maryn, Youri, Catherine Dick, Caroline Vandenbruaene, Tom Vauterin, and Tinne Jacobs. 2009. <span>“Spectral, Cepstral, and Multivariate Exploration of Tracheoesophageal Voice Quality in Continuous Speech and Sustained Vowels.”</span> <em>The Laryngoscope</em> 119 (12): 2384–94. <a href="https://doi.org/10.1002/lary.20620">https://doi.org/10.1002/lary.20620</a>.
 </div>
 <div id="ref-murton2020cpp" class="csl-entry" role="listitem">
 Murton, Olivia, Robert Hillman, and Daryush Mehta. 2020. <span>“Cepstral Peak Prominence Values for Clinical Voice Evaluation.”</span> <em>American Journal of Speech-Language Pathology</em> 29 (3): 1596–607. <a href="https://doi.org/10.1044/2020_AJSLP-20-00001">https://doi.org/10.1044/2020_AJSLP-20-00001</a>.
+</div>
+<div id="ref-sauder2017cpps" class="csl-entry" role="listitem">
+Sauder, Cara, Michelle Bretl, and Tanya Eadie. 2017. <span>“Predicting Voice Disorder Status from Smoothed Measures of Cepstral Peak Prominence Using <span>Praat</span> and <span class="nocase">Analysis of Dysphonia in Speech and Voice (ADSV)</span>.”</span> <em>Journal of Voice</em> 31 (5): 557–66. <a href="https://doi.org/10.1016/j.jvoice.2017.01.006">https://doi.org/10.1016/j.jvoice.2017.01.006</a>.
 </div>
 </div>
 </section>

@@ -26,7 +26,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -361,8 +415,23 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#a-value-belongs-to-its-pipeline" id="toc-a-value-belongs-to-its-pipeline" class="nav-link active" data-scroll-target="#a-value-belongs-to-its-pipeline"><span class="header-section-number">6.1</span> A value belongs to its pipeline</a></li>
+  <li><a href="#what-counts-as-the-pipeline" id="toc-what-counts-as-the-pipeline" class="nav-link" data-scroll-target="#what-counts-as-the-pipeline"><span class="header-section-number">6.2</span> What counts as the pipeline</a></li>
+  <li><a href="#evidence-1-perturbation-measures-across-programs" id="toc-evidence-1-perturbation-measures-across-programs" class="nav-link" data-scroll-target="#evidence-1-perturbation-measures-across-programs"><span class="header-section-number">6.3</span> Evidence 1: perturbation measures across programs</a></li>
+  <li><a href="#evidence-2-cepstral-peak-prominence-across-programs" id="toc-evidence-2-cepstral-peak-prominence-across-programs" class="nav-link" data-scroll-target="#evidence-2-cepstral-peak-prominence-across-programs"><span class="header-section-number">6.4</span> Evidence 2: cepstral peak prominence across programs</a></li>
+  <li><a href="#evidence-3-one-program-different-settings-and-material" id="toc-evidence-3-one-program-different-settings-and-material" class="nav-link" data-scroll-target="#evidence-3-one-program-different-settings-and-material"><span class="header-section-number">6.5</span> Evidence 3: one program, different settings and material</a></li>
+  <li><a href="#evidence-4-composite-indices-across-languages" id="toc-evidence-4-composite-indices-across-languages" class="nav-link" data-scroll-target="#evidence-4-composite-indices-across-languages"><span class="header-section-number">6.6</span> Evidence 4: composite indices across languages</a></li>
+  <li><a href="#how-this-reference-reports-reference-values" id="toc-how-this-reference-reports-reference-values" class="nav-link" data-scroll-target="#how-this-reference-reports-reference-values"><span class="header-section-number">6.7</span> How this reference reports reference values</a></li>
+  <li><a href="#using-a-reference-value" id="toc-using-a-reference-value" class="nav-link" data-scroll-target="#using-a-reference-value"><span class="header-section-number">6.8</span> Using a reference value</a></li>
+  <li><a href="#caveats" id="toc-caveats" class="nav-link" data-scroll-target="#caveats"><span class="header-section-number">6.9</span> Caveats</a></li>
+  <li><a href="#points-of-disagreement" id="toc-points-of-disagreement" class="nav-link" data-scroll-target="#points-of-disagreement"><span class="header-section-number">6.10</span> Points of disagreement</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/LuceroJC/voice-measures/edit/main/foundations-pipeline.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/LuceroJC/voice-measures/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -386,22 +455,358 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Warning
+Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Placeholder.</strong> This chapter is planned but not yet written. See the <a href="https://github.com/LuceroJC/voice-measures/blob/main/PLAN.md">book plan</a> for its intended scope and target release. In the meantime, the <a href="./intro.html">Introduction</a> shows where this chapter sits in the reference.</p>
+<p><strong>Living draft.</strong> This chapter explains why every reference value in this reference is reported with the pipeline that produced it. Measure chapters point here from their Normative data sections. Found an error? Use the <em>Report an issue</em> link in the sidebar.</p>
 </div>
 </div>
-<p><em>This page will be replaced with a full chapter in a later release.</em></p>
+<section id="a-value-belongs-to-its-pipeline" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="a-value-belongs-to-its-pipeline"><span class="header-section-number">6.1</span> A value belongs to its pipeline</h2>
+<p>An acoustic voice measure is produced by a pipeline: the recording chain, the analysis program and its version, the algorithm and its settings, the speech material, and, for composite indices, the language and the perceptual reference used to set a cutoff. The number that comes out depends on the pipeline as well as on the voice. A cutoff or a normative value is therefore valid only for measurements made with the same or a compatible pipeline.</p>
+<p>This is easy to miss. Programs label their output with the same names, such as “mean jitter” or “percent shimmer”, and the shared labels suggest that results from different programs are comparable <span class="citation" data-cites="bielamowicz1996perturbation">(<a href="#ref-bielamowicz1996perturbation" role="doc-biblioref">Bielamowicz et al. 1996</a>)</span>. This chapter shows, from published comparisons, how far that suggestion fails, and sets out how the reference reports reference values as a result.</p>
+</section>
+<section id="what-counts-as-the-pipeline" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="what-counts-as-the-pipeline"><span class="header-section-number">6.2</span> What counts as the pipeline</h2>
+<div id="tbl-pipeline-elements" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-pipeline-elements-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;6.1: Pipeline elements shown to change measured values.
+</figcaption>
+<div aria-describedby="tbl-pipeline-elements-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Pipeline element</th>
+<th>Evidence that it changes the value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Analysis program</td>
+<td>Three systems agreed on mean F0 (within 3 Hz) but not on jitter or shimmer, even with standardized recording and analysis procedures <span class="citation" data-cites="karnell1995perturbation">(<a href="#ref-karnell1995perturbation" role="doc-biblioref">Karnell et al. 1995</a>)</span>.</td>
+</tr>
+<tr class="even">
+<td>Implementation of a named measure</td>
+<td>Two programs that both compute relative average perturbation (RAP) gave significantly different percent jitter <span class="citation" data-cites="bielamowicz1996perturbation">(<a href="#ref-bielamowicz1996perturbation" role="doc-biblioref">Bielamowicz et al. 1996</a>)</span>.</td>
+</tr>
+<tr class="odd">
+<td>Algorithm details</td>
+<td>For CPP, ADSV and Praat differ in voicing detection, window, interpolation, regression fit and regression range <span class="citation" data-cites="watts2017cpp">(<a href="#ref-watts2017cpp" role="doc-biblioref">Watts et al. 2017</a>)</span>.</td>
+</tr>
+<tr class="even">
+<td>Program settings</td>
+<td>The same program gave a Rainbow Passage CPPS cutoff of 19.10 dB with factory settings <span class="citation" data-cites="sauder2017cpps">(<a href="#ref-sauder2017cpps" role="doc-biblioref">Sauder et al. 2017</a>)</span> and 9.33 dB with published non-default settings <span class="citation" data-cites="murton2020cpp">(<a href="#ref-murton2020cpp" role="doc-biblioref">Murton et al. 2020</a>)</span>.</td>
+</tr>
+<tr class="odd">
+<td>Program version</td>
+<td>Three CPPS studies used three Praat versions (6.0.17, 6.0.40, 6.0.50), and the version should be reported <span class="citation" data-cites="buckley2023cpp">(<a href="#ref-buckley2023cpp" role="doc-biblioref">Buckley et al. 2023</a>)</span>.</td>
+</tr>
+<tr class="even">
+<td>Speech material</td>
+<td>Stimulus had a large effect on cepstral values, larger than software; sex had a small effect <span class="citation" data-cites="buckley2023cpp">(<a href="#ref-buckley2023cpp" role="doc-biblioref">Buckley et al. 2023</a>)</span>.</td>
+</tr>
+<tr class="odd">
+<td>Portion of a passage</td>
+<td>Studies analysed the second sentence, the first 12 s, or sentences 2–3 of the Rainbow Passage <span class="citation" data-cites="sauder2017cpps murton2020cpp buckley2023cpp">(<a href="#ref-sauder2017cpps" role="doc-biblioref">Sauder et al. 2017</a>; <a href="#ref-murton2020cpp" role="doc-biblioref">Murton et al. 2020</a>; <a href="#ref-buckley2023cpp" role="doc-biblioref">Buckley et al. 2023</a>)</span>.</td>
+</tr>
+<tr class="even">
+<td>Index version and language</td>
+<td>The AVQI threshold differs between versions and languages <span class="citation" data-cites="barsties2020german">(<a href="#ref-barsties2020german" role="doc-biblioref">Barsties v. Latoszek et al. 2020</a>)</span>.</td>
+</tr>
+<tr class="odd">
+<td>Perceptual reference</td>
+<td>The AVQI development study counted a voice as normal only if all judges rated G = 0 <span class="citation" data-cites="maryn2010ecological">(<a href="#ref-maryn2010ecological" role="doc-biblioref">Maryn et al. 2010</a>)</span>; later validations used mean G below 0.5 <span class="citation" data-cites="englert2021avqi pommee2020avqi">(<a href="#ref-englert2021avqi" role="doc-biblioref">Englert et al. 2021</a>; <a href="#ref-pommee2020avqi" role="doc-biblioref">Pommée et al. 2020</a>)</span>.</td>
+</tr>
+<tr class="even">
+<td>Pre-processing</td>
+<td>Digital differencing combined with a hardware pre-emphasis filter pre-emphasizes the signal twice <span class="citation" data-cites="kent2002acoustic">(<a href="#ref-kent2002acoustic" role="doc-biblioref">Kent and Read 2002, 64</a>)</span>.</td>
+</tr>
+<tr class="odd">
+<td>Automatic segment rejection</td>
+<td>A program must not automatically and surreptitiously discard segments it deems unacceptable <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000, 132</a>)</span>.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+<section id="evidence-1-perturbation-measures-across-programs" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="evidence-1-perturbation-measures-across-programs"><span class="header-section-number">6.3</span> Evidence 1: perturbation measures across programs</h2>
+<p>The earliest systematic comparisons concerned jitter and shimmer. Karnell and colleagues analysed the same 60 vowel tokens from 20 patients with three systems. Mean F0 differed by less than 3 Hz, with correlations of .98 to 1.00. Jitter correlations between systems were .29, .62 and .64, and shimmer correlations ranged from .26 to .42 <span class="citation" data-cites="karnell1995perturbation">(<a href="#ref-karnell1995perturbation" role="doc-biblioref">Karnell et al. 1995</a>)</span>. The authors advise clinicians who use perturbation measures as objective measures to examine their validity and reliability carefully <span class="citation" data-cites="karnell1995perturbation">(<a href="#ref-karnell1995perturbation" role="doc-biblioref">Karnell et al. 1995</a>)</span>.</p>
+<p>Bielamowicz and colleagues compared four systems on 50 dysphonic voices. On the near-periodic (type 1) signals that all systems could analyse, rank-order correlations ranged from .33 to .80 for jitter and from .81 to .89 for percent shimmer, and mean HNR/SNR on the same voices ranged from 8.58 to 21.31 dB across systems <span class="citation" data-cites="bielamowicz1996perturbation">(<a href="#ref-bielamowicz1996perturbation" role="doc-biblioref">Bielamowicz et al. 1996</a>)</span>. They note that a high rank-order correlation may mask significant differences in the values themselves, and that programs which hide where cycle boundaries were placed make it virtually impossible to check whether a perturbation analysis is valid <span class="citation" data-cites="bielamowicz1996perturbation">(<a href="#ref-bielamowicz1996perturbation" role="doc-biblioref">Bielamowicz et al. 1996</a>)</span>.</p>
+</section>
+<section id="evidence-2-cepstral-peak-prominence-across-programs" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="evidence-2-cepstral-peak-prominence-across-programs"><span class="header-section-number">6.4</span> Evidence 2: cepstral peak prominence across programs</h2>
+<p>Cepstral peak prominence is often recommended because it does not need F0 tracking (see <a href="./foundations-signal-typing.html">Signal Typing</a>). It is not pipeline-free. The two programs most used clinically, ADSV and Praat, compute it differently. ADSV discards frames with CPP below 0 dB as a simple voicing detector, fits the regression line by least squares from 0.0001 s quefrency, and uses a Hamming window without interpolation. Praat applies no voicing detection, fits a robust (Theil) line from 0.001 s, and uses a Gaussian window with parabolic interpolation <span class="citation" data-cites="watts2017cpp">(<a href="#ref-watts2017cpp" role="doc-biblioref">Watts et al. 2017</a>)</span>.</p>
+<p>The consequences are large:</p>
+<ul>
+<li>On the same MEEI recordings of sustained /a/, the cutoff separating voice-disordered from typical speakers was 11.46 dB for ADSV CPP and 14.45 dB for Praat CPPS <span class="citation" data-cites="murton2020cpp">(<a href="#ref-murton2020cpp" role="doc-biblioref">Murton et al. 2020</a>)</span>.</li>
+<li>On the same 170 Rainbow Passage samples, ADSV CPPS ranged from 0.40 to 8.31 dB and Praat CPPS from 14.71 to 22.99 dB: the two ranges do not overlap. The programs correlated at <em>r</em> = 0.88, and the authors conclude that absolute values from the two programs cannot be compared directly <span class="citation" data-cites="sauder2017cpps">(<a href="#ref-sauder2017cpps" role="doc-biblioref">Sauder et al. 2017</a>)</span>.</li>
+<li>Watts and colleagues found Praat and ADSV CPP correlated at <em>r</em> = 0.92 to 0.96 in English, yet clearly different in magnitude. They suggest the difference may be due particularly to the regression-line calculation, and recommend comparing CPP data only with data from the identical program and algorithm <span class="citation" data-cites="watts2017cpp">(<a href="#ref-watts2017cpp" role="doc-biblioref">Watts et al. 2017</a>)</span>.</li>
+</ul>
+</section>
+<section id="evidence-3-one-program-different-settings-and-material" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="evidence-3-one-program-different-settings-and-material"><span class="header-section-number">6.5</span> Evidence 3: one program, different settings and material</h2>
+<p>Changing the settings of a single program also moves the reference. With Praat 6.0.17 at factory settings on the second sentence of the Rainbow Passage, the CPPS cutoff was 19.10 dB <span class="citation" data-cites="sauder2017cpps">(<a href="#ref-sauder2017cpps" role="doc-biblioref">Sauder et al. 2017</a>)</span>. With the settings published by Watts and colleagues, on the first 12 s of the passage, the Praat CPPS cutoff was 9.33 dB <span class="citation" data-cites="murton2020cpp">(<a href="#ref-murton2020cpp" role="doc-biblioref">Murton et al. 2020</a>)</span>. Buckley and colleagues point out both differences: the settings, and the portion of the passage analysed <span class="citation" data-cites="buckley2023cpp">(<a href="#ref-buckley2023cpp" role="doc-biblioref">Buckley et al. 2023</a>)</span>.</p>
+<p>Buckley and colleagues then measured 150 speakers without voice disorders, aged 18 to 91 years, with the same Praat settings as Murton and colleagues. 56% of the women and 65.3% of the men fell below the 9.33-dB cutoff, and all fell below the 19.10-dB cutoff. They conclude that cutoffs from ROC analysis do not adequately represent speakers without voice disorders, and propose normative lower limits 2 SD below the group mean instead: 6.40 dB (men) and 6.49 dB (women) for the Rainbow Passage in Praat <span class="citation" data-cites="buckley2023cpp">(<a href="#ref-buckley2023cpp" role="doc-biblioref">Buckley et al. 2023</a>)</span>.</p>
+<p><a href="#fig-cpp-references" class="quarto-xref">Figure&nbsp;<span>6.1</span></a> places these values on one axis.</p>
+<div id="cell-fig-cpp-references" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Show the code for this figure</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Values as published. Kind: "cut" = ROC cutoff, "norm" = normative lower limit.</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>rainbow <span class="op">=</span> [</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"ADSV"</span>, <span class="st">"Murton 2020 (first 12 s)"</span>, <span class="fl">6.11</span>, <span class="st">"cut"</span>),</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"ADSV"</span>, <span class="st">"Sauder 2017 (sentence 2, factory)"</span>, <span class="fl">5.53</span>, <span class="st">"cut"</span>),</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"ADSV"</span>, <span class="st">"Buckley 2023, men (sentences 2–3)"</span>, <span class="fl">5.40</span>, <span class="st">"norm"</span>),</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"ADSV"</span>, <span class="st">"Buckley 2023, women (sentences 2–3)"</span>, <span class="fl">5.04</span>, <span class="st">"norm"</span>),</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"Praat"</span>, <span class="st">"Murton 2020 (first 12 s, Watts settings)"</span>, <span class="fl">9.33</span>, <span class="st">"cut"</span>),</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"Praat"</span>, <span class="st">"Sauder 2017 (sentence 2, factory)"</span>, <span class="fl">19.10</span>, <span class="st">"cut"</span>),</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"Praat"</span>, <span class="st">"Buckley 2023, men (Watts settings)"</span>, <span class="fl">6.40</span>, <span class="st">"norm"</span>),</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"Praat"</span>, <span class="st">"Buckley 2023, women (Watts settings)"</span>, <span class="fl">6.49</span>, <span class="st">"norm"</span>),</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>vowel <span class="op">=</span> [</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"ADSV"</span>, <span class="st">"Murton 2020"</span>, <span class="fl">11.46</span>, <span class="st">"cut"</span>),</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"ADSV"</span>, <span class="st">"Buckley 2023, men"</span>, <span class="fl">8.86</span>, <span class="st">"norm"</span>),</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"ADSV"</span>, <span class="st">"Buckley 2023, women"</span>, <span class="fl">8.09</span>, <span class="st">"norm"</span>),</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"Praat"</span>, <span class="st">"Murton 2020 (Watts settings)"</span>, <span class="fl">14.45</span>, <span class="st">"cut"</span>),</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"Praat"</span>, <span class="st">"Buckley 2023, men (Watts settings)"</span>, <span class="fl">11.72</span>, <span class="st">"norm"</span>),</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"Praat"</span>, <span class="st">"Buckley 2023, women (Watts settings)"</span>, <span class="fl">11.05</span>, <span class="st">"norm"</span>),</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>colors <span class="op">=</span> {<span class="st">"ADSV"</span>: vs.ORANGE, <span class="st">"Praat"</span>: vs.BLUE}</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="fl">7.2</span>, <span class="fl">5.8</span>), sharex<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>                         gridspec_kw<span class="op">=</span>{<span class="st">"height_ratios"</span>: [<span class="bu">len</span>(rainbow), <span class="bu">len</span>(vowel)]})</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax, data, title <span class="kw">in</span> <span class="bu">zip</span>(axes, [rainbow, vowel], [<span class="st">"Rainbow Passage"</span>, <span class="st">"Sustained /a/"</span>]):</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> np.arange(<span class="bu">len</span>(data))[::<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> yi, (prog, label, val, kind) <span class="kw">in</span> <span class="bu">zip</span>(y, data):</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>        c <span class="op">=</span> colors[prog]</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> kind <span class="op">==</span> <span class="st">"cut"</span>:</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>            ax.plot(val, yi, marker<span class="op">=</span><span class="st">"D"</span>, ms<span class="op">=</span><span class="dv">7</span>, color<span class="op">=</span>c, zorder<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>            ax.plot(val, yi, marker<span class="op">=</span><span class="st">"o"</span>, ms<span class="op">=</span><span class="dv">7</span>, mfc<span class="op">=</span><span class="st">"white"</span>, mec<span class="op">=</span>c, mew<span class="op">=</span><span class="fl">1.8</span>, zorder<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>        ax.text(val <span class="op">+</span> <span class="fl">0.35</span>, yi, <span class="ss">f"</span><span class="sc">{</span>val<span class="sc">:.2f}</span><span class="ss">"</span>, va<span class="op">=</span><span class="st">"center"</span>, fontsize<span class="op">=</span><span class="dv">8</span>, color<span class="op">=</span>vs.INK)</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    ax.set_yticks(y)</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>    ax.set_yticklabels([<span class="ss">f"</span><span class="sc">{</span>p<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>l<span class="sc">}</span><span class="ss">"</span> <span class="cf">for</span> p, l, _, _ <span class="kw">in</span> data], fontsize<span class="op">=</span><span class="dv">8</span>)</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    ax.set_ylim(<span class="op">-</span><span class="fl">0.7</span>, <span class="bu">len</span>(data) <span class="op">-</span> <span class="fl">0.3</span>)</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    ax.axvline(<span class="dv">12</span>, color<span class="op">=</span>vs.MUTED, lw<span class="op">=</span><span class="dv">1</span>, ls<span class="op">=</span><span class="st">":"</span>, zorder<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>    ax.set_title(title, color<span class="op">=</span>vs.INK)</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>    vs.style_axes(ax)</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    ax.grid(axis<span class="op">=</span><span class="st">"y"</span>, visible<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>axes[<span class="op">-</span><span class="dv">1</span>].set_xlim(<span class="dv">0</span>, <span class="dv">22</span>)</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>axes[<span class="op">-</span><span class="dv">1</span>].set_xlabel(<span class="st">"CPP / CPPS (dB)"</span>)</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>handles <span class="op">=</span> [</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>    plt.Line2D([], [], marker<span class="op">=</span><span class="st">"D"</span>, ls<span class="op">=</span><span class="st">""</span>, color<span class="op">=</span>vs.INK, ms<span class="op">=</span><span class="dv">6</span>, label<span class="op">=</span><span class="st">"ROC cutoff"</span>),</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>    plt.Line2D([], [], marker<span class="op">=</span><span class="st">"o"</span>, ls<span class="op">=</span><span class="st">""</span>, mfc<span class="op">=</span><span class="st">"white"</span>, mec<span class="op">=</span>vs.INK, mew<span class="op">=</span><span class="fl">1.5</span>, ms<span class="op">=</span><span class="dv">6</span>,</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>               label<span class="op">=</span><span class="st">"Normative lower limit (2 SD below mean)"</span>),</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>    plt.Line2D([], [], marker<span class="op">=</span><span class="st">"s"</span>, ls<span class="op">=</span><span class="st">""</span>, color<span class="op">=</span>vs.ORANGE, ms<span class="op">=</span><span class="dv">6</span>, label<span class="op">=</span><span class="st">"ADSV"</span>),</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>    plt.Line2D([], [], marker<span class="op">=</span><span class="st">"s"</span>, ls<span class="op">=</span><span class="st">""</span>, color<span class="op">=</span>vs.BLUE, ms<span class="op">=</span><span class="dv">6</span>, label<span class="op">=</span><span class="st">"Praat"</span>),</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>fig.legend(handles<span class="op">=</span>handles, loc<span class="op">=</span><span class="st">"lower center"</span>, ncol<span class="op">=</span><span class="dv">4</span>, frameon<span class="op">=</span><span class="va">False</span>, fontsize<span class="op">=</span><span class="dv">8</span>,</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>           bbox_to_anchor<span class="op">=</span>(<span class="fl">0.55</span>, <span class="fl">0.0</span>))</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>fig.tight_layout(rect<span class="op">=</span>(<span class="dv">0</span>, <span class="fl">0.05</span>, <span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-cpp-references" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Two dot plots of decibel values. In both, ADSV references cluster at lower values (about 5 to 11 dB) and Praat references at higher values (about 6 to 19 dB). In the Rainbow Passage panel the two Praat cutoffs are 9.33 and 19.10 dB, far apart. A dotted vertical line marks 12 dB.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cpp-references-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="foundations-pipeline_files/figure-html/fig-cpp-references-output-1.png" alt="Two dot plots of decibel values. In both, ADSV references cluster at lower values (about 5 to 11 dB) and Praat references at higher values (about 6 to 19 dB). In the Rainbow Passage panel the two Praat cutoffs are 9.33 and 19.10 dB, far apart. A dotted vertical line marks 12 dB." width="781" height="637" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cpp-references-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.1: Published CPP reference values for the Rainbow Passage (left) and sustained /a/ (right), by program. Filled diamonds are ROC cutoffs between voice-disordered and typical speakers; open circles are normative lower limits for typical speakers (2 SD below the mean). Each label names the study and, where it matters, the settings or the portion of the passage analysed. The dotted line at 12 dB is illustrative: on sustained /a/, a value of 12 dB is above the ADSV cutoff (11.46 dB) and below the Praat cutoff (14.45 dB), so the same number points in opposite directions. Sources: Murton et al.&nbsp;(2020); Sauder et al.&nbsp;(2017); Buckley et al.&nbsp;(2023).
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="evidence-4-composite-indices-across-languages" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="evidence-4-composite-indices-across-languages"><span class="header-section-number">6.6</span> Evidence 4: composite indices across languages</h2>
+<p>Composite indices add language to the pipeline, because their continuous-speech part is language-specific. The AVQI threshold differs between versions and languages <span class="citation" data-cites="barsties2020german">(<a href="#ref-barsties2020german" role="doc-biblioref">Barsties v. Latoszek et al. 2020</a>)</span>, and the syllable count of the continuous-speech part is set separately for each language <span class="citation" data-cites="jayakumar2024avqi">(<a href="#ref-jayakumar2024avqi" role="doc-biblioref">Jayakumar and Benoy 2024</a>)</span>. <a href="#fig-avqi-languages" class="quarto-xref">Figure&nbsp;<span>6.2</span></a> shows the published AVQI 03.01 thresholds. A meta-analysis of eight AVQI v03 studies found thresholds from 1.33 to 3.15 and did not derive a weighted threshold <span class="citation" data-cites="jayakumar2024avqi">(<a href="#ref-jayakumar2024avqi" role="doc-biblioref">Jayakumar and Benoy 2024</a>)</span>. ABI thresholds range from 2.94 (Brazilian Portuguese) to 3.69 (Korean) <span class="citation" data-cites="barsties2021abi">(<a href="#ref-barsties2021abi" role="doc-biblioref">Barsties v. Latoszek et al. 2021</a>)</span>.</p>
+<div id="cell-fig-avqi-languages" class="cell" data-execution_count="3">
+<details class="code-fold">
+<summary>Show the code for this figure</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>avqi <span class="op">=</span> [  <span class="co"># language, threshold</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"Brazilian Portuguese"</span>, <span class="fl">1.33</span>),</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"German"</span>, <span class="fl">1.85</span>),</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"Japanese"</span>, <span class="fl">2.06</span>),</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"Spanish"</span>, <span class="fl">2.28</span>),</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"French"</span>, <span class="fl">2.33</span>),</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"Dutch"</span>, <span class="fl">2.43</span>),</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="fl">2.6</span>))</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>ax.axvspan(<span class="fl">1.33</span>, <span class="fl">3.15</span>, color<span class="op">=</span>vs.GRID, alpha<span class="op">=</span><span class="fl">0.8</span>, lw<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>ax.text(<span class="fl">3.13</span>, <span class="bu">len</span>(avqi) <span class="op">-</span> <span class="fl">0.45</span>, <span class="st">"meta-analytic range, 8 studies"</span>, ha<span class="op">=</span><span class="st">"right"</span>,</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        va<span class="op">=</span><span class="st">"center"</span>, fontsize<span class="op">=</span><span class="dv">8</span>, color<span class="op">=</span>vs.INK)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.arange(<span class="bu">len</span>(avqi))</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> yi, (lang, thr) <span class="kw">in</span> <span class="bu">zip</span>(y, avqi):</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    ax.plot(thr, yi, <span class="st">"o"</span>, ms<span class="op">=</span><span class="dv">7</span>, color<span class="op">=</span>vs.BLUE, zorder<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    ax.text(thr <span class="op">+</span> <span class="fl">0.04</span>, yi, <span class="ss">f"</span><span class="sc">{</span>thr<span class="sc">:.2f}</span><span class="ss">"</span>, va<span class="op">=</span><span class="st">"center"</span>, fontsize<span class="op">=</span><span class="dv">8</span>, color<span class="op">=</span>vs.INK)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>ax.set_yticks(y)</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>ax.set_yticklabels([l <span class="cf">for</span> l, _ <span class="kw">in</span> avqi])</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>ax.set_xlim(<span class="fl">1.0</span>, <span class="fl">3.3</span>)</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>ax.set_ylim(<span class="op">-</span><span class="fl">0.6</span>, <span class="bu">len</span>(avqi) <span class="op">-</span> <span class="fl">0.1</span>)</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"AVQI 03.01 threshold"</span>)</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>vs.style_axes(ax)</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>ax.grid(axis<span class="op">=</span><span class="st">"y"</span>, visible<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-avqi-languages" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A horizontal dot plot of AVQI thresholds: Brazilian Portuguese 1.33, German 1.85, Japanese 2.06, Spanish 2.28, French 2.33, Dutch 2.43, over a shaded band from 1.33 to 3.15.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-avqi-languages-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="foundations-pipeline_files/figure-html/fig-avqi-languages-output-1.png" alt="A horizontal dot plot of AVQI thresholds: Brazilian Portuguese 1.33, German 1.85, Japanese 2.06, Spanish 2.28, French 2.33, Dutch 2.43, over a shaded band from 1.33 to 3.15." width="760" height="276" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-avqi-languages-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.2: Published AVQI 03.01 thresholds by language (points) and the range reported across eight AVQI v03 studies in a meta-analysis (shaded band, 1.33–3.15). The meta-analysis did not derive a single weighted threshold. Sources: Englert et al.&nbsp;(2021); Barsties v. Latoszek et al.&nbsp;(2020); Delgado Hernández et al.&nbsp;(2018); Pommée et al.&nbsp;(2020); Barsties &amp; Maryn (2016); Jayakumar &amp; Benoy (2024).
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The sources disagree on why the thresholds differ (see Points of disagreement), but not on the practical consequence: a threshold validated in one language is not a threshold for another.</p>
+</section>
+<section id="how-this-reference-reports-reference-values" class="level2" data-number="6.7">
+<h2 data-number="6.7" class="anchored" data-anchor-id="how-this-reference-reports-reference-values"><span class="header-section-number">6.7</span> How this reference reports reference values</h2>
+<p>Every Normative data table in the measure chapters carries two provenance columns.</p>
+<ul>
+<li><strong>Pipeline</strong>: the program, version and non-default settings as stated by the source (“not stated” when the source does not say), the speech material, and the language where the measure depends on it.</li>
+<li><strong>Evidence</strong>: one of three classes.</li>
+</ul>
+<div id="tbl-evidence-classes" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-evidence-classes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;6.2: Evidence classes used in Normative data tables.
+</figcaption>
+<div aria-describedby="tbl-evidence-classes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Class</th>
+<th>Meaning</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>primary</td>
+<td>One study, one stated pipeline</td>
+<td>Valid for measurements with the same or a compatible pipeline</td>
+</tr>
+<tr class="even">
+<td>language-specific</td>
+<td>Validation of an index in a named language</td>
+<td>Valid for that language and the stated pipeline</td>
+</tr>
+<tr class="odd">
+<td>pooled</td>
+<td>Meta-analysis across studies or analysis systems</td>
+<td>Descriptive context only; never a cutoff</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Where the reviewed sources give no usable reference for a population, task or language, the table says so instead of borrowing a value from another pipeline. The measured value can still be reported; what is withheld is the comparison.</p>
+</section>
+<section id="using-a-reference-value" class="level2" data-number="6.8">
+<h2 data-number="6.8" class="anchored" data-anchor-id="using-a-reference-value"><span class="header-section-number">6.8</span> Using a reference value</h2>
+<ol type="1">
+<li><strong>Match the pipeline.</strong> Compare CPP data only with data obtained using the identical program and algorithm <span class="citation" data-cites="watts2017cpp">(<a href="#ref-watts2017cpp" role="doc-biblioref">Watts et al. 2017</a>)</span>; compare ADSV values with ADSV norms and Praat values with Praat norms <span class="citation" data-cites="buckley2023cpp">(<a href="#ref-buckley2023cpp" role="doc-biblioref">Buckley et al. 2023</a>)</span>.</li>
+<li><strong>Match the material and the language.</strong> Check the task, the portion of the passage, and, for composite indices, the language of the validation.</li>
+<li><strong>Report the pipeline with every value.</strong> The 1994 workshop consensus asks that the perturbation function and measure be made explicit in any perturbation analysis, and that F0, intensity and voice quality be defined when differences are reported <span class="citation" data-cites="titze1995workshop">(<a href="#ref-titze1995workshop" role="doc-biblioref">Titze 1995</a>)</span>. The Praat version should be reported for CPPS <span class="citation" data-cites="buckley2023cpp">(<a href="#ref-buckley2023cpp" role="doc-biblioref">Buckley et al. 2023</a>)</span>.</li>
+<li><strong>Do not convert across programs without a published conversion for your exact pipeline.</strong> Watts and colleagues give regression equations from ADSV CPP to Praat CPPS, separately for each language and task <span class="citation" data-cites="watts2017cpp">(<a href="#ref-watts2017cpp" role="doc-biblioref">Watts et al. 2017</a>)</span>; they apply only to those settings and stimuli.</li>
+</ol>
+</section>
+<section id="caveats" class="level2" data-number="6.9">
+<h2 data-number="6.9" class="anchored" data-anchor-id="caveats"><span class="header-section-number">6.9</span> Caveats</h2>
+<ul>
+<li><strong>High correlation does not mean interchangeable values.</strong> Even correlations close to 1.0 can leave nontrivial residual error <span class="citation" data-cites="watts2017cpp">(<a href="#ref-watts2017cpp" role="doc-biblioref">Watts et al. 2017</a>)</span>.</li>
+<li><strong>Opaque software.</strong> Buckley and colleagues note that ADSV’s voicing detection is not detailed in its user manual <span class="citation" data-cites="buckley2023cpp">(<a href="#ref-buckley2023cpp" role="doc-biblioref">Buckley et al. 2023</a>)</span>.</li>
+<li><strong>Recording conditions.</strong> Hardware, microphone placement, environmental noise and software are known to affect perturbation measures; their effect on CPP and CPPS remains unclear <span class="citation" data-cites="barsties2018meta">(<a href="#ref-barsties2018meta" role="doc-biblioref">Barsties v. Latoszek et al. 2018</a>)</span>.</li>
+<li><strong>Explanations are hypotheses.</strong> Buckley and colleagues suggest their wider age range may explain their lower values <span class="citation" data-cites="buckley2023cpp">(<a href="#ref-buckley2023cpp" role="doc-biblioref">Buckley et al. 2023</a>)</span>, although age group had no significant effect in their own data.</li>
+<li><strong>Inter-laboratory standards.</strong> Until they are agreed, comparison of data sets must be undertaken with caution <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000, 194</a>)</span>.</li>
+</ul>
+</section>
+<section id="points-of-disagreement" class="level2" data-number="6.10">
+<h2 data-number="6.10" class="anchored" data-anchor-id="points-of-disagreement"><span class="header-section-number">6.10</span> Points of disagreement</h2>
+<ul>
+<li><strong>Why AVQI thresholds differ between languages.</strong> <span class="citation" data-cites="englert2021avqi">Englert et al. (<a href="#ref-englert2021avqi" role="doc-biblioref">2021</a>)</span> suggest that a low threshold may be a characteristic of Brazilian Portuguese, and that Brazilian listeners may be less tolerant of vocal deviation. <span class="citation" data-cites="barsties2020german">Barsties v. Latoszek et al. (<a href="#ref-barsties2020german" role="doc-biblioref">2020</a>)</span> relate the low German threshold to the small syllable count of its continuous-speech part. <span class="citation" data-cites="jayakumar2024avqi">Jayakumar and Benoy (<a href="#ref-jayakumar2024avqi" role="doc-biblioref">2024</a>)</span> suggest extreme thresholds could be due to the standardized syllable number; their own tables list the highest v03 threshold, 3.15, for a Korean study.</li>
+<li><strong>Sauder’s 19.10 dB.</strong> <span class="citation" data-cites="buckley2023cpp">Buckley et al. (<a href="#ref-buckley2023cpp" role="doc-biblioref">2023</a>)</span> describe 19.10 dB as the average CPPS in <span class="citation" data-cites="sauder2017cpps">Sauder et al. (<a href="#ref-sauder2017cpps" role="doc-biblioref">2017</a>)</span>. In the original it is the ROC cutoff; the mean for speakers without voice disorders was 20.11 dB.</li>
+</ul>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-baken2000clinical" class="csl-entry" role="listitem">
+Baken, Ronald J., and Robert F. Orlikoff. 2000. <em>Clinical Measurement of Speech and Voice</em>. 2nd ed. Singular Thomson Learning.
+</div>
+<div id="ref-barsties2021abi" class="csl-entry" role="listitem">
+Barsties v. Latoszek, Ben, Geun-Hyo Kim, Jonathan Delgado Hernández, et al. 2021. <span>“The Validity of the <span>Acoustic</span> <span>Breathiness</span> <span>Index</span> in the Evaluation of Breathy Voice Quality: A Meta-Analysis.”</span> <em>Clinical Otolaryngology</em> 46 (1): 31–40. <a href="https://doi.org/10.1111/coa.13629">https://doi.org/10.1111/coa.13629</a>.
+</div>
+<div id="ref-barsties2020german" class="csl-entry" role="listitem">
+Barsties v. Latoszek, Ben, Bernhard Lehnert, and Ben Janotte. 2020. <span>“Validation of the <span>Acoustic</span> <span>Voice</span> <span>Quality</span> <span>Index</span> Version 03.01 and <span>Acoustic</span> <span>Breathiness</span> <span>Index</span> in <span>German</span>.”</span> <em>Journal of Voice</em> 34 (1): 157.e17–25. <a href="https://doi.org/10.1016/j.jvoice.2018.07.026">https://doi.org/10.1016/j.jvoice.2018.07.026</a>.
+</div>
+<div id="ref-barsties2018meta" class="csl-entry" role="listitem">
+Barsties v. Latoszek, Ben, Youri Maryn, Ellen Gerrits, and Marc De Bodt. 2018. <span>“A Meta-Analysis: Acoustic Measurement of Roughness and Breathiness.”</span> <em>Journal of Speech, Language, and Hearing Research</em> 61 (2): 298–323. <a href="https://doi.org/10.1044/2017_JSLHR-S-16-0188">https://doi.org/10.1044/2017_JSLHR-S-16-0188</a>.
+</div>
+<div id="ref-bielamowicz1996perturbation" class="csl-entry" role="listitem">
+Bielamowicz, Steven, Jody Kreiman, Bruce R. Gerratt, Marc S. Dauer, and Gerald S. Berke. 1996. <span>“Comparison of Voice Analysis Systems for Perturbation Measurement.”</span> <em>Journal of Speech and Hearing Research</em> 39 (1): 126–34. <a href="https://doi.org/10.1044/jshr.3901.126">https://doi.org/10.1044/jshr.3901.126</a>.
+</div>
+<div id="ref-buckley2023cpp" class="csl-entry" role="listitem">
+Buckley, Daniel P., Defne Abur, and Cara E. Stepp. 2023. <span>“Normative Values of Cepstral Peak Prominence Measures in Typical Speakers by Sex, Speech Stimuli, and Software Type Across the Life Span.”</span> <em>American Journal of Speech-Language Pathology</em> 32 (4): 1565–77. <a href="https://doi.org/10.1044/2023_AJSLP-22-00264">https://doi.org/10.1044/2023_AJSLP-22-00264</a>.
+</div>
+<div id="ref-englert2021avqi" class="csl-entry" role="listitem">
+Englert, Marina, Ben Barsties v. Latoszek, Youri Maryn, and Mara Behlau. 2021. <span>“Validation of the <span>Acoustic</span> <span>Voice</span> <span>Quality</span> <span>Index</span>, Version 03.01, to the <span>Brazilian</span> <span>Portuguese</span> Language.”</span> <em>Journal of Voice</em> 35 (1): 160.e15–21. <a href="https://doi.org/10.1016/j.jvoice.2019.07.024">https://doi.org/10.1016/j.jvoice.2019.07.024</a>.
+</div>
+<div id="ref-jayakumar2024avqi" class="csl-entry" role="listitem">
+Jayakumar, Thirunavukkarasu, and Jesnu Jose Benoy. 2024. <span>“<span>Acoustic</span> <span>Voice</span> <span>Quality</span> <span>Index</span> (<span>AVQI</span>) in the Measurement of Voice Quality: A Systematic Review and Meta-Analysis.”</span> <em>Journal of Voice</em> 38 (5): 1055–69. <a href="https://doi.org/10.1016/j.jvoice.2022.03.018">https://doi.org/10.1016/j.jvoice.2022.03.018</a>.
+</div>
+<div id="ref-karnell1995perturbation" class="csl-entry" role="listitem">
+Karnell, Michael P., Kelly Dailey Hall, and Karen L. Landahl. 1995. <span>“Comparison of Fundamental Frequency and Perturbation Measurements Among Three Analysis Systems.”</span> <em>Journal of Voice</em> 9 (4): 383–93. <a href="https://doi.org/10.1016/S0892-1997(05)80200-0">https://doi.org/10.1016/S0892-1997(05)80200-0</a>.
+</div>
+<div id="ref-kent2002acoustic" class="csl-entry" role="listitem">
+Kent, Raymond D., and Charles Read. 2002. <em>The Acoustic Analysis of Speech</em>. 2nd ed. Singular Thomson Learning.
+</div>
+<div id="ref-maryn2010ecological" class="csl-entry" role="listitem">
+Maryn, Youri, Paul Corthals, Paul Van Cauwenberge, Nelson Roy, and Marc De Bodt. 2010. <span>“Toward Improved Ecological Validity in the Acoustic Measurement of Overall Voice Quality: Combining Continuous Speech and Sustained Vowels.”</span> <em>Journal of Voice</em> 24 (5): 540–55. <a href="https://doi.org/10.1016/j.jvoice.2008.12.014">https://doi.org/10.1016/j.jvoice.2008.12.014</a>.
+</div>
+<div id="ref-murton2020cpp" class="csl-entry" role="listitem">
+Murton, Olivia, Robert Hillman, and Daryush Mehta. 2020. <span>“Cepstral Peak Prominence Values for Clinical Voice Evaluation.”</span> <em>American Journal of Speech-Language Pathology</em> 29 (3): 1596–607. <a href="https://doi.org/10.1044/2020_AJSLP-20-00001">https://doi.org/10.1044/2020_AJSLP-20-00001</a>.
+</div>
+<div id="ref-pommee2020avqi" class="csl-entry" role="listitem">
+Pommée, Timothy, Youri Maryn, Camille Finck, and Dominique Morsomme. 2020. <span>“Validation of the <span>Acoustic</span> <span>Voice</span> <span>Quality</span> <span>Index</span>, Version 03.01, in <span>French</span>.”</span> <em>Journal of Voice</em> 34 (4): 646.e11–26. <a href="https://doi.org/10.1016/j.jvoice.2018.12.008">https://doi.org/10.1016/j.jvoice.2018.12.008</a>.
+</div>
+<div id="ref-sauder2017cpps" class="csl-entry" role="listitem">
+Sauder, Cara, Michelle Bretl, and Tanya Eadie. 2017. <span>“Predicting Voice Disorder Status from Smoothed Measures of Cepstral Peak Prominence Using <span>Praat</span> and <span class="nocase">Analysis of Dysphonia in Speech and Voice (ADSV)</span>.”</span> <em>Journal of Voice</em> 31 (5): 557–66. <a href="https://doi.org/10.1016/j.jvoice.2017.01.006">https://doi.org/10.1016/j.jvoice.2017.01.006</a>.
+</div>
+<div id="ref-titze1995workshop" class="csl-entry" role="listitem">
+Titze, Ingo R. 1995. <em>Workshop on Acoustic Voice Analysis: Summary Statement</em>. National Center for Voice; Speech.
+</div>
+<div id="ref-watts2017cpp" class="csl-entry" role="listitem">
+Watts, Christopher R., Shaheen N. Awan, and Youri Maryn. 2017. <span>“A Comparison of Cepstral Peak Prominence Measures from Two Acoustic Analysis Programs.”</span> <em>Journal of Voice</em> 31 (3): 387.e1–10. <a href="https://doi.org/10.1016/j.jvoice.2016.09.012">https://doi.org/10.1016/j.jvoice.2016.09.012</a>.
+</div>
+</div>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -824,7 +1229,7 @@ Warning
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/LuceroJC/voice-measures/edit/main/foundations-pipeline.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/LuceroJC/voice-measures/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/LuceroJC/voice-measures/edit/main/foundations-pipeline.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/LuceroJC/voice-measures/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Built with <a href="https://quarto.org">Quarto</a></p>
 </div>
