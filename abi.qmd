@@ -42,12 +42,12 @@ The ABI contains nine parameters [@delgado2018avqi]:
 
 : The nine ABI components [@delgado2018avqi]. {#tbl-abi-components}
 
-The regression equation, as reported in the Spanish validation
-[@delgado2018avqi]:
+The rescaled regression equation, as published in the development study
+[@barsties2017abi]:
 
 $$
 \begin{aligned}
-\text{ABI} = \bigl(5.0447740915 &- 0.172\,\text{CPPS} - 0.193\,\text{Jit}
+\text{ABI} = \bigl(5.0447730915 &- 0.172\,\text{CPPS} - 0.193\,\text{Jit}
 - 1.283\,\text{GNE}_{\max\text{-}4500}\\
 &- 0.396\,\text{Hfno}_{6000} + 0.01\,\text{HNR-D} + 0.017\,(\text{H1–H2})\\
 &+ 1.473\,\text{ShdB} - 0.088\,\text{Shim}
@@ -55,8 +55,18 @@ $$
 \end{aligned}
 $$
 
+The German validation uses the same intercept [@barsties2020german]; the
+Spanish and US English validations print 5.0447740915 [@delgado2018avqi;
+@castillo2023avqi]. The difference changes a score by about 3 × 10^−6^ and
+has no clinical effect.
+
 The score ranges from 0 to 10; the higher the ABI, the more severe the
 breathiness [@barsties2021abi].
+
+The development paper provides its Praat script as supplementary data
+[@barsties2017abi]; this script is the reference implementation of the
+equation above. Later work refers to it as ABI script v. 01.01
+[@stappenbeck2020praat].
 
 Signal processing uses Praat with the customised ABI script [@barsties2021abi].
 Analysis applies only to voiced segments of the continuous speech, extracted
@@ -103,10 +113,12 @@ ABI validation evidence applies to Praat with the customised ABI script
 | Dutch, development study (970 dysphonic, 88 healthy) | Praat 5.3.57, custom ABI script | 3.44 | 82.4% | 92.9% | 0.948 | language-specific |
 | Spanish (136 dysphonic, 47 healthy) | Praat 6.0.22, ABI script | 3.40 | 73.7% | 95.4% | 0.921 | language-specific |
 | German (175 dysphonic, 43 healthy) | Praat 5.3.57, ABI script | 3.42 | 72% | 95% | 0.91 | language-specific |
+| US English (148 with voice disorders, 49 non-clinic-seeking; 22 syllables) | VOXplot 2.0.0; Praat 6.3.06 for extraction | 2.35 | 84% | 81% | 0.89 | language-specific |
+| Finnish (108 dysphonic, 87 non-dysphonic; 31 syllables) | VOXplot 2.0.0; recorded in Praat 6.2.23 | 2.68 | 80% | 80% | 0.886 | language-specific |
 | Pooled, six studies | Praat + ABI script; heterogeneous hardware | — | 0.84 (95% CI 0.83–0.85) | 0.92 (95% CI 0.89–0.94) | 0.94 (SROC) | pooled |
 | Weighted threshold across the six studies (Youden) | as above | 3.40 | 0.86 (95% CI 0.84–0.87) | 0.90 (95% CI 0.88–0.92) | — | pooled |
 
-: ABI diagnostic thresholds. Dutch: @barsties2017abi; Spanish: @delgado2018avqi; German: @barsties2020german; pooled: @barsties2021abi. Praat versions for the Spanish and German rows are those cited in each paper's reference list. {#tbl-abi-thresholds}
+: ABI diagnostic thresholds. Dutch: @barsties2017abi; Spanish: @delgado2018avqi; German: @barsties2020german; US English: @castillo2023avqi; Finnish: @kankare2023abi; pooled: @barsties2021abi. Praat versions for the Spanish and German rows are those cited in each paper's reference list. {#tbl-abi-thresholds}
 
 The six validation studies pooled by the meta-analysis cover Dutch, German,
 Spanish, Brazilian Portuguese, Korean, and Japanese — four language groups —
@@ -125,13 +137,26 @@ over 467 vocally healthy and 3136 voice-disordered subjects [@barsties2021abi].
 : ABI thresholds by language, as tabulated in the meta-analysis [@barsties2021abi, Table 1, p. 36]. Study names are as cited there. All used Praat with the ABI script, an inclusion criterion of the meta-analysis. $r_s$ is Spearman's correlation between ABI and auditory-perceptual breathiness ratings. {#tbl-abi-languages}
 
 Thresholds range from 2.94 (Brazilian Portuguese) to 3.69 (Korean); see
-*Language dependence of the threshold* below. A validation for US English
-(Castillo-Allendes et al., 2023) will be added once reviewed. The Brazilian Portuguese value
+*Language dependence of the threshold* below. The later US English validation,
+not part of the meta-analysis, reports 2.35 (LR+ 4.29, LR− 0.2) and
+$r_s$ = 0.77 between ABI and perceived breathiness [@castillo2023avqi]. Its
+Methods define the ROC groups by the overall grade G for both indices, while
+its figure caption describes the ABI curve as separating breathy from
+nonbreathy voices, so the perceptual reference for the ABI threshold is not
+fully clear. The Finnish validation, also later than the meta-analysis,
+reports 2.68 (LR+ 4.00, LR− 0.25) and $r_s$ = 0.823 with perceived
+breathiness, with nonbreathy voices defined as mean B below 0.5
+[@kankare2023abi]. The Brazilian Portuguese value
 comes from a study the meta-analysis cites as a one-page 2019 item in the
 *International Archives of Otorhinolaryngology* (vol. 23, p. 106); its
 inter-rater reliability for breathiness was below the recommended level
 [@barsties2021abi]. The later full Brazilian Portuguese validation
-[@englert2021avqi] covers the AVQI only.
+[@englert2021avqi] covers the AVQI only. A summary table in the Finnish
+validation lists 3.13 for Brazilian Portuguese, citing a different study of
+AVQI and ABI with different speech material [@kankare2023abi]. That table
+also contains evident errors: its German row repeats the German AVQI
+accuracy figures, not the ABI ones [@barsties2020german]. This reference
+keeps 2.94 until the cited study has been reviewed.
 
 ## Confounds and cautions
 
@@ -142,6 +167,15 @@ language. The
 meta-analysis nevertheless found ABI relatively robust to phonetic
 inter-language differences such as stress timing, syllable timing, and
 intonation [@barsties2021abi].
+
+**The Praat version matters.** With the same ABI script and the same 218
+German recordings, seven Praat versions formed three clusters. A CPPS bug
+introduced in Praat 6.0.44 and fixed in 6.0.47 cut sensitivity at the German
+threshold of 3.42 from 72% to 9% with version 6.0.46. Across the unaffected
+versions, mean differences were negligible, but single recordings differed by
+up to about 3 points [@stappenbeck2020praat]. Use the Praat version of the
+validation study for the language in question, or check a new version
+against an earlier one on test recordings [@stappenbeck2020praat].
 
 **Software requirement.** The validation evidence applies to signal processing
 in Praat with the customised ABI script; the meta-analysis excluded studies

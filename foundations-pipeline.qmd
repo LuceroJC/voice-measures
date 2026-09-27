@@ -55,7 +55,7 @@ sets out how the reference reports reference values as a result.
 | Implementation of a named measure | Two programs that both compute relative average perturbation (RAP) gave significantly different percent jitter [@bielamowicz1996perturbation]. |
 | Algorithm details | For CPP, ADSV and Praat differ in voicing detection, window, interpolation, regression fit and regression range [@watts2017cpp]. |
 | Program settings | The same program gave a Rainbow Passage CPPS cutoff of 19.10 dB with factory settings [@sauder2017cpps] and 9.33 dB with published non-default settings [@murton2020cpp]. |
-| Program version | Three CPPS studies used three Praat versions (6.0.17, 6.0.40, 6.0.50), and the version should be reported [@buckley2023cpp]. |
+| Program version | Three CPPS studies used three Praat versions (6.0.17, 6.0.40, 6.0.50), and the version should be reported [@buckley2023cpp]. One Praat release changed AVQI and ABI scores enough to invalidate their cutoffs [@stappenbeck2020praat]. |
 | Speech material | Stimulus had a large effect on cepstral values, larger than software; sex had a small effect [@buckley2023cpp]. |
 | Portion of a passage | Studies analysed the second sentence, the first 12 s, or sentences 2–3 of the Rainbow Passage [@sauder2017cpps; @murton2020cpp; @buckley2023cpp]. |
 | Index version and language | The AVQI threshold differs between versions and languages [@barsties2020german]. |
@@ -199,16 +199,22 @@ between versions and languages [@barsties2020german], and the syllable count
 of the continuous-speech part is set separately for each language
 [@jayakumar2024avqi]. @fig-avqi-languages shows the published AVQI 03.01
 thresholds. A meta-analysis of eight AVQI v03 studies found thresholds from
-1.33 to 3.15 and did not derive a weighted threshold [@jayakumar2024avqi]. ABI
-thresholds range from 2.94 (Brazilian Portuguese) to 3.69 (Korean)
-[@barsties2021abi].
+1.33 to 3.15 and did not derive a weighted threshold [@jayakumar2024avqi]; the
+US English validation, published after its July 2021 search, reports 1.17
+[@castillo2023avqi]. ABI thresholds in the ABI meta-analysis range from 2.94
+(Brazilian Portuguese) to 3.69 (Korean) [@barsties2021abi], and the US English
+validation reports 2.35 [@castillo2023avqi]. Within one language the task
+matters too: in the same 53 Brazilian Portuguese speakers, the ABI threshold
+was 2.38 for counting and 3.13 for reading text, and the AVQI threshold 1.16
+and 1.56 [@englert2020material].
 
 ```{python}
 #| label: fig-avqi-languages
-#| fig-cap: "Published AVQI 03.01 thresholds by language (points) and the range reported across eight AVQI v03 studies in a meta-analysis (shaded band, 1.33–3.15). The meta-analysis did not derive a single weighted threshold. Sources: Englert et al. (2021); Barsties v. Latoszek et al. (2020); Delgado Hernández et al. (2018); Pommée et al. (2020); Barsties & Maryn (2016); Jayakumar & Benoy (2024)."
-#| fig-alt: "A horizontal dot plot of AVQI thresholds: Brazilian Portuguese 1.33, German 1.85, Japanese 2.06, Spanish 2.28, French 2.33, Dutch 2.43, over a shaded band from 1.33 to 3.15."
+#| fig-cap: "Published AVQI 03.01 thresholds by language (points) and the range reported across eight AVQI v03 studies in a meta-analysis (shaded band, 1.33–3.15). The meta-analysis did not derive a single weighted threshold. The US English study was published after the meta-analysis search. Sources: Castillo-Allendes et al. (2023); Englert et al. (2021); Barsties v. Latoszek et al. (2020); Delgado Hernández et al. (2018); Pommée et al. (2020); Barsties & Maryn (2016); Jayakumar & Benoy (2024)."
+#| fig-alt: "A horizontal dot plot of AVQI thresholds: US English 1.17, Brazilian Portuguese 1.33, German 1.85, Japanese 2.06, Spanish 2.28, French 2.33, Dutch 2.43, over a shaded band from 1.33 to 3.15."
 
 avqi = [  # language, threshold
+    ("US English", 1.17),
     ("Brazilian Portuguese", 1.33),
     ("German", 1.85),
     ("Japanese", 2.06),
@@ -216,9 +222,9 @@ avqi = [  # language, threshold
     ("French", 2.33),
     ("Dutch", 2.43),
 ]
-fig, ax = plt.subplots(figsize=(7, 2.6))
+fig, ax = plt.subplots(figsize=(7, 2.9))
 ax.axvspan(1.33, 3.15, color=vs.GRID, alpha=0.8, lw=0)
-ax.text(3.13, len(avqi) - 0.45, "meta-analytic range, 8 studies", ha="right",
+ax.text(3.13, len(avqi) - 0.45, "meta-analytic range, 8 studies to 2021", ha="right",
         va="center", fontsize=8, color=vs.INK)
 y = np.arange(len(avqi))
 for yi, (lang, thr) in zip(y, avqi):
@@ -238,6 +244,53 @@ plt.show()
 The sources disagree on why the thresholds differ (see Points of
 disagreement), but not on the practical consequence: a threshold validated in
 one language is not a threshold for another.
+
+## Evidence 5: one script, different program versions
+
+Even a fixed script is not a fixed pipeline, because the program underneath
+it changes. @stappenbeck2020praat ran the AVQI 03.01 and ABI scripts on the
+same 218 German recordings under seven Praat versions. Five were versions
+cited in validation studies; the other two were 6.0.46 and 6.0.48, the most
+recent at the start of the study. The versions formed three clusters:
+5.3.55, 5.3.57 and 6.0.06; 6.0.21, 6.0.22 and 6.0.48; and 6.0.46 alone,
+which carries a bug in the CPPS computation introduced in 6.0.44 and removed
+in 6.0.47 [@stappenbeck2020praat].
+
+```{python}
+#| label: fig-praat-versions
+#| fig-cap: "Sensitivity of AVQI and ABI at the German thresholds (AVQI 1.85, ABI 3.42) when the same scripts run on the same 218 recordings under three clusters of Praat versions. The cluster containing 6.0.46, with its CPPS bug, misses most dysphonic voices, while specificity rises to 100% and correlations with perceptual ratings stay at 0.84–0.86. Source: Stappenbeck et al. (2020)."
+#| fig-alt: "Dot plot of sensitivity by Praat version cluster. AVQI: 72% for versions 5.3.55 to 6.0.06, 71% for 6.0.21 to 6.0.48, 23% for 6.0.46. ABI: 72%, 70%, and 9%."
+
+clusters = ["5.3.55 / 5.3.57 / 6.0.06", "6.0.21 / 6.0.22 / 6.0.48", "6.0.46 (CPPS bug)"]
+sens = {"AVQI": [72, 71, 23], "ABI": [72, 70, 9]}
+fig, ax = plt.subplots(figsize=(7, 2.4))
+y = np.arange(len(clusters))[::-1]
+for (name, vals), col, dy in zip(sens.items(), (vs.BLUE, vs.ORANGE), (0.12, -0.12)):
+    ax.plot(vals, y + dy, "o", ms=7, color=col, label=name, zorder=3)
+    for v, yi in zip(vals, y + dy):
+        ax.text(v + 2, yi, f"{v}%", va="center", fontsize=8, color=vs.INK)
+ax.set_yticks(y)
+ax.set_yticklabels(clusters)
+ax.set_xlim(0, 100)
+ax.set_ylim(-0.6, len(clusters) - 0.4)
+ax.set_xlabel("Sensitivity at the German threshold (%)")
+ax.legend(frameon=False, fontsize=8, loc="lower right")
+vs.style_axes(ax)
+ax.grid(axis="y", visible=False)
+fig.tight_layout()
+plt.show()
+```
+
+The bug lowered AVQI scores by about 4.2 points on average, so most
+dysphonic voices fell below the threshold (@fig-praat-versions). The
+correlations with perceptual ratings and the AUC stayed high in all three
+clusters, so validity statistics alone would not have revealed the problem
+[@stappenbeck2020praat]. Between the two unaffected clusters, mean
+differences were not significant, but single recordings differed by up to
+about 0.6 AVQI points and 3 ABI points. The authors suspect a further change
+between 6.0.06 and 6.0.21, and recommend either the Praat version of the
+validation study or a check of each new version against an earlier one on
+test recordings [@stappenbeck2020praat].
 
 ## How this reference reports reference values
 
