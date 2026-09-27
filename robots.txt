@@ -1,1 +1,1 @@
-Sitemap: https://lucerojc.github.io/voice-measures/sitemap.xml
+Sitemap: https://voicemeasures.org/sitemap.xml

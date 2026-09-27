@@ -44,7 +44,7 @@
     "href": "index.html#citing-this-reference",
     "title": "Acoustic Measures of Voice Quality",
     "section": "Citing this reference",
-    "text": "Citing this reference\nUntil the v0.1 release receives its DOI, cite the web version with its access date:\n\nLucero, J. C. (2026). Acoustic Measures of Voice Quality: A Living Reference. https://LuceroJC.github.io/voice-measures (accessed date).\n\nEach release will be archived on Zenodo with a versioned DOI.",
+    "text": "Citing this reference\nUntil the v0.1 release receives its DOI, cite the web version with its access date:\n\nLucero, J. C. (2026). Acoustic Measures of Voice Quality: A Living Reference. https://voicemeasures.org (accessed date).\n\nEach release will be archived on Zenodo with a versioned DOI.",
     "crumbs": [
       "Welcome"
     ]
