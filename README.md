@@ -5,7 +5,7 @@ acoustic measures of voice quality, for speech-language pathologists and voice
 scientists. Every reference value is reported with the pipeline that produced
 it (software, version, settings, task, language) and a compatibility class.
 
-Site: https://lucerojc.github.io/voice-measures
+Site: https://voicemeasures.org
 
 Text under CC BY 4.0, code under MIT. Built with [Quarto](https://quarto.org).
 

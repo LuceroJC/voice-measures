@@ -4,7 +4,7 @@ title: "Introduction"
 
 ::: {.callout-note}
 **Living reference.** This book is versioned on Zenodo and revised on the
-web at [LuceroJC.github.io/voice-measures](https://LuceroJC.github.io/voice-measures).
+web at [voicemeasures.org](https://voicemeasures.org).
 Each chapter cites primary sources with page anchors; findings you may
 want to check should be traceable to the exact page.
 :::

@@ -1,6 +1,8 @@
 project:
   type: book
   output-dir: _book
+  resources:
+    - CNAME
   # Only written chapters are rendered; placeholders stay out of the site.
   render:
     - index.qmd
@@ -21,8 +23,7 @@ book:
       orcid: "0000-0003-0597-3808"
   date: today
   # doi: "10.5281/zenodo.XXXXXXX"            # TODO: add after first Zenodo release
-  # Change site-url when the custom domain is live (see README).
-  site-url: "https://lucerojc.github.io/voice-measures"
+  site-url: "https://voicemeasures.org"
   repo-url: "https://github.com/LuceroJC/voice-measures"
   repo-actions: [edit, issue]
   sidebar:

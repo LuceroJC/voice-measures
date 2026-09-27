@@ -73,7 +73,7 @@ Until the v0.1 release receives its DOI, cite the web version with its access
 date:
 
 > Lucero, J. C. (2026). *Acoustic Measures of Voice Quality: A Living
-> Reference*. https://LuceroJC.github.io/voice-measures (accessed *date*).
+> Reference*. https://voicemeasures.org (accessed *date*).
 
 Each release will be archived on Zenodo with a versioned DOI.
 
