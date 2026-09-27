@@ -62,8 +62,10 @@ Signal processing uses Praat with the customised ABI script [@barsties2021abi].
 Analysis applies only to voiced segments of the continuous speech, extracted
 with an automated Praat detection script, with a three-second /a/ segment
 appended [@delgado2018avqi]. The continuous-speech part is standardised to a
-language-specific syllable count yielding three seconds of voiced speech: 34
-syllables in Dutch, 33 in Spanish, 30 in Japanese [@delgado2018avqi].
+language-specific syllable count yielding three seconds of voiced speech. The
+Spanish validation set 33 syllables for both AVQIv3 and ABI; the 34-syllable
+(Dutch) and 30-syllable (Japanese) cut-offs it cites were established for
+AVQIv3 [@delgado2018avqi].
 
 ## What it captures
 
@@ -104,12 +106,33 @@ predicted breathiness on sustained vowels with a weighted mean *r* of at least
 The six validation studies pooled by the meta-analysis cover Dutch, German,
 Spanish, Brazilian Portuguese, Korean, and Japanese — four language groups —
 over 467 vocally healthy and 3136 voice-disordered subjects [@barsties2021abi].
+@tbl-abi-languages lists the threshold each study reported.
+
+| Language | Study | Healthy (N) | Disordered (P) | Concurrent validity ($r_s$) | Threshold |
+|---|---|---|---|---|---|
+| Dutch | Barsties v. Latoszek et al. | 88 | 954 | 0.840 | 3.44 |
+| Spanish | Delgado Hernández et al. | 47 | 136 | 0.826 | 3.40 |
+| Japanese | Hosokawa et al. | 55 | 288 | 0.890 | 3.44 |
+| Brazilian Portuguese | Englert et al. | 37 | 113 | 0.746 | 2.94 |
+| German | Barsties v. Latoszek et al. | 43 | 175 | 0.850 | 3.42 |
+| Korean | Kim et al. | 197 | 1470 | 0.870 | 3.69 |
+
+: ABI thresholds by language, as tabulated in the meta-analysis [@barsties2021abi, Table 1, p. 36]. Study names are as cited there. $r_s$ is Spearman's correlation between ABI and auditory-perceptual breathiness ratings. {#tbl-abi-languages}
+
+Thresholds range from 2.94 (Brazilian Portuguese) to 3.69 (Korean); see
+*Language dependence of the threshold* below. The Brazilian Portuguese value
+comes from a study the meta-analysis cites as a one-page 2019 item in the
+*International Archives of Otorhinolaryngology* (vol. 23, p. 106); its
+inter-rater reliability for breathiness was below the recommended level
+[@barsties2021abi]. The later full Brazilian Portuguese validation
+[@englert2021avqi] covers the AVQI only.
 
 ## Confounds and cautions
 
 **Language dependence of the threshold.** Continuous speech is part of the
-index, so inter-language phonetic differences may influence the outcome;
-thresholds must come from a validation in the target language. The
+index, so inter-language phonetic differences may influence the outcome, and
+cross-validation studies are needed to establish the ABI's validity for each
+language. The
 meta-analysis nevertheless found ABI relatively robust to phonetic
 inter-language differences such as stress timing, syllable timing, and
 intonation [@barsties2021abi].

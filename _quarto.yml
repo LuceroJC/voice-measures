@@ -26,6 +26,7 @@ book:
         - foundations-signal.qmd
         - foundations-recording.qmd
         - foundations-signal-typing.qmd
+        - foundations-pipeline.qmd
         - foundations-f0-detection.qmd
         - foundations-tasks.qmd
         - foundations-perceptual-anchors.qmd

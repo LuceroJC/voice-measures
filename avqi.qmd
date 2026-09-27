@@ -69,9 +69,12 @@ green below the Dutch threshold of 2.43 and red above it [@barsties2016avqi].
 ::: {.callout-warning}
 The printed equation differs between validation papers: @barsties2016avqi print
 the HNR coefficient as 0.006 and the Tilt coefficient as 0.093 (and their
-appendix script uses the same values), while @delgado2018avqi print 0.0006 and
-0.0993 citing the same source. Use the coefficients from the official Praat
-script rather than retyping them from any paper.
+appendix script uses the same values), while @delgado2018avqi print the HNR
+term as "(0.0006 − HNR)" (with a minus sign where a multiplication is
+expected) and the Tilt coefficient as 0.0993, citing Barsties and Maryn as the
+source. Both printed forms were checked against the publisher PDFs; the
+discrepancy is in the publications. Use the coefficients from the official
+Praat script rather than retyping them from any paper.
 :::
 
 ### Versions 02.02 and 03.01
@@ -99,12 +102,13 @@ GRBAS scale — the degree of hoarseness or voice abnormality [@barsties2016avqi
 *r* = 0.815 in the Dutch external validation (66.4% of variance)
 [@barsties2016avqi] and *r* = 0.835 in Spanish (69.7% of variance)
 [@delgado2018avqi]. CPPS is the main factor in the multivariate model
-[@barsties2016avqi]; meta-analytic evidence independently confirms cepstral
-peak measures as among the most accurate acoustic measures of overall
-dysphonia severity [@barsties2018meta].
+[@barsties2016avqi]. @barsties2018meta report, from the earlier
+overall-voice-quality meta-analysis of Maryn, Roy et al. (2009), weighted
+correlations for CPPS of 0.63 for sustained vowels and 0.88 for continuous
+speech.
 
-Earlier AVQI investigations reported high sensitivity to voice changes through
-therapy, supporting its use as a treatment outcome measure [@barsties2016avqi].
+A previous AVQI investigation reported high sensitivity to voice changes
+through voice therapy [@barsties2016avqi].
 
 ## Normative data
 
@@ -129,12 +133,12 @@ threshold chosen by the Youden index) [@delgado2018avqi].
 **Language-specific standardization is required.** The continuous-speech part
 must be trimmed to a syllable count that yields about 3 seconds of voiced
 speech, and the count differs by language: 34 syllables in Dutch, 33 in
-Spanish, 30 in Japanese [@delgado2018avqi].
+Spanish, 30 in Japanese for AVQIv3 [@delgado2018avqi].
 
 **Thresholds differ by language.** Reported optimal cutoffs are 2.43 (Dutch),
-2.28 (Spanish), and 2.06 (Japanese). The differences are small — AVQI appears
-relatively insulated from inter-language phonetic differences — but the
-language-specific cutoff should be used [@delgado2018avqi].
+2.28 (Spanish), and 2.06 (Japanese). The differences are small, which may
+indicate that AVQI is relatively insulated from inter-language phonetic
+differences [@delgado2018avqi].
 
 **Recording conditions matter.** Validation recordings were made in sound-
 treated rooms with head-mounted condenser microphones at 44.1 kHz / 16 bit,
@@ -144,16 +148,16 @@ reliable analysis requires optimal data-acquisition conditions
 [@barsties2016avqi].
 
 **Report the version.** Versions 02.02 and 03.01 differ in the length of the
-continuous-speech part and in the regression weighting; scores are not
-comparable across versions [@barsties2016avqi].
+continuous-speech part (17 vs. 34 syllables) and in the regression weighting
+[@barsties2016avqi]. Report the version with every score.
 
 **Base rates affect ROC statistics.** The Dutch external validation sample
 contained 8% normophonia and 92% dysphonia; likelihood ratios were used
 because they are less vulnerable to base-rate differences than ROC statistics
 alone [@barsties2016avqi].
 
-**Voicing detection is part of the pipeline.** Voiced segments are extracted
-automatically before measurement, so results depend on that detection step
+**Voicing detection is part of the pipeline.** Voiced segments of continuous
+speech are extracted automatically by a Praat script before measurement
 [@barsties2016avqi].
 
 ## Validation
