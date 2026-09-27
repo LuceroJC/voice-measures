@@ -1,6 +1,16 @@
 project:
   type: book
   output-dir: _book
+  # Only written chapters are rendered; placeholders stay out of the site.
+  render:
+    - index.qmd
+    - intro.qmd
+    - foundations-signal.qmd
+    - foundations-signal-typing.qmd
+    - foundations-pipeline.qmd
+    - cpps.qmd
+    - avqi.qmd
+    - abi.qmd
 
 book:
   title: "Acoustic Measures of Voice Quality"
@@ -11,6 +21,8 @@ book:
       orcid: "0000-0003-0597-3808"
   date: today
   # doi: "10.5281/zenodo.XXXXXXX"            # TODO: add after first Zenodo release
+  # Change site-url when the custom domain is live (see README).
+  site-url: "https://lucerojc.github.io/voice-measures"
   repo-url: "https://github.com/LuceroJC/voice-measures"
   repo-actions: [edit, issue]
   sidebar:
@@ -24,42 +36,26 @@ book:
     - part: "Part I — Foundations"
       chapters:
         - foundations-signal.qmd
-        - foundations-recording.qmd
         - foundations-signal-typing.qmd
         - foundations-pipeline.qmd
-        - foundations-f0-detection.qmd
-        - foundations-tasks.qmd
-        - foundations-perceptual-anchors.qmd
-    - part: "Part II — Periodicity and Stability"
-      chapters:
-        - f0-measures.qmd
-        - jitter.qmd
-        - shimmer.qmd
-        - voice-breaks.qmd
-        - perturbation-caveats.qmd
     - part: "Part III — Noise and Harmonic Structure"
       chapters:
-        - hnr.qmd
-        - nhr.qmd
-        - gne.qmd
         - cpps.qmd
-        - spectral-tilt.qmd
     - part: "Part IV — Composite Indices"
       chapters:
         - avqi.qmd
         - abi.qmd
-        - dsi.qmd
-        - composite-caveats.qmd
-    - part: "Part V — ML-derived Measures"
-      chapters:
-        - ml-landscape.qmd
-        - ml-feature-based.qmd
-        - ml-end-to-end.qmd
-    - part: "Back matter"
-      chapters:
-        - appendix-adjunct-methods.qmd
-        - appendix-reproducibility.qmd
-        - appendix-glossary.qmd
+    # Planned chapters are kept in the repository as placeholder .qmd files
+    # but are neither listed nor rendered until written. To publish one, add
+    # it here in its part AND to project.render above. Full plan:
+    #   Part I:   foundations-recording, foundations-f0-detection,
+    #             foundations-tasks, foundations-perceptual-anchors
+    #   Part II:  f0-measures, jitter, shimmer, voice-breaks, perturbation-caveats
+    #   Part III: hnr, nhr, gne, spectral-tilt
+    #   Part IV:  dsi, composite-caveats
+    #   Part V:   ml-landscape, ml-feature-based, ml-end-to-end
+    #   Back:     appendix-adjunct-methods, appendix-reproducibility,
+    #             appendix-glossary
 
 bibliography: references.bib
 lang: en

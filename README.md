@@ -1,70 +1,77 @@
 # Acoustic Measures of Voice Quality — A Living Reference
 
 An open, versioned reference on the computation and clinical interpretation of
-acoustic measures of voice quality. Methods companion to
-[PhonaLab](https://phonalab.com).
+acoustic measures of voice quality, for speech-language pathologists and voice
+scientists. Every reference value is reported with the pipeline that produced
+it (software, version, settings, task, language) and a compatibility class.
 
-Built with [Quarto](https://quarto.org). Text under CC BY 4.0, code under MIT.
+Site: https://lucerojc.github.io/voice-measures
+
+Text under CC BY 4.0, code under MIT. Built with [Quarto](https://quarto.org).
+
+Competing interests: the author also develops
+[PhonaLab](https://phonalab.com), a commercial voice-analysis application.
+The reference is independent of it (see the Introduction).
 
 ## Repository layout
 
 ```
-_quarto.yml              Project config (chapters, formats, theme)
-index.qmd                Preface (what this is, how to cite, license)
-intro.qmd                Scope and organization
-foundations-signal.qmd   Part I stub — includes a runnable code cell
-avqi.qmd                 Part IV stub — per-measure chapter template
+_quarto.yml              Project config: rendered chapters, sidebar, theme
+index.qmd                Home page (release contents, roadmap, citation)
+intro.qmd                Scope, reading paths, competing interests, licence
+foundations-*.qmd        Part I chapters
+cpps.qmd, avqi.qmd, ...  Measure chapters
+_code/vmsynth.py         Plot style and signal helpers for the figures
+_freeze/                 Cached results of executed code cells (commit it)
 references.bib           Bibliography
-theme.scss               Custom styling
-requirements.txt         Python deps for executable examples
-.github/workflows/       CI: render + publish to GitHub Pages
 CITATION.cff             Citation metadata (GitHub "cite" widget)
 .zenodo.json             Zenodo deposition metadata
-LICENSE-CODE / -TEXT     MIT (code) and CC BY 4.0 (prose)
+.github/workflows/       CI: render and publish to the gh-pages branch
 ```
 
-## Build locally
+Planned chapters exist as placeholder `.qmd` files. They are neither listed in
+the sidebar nor rendered. To publish one, add it to **both**
+`project.render` and `book.chapters` in `_quarto.yml`.
 
-Install Quarto (https://quarto.org/docs/get-started/) and the Python deps:
+## Build locally
 
 ```bash
 pip install -r requirements.txt
 quarto preview          # live preview in the browser
 quarto render           # full build into _book/
-quarto render --to pdf  # build the PDF only
 ```
 
-If `foundations-signal.qmd` renders with its figure, the executable pipeline
-works.
+## Custom domain (when purchased)
 
-## Fill in these placeholders before your first release
+1. At the registrar, point the domain to GitHub Pages. For an apex domain,
+   add A records to 185.199.108.153, 185.199.109.153, 185.199.110.153 and
+   185.199.111.153. For a `www` or other subdomain, add a CNAME record to
+   `lucerojc.github.io`. Check GitHub's current Pages documentation for these
+   addresses before entering them.
+2. Add a file named `CNAME` at the repository root containing only the domain,
+   and list it under `project.resources` in `_quarto.yml` so each publish
+   copies it to `gh-pages`:
+   ```yaml
+   project:
+     resources:
+       - CNAME
+   ```
+3. In GitHub **Settings → Pages**, enter the custom domain and tick
+   **Enforce HTTPS** once the certificate is issued.
+4. Update the address in `_quarto.yml` (`site-url`), `CITATION.cff` (`url`),
+   `index.qmd` and `intro.qmd` (citation examples).
 
-1. **Repo name / GitHub username** — this scaffold assumes
-   `github.com/lucerojc/voice-measures`. Change `repo-url` in `_quarto.yml`,
-   and the URLs in `CITATION.cff`, if different.
-2. **ORCID** — uncomment and fill in `_quarto.yml` and `CITATION.cff`.
-3. **CC BY 4.0 full text** — paste the legal code into `LICENSE-TEXT`
-   (see the TODO in that file).
-4. **DOI** — after the first Zenodo release, add it to `index.qmd` and
-   uncomment `doi:` in `_quarto.yml`.
+GitHub redirects the old `lucerojc.github.io/voice-measures` links to the
+custom domain.
 
-## One-time activation (do this on the empty scaffold, before writing content)
+## Release checklist (v0.1)
 
-1. Create the GitHub repo and push this scaffold to the `main` branch.
-2. Push once. The Action renders and creates a `gh-pages` branch.
-3. In **Settings → Pages**, set the source to the `gh-pages` branch (root).
-   Your site goes live at `https://<username>.github.io/<repo>/`.
-4. Link the repo to **Zenodo** (https://zenodo.org, log in with GitHub, flip the
-   toggle for this repo). From then on, every GitHub *release* is automatically
-   archived and minted a DOI.
-5. Cut a `v0.0.1` release to confirm the Zenodo hook fires end-to-end on the
-   stub, then add the DOI to `index.qmd`.
-
-Proving all five steps on the stub — before there is real content — means that
-when you finish the AVQI chapter it publishes and archives with zero friction.
+1. Custom domain live, and the address updated everywhere (above).
+2. `CITATION.cff`: `version` and `date-released`.
+3. Cut a GitHub release. Zenodo archives it and mints the DOI.
+4. Add the DOI to `_quarto.yml` (`doi:`), `index.qmd` and `intro.qmd`.
 
 ## Adding Portuguese / Spanish later
 
-English-first is intentional; don't restructure now. When ready, use the
-`babelquarto` workflow (https://docs.ropensci.org/babelquarto/). Nothing here
-blocks it.
+English-first is intentional. When ready, use the `babelquarto` workflow
+(https://docs.ropensci.org/babelquarto/).

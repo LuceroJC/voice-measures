@@ -28,8 +28,11 @@ in the Foundations section.
 
 ## How the reference is organised
 
-Five parts, ordered by what the measure captures rather than by clinical
-context. Chapters within each part follow a common template — definition,
+The reference is planned in five parts, ordered by what the measure captures
+rather than by clinical context. This release contains three Foundations
+chapters (signal fundamentals, signal typing, and pipeline dependence) and
+three measure chapters (CPPS, AVQI and ABI). The other chapters are listed on
+the [home page](index.qmd) and are added as they are written. Chapters within each part follow a common template — definition,
 computation, normative values, clinical interpretation, caveats, and
 disagreements among sources when they arise.
 
@@ -61,9 +64,9 @@ reading paths:
 - **Researcher tracing methodology.** The Computation section names the
   algorithm variants and software; the reference list gives the primary
   papers.
-- **PhonaLab user.** Each measure is paired with a PhonaLab clinical
-  landing page. The chapters here explain what the software computes and
-  why the number means what it means.
+- **PhonaLab user.** Each measure chapter links to PhonaLab, which computes
+  the measure. The chapters explain what the number means and which
+  reference values apply to it. See Competing interests below.
 
 Every factual claim carries a source. Where sources disagree, both are
 shown and the disagreement is called out — never silently averaged.
@@ -77,7 +80,17 @@ reference as, for example:
 > Zenodo. https://doi.org/10.5281/zenodo.XXXXXXX
 
 Where a specific chapter is cited, include the chapter title and section.
-The corresponding PDF and EPUB releases are also on Zenodo.
+Until the first DOI is minted, cite the web address with an access date.
+
+## Competing interests
+
+The author of this reference, Jorge C. Lucero, develops PhonaLab, a commercial
+web application for acoustic voice analysis. The reference is open and
+independent of it. Every reference value here comes from the published
+sources cited, with its pipeline and compatibility class. No value is chosen,
+kept or omitted because of how it compares with PhonaLab's output, and
+PhonaLab is not treated as a source. Each measure chapter ends with a link to
+PhonaLab, labelled as the author's software.
 
 ## Licence
 

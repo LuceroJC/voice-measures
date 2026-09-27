@@ -115,48 +115,50 @@ voice.
 
 CPP values and cutoffs belong to the pipeline that produced them: the program,
 its version and settings, and the speech material. Each row below states its
-pipeline and the kind of evidence behind it; see
+pipeline and its compatibility class; see
 [Pipeline Dependence and Reference Values](foundations-pipeline.qmd) for the
 classes. Compare a measured value only with a row whose pipeline matches.
 
-| Population | Task | Pipeline | Cutoff | Accuracy | Evidence |
+| Population | Task | Pipeline | Cutoff | Accuracy | Class |
 |---|---|---|---|---|---|
-| MEEI, English; 295 patients, 50 controls | Sustained /a/ | ADSV 3.4.2 CPP, default settings | 11.46 dB | 79.4% | primary |
-| MEEI, English; 291 patients, 50 controls | Rainbow Passage, first 12 s | ADSV 3.4.2 CPP, default settings | 6.11 dB | 87.7% | primary |
-| MEEI, English; 295 patients, 50 controls | Sustained /a/ | Praat 6.0.40 CPPS, Watts et al. settings | 14.45 dB | 77.4% | primary |
-| MEEI, English; 291 patients, 50 controls | Rainbow Passage, first 12 s | Praat 6.0.40 CPPS, Watts et al. settings | 9.33 dB | 94.5% | primary |
-| English; 100 voice-disordered, 70 controls | Rainbow Passage, second sentence | ADSV CPPS, factory settings | 5.53 dB | AUC 0.81 | primary |
-| English; 100 voice-disordered, 70 controls | Rainbow Passage, second sentence | Praat 6.0.17 CPPS, factory settings | 19.10 dB | AUC 0.91 | primary |
+| MEEI, English; 295 patients, 50 controls | Sustained /a/ | ADSV 3.4.2 CPP, default settings | 11.46 dB | 79.4% | pipeline-compatible |
+| MEEI, English; 291 patients, 50 controls | Rainbow Passage, first 12 s | ADSV 3.4.2 CPP, default settings | 6.11 dB | 87.7% | pipeline-compatible |
+| MEEI, English; 295 patients, 50 controls | Sustained /a/ | Praat 6.0.40 CPPS, Watts et al. settings | 14.45 dB | 77.4% | pipeline-compatible |
+| MEEI, English; 291 patients, 50 controls | Rainbow Passage, first 12 s | Praat 6.0.40 CPPS, Watts et al. settings | 9.33 dB | 94.5% | pipeline-compatible |
+| English; 100 voice-disordered, 70 controls | Rainbow Passage, second sentence | Praat 6.0.17 CPPS, factory settings | 19.10 dB | AUC 0.91 | pipeline-compatible |
 | — | Sustained /i/ | — | No published cutoff in the sources reviewed | — | — |
 
 : Diagnostic cutoffs (voice disorder vs. typical voice). MEEI rows: @murton2020cpp. Second-sentence rows: @sauder2017cpps. Sustained /i/: @buckley2023cpp. {#tbl-cpp-cutoffs}
 
-Earlier cutoff studies, as tabulated by @murton2020cpp:
+Other reported cutoffs are listed below for context only. Their pipelines
+are incomplete where they are reported: no software version, or values read
+from another paper's summary table. They are not used as cutoffs here.
 
-| Study | Language | Pipeline | Sustained vowel | Running speech | Evidence |
+| Study | Language | Pipeline | Sustained vowel | Running speech | Class |
 |---|---|---|---|---|---|
-| Heman-Ackah et al. 2003 | English | CPPS (Hillenbrand) | 10 dB | 5 dB | primary, as reported |
-| Heman-Ackah et al. 2014 | English | CPPS (Hillenbrand) | — | 4.0 dB | primary, as reported |
-| Yu et al. 2018 | Korean | ADSV CPP | 12 dB | 7 dB | primary, as reported |
-| Delgado-Hernández et al. 2019 | Spanish | Praat CPPS (AVQI configuration) | 13.96 dB | 8.37 dB | primary, as reported |
+| Sauder et al. 2017 | English | ADSV CPPS, factory settings; ADSV version not stated | — | 5.53 dB (second sentence of the Rainbow Passage; AUC 0.81) | unclassified |
+| Heman-Ackah et al. 2003 | English | CPPS (Hillenbrand) | 10 dB | 5 dB | unclassified (as tabulated by Murton et al.) |
+| Heman-Ackah et al. 2014 | English | CPPS (Hillenbrand) | — | 4.0 dB | unclassified (as tabulated by Murton et al.) |
+| Yu et al. 2018 | Korean | ADSV CPP | 12 dB | 7 dB | unclassified (as tabulated by Murton et al.) |
+| Delgado-Hernández et al. 2019 | Spanish | Praat CPPS (AVQI configuration) | 13.96 dB | 8.37 dB | unclassified (as tabulated by Murton et al.) |
 
-: Previously reported cutoffs, normal vs. dysphonic except Heman-Ackah 2003 (mild vs. severe). {#tbl-cpp-prior}
+: Reported cutoffs without a complete pipeline, shown as history. Normal vs. dysphonic except Heman-Ackah 2003 (mild vs. severe). Sauder row: @sauder2017cpps; other rows as tabulated by @murton2020cpp. {#tbl-cpp-prior}
 
 @buckley2023cpp measured 150 speakers without voice disorders, aged 18–91
 years, and proposed normative lower limits at 2 SD below the group mean.
 Praat CPPS used the Watts et al. settings (version 6.0.50); ADSV used default
 settings except a CPP threshold of 1 dB and vocalic event detection.
 
-| Task | Pipeline | Males | Females |
-|---|---|---|---|
-| Sustained /a/, middle 1 s | ADSV CPP | 8.86 dB | 8.09 dB |
-| Sustained /a/, middle 1 s | Praat CPPS | 11.72 dB | 11.05 dB |
-| Sustained /i/, middle 1 s | ADSV CPP | 6.68 dB | 4.65 dB |
-| Sustained /i/, middle 1 s | Praat CPPS | 12.01 dB | 10.37 dB |
-| Rainbow Passage, sentences 2–3 | ADSV CPP | 5.40 dB | 5.04 dB |
-| Rainbow Passage, sentences 2–3 | Praat CPPS | 6.40 dB | 6.49 dB |
+| Task | Pipeline | Males | Females | Class |
+|---|---|---|---|---|
+| Sustained /a/, middle 1 s | Praat 6.0.50 CPPS, Watts et al. settings | 11.72 dB | 11.05 dB | pipeline-compatible |
+| Sustained /i/, middle 1 s | Praat 6.0.50 CPPS, Watts et al. settings | 12.01 dB | 10.37 dB | pipeline-compatible |
+| Rainbow Passage, sentences 2–3 | Praat 6.0.50 CPPS, Watts et al. settings | 6.40 dB | 6.49 dB | pipeline-compatible |
+| Sustained /a/, middle 1 s | ADSV CPP; version not stated | 8.86 dB | 8.09 dB | unclassified |
+| Sustained /i/, middle 1 s | ADSV CPP; version not stated | 6.68 dB | 4.65 dB | unclassified |
+| Rainbow Passage, sentences 2–3 | ADSV CPP; version not stated | 5.40 dB | 5.04 dB | unclassified |
 
-: Normative lower limits for typical speakers; evidence class primary [@buckley2023cpp]. {#tbl-cpp-norms}
+: Normative lower limits for typical speakers [@buckley2023cpp]. The ADSV rows are shown for comparison with the Praat rows; the ADSV version is not stated, so they are not used as reference limits. {#tbl-cpp-norms}
 
 In that sample, 56% of females and 65.3% of males fell below the 9.33-dB Praat
 cutoff for the Rainbow Passage, and all fell below the 19.10-dB Praat cutoff
@@ -226,6 +228,9 @@ to alaryngeal voice.
 ## Compute it in PhonaLab
 
 > **[Open PhonaLab →](https://phonalab.com)**
+>
+> *PhonaLab is developed by the author of this reference; see
+> [Competing interests](intro.qmd#competing-interests).*
 >
 > Upload a sustained vowel or a reading passage and compute CPPS on your own
 > recording, with the software and task always reported alongside the value.

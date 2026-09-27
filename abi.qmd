@@ -105,36 +105,44 @@ predicted breathiness on sustained vowels with a weighted mean *r* of at least
 ## Normative data
 
 ABI validation evidence applies to Praat with the customised ABI script
-[@barsties2021abi]. Each row states its pipeline and evidence class; see
+[@barsties2021abi]. Each row states its pipeline and compatibility class; see
 [Pipeline Dependence and Reference Values](foundations-pipeline.qmd).
 
-| Population / language | Pipeline | Threshold | Sensitivity | Specificity | AUC | Evidence |
+| Population / language | Pipeline | Threshold | Sensitivity | Specificity | AUC | Class |
 |---|---|---|---|---|---|---|
-| Dutch, development study (970 dysphonic, 88 healthy) | Praat 5.3.57, custom ABI script | 3.44 | 82.4% | 92.9% | 0.948 | language-specific |
-| Spanish (136 dysphonic, 47 healthy) | Praat 6.0.22, ABI script | 3.40 | 73.7% | 95.4% | 0.921 | language-specific |
-| German (175 dysphonic, 43 healthy) | Praat 5.3.57, ABI script | 3.42 | 72% | 95% | 0.91 | language-specific |
-| US English (148 with voice disorders, 49 non-clinic-seeking; 22 syllables) | VOXplot 2.0.0; Praat 6.3.06 for extraction | 2.35 | 84% | 81% | 0.89 | language-specific |
-| Finnish (108 dysphonic, 87 non-dysphonic; 31 syllables) | VOXplot 2.0.0; recorded in Praat 6.2.23 | 2.68 | 80% | 80% | 0.886 | language-specific |
-| Pooled, six studies | Praat + ABI script; heterogeneous hardware | — | 0.84 (95% CI 0.83–0.85) | 0.92 (95% CI 0.89–0.94) | 0.94 (SROC) | pooled |
-| Weighted threshold across the six studies (Youden) | as above | 3.40 | 0.86 (95% CI 0.84–0.87) | 0.90 (95% CI 0.88–0.92) | — | pooled |
+| Dutch, development study (970 dysphonic, 88 healthy) | Praat 5.3.57, custom ABI script | 3.44 | 82.4% | 92.9% | 0.948 | language-conditional |
+| Spanish (136 dysphonic, 47 healthy) | Praat 6.0.22, ABI script | 3.40 | 73.7% | 95.4% | 0.921 | language-conditional |
+| German (175 dysphonic, 43 healthy) | Praat 5.3.57, ABI script | 3.42 | 72% | 95% | 0.91 | language-conditional |
+| Brazilian Portuguese, counting 1–11 (40 dysphonic, 13 healthy; 17 syllables) | Praat 6.0.06, ABI script | 2.38 | 95.2% | 81.8% | 0.924 | language-conditional |
+| Brazilian Portuguese, reading text (same 53 speakers; 32 syllables) | Praat 6.0.06, ABI script | 3.13 | 88.1% | 90.9% | 0.929 | language-conditional |
+| US English (148 with voice disorders, 49 non-clinic-seeking; 22 syllables) | VOXplot 2.0.0; Praat 6.3.06 for extraction | 2.35 | 84% | 81% | 0.89 | language-conditional |
+| Finnish (108 dysphonic, 87 non-dysphonic; 31 syllables) | VOXplot 2.0.0; recorded in Praat 6.2.23 | 2.68 | 80% | 80% | 0.886 | language-conditional |
+| Pooled, six studies (context only) | Praat + ABI script; heterogeneous hardware | none | 0.84 (95% CI 0.83–0.85) | 0.92 (95% CI 0.89–0.94) | 0.94 (SROC) | meta-analytic |
 
-: ABI diagnostic thresholds. Dutch: @barsties2017abi; Spanish: @delgado2018avqi; German: @barsties2020german; US English: @castillo2023avqi; Finnish: @kankare2023abi; pooled: @barsties2021abi. Praat versions for the Spanish and German rows are those cited in each paper's reference list. {#tbl-abi-thresholds}
+: ABI diagnostic thresholds. Dutch: @barsties2017abi; Spanish: @delgado2018avqi; German: @barsties2020german; Brazilian Portuguese: @englert2020material; US English: @castillo2023avqi; Finnish: @kankare2023abi; pooled: @barsties2021abi. Praat versions for the Spanish and German rows are those cited in each paper's reference list. {#tbl-abi-thresholds}
 
 The six validation studies pooled by the meta-analysis cover Dutch, German,
 Spanish, Brazilian Portuguese, Korean, and Japanese — four language groups —
 over 467 vocally healthy and 3136 voice-disordered subjects [@barsties2021abi].
+The meta-analysis also derived a weighted threshold of 3.40 across its six
+studies (sensitivity 0.86, specificity 0.90) [@barsties2021abi]. This
+reference does not use it as a cutoff: a pooled value mixes languages,
+recording set-ups and Praat versions, and pooled sensitivity was highly
+heterogeneous (*I*² = 89.7%) [@barsties2021abi]. Use the row for the
+patient's language and task.
+
 @tbl-abi-languages lists the threshold each study reported.
 
-| Language | Study | Healthy (N) | Disordered (P) | Concurrent validity ($r_s$) | Threshold | Evidence |
+| Language | Study | Healthy (N) | Disordered (P) | Concurrent validity ($r_s$) | Threshold | Class |
 |---|---|---|---|---|---|---|
-| Dutch | Barsties v. Latoszek et al. | 88 | 954 | 0.840 | 3.44 | language-specific |
-| Spanish | Delgado Hernández et al. | 47 | 136 | 0.826 | 3.40 | language-specific |
-| Japanese | Hosokawa et al. | 55 | 288 | 0.890 | 3.44 | language-specific |
-| Brazilian Portuguese | Englert et al. | 37 | 113 | 0.746 | 2.94 | language-specific |
-| German | Barsties v. Latoszek et al. | 43 | 175 | 0.850 | 3.42 | language-specific |
-| Korean | Kim et al. | 197 | 1470 | 0.870 | 3.69 | language-specific |
+| Dutch | Barsties v. Latoszek et al. | 88 | 954 | 0.840 | 3.44 | language-conditional |
+| Spanish | Delgado Hernández et al. | 47 | 136 | 0.826 | 3.40 | language-conditional |
+| Japanese | Hosokawa et al. | 55 | 288 | 0.890 | 3.44 | language-conditional |
+| Brazilian Portuguese | Englert et al. | 37 | 113 | 0.746 | 2.94 | language-conditional |
+| German | Barsties v. Latoszek et al. | 43 | 175 | 0.850 | 3.42 | language-conditional |
+| Korean | Kim et al. | 197 | 1470 | 0.870 | 3.69 | language-conditional |
 
-: ABI thresholds by language, as tabulated in the meta-analysis [@barsties2021abi, Table 1, p. 36]. Study names are as cited there. All used Praat with the ABI script, an inclusion criterion of the meta-analysis. $r_s$ is Spearman's correlation between ABI and auditory-perceptual breathiness ratings. {#tbl-abi-languages}
+: ABI thresholds by language, as tabulated in the meta-analysis [@barsties2021abi, Table 1, p. 36]. Study names are as cited there. All used Praat with the ABI script, an inclusion criterion of the meta-analysis; the Praat version is not stated in that table, and the values are second-hand, as cited there. $r_s$ is Spearman's correlation between ABI and auditory-perceptual breathiness ratings. {#tbl-abi-languages}
 
 Thresholds range from 2.94 (Brazilian Portuguese) to 3.69 (Korean); see
 *Language dependence of the threshold* below. The later US English validation,
@@ -151,12 +159,20 @@ comes from a study the meta-analysis cites as a one-page 2019 item in the
 *International Archives of Otorhinolaryngology* (vol. 23, p. 106); its
 inter-rater reliability for breathiness was below the recommended level
 [@barsties2021abi]. The later full Brazilian Portuguese validation
-[@englert2021avqi] covers the AVQI only. A summary table in the Finnish
-validation lists 3.13 for Brazilian Portuguese, citing a different study of
-AVQI and ABI with different speech material [@kankare2023abi]. That table
-also contains evident errors: its German row repeats the German AVQI
-accuracy figures, not the ABI ones [@barsties2020german]. This reference
-keeps 2.94 until the cited study has been reviewed.
+[@englert2021avqi] covers the AVQI only.
+
+A second Brazilian Portuguese study, of 53 speakers, reports two ABI
+thresholds from the same people: 2.38 for counting 1–11 and 3.13 for the
+first sentence of a read text. Mean ABI scores were higher for reading
+[@englert2020material]. The task alone moves the threshold by 0.75. The
+study had only 13 vocally healthy speakers, and its authors describe a full
+validation as still in process [@englert2020material]. The 3.13 that appears
+for Brazilian Portuguese in the Finnish paper's summary table
+[@kankare2023abi] is this reading-text value. That table has errors, and the
+Englert et al. table prints LR+ values that cannot be correct, so neither is
+used here for likelihood ratios. For Brazilian Portuguese, use the row that
+matches the task: 2.94 comes from the larger sample, but the meta-analysis
+does not state its task.
 
 ## Confounds and cautions
 
@@ -215,6 +231,9 @@ pooled sensitivity 0.84 and specificity 0.92 [@barsties2021abi].
 ## Compute it in PhonaLab
 
 > **[Open PhonaLab →](https://phonalab.com)**
+>
+> *PhonaLab is developed by the author of this reference; see
+> [Competing interests](intro.qmd#competing-interests).*
 >
 > Upload a sustained vowel and a continuous speech sample to compute ABI on
 > your own recording, alongside the AVQI computed from the same material.

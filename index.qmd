@@ -1,14 +1,88 @@
 ---
-title: "Acoustic Measures of Voice Quality"
-subtitle: "A Living Reference"
+number-sections: false
 ---
 
+# Welcome {.unnumbered}
+
 ::: {.callout-note}
-**Version 0.1 draft.** This is an early release. Chapters marked *placeholder*
-outline the intended scope but are not yet written; the [Introduction](intro.qmd)
-explains how to read the reference and what each part covers.
+**Version 0.1 in preparation.** This is an early release that grows chapter by
+chapter. Pages marked *Living draft* are complete and sourced, and they will be
+revised as new sources are added.
 :::
 
-Welcome to *Acoustic Measures of Voice Quality*, an open living reference by
-Jorge C. Lucero. Start with the [Introduction](intro.qmd), or jump straight
-to a specific measure via the sidebar.
+*Acoustic Measures of Voice Quality* is an open reference on the acoustic
+measures used to assess the human voice. It is written for speech-language
+pathologists and voice scientists. For each measure, it covers what the
+measure means, how it is computed, which reference values exist, and where
+the measure fails.
+
+## What makes it different
+
+- **Every reference value comes with its pipeline.** A CPPS cutoff from one
+  program does not apply to a value from another program, and an AVQI
+  threshold validated in one language does not apply to another. Every
+  normative table states the software, version, settings, speech task and
+  language behind each value, and its compatibility class.
+- **Absence is declared, not filled.** Where no published reference matches a
+  pipeline, task or language, the table says so instead of borrowing a
+  number.
+- **Disagreements are shown, not averaged.** When sources conflict, including
+  misprinted equations or inconsistent summary tables, the conflict is set
+  out with both sources.
+- **Primary sources.** Claims are traced to the original studies. Values are
+  never taken from summary tables without saying so.
+
+## In this release
+
+**Foundations**
+
+- [Signal Fundamentals](foundations-signal.qmd): sampling, quantization,
+  framing and windows, and the time, frequency and cepstral domains, with
+  computed figures.
+- [Signal Typing](foundations-signal-typing.qmd): the Type 1–4
+  classification, and which measures are valid for which signals.
+- [Pipeline Dependence and Reference Values](foundations-pipeline.qmd): why a
+  value belongs to the software, settings, task and language that produced
+  it, and how this reference reports reference values.
+
+**Measures**
+
+- [Cepstral Peak Prominence (CPP and CPPS)](cpps.qmd)
+- [Acoustic Voice Quality Index (AVQI)](avqi.qmd)
+- [Acoustic Breathiness Index (ABI)](abi.qmd)
+
+## Coming next
+
+The complete reference is planned in five parts. The chapters below are not
+yet written.
+
+- **Foundations:** recording protocol; F0 detection; voice tasks; perceptual
+  anchors (GRBAS, CAPE-V).
+- **Periodicity and stability:** F0 measures; jitter; shimmer; voice breaks;
+  perturbation caveats.
+- **Noise and harmonic structure:** HNR; NHR; GNE; spectral tilt.
+- **Composite indices:** the Dysphonia Severity Index (DSI); caveats shared by
+  composite indices.
+- **Machine-learning-derived measures:** a landscape chapter and two worked
+  examples.
+- **Appendices:** adjunct methods, reproducibility notes and a glossary.
+
+## Citing this reference
+
+Until the v0.1 release receives its DOI, cite the web version with its access
+date:
+
+> Lucero, J. C. (2026). *Acoustic Measures of Voice Quality: A Living
+> Reference*. https://LuceroJC.github.io/voice-measures (accessed *date*).
+
+Each release will be archived on Zenodo with a versioned DOI.
+
+## Author and competing interests
+
+Written by Jorge C. Lucero, University of Brasília
+([ORCID 0000-0003-0597-3808](https://orcid.org/0000-0003-0597-3808)). The
+author also develops PhonaLab, a commercial voice-analysis application; see
+[Competing interests](intro.qmd#competing-interests).
+
+The text is licensed under CC BY 4.0 and the code under the MIT License.
+Corrections are welcome through the *Report an issue* link in the sidebar.

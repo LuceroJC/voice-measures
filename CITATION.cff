@@ -5,9 +5,9 @@ authors:
   - family-names: "Lucero"
     given-names: "Jorge C."
     affiliation: "University of Brasília"
-    # orcid: "https://orcid.org/0000-0000-0000-0000"   # TODO: add your ORCID
-repository-code: "https://github.com/lucerojc/voice-measures"
-url: "https://lucerojc.github.io/voice-measures"
+    orcid: "https://orcid.org/0000-0003-0597-3808"
+repository-code: "https://github.com/LuceroJC/voice-measures"
+url: "https://lucerojc.github.io/voice-measures"   # change to the custom domain when live
 license: CC-BY-4.0
 version: "0.0.1"
 date-released: "2026-09-13"

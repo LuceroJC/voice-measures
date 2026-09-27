@@ -122,26 +122,37 @@ states its language and pipeline. Use the row validated for the patient's
 language and the AVQI version in use; see
 [Pipeline Dependence and Reference Values](foundations-pipeline.qmd).
 
-| Language | Sample | Pipeline | Threshold | Sensitivity | Specificity | AUC | Evidence |
+| Language | Sample | Pipeline | Threshold | Sensitivity | Specificity | AUC | Class |
 |---|---|---|---|---|---|---|---|
-| Dutch, internal validation (as reported) | 60 samples | AVQI 03.01 | 2.43 | 0.936 | 1.00 | 0.98 | language-specific |
-| Dutch, external validation | 970 dysphonic, 88 normal | AVQI 03.01; Praat 5.3.57 | 2.43 | 0.785 | 0.932 | 0.923 | language-specific |
-| Spanish | 136 dysphonic, 47 normal | AVQI 03.01; Praat 6.0.22 | 2.28 | 0.748 | 0.946 | 0.905 | language-specific |
-| Japanese (as reported) | not restated | AVQI 03.01 | 2.06 | 0.721 | 0.938 | 0.915 | language-specific |
-| German | 175 dysphonic, 43 healthy; 27 syllables | AVQI 03.01; Praat 5.3.57 | 1.85 | 0.72 | 0.90 | 0.90 | language-specific |
-| French | 90 ENT patients, 30 controls; 27 syllables | AVQI 03.01; recorded at 11,025 Hz | 2.33 | 0.598 | 1.00 | 0.788 | language-specific |
-| Brazilian Portuguese | 113 dysphonic, 37 nondysphonic; counting 1–11 (17 syllables) | AVQI 03.01 script; Praat 6.0.40 | 1.33 | 0.788 | 0.906 | 0.904 | language-specific |
-| US English | 148 with voice disorders, 49 non-clinic-seeking; first 22 syllables of the Rainbow Passage | AVQI 03.01 in VOXplot 2.0.0; Praat 6.3.06 for extraction | 1.17 | 0.62 | 0.95 | 0.84 | language-specific |
-| Pooled: eight AVQI v03 studies | 12 languages | multiple | range 1.33–3.15; no weighted threshold | 0.82 | 0.92 | 0.94 (SROC) | pooled |
+| Dutch, external validation | 970 dysphonic, 88 normal | AVQI 03.01; Praat 5.3.57 | 2.43 | 0.785 | 0.932 | 0.923 | language-conditional |
+| Spanish | 136 dysphonic, 47 normal | AVQI 03.01; Praat 6.0.22 | 2.28 | 0.748 | 0.946 | 0.905 | language-conditional |
+| German | 175 dysphonic, 43 healthy; 27 syllables | AVQI 03.01; Praat 5.3.57 | 1.85 | 0.72 | 0.90 | 0.90 | language-conditional |
+| French | 90 ENT patients, 30 controls; 27 syllables | AVQI 03.01; Praat version not stated; recorded at 11,025 Hz | 2.33 | 0.598 | 1.00 | 0.788 | language-conditional |
+| Brazilian Portuguese | 113 dysphonic, 37 nondysphonic; counting 1–11 (17 syllables) | AVQI 03.01 script; Praat 6.0.40 | 1.33 | 0.788 | 0.906 | 0.904 | language-conditional |
+| Brazilian Portuguese, counting 1–11 | 40 dysphonic, 13 healthy; 17 syllables | AVQI 03.01; Praat 6.0.06 | 1.16 | 0.86 | 0.80 | 0.87 | language-conditional |
+| Brazilian Portuguese, reading text | same 53 speakers; 32 syllables | AVQI 03.01; Praat 6.0.06 | 1.56 | 0.886 | 1.00 | 0.963 | language-conditional |
+| US English | 148 with voice disorders, 49 non-clinic-seeking; first 22 syllables of the Rainbow Passage | AVQI 03.01 in VOXplot 2.0.0; Praat 6.3.06 for extraction | 1.17 | 0.62 | 0.95 | 0.84 | language-conditional |
+| Pooled: eight AVQI v03 studies (context only) | 12 languages | multiple | none; study thresholds ranged 1.33–3.15 | 0.82 | 0.92 | 0.94 (SROC) | meta-analytic |
 
-: AVQI 03.01 diagnostic thresholds. Dutch: @barsties2016avqi; Spanish and Japanese: @delgado2018avqi; German: @barsties2020german; French: @pommee2020avqi; Brazilian Portuguese: @englert2021avqi; US English: @castillo2023avqi; pooled: @jayakumar2024avqi. Praat versions for the Dutch, Spanish and German rows are those cited in each paper's reference list. {#tbl-avqi-thresholds}
+: AVQI 03.01 diagnostic thresholds. Dutch: @barsties2016avqi; Spanish: @delgado2018avqi; German: @barsties2020german; French: @pommee2020avqi; Brazilian Portuguese: @englert2021avqi (150 speakers) and @englert2020material (53 speakers, two tasks); US English: @castillo2023avqi; pooled: @jayakumar2024avqi. Praat versions for the Dutch, Spanish and German rows are those cited in each paper's reference list. {#tbl-avqi-thresholds}
+
+The pooled row is descriptive context, not a cutoff. Its sensitivity was
+highly heterogeneous across studies (*I*² = 95.3%), its specificity much less
+so (*I*² = 16.4%) [@jayakumar2024avqi].
+
+Two further thresholds appear in the literature only second-hand and are not
+used as cutoffs here, because their pipeline is not stated where they are
+reported: 2.43 with sensitivity 0.936 and specificity 1.00 for an internal
+Dutch validation, as reported by @barsties2016avqi, and 2.06 with sensitivity
+0.721 and specificity 0.938 for Japanese, as reported by @delgado2018avqi.
 
 Likelihood ratios at the optimal threshold: LR+ = 11.54, LR− = 0.23 (Dutch
 external validation) [@barsties2016avqi]; LR+ = 13.85, LR− = 0.26 (Spanish,
 threshold chosen by the Youden index) [@delgado2018avqi]; LR+ = 7.40,
 LR− = 0.31 (German) [@barsties2020german]; LR+ = 8.38, LR− = 0.23 (Brazilian
 Portuguese) [@englert2021avqi]; LR+ = 12.46, LR− = 0.40 (US English)
-[@castillo2023avqi].
+[@castillo2023avqi]. The LR+ values printed by @englert2020material are
+below 1 or negative and cannot be correct, so they are not reproduced here.
 
 The original AVQI, which carried no version number, reported two cutoff
 options: 2.36 (sensitivity 91%, specificity 59%) and 2.95 (sensitivity 74%,
@@ -154,7 +165,7 @@ syllables of the Rainbow Passage, recorded in a quiet environment (ambient
 noise below 35 dB) with a head-mounted microphone at 44.1 kHz / 16 bit, and
 computed the index in VOXplot 2.0.0, which the authors state uses established
 Praat algorithms and the same equation [@castillo2023avqi]. Its threshold,
-1.17, is the lowest in the table and lies below the range of the AVQI
+1.17, lies below the range of the AVQI
 meta-analysis, whose literature search ended in July 2021
 [@jayakumar2024avqi]. The authors note that other English dialects and
 accents remain to be examined [@castillo2023avqi].
@@ -189,6 +200,13 @@ recommend using the Praat version of the validation study for the language
 in question, or checking a new version against an earlier one on test
 recordings [@stappenbeck2020praat].
 
+**Sampling rate.** The French validation recorded at 11,025 Hz
+[@pommee2020avqi], so its signals contain nothing above about 5.5 kHz. The
+AVQI script computes the LTAS slope and trend-line tilt over bands that reach
+10 kHz [@barsties2016avqi], so two of the six components are computed on a
+narrower band than in the other validations. Treat the French threshold as
+applying to recordings made at that rate.
+
 **Report the version.** Versions 02.02 and 03.01 differ in the length of the
 continuous-speech part (17 vs. 34 syllables) and in the regression weighting
 [@barsties2016avqi]. Report the version with every score.
@@ -218,6 +236,9 @@ figures reported in the latter.
 ## Compute it in PhonaLab
 
 > **[Open PhonaLab →](https://phonalab.com)**
+>
+> *PhonaLab is developed by the author of this reference; see
+> [Competing interests](intro.qmd#competing-interests).*
 >
 > Upload a sustained vowel and a continuous speech sample to compute AVQI on
 > your own recording, with the version and language protocol reported alongside
