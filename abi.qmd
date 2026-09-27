@@ -94,33 +94,39 @@ predicted breathiness on sustained vowels with a weighted mean *r* of at least
 
 ## Normative data
 
-| Population / language | Threshold | Sensitivity | Specificity | AUC |
-|---|---|---|---|---|
-| Dutch (development study) | 3.44 | 82.4% | 92.9% | 0.948 |
-| Spanish (136 dysphonic, 47 healthy) | 3.40 | 73.7% | 95.4% | 0.921 |
-| Pooled, six studies at study-specific thresholds | per language | 0.84 (95% CI 0.83–0.85) | 0.92 (95% CI 0.89–0.94) | 0.94 (SROC) |
-| Weighted threshold across the six studies (Youden) | 3.40 | 0.86 (95% CI 0.84–0.87) | 0.90 (95% CI 0.88–0.92) | — |
+ABI validation evidence applies to Praat with the customised ABI script
+[@barsties2021abi]. Each row states its pipeline and evidence class; see
+[Pipeline Dependence and Reference Values](foundations-pipeline.qmd).
 
-: ABI diagnostic thresholds [@delgado2018avqi; @barsties2021abi]. {#tbl-abi-thresholds}
+| Population / language | Pipeline | Threshold | Sensitivity | Specificity | AUC | Evidence |
+|---|---|---|---|---|---|---|
+| Dutch, development study (970 dysphonic, 88 healthy) | Praat 5.3.57, custom ABI script | 3.44 | 82.4% | 92.9% | 0.948 | language-specific |
+| Spanish (136 dysphonic, 47 healthy) | Praat 6.0.22, ABI script | 3.40 | 73.7% | 95.4% | 0.921 | language-specific |
+| German (175 dysphonic, 43 healthy) | Praat 5.3.57, ABI script | 3.42 | 72% | 95% | 0.91 | language-specific |
+| Pooled, six studies | Praat + ABI script; heterogeneous hardware | — | 0.84 (95% CI 0.83–0.85) | 0.92 (95% CI 0.89–0.94) | 0.94 (SROC) | pooled |
+| Weighted threshold across the six studies (Youden) | as above | 3.40 | 0.86 (95% CI 0.84–0.87) | 0.90 (95% CI 0.88–0.92) | — | pooled |
+
+: ABI diagnostic thresholds. Dutch: @barsties2017abi; Spanish: @delgado2018avqi; German: @barsties2020german; pooled: @barsties2021abi. Praat versions for the Spanish and German rows are those cited in each paper's reference list. {#tbl-abi-thresholds}
 
 The six validation studies pooled by the meta-analysis cover Dutch, German,
 Spanish, Brazilian Portuguese, Korean, and Japanese — four language groups —
 over 467 vocally healthy and 3136 voice-disordered subjects [@barsties2021abi].
 @tbl-abi-languages lists the threshold each study reported.
 
-| Language | Study | Healthy (N) | Disordered (P) | Concurrent validity ($r_s$) | Threshold |
-|---|---|---|---|---|---|
-| Dutch | Barsties v. Latoszek et al. | 88 | 954 | 0.840 | 3.44 |
-| Spanish | Delgado Hernández et al. | 47 | 136 | 0.826 | 3.40 |
-| Japanese | Hosokawa et al. | 55 | 288 | 0.890 | 3.44 |
-| Brazilian Portuguese | Englert et al. | 37 | 113 | 0.746 | 2.94 |
-| German | Barsties v. Latoszek et al. | 43 | 175 | 0.850 | 3.42 |
-| Korean | Kim et al. | 197 | 1470 | 0.870 | 3.69 |
+| Language | Study | Healthy (N) | Disordered (P) | Concurrent validity ($r_s$) | Threshold | Evidence |
+|---|---|---|---|---|---|---|
+| Dutch | Barsties v. Latoszek et al. | 88 | 954 | 0.840 | 3.44 | language-specific |
+| Spanish | Delgado Hernández et al. | 47 | 136 | 0.826 | 3.40 | language-specific |
+| Japanese | Hosokawa et al. | 55 | 288 | 0.890 | 3.44 | language-specific |
+| Brazilian Portuguese | Englert et al. | 37 | 113 | 0.746 | 2.94 | language-specific |
+| German | Barsties v. Latoszek et al. | 43 | 175 | 0.850 | 3.42 | language-specific |
+| Korean | Kim et al. | 197 | 1470 | 0.870 | 3.69 | language-specific |
 
-: ABI thresholds by language, as tabulated in the meta-analysis [@barsties2021abi, Table 1, p. 36]. Study names are as cited there. $r_s$ is Spearman's correlation between ABI and auditory-perceptual breathiness ratings. {#tbl-abi-languages}
+: ABI thresholds by language, as tabulated in the meta-analysis [@barsties2021abi, Table 1, p. 36]. Study names are as cited there. All used Praat with the ABI script, an inclusion criterion of the meta-analysis. $r_s$ is Spearman's correlation between ABI and auditory-perceptual breathiness ratings. {#tbl-abi-languages}
 
 Thresholds range from 2.94 (Brazilian Portuguese) to 3.69 (Korean); see
-*Language dependence of the threshold* below. The Brazilian Portuguese value
+*Language dependence of the threshold* below. A validation for US English
+(Castillo-Allendes et al., 2023) will be added once reviewed. The Brazilian Portuguese value
 comes from a study the meta-analysis cites as a one-page 2019 item in the
 *International Archives of Otorhinolaryngology* (vol. 23, p. 106); its
 inter-rater reliability for breathiness was below the recommended level

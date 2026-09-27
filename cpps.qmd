@@ -113,34 +113,60 @@ voice.
 
 ## Normative data
 
-Cutoff values below which a voice disorder is probable, from 295 patients and
-50 vocally healthy controls of the MEEI Voice Disorders Database (English
-speakers) [@murton2020cpp]:
+CPP values and cutoffs belong to the pipeline that produced them: the program,
+its version and settings, and the speech material. Each row below states its
+pipeline and the kind of evidence behind it; see
+[Pipeline Dependence and Reference Values](foundations-pipeline.qmd) for the
+classes. Compare a measured value only with a row whose pipeline matches.
 
-| Task | Software | Cutoff | Classification accuracy |
-|---|---|---|---|
-| Sustained /a/ | ADSV CPP | 11.46 dB | 79.4% |
-| Rainbow Passage | ADSV CPP | 6.11 dB | 87.7% |
-| Sustained /a/ | Praat CPPS | 14.45 dB | 77.4% |
-| Rainbow Passage | Praat CPPS | 9.33 dB | 94.5% |
+| Population | Task | Pipeline | Cutoff | Accuracy | Evidence |
+|---|---|---|---|---|---|
+| MEEI, English; 295 patients, 50 controls | Sustained /a/ | ADSV 3.4.2 CPP, default settings | 11.46 dB | 79.4% | primary |
+| MEEI, English; 291 patients, 50 controls | Rainbow Passage, first 12 s | ADSV 3.4.2 CPP, default settings | 6.11 dB | 87.7% | primary |
+| MEEI, English; 295 patients, 50 controls | Sustained /a/ | Praat 6.0.40 CPPS, Watts et al. settings | 14.45 dB | 77.4% | primary |
+| MEEI, English; 291 patients, 50 controls | Rainbow Passage, first 12 s | Praat 6.0.40 CPPS, Watts et al. settings | 9.33 dB | 94.5% | primary |
+| English; 100 voice-disordered, 70 controls | Rainbow Passage, second sentence | ADSV CPPS, factory settings | 5.53 dB | AUC 0.81 | primary |
+| English; 100 voice-disordered, 70 controls | Rainbow Passage, second sentence | Praat 6.0.17 CPPS, factory settings | 19.10 dB | AUC 0.91 | primary |
+| — | Sustained /i/ | — | No published cutoff in the sources reviewed | — | — |
 
-: MEEI cutoffs of @murton2020cpp. {#tbl-cpp-cutoffs}
+: Diagnostic cutoffs (voice disorder vs. typical voice). MEEI rows: @murton2020cpp. Second-sentence rows: @sauder2017cpps. Sustained /i/: @buckley2023cpp. {#tbl-cpp-cutoffs}
 
 Earlier cutoff studies, as tabulated by @murton2020cpp:
 
-| Study | Language | Algorithm | Sustained vowel | Running speech |
-|---|---|---|---|---|
-| Heman-Ackah et al. 2003 | English | CPPS (Hillenbrand) | 10 dB | 5 dB |
-| Heman-Ackah et al. 2014 | English | CPPS (Hillenbrand) | — | 4.0 dB |
-| Yu et al. 2018 | Korean | ADSV CPP | 12 dB | 7 dB |
-| Delgado-Hernández et al. 2019 | Spanish | Praat CPPS (AVQI configuration) | 13.96 dB | 8.37 dB |
+| Study | Language | Pipeline | Sustained vowel | Running speech | Evidence |
+|---|---|---|---|---|---|
+| Heman-Ackah et al. 2003 | English | CPPS (Hillenbrand) | 10 dB | 5 dB | primary, as reported |
+| Heman-Ackah et al. 2014 | English | CPPS (Hillenbrand) | — | 4.0 dB | primary, as reported |
+| Yu et al. 2018 | Korean | ADSV CPP | 12 dB | 7 dB | primary, as reported |
+| Delgado-Hernández et al. 2019 | Spanish | Praat CPPS (AVQI configuration) | 13.96 dB | 8.37 dB | primary, as reported |
 
 : Previously reported cutoffs, normal vs. dysphonic except Heman-Ackah 2003 (mild vs. severe). {#tbl-cpp-prior}
 
-**Thresholds depend on software and task.** Different algorithms produce CPP
-values in different ranges, and thresholds are lower for continuous speech
-than for sustained vowels [@murton2020cpp]. Compare a CPP value with these
-tables only when its software and task match the row.
+@buckley2023cpp measured 150 speakers without voice disorders, aged 18–91
+years, and proposed normative lower limits at 2 SD below the group mean.
+Praat CPPS used the Watts et al. settings (version 6.0.50); ADSV used default
+settings except a CPP threshold of 1 dB and vocalic event detection.
+
+| Task | Pipeline | Males | Females |
+|---|---|---|---|
+| Sustained /a/, middle 1 s | ADSV CPP | 8.86 dB | 8.09 dB |
+| Sustained /a/, middle 1 s | Praat CPPS | 11.72 dB | 11.05 dB |
+| Sustained /i/, middle 1 s | ADSV CPP | 6.68 dB | 4.65 dB |
+| Sustained /i/, middle 1 s | Praat CPPS | 12.01 dB | 10.37 dB |
+| Rainbow Passage, sentences 2–3 | ADSV CPP | 5.40 dB | 5.04 dB |
+| Rainbow Passage, sentences 2–3 | Praat CPPS | 6.40 dB | 6.49 dB |
+
+: Normative lower limits for typical speakers; evidence class primary [@buckley2023cpp]. {#tbl-cpp-norms}
+
+In that sample, 56% of females and 65.3% of males fell below the 9.33-dB Praat
+cutoff for the Rainbow Passage, and all fell below the 19.10-dB Praat cutoff
+[@buckley2023cpp].
+
+**Thresholds depend on software, settings and task.** Different algorithms
+produce CPP values in different ranges, and thresholds are lower for
+continuous speech than for sustained vowels [@murton2020cpp]. On the same
+samples, ADSV and Praat values correlate highly (*r* = 0.88), but their
+absolute values cannot be compared directly [@sauder2017cpps].
 
 ## Confounds and cautions
 

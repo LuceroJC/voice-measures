@@ -18,7 +18,7 @@ single score for the whole voice sample [@barsties2016avqi]. That score
 represents the overall voice quality — the hoarseness level — of the sample
 [@delgado2018avqi].
 
-The index was developed by @maryn2010avqi and was one of the first measures to
+The index was proposed by @maryn2010ecological and was one of the first measures to
 combine both speech types [@delgado2018avqi]. The rationale for the combination:
 sustained vowels are easily elicited and less affected by articulation and
 dialect, while continuous speech is more representative of a patient's daily
@@ -67,14 +67,14 @@ The published Praat script displays the resulting score on a 0–10 axis, marked
 green below the Dutch threshold of 2.43 and red above it [@barsties2016avqi].
 
 ::: {.callout-warning}
-The printed equation differs between validation papers: @barsties2016avqi print
-the HNR coefficient as 0.006 and the Tilt coefficient as 0.093 (and their
-appendix script uses the same values), while @delgado2018avqi print the HNR
-term as "(0.0006 − HNR)" (with a minus sign where a multiplication is
-expected) and the Tilt coefficient as 0.0993, citing Barsties and Maryn as the
-source. Both printed forms were checked against the publisher PDFs; the
-discrepancy is in the publications. Use the coefficients from the official
-Praat script rather than retyping them from any paper.
+The printed equation differs between papers. @barsties2016avqi (text and
+appendix script) and @englert2021avqi print the HNR coefficient as 0.006 and
+the Tilt coefficient as 0.093. @barsties2020german print the HNR term as
+"(0.0006-HNR)" and @delgado2018avqi as "(0.0006 − HNR)", both with a minus
+sign where a multiplication is expected; @delgado2018avqi also print the Tilt
+coefficient as 0.0993. All printed forms were checked against the publisher
+PDFs, so the differences are in the publications. Use the coefficients from
+the official Praat script rather than retyping them from any paper.
 :::
 
 ### Versions 02.02 and 03.01
@@ -107,26 +107,45 @@ overall-voice-quality meta-analysis of Maryn, Roy et al. (2009), weighted
 correlations for CPPS of 0.63 for sustained vowels and 0.88 for continuous
 speech.
 
-A previous AVQI investigation reported high sensitivity to voice changes
-through voice therapy [@barsties2016avqi].
+A previous AVQI investigation [@maryn2010avqi] reported high sensitivity to
+voice changes through voice therapy [@barsties2016avqi].
 
 ## Normative data
 
 Diagnostic thresholds separate normophonic from hoarse voices, with hoarseness
-defined as mean perceptual grade G ≥ 0.5 [@barsties2016avqi]:
+defined as mean perceptual grade G ≥ 0.5 [@barsties2016avqi]. The threshold
+differs between AVQI versions and languages [@barsties2020german], so each row
+states its language and pipeline. Use the row validated for the patient's
+language and the AVQI version in use; see
+[Pipeline Dependence and Reference Values](foundations-pipeline.qmd).
 
-| Population / language | Threshold | Sensitivity | Specificity | AUC |
-|---|---|---|---|---|
-| Dutch, internal validation (60 samples, as reported) | 2.43 | 0.936 | 1.00 | 0.98 |
-| Dutch, external validation (1058 samples) | 2.43 | 0.785 | 0.932 | 0.923 |
-| Spanish (136 dysphonic, 47 normal) | 2.28 | 0.748 | 0.946 | 0.905 |
-| Japanese (as reported) | 2.06 | 0.721 | 0.938 | 0.915 |
+| Language | Sample | Pipeline | Threshold | Sensitivity | Specificity | AUC | Evidence |
+|---|---|---|---|---|---|---|---|
+| Dutch, internal validation (as reported) | 60 samples | AVQI 03.01 | 2.43 | 0.936 | 1.00 | 0.98 | language-specific |
+| Dutch, external validation | 970 dysphonic, 88 normal | AVQI 03.01; Praat 5.3.57 | 2.43 | 0.785 | 0.932 | 0.923 | language-specific |
+| Spanish | 136 dysphonic, 47 normal | AVQI 03.01; Praat 6.0.22 | 2.28 | 0.748 | 0.946 | 0.905 | language-specific |
+| Japanese (as reported) | not restated | AVQI 03.01 | 2.06 | 0.721 | 0.938 | 0.915 | language-specific |
+| German | 175 dysphonic, 43 healthy; 27 syllables | AVQI 03.01; Praat 5.3.57 | 1.85 | 0.72 | 0.90 | 0.90 | language-specific |
+| French | 90 ENT patients, 30 controls; 27 syllables | AVQI 03.01; recorded at 11,025 Hz | 2.33 | 0.598 | 1.00 | 0.788 | language-specific |
+| Brazilian Portuguese | 113 dysphonic, 37 nondysphonic; counting 1–11 (17 syllables) | AVQI 03.01 script; Praat 6.0.40 | 1.33 | 0.788 | 0.906 | 0.904 | language-specific |
+| Pooled: eight AVQI v03 studies | 12 languages | multiple | range 1.33–3.15; no weighted threshold | 0.82 | 0.92 | 0.94 (SROC) | pooled |
 
-: AVQI 03.01 diagnostic thresholds [@barsties2016avqi; @delgado2018avqi]. {#tbl-avqi-thresholds}
+: AVQI 03.01 diagnostic thresholds. Dutch: @barsties2016avqi; Spanish and Japanese: @delgado2018avqi; German: @barsties2020german; French: @pommee2020avqi; Brazilian Portuguese: @englert2021avqi; pooled: @jayakumar2024avqi. Praat versions for the Dutch, Spanish and German rows are those cited in each paper's reference list. {#tbl-avqi-thresholds}
 
 Likelihood ratios at the optimal threshold: LR+ = 11.54, LR− = 0.23 (Dutch
 external validation) [@barsties2016avqi]; LR+ = 13.85, LR− = 0.26 (Spanish,
-threshold chosen by the Youden index) [@delgado2018avqi].
+threshold chosen by the Youden index) [@delgado2018avqi]; LR+ = 7.40,
+LR− = 0.31 (German) [@barsties2020german]; LR+ = 8.38, LR− = 0.23 (Brazilian
+Portuguese) [@englert2021avqi].
+
+The original AVQI, which carried no version number, reported two cutoff
+options: 2.36 (sensitivity 91%, specificity 59%) and 2.95 (sensitivity 74%,
+specificity 96%). The authors suggest 2.95 may be more appropriate when the
+main interest is screening [@maryn2010ecological]. These values apply to that
+version only.
+
+A validation for US English exists (Castillo-Allendes et al., 2023) and will
+be added once reviewed.
 
 ## Confounds and cautions
 
