@@ -9,7 +9,7 @@ authors:
 repository-code: "https://github.com/LuceroJC/voice-measures"
 url: "https://voicemeasures.org"
 license: CC-BY-4.0
-version: "0.0.1"
-date-released: "2026-09-13"
+version: "0.1.0"
+date-released: "2026-09-29"
 # The archived Zenodo record classifies this as a book (see .zenodo.json).
 # CFF's top-level type field only accepts software/dataset, so it is omitted here.
