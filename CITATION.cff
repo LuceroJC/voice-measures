@@ -11,5 +11,13 @@ url: "https://voicemeasures.org"
 license: CC-BY-4.0
 version: "0.1.0"
 date-released: "2026-09-29"
+
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.22739049"
+    description: "Concept DOI (all versions)"
+  - type: doi
+    value: "10.5281/zenodo.23045678"
+    description: "Version DOI (v0.1.0)"
 # The archived Zenodo record classifies this as a book (see .zenodo.json).
 # CFF's top-level type field only accepts software/dataset, so it is omitted here.

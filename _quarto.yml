@@ -22,7 +22,7 @@ book:
       affiliation: "University of Brasília"
       orcid: "0000-0003-0597-3808"
   date: today
-  # doi: "10.5281/zenodo.XXXXXXX"            # TODO: add after first Zenodo release
+  doi: "10.5281/zenodo.22739049"
   site-url: "https://voicemeasures.org"
   repo-url: "https://github.com/LuceroJC/voice-measures"
   repo-actions: [edit, issue]

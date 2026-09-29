@@ -76,11 +76,12 @@ shown and the disagreement is called out — never silently averaged.
 Each release is deposited on Zenodo with a versioned DOI. Cite this
 reference as, for example:
 
-> Lucero, J. C. (2026). *Acoustic Measures of Voice Quality*, v0.1.
-> Zenodo. https://doi.org/10.5281/zenodo.XXXXXXX
+> Lucero, J. C. (2026). *Acoustic Measures of Voice Quality*.
+> Zenodo. https://doi.org/10.5281/zenodo.22739049
 
 Where a specific chapter is cited, include the chapter title and section.
-Until the first DOI is minted, cite the web address with an access date.
+To cite a specific release, use the versioned DOI on that release's
+Zenodo record.
 
 ## Competing interests
 
