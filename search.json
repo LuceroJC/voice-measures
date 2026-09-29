@@ -44,7 +44,7 @@
     "href": "index.html#citing-this-reference",
     "title": "Acoustic Measures of Voice Quality",
     "section": "Citing this reference",
-    "text": "Citing this reference\nUntil the v0.1 release receives its DOI, cite the web version with its access date:\n\nLucero, J. C. (2026). Acoustic Measures of Voice Quality: A Living Reference. https://voicemeasures.org (accessed date).\n\nEach release will be archived on Zenodo with a versioned DOI.",
+    "text": "Citing this reference\nCite the concept DOI, which always resolves to the latest release:\n\nLucero, J. C. (2026). Acoustic Measures of Voice Quality: A Living Reference. Zenodo. https://doi.org/10.5281/zenodo.22739049\n\nTo cite a specific release, use the versioned DOI listed on that release’s Zenodo record.",
     "crumbs": [
       "Welcome"
     ]
@@ -94,7 +94,7 @@
     "href": "intro.html#versioning-dois-and-citation",
     "title": "1  Introduction",
     "section": "1.4 Versioning, DOIs, and citation",
-    "text": "1.4 Versioning, DOIs, and citation\nEach release is deposited on Zenodo with a versioned DOI. Cite this reference as, for example:\n\nLucero, J. C. (2026). Acoustic Measures of Voice Quality, v0.1. Zenodo. https://doi.org/10.5281/zenodo.XXXXXXX\n\nWhere a specific chapter is cited, include the chapter title and section. Until the first DOI is minted, cite the web address with an access date.",
+    "text": "1.4 Versioning, DOIs, and citation\nEach release is deposited on Zenodo with a versioned DOI. Cite this reference as, for example:\n\nLucero, J. C. (2026). Acoustic Measures of Voice Quality. Zenodo. https://doi.org/10.5281/zenodo.22739049\n\nWhere a specific chapter is cited, include the chapter title and section. To cite a specific release, use the versioned DOI on that release’s Zenodo record.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
     ]
