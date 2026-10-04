@@ -50,6 +50,19 @@ program that derives the unsmoothed cepstrum; a later modification of the
 algorithm, averaging across time and then across quefrency, produced the
 smoothed cepstrum [@maryn2009cepstral].
 
+**Praat and SpeechTool CPPS are on different scales.** @maryn2015praat compared
+SpeechTool's original CPPS with Praat's implementation on a sustained vowel and
+continuous speech from 289 subjects with voice disorders. The two correlate
+almost perfectly, but their numerical ranges differ by about 5 dB: mean CPPS was
+6.61 dB in SpeechTool against 11.66 dB in Praat, on the same recordings. The
+relation between them is *y* = 1.4387*x* + 2.1543 with *r*² = 0.924. A cutoff
+obtained in one program cannot be applied to a value computed in the other
+without that conversion. The strength of the correlation means the two measure
+the same thing; it does not make the numbers interchangeable. The corresponding
+comparison for the index built on CPPS is much closer in scale: the Praat-only
+AVQI accounted for 96.0% of the variance of the SpeechTool-based AVQI, with
+means of 3.97 against 3.83 [@maryn2015praat].
+
 **Software implementations.** Three computation algorithms dominate the
 clinical literature: Hillenbrand and Houde's CPPS algorithm, Praat's CPPS
 algorithm, and the CPP computation in Analysis of Dysphonia in Speech and Voice
@@ -143,6 +156,16 @@ from another paper's summary table. They are not used as cutoffs here.
 | Delgado-Hernández et al. 2019 | Spanish | Praat CPPS (AVQI configuration) | 13.96 dB | 8.37 dB | unclassified (as tabulated by Murton et al.) |
 
 : Reported cutoffs without a complete pipeline, shown as history. Normal vs. dysphonic except Heman-Ackah 2003 (mild vs. severe). Sauder row: @sauder2017cpps; other rows as tabulated by @murton2020cpp. {#tbl-cpp-prior}
+
+The two Hillenbrand rows show why the class matters. Their running-speech
+values, 5 dB and 4.0 dB, are not low versions of the Praat values elsewhere in
+this chapter; they sit on the SpeechTool scale, about 5 dB below Praat's for the
+same recordings [@maryn2015praat]. Converted with the published relation, 4.0 dB
+is roughly 1.3 dB on the Praat scale, far outside the range of any Praat cutoff
+here. Rather than convert second-hand values whose task and settings are only
+partly stated, this reference leaves them as history. The ADSV rows are a
+separate matter: they are unclassified because no ADSV version is stated where
+the values are reported [@murton2020cpp].
 
 @buckley2023cpp measured 150 speakers without voice disorders, aged 18–91
 years, and proposed normative lower limits at 2 SD below the group mean.

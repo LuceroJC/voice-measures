@@ -118,9 +118,12 @@ ABI validation evidence applies to Praat with the customised ABI script
 | Brazilian Portuguese, counting 1–20 (113 dysphonic, 37 healthy; 37 syllables) | Praat version not stated; AKG C420 head-mounted microphone, per the meta-analysis table | 2.94 | 75.3% | 93.4% | 0.852 | language-conditional |
 | US English (148 with voice disorders, 49 non-clinic-seeking; 22 syllables) | VOXplot 2.0.0; Praat 6.3.06 for extraction | 2.35 | 84% | 81% | 0.89 | language-conditional |
 | Finnish (108 dysphonic, 87 non-dysphonic; 31 syllables) | VOXplot 2.0.0; recorded in Praat 6.2.23 | 2.68 | 80% | 80% | 0.886 | language-conditional |
+| Japanese (288 dysphonic, 55 normophonic; 30 syllables + sustained vowel) | Praat 6.0.20, ABI script | 3.44 | 76.3% | 94.1% | 0.939 | language-conditional |
+| Malayalam and Kannada (91 normophonic, 69 dysphonic; 29 syllables in Malayalam, 25 in Kannada) | Praat 6.1.42, ABI script | 3.66 | 61.73% | 94.94% | 0.816 | language-conditional |
+| Persian (136 dysphonic, 45 vocally healthy; 20 syllables, durations balanced) | VOXplot, version not stated | 2.97 | 70% | 87% | 0.826 | language-conditional |
 | Pooled, six studies (context only) | Praat + ABI script; heterogeneous hardware | none | 0.84 (95% CI 0.83–0.85) | 0.92 (95% CI 0.89–0.94) | 0.94 (SROC) | meta-analytic |
 
-: ABI diagnostic thresholds. Dutch: @barsties2017abi; Spanish: @delgado2018avqi; German: @barsties2020german; Brazilian Portuguese: @englert2020material (counting 1–11 and reading text) and @englert2019abstract (counting 1–20); US English: @castillo2023avqi; Finnish: @kankare2023abi; pooled: @barsties2021abi. Praat versions for the Spanish and German rows are those cited in each paper's reference list. The Brazilian Portuguese counting 1–20 row reports diagnostic accuracy as a percentage (85.2%); it is shown here as AUC. {#tbl-abi-thresholds}
+: ABI diagnostic thresholds. Dutch: @barsties2017abi; Spanish: @delgado2018avqi; German: @barsties2020german; Brazilian Portuguese: @englert2020material (counting 1–11 and reading text) and @englert2019abstract (counting 1–20); Japanese: @hosokawa2019abi; Malayalam and Kannada: @jayakumar2024abi; Persian: @aghajanzadeh2025persian; US English: @castillo2023avqi; Finnish: @kankare2023abi; pooled: @barsties2021abi. Praat versions for the Spanish and German rows are those cited in each paper's reference list. The Brazilian Portuguese counting 1–20 row reports diagnostic accuracy as a percentage (85.2%); it is shown here as AUC. {#tbl-abi-thresholds}
 
 The six validation studies pooled by the meta-analysis cover Dutch, German,
 Spanish, Brazilian Portuguese, Korean, and Japanese — four language groups —
@@ -197,6 +200,29 @@ speakers [@englert2019abstract]. The 2.94 row rests on the largest sample and
 on the task used by the Brazilian Portuguese AVQI validation
 [@englert2021avqi]; the 2.38 and 3.13 rows state their Praat version, which it
 does not.
+
+The Japanese row is no longer second-hand. The primary validation reports the
+same threshold of 3.44 that the meta-analysis tabulated, and adds the task, the
+Praat version and an AUC of 0.939 [@hosokawa2019abi]. The same first author
+published three Japanese papers: this ABI validation, an AVQI version 02.02
+validation [@hosokawa2017avqi], and an AVQI version 03.01 validation not yet in
+this reference's library.
+
+The South Indian validation ran its ROC analysis twice, against breathiness and
+against overall grade, and reports two thresholds: 3.66 with breathiness as the
+reference standard (AUC 0.816, sensitivity 61.73%, specificity 94.94%) and 3.41
+with overall grade (AUC 0.719, sensitivity 59.42%, specificity 79.19%)
+[@jayakumar2024abi]. The ABI targets breathiness, and the authors conclude it
+correlates better with breathiness than with grade, so the table above uses
+3.66. The 3.41 is noted here only so that it is not mistaken for the South
+Indian ABI cutoff. Sensitivity at 3.66 is low: the threshold maximises the
+Youden index for that retrospective sample of 160 recordings, but it misses
+nearly four breathy voices in ten [@jayakumar2024abi].
+
+Across all published language validations the ABI thresholds now run from 2.35
+in US English to 3.69 in Korean, with 2.68 Finnish, 2.94 Brazilian Portuguese
+(counting 1–20), 2.97 Persian, and 3.66 Malayalam and Kannada in between
+[@castillo2023avqi; @kankare2023abi; @aghajanzadeh2025persian; @jayakumar2024abi].
 
 ## Confounds and cautions
 
