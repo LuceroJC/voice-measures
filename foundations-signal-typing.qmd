@@ -58,28 +58,36 @@ is valid.
 
 ## Origin
 
-The classification comes from the Workshop on Acoustic Voice Analysis, whose
-summary statement was written by Titze. The participants called a voice
-Type 1 when the periods and amplitudes of vibration are easily identified in
-the acoustic signal, and used Types 2 and 3 for the irregular signals typical
-of voice disorders [@ludlow2018measuring, p. 378]. Baken and Orlikoff adopted
-Titze's three categories for clinical use and added subtypes within each
-[@baken2000clinical, p. 152]. Sprecher and colleagues (2010) later tested
-whether the types could be identified from narrowband spectrograms. They found
-four categories, splitting noise-dominated signals off from Type 3 as a new
-Type 4 [@ludlow2018measuring, p. 378].
+The classification comes from the Workshop on Acoustic Voice Analysis, held on
+17 and 18 February 1994 in Denver, Colorado, whose summary statement was
+written by Titze [@titze1995workshop, p. 2]. The statement presents the
+classification as central to all other considerations in acoustic voice
+analysis, and as following the general principles of the nonlinear dynamics of
+coupled oscillators [@titze1995workshop, p. 19]. Its first recommendation is
+that it is useful to classify acoustic voice signals into three types
+[@titze1995workshop, p. 26].
+
+Baken and Orlikoff adopted Titze's three categories for clinical use and added
+subtypes within each [@baken2000clinical, p. 152]. Sprecher and colleagues
+(2010) proposed a fourth type, for signals predominated by stochastic noise,
+which are unsuitable for both perturbation and correlation dimension analysis
+[@sprecher2010typing, p. 3710]. They classified 40 voice samples into the four
+types from narrowband spectrograms, and found that perturbation, perceptual
+and correlation dimension measures all worsened from Type 1 through Type 4
+[@sprecher2010typing, p. 3710].
 
 ## The types
 
-The definitions and subtypes for Types 1 to 3 are those of Baken and
-Orlikoff. Their subtypes are shown in italics.
+The definitions for Types 1 to 3 are Titze's [@titze1995workshop, p. 19]. The
+subtypes are Baken and Orlikoff's addition and are shown in italics
+[@baken2000clinical, p. 152].
 
 ### Type 1: nearly periodic
 
 Nearly periodic (or, in the ideal case, periodic) waveforms that do not
 undergo qualitative changes during the interval analysed. Any modulating or
 subharmonic frequencies present have at least one order of magnitude less
-energy than the fundamental [@baken2000clinical, p. 152].
+energy than the fundamental [@titze1995workshop, p. 19; @baken2000clinical, p. 152].
 
 - *Subtype A*: minor random variation of F0 or waveshape.
 - *Subtype B*: minor monotonic modulation, with F0 or amplitude steadily
@@ -94,7 +102,7 @@ Signals with sudden qualitative changes (bifurcations) in the interval
 analysed, or with modulating or subharmonic frequencies whose energy is
 comparable to that of the fundamental. Type 2 signals are clearly ordered and
 organised, but no single F0 value validly characterises the whole segment
-[@baken2000clinical, p. 153].
+[@titze1995workshop, p. 19; @baken2000clinical, p. 153].
 
 - *Subtype A*: signal bifurcation(s) present.
 - *Subtype B*: F0 or amplitude discontinuity.
@@ -112,7 +120,7 @@ one per pair [@baken2000clinical, p. 151].
 Signals without apparent periodicity, and hence not validly susceptible to F0
 measurement. A Type 3 signal may nonetheless be chaotic, with a covert
 organising principle that the techniques of dynamical systems theory might
-reveal [@baken2000clinical, p. 153].
+reveal [@titze1995workshop, p. 19; @baken2000clinical, p. 153].
 
 - *Subtype A*: no observable structure.
 - *Subtype B*: deep-level (chaotic) organisation.
@@ -121,10 +129,24 @@ reveal [@baken2000clinical, p. 153].
 
 ### Type 4: dominated by noise
 
-Type 4 was added by Sprecher and colleagues for signals dominated by noise,
-separated from Type 3 [@ludlow2018measuring, p. 378]. Their example Type 4
-waveform is aperiodic and is described as stochastic noise
-[@ludlow2018measuring, p. 6].
+Type 4 was added by Sprecher and colleagues for signals predominated by
+stochastic noise characteristics, split off from Type 3
+[@sprecher2010typing, p. 3711]. Such signals have an infinite correlation
+dimension, which is what makes them unsuitable for the nonlinear methods that
+can still describe a Type 3 signal [@sprecher2010typing, p. 3710].
+
+On a narrowband spectrogram a Type 4 signal shows energy smeared across a
+broad range of frequencies, as with broadband white noise; an F0 may or may
+not be visible [@sprecher2010typing, p. 3711]. A Type 3 signal, by contrast,
+shows smearing across the harmonics with the energy concentrated at lower
+frequencies, generally below about 1500 Hz, and often still shows F0 and one
+or two harmonics [@sprecher2010typing, p. 3711].
+
+Adding Type 4 also narrows Type 3. Sprecher and colleagues define Type 3 as
+chaotic with a finite dimension, where Titze defined it as any signal with no
+apparent periodic structure [@sprecher2010typing, p. 3711;
+@titze1995workshop, p. 19]. The four-type scheme is a subdivision of Titze's
+Type 3 rather than a disagreement about the signals themselves.
 
 ## What the types look like
 
@@ -227,12 +249,44 @@ flowchart TD
 
 | Type | F0 | Perturbation (jitter, shimmer) |
 |---|---|---|
-| 1 | A single F0 characterises the interval. Evaluation of F0 presupposes Type 1, subtype A, within reasonable limits [@baken2000clinical, p. 153]. | Accurate [@ludlow2018measuring, p. 378]. |
-| 2 | No single F0 value validly characterises the segment [@baken2000clinical, p. 153]. | Accurate only in some Type 2 signals, those without bifurcation into two F0 values [@ludlow2018measuring, p. 378]. |
-| 3 | Not validly susceptible to F0 measurement [@baken2000clinical, p. 153]. | Not reliably measurable [@ludlow2018measuring, p. 378]. |
-| 4 | (Noise-dominated.) | Not reliably measurable [@ludlow2018measuring, p. 378]. |
+| 1 | The definition of F0 is unambiguous only for Type 1 signals [@titze1995workshop, p. 26]. Evaluation of F0 presupposes Type 1, subtype A, within reasonable limits [@baken2000clinical, p. 153]. | Considerable utility and reliability [@titze1995workshop, p. 26]. |
+| 2 | No obvious single F0 throughout the segment [@titze1995workshop, p. 19]. | Per-cycle F0 and per-cycle amplitude, and their perturbation, cannot be reliably extracted. Perturbation measures by themselves are unreliable and contain little pattern information [@titze1995workshop, p. 26]. |
+| 3 | Not validly susceptible to F0 measurement [@titze1995workshop, p. 26; @baken2000clinical, p. 153]. | Cannot be reliably extracted [@titze1995workshop, p. 26]. |
+| 4 | May or may not show an F0 on the spectrogram [@sprecher2010typing, p. 3711]. | Not reliable, and the signal is unsuitable for correlation dimension analysis as well [@sprecher2010typing, p. 3710]. |
 
 : What each signal type supports. {#tbl-type-measures}
+
+Four points of detail behind the table.
+
+- **How much perturbation is still reliable.** Titze's practical guideline for
+  Type 1 signals is that perturbation measures below about 5% have been found
+  reliable [@titze1995workshop, p. 26].
+- **Where the contour breaks.** Average cyclic parameter contours can be
+  extracted from both Type 1 and Type 2 signals, but where a bifurcation
+  occurs in a Type 2 signal, arbitrary decisions by the extraction algorithm
+  are likely to affect the contour in a non-unique way
+  [@titze1995workshop, p. 27]. Event-based contours are highly susceptible to
+  error in Types 2 and 3. They may be used for visual display, but are not
+  recommended for perturbation measures on Type 3 signals
+  [@titze1995workshop, p. 27].
+- **An empirical cutoff.** Sprecher and colleagues used the TF32 unreliability
+  measures trk and err, taking an err above 10 to mark a sample ill-suited to
+  perturbation analysis [@sprecher2010typing, p. 3711]. Percent jitter and
+  percent shimmer rose and SNR fell from Type 1 to Type 4, and both trk and
+  err grouped Types 1 and 2 together against Types 3 and 4, with no
+  significant difference between Types 3 and 4
+  [@sprecher2010typing, p. 3713].
+- **What to use instead.** For Type 2, visual displays are the most useful,
+  and assessment is best based on the entire display rather than a single
+  measure [@titze1995workshop, p. 26]. For Type 3, perceptual ratings of
+  roughness and of other auditory manifestations of aperiodicity are likely
+  the best clinical measures, with fractal dimension, attractor dimension or
+  the Lyapunov exponent as possible acoustic complements, and phase portraits
+  as visual confirmation of high dimensionality [@titze1995workshop, p. 26].
+  For Type 4, correlation dimension could not be calculated at all, the curves
+  failing to converge, and spectrographic and perceptual analysis remain valid
+  but yield no objective quantitative data
+  [@sprecher2010typing, p. 3714; @sprecher2010typing, p. 3715].
 
 Other measure families relate to the types as follows.
 
@@ -262,8 +316,14 @@ Other measure families relate to the types as follows.
 - **Typing is a judgement.** The types are defined by inspection, and the
   boundary between Type 1 and Type 2 is stated as an energy ratio (an order of
   magnitude below the fundamental versus comparable to it)
-  [@baken2000clinical, pp. 152--153]. None of the ingested sources reports
-  inter-rater agreement for signal typing.
+  [@titze1995workshop, p. 19; @baken2000clinical, pp. 152--153]. None of the
+  ingested sources reports inter-rater agreement for signal typing itself. In
+  Sprecher and colleagues the typing was done by one author with consultation
+  from the others, and the Spearman correlation of 0.867 they report is for
+  their three listeners' perceptual ratings, which are a separate judgement
+  [@sprecher2010typing, p. 3711; @sprecher2010typing, p. 3713]. They also note
+  that the cutoff for strong modulations is somewhat subjective, and excluded
+  wavy-harmonic samples for that reason [@sprecher2010typing, p. 3711].
 - **Perturbation can move the wrong way with treatment.** When a voice is very
   irregular before treatment, few periods can be tracked, and jitter and
   shimmer may come out low. As the voice improves, more periods are
@@ -277,22 +337,39 @@ Other measure families relate to the types as follows.
 - **Subtypes are an extension.** The A/B/C subtypes are Baken and Orlikoff's
   addition to Titze's three categories [@baken2000clinical, p. 152]. Cite a
   subtype only where the analysis depends on it.
-- **The original sources are not yet in the library.** The workshop summary
-  statement and the Sprecher et al. (2010) paper are cited here through
-  @baken2000clinical and @ludlow2018measuring.
+- **The samples behind Type 4.** Sprecher and colleagues' 40 samples, ten per
+  type, were selected as the most representative of each type from about 150
+  sustained phonations in a disordered-voice database
+  [@sprecher2010typing, p. 3711]. They were chosen to present the concept of a
+  Type 4 signal, not as a consecutive clinical series, and the authors defer
+  the association between pathology and type to future work
+  [@sprecher2010typing, p. 3715].
 
 ## Points of disagreement
 
-- **Date of the classification.** Baken and Orlikoff cite the scheme as Titze (1995)
-  [@baken2000clinical, p. 152]. Ludlow, Kent and Gray cite it as Titze (1994)
-  and refer to the workshop's summary statement
-  [@ludlow2018measuring, p. 378]. This reference uses 1995 for the summary
-  statement until the original is ingested.
-- **Character of Type 2 and Type 3.** Baken and Orlikoff define Type 2 by
-  bifurcations or strong modulating or subharmonic components, and Type 3 by
-  the absence of apparent periodicity, possibly with chaotic organisation
-  [@baken2000clinical, p. 153]. Ludlow, Kent and Gray describe Type 2 as highly
-  irregular periodicity with subharmonics and modulations such as tremor, and
-  Type 3 as chaotic and usually perceived as rough
-  [@ludlow2018measuring, p. 378]. This chapter uses the Baken and Orlikoff
-  definitions, which are signal-based rather than perceptual.
+- **Perturbation analysis of Type 2 signals.** Titze recommends against it:
+  for Type 2 signals, perturbation measures by themselves are unreliable and
+  contain little pattern information [@titze1995workshop, p. 26]. Sprecher and
+  colleagues found that most of their Type 2 samples fell below the err cutoff
+  of 10, and concluded that Type 1 and some Type 2 voices, those without
+  bifurcations, could be analysed with perturbation
+  [@sprecher2010typing, p. 3714]. They state that this is inconsistent with
+  Titze's recommendations and may be attributable to their own typing
+  procedure, and advise that future work consider pitch-tracking measures
+  before including Type 2 voices [@sprecher2010typing, p. 3715]. This chapter
+  follows Titze for Type 2, and @tbl-type-measures reflects that.
+- **Date of the classification.** The workshop was held on 17 and 18 February
+  1994 [@titze1995workshop, p. 2], and the summary statement carries no
+  publication year of its own. Baken and Orlikoff cite the scheme as Titze
+  (1995) [@baken2000clinical, p. 152]; Ludlow, Kent and Gray cite it as Titze
+  (1994) [@ludlow2018measuring, p. 378]; Sprecher and colleagues cite it as
+  Titze (1995) [@sprecher2010typing, p. 3710]. This reference uses 1995, the
+  more common form, and gives the workshop date where it matters.
+- **Character of Type 2 and Type 3 in the secondary accounts.** Baken and
+  Orlikoff define Type 2 by bifurcations or strong modulating or subharmonic
+  components, and Type 3 by the absence of apparent periodicity, possibly with
+  chaotic organisation [@baken2000clinical, p. 153]. Ludlow, Kent and Gray
+  describe Type 2 as highly irregular periodicity with subharmonics and
+  modulations such as tremor, and Type 3 as chaotic and usually perceived as
+  rough [@ludlow2018measuring, p. 378]. Both are compatible with Titze's
+  wording [@titze1995workshop, p. 19], which this chapter now uses directly.

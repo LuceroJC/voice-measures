@@ -206,7 +206,10 @@ US English validation, published after its July 2021 search, reports 1.17
 validation reports 2.35 [@castillo2023avqi]. Within one language the task
 matters too: in the same 53 Brazilian Portuguese speakers, the ABI threshold
 was 2.38 for counting and 3.13 for reading text, and the AVQI threshold 1.16
-and 1.56 [@englert2020material].
+and 1.56 [@englert2020material]. A third Brazilian Portuguese ABI threshold,
+2.94, comes from counting numbers 1 to 20 in a separate sample of 150 speakers
+[@englert2019abstract]. The three values are not rival estimates of one
+cutoff; each belongs to its own task.
 
 ```{python}
 #| label: fig-avqi-languages

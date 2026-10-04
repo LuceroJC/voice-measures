@@ -115,11 +115,12 @@ ABI validation evidence applies to Praat with the customised ABI script
 | German (175 dysphonic, 43 healthy) | Praat 5.3.57, ABI script | 3.42 | 72% | 95% | 0.91 | language-conditional |
 | Brazilian Portuguese, counting 1–11 (40 dysphonic, 13 healthy; 17 syllables) | Praat 6.0.06, ABI script | 2.38 | 95.2% | 81.8% | 0.924 | language-conditional |
 | Brazilian Portuguese, reading text (same 53 speakers; 32 syllables) | Praat 6.0.06, ABI script | 3.13 | 88.1% | 90.9% | 0.929 | language-conditional |
+| Brazilian Portuguese, counting 1–20 (113 dysphonic, 37 healthy; 37 syllables) | Praat version not stated; AKG C420 head-mounted microphone, per the meta-analysis table | 2.94 | 75.3% | 93.4% | 0.852 | language-conditional |
 | US English (148 with voice disorders, 49 non-clinic-seeking; 22 syllables) | VOXplot 2.0.0; Praat 6.3.06 for extraction | 2.35 | 84% | 81% | 0.89 | language-conditional |
 | Finnish (108 dysphonic, 87 non-dysphonic; 31 syllables) | VOXplot 2.0.0; recorded in Praat 6.2.23 | 2.68 | 80% | 80% | 0.886 | language-conditional |
 | Pooled, six studies (context only) | Praat + ABI script; heterogeneous hardware | none | 0.84 (95% CI 0.83–0.85) | 0.92 (95% CI 0.89–0.94) | 0.94 (SROC) | meta-analytic |
 
-: ABI diagnostic thresholds. Dutch: @barsties2017abi; Spanish: @delgado2018avqi; German: @barsties2020german; Brazilian Portuguese: @englert2020material; US English: @castillo2023avqi; Finnish: @kankare2023abi; pooled: @barsties2021abi. Praat versions for the Spanish and German rows are those cited in each paper's reference list. {#tbl-abi-thresholds}
+: ABI diagnostic thresholds. Dutch: @barsties2017abi; Spanish: @delgado2018avqi; German: @barsties2020german; Brazilian Portuguese: @englert2020material (counting 1–11 and reading text) and @englert2019abstract (counting 1–20); US English: @castillo2023avqi; Finnish: @kankare2023abi; pooled: @barsties2021abi. Praat versions for the Spanish and German rows are those cited in each paper's reference list. The Brazilian Portuguese counting 1–20 row reports diagnostic accuracy as a percentage (85.2%); it is shown here as AUC. {#tbl-abi-thresholds}
 
 The six validation studies pooled by the meta-analysis cover Dutch, German,
 Spanish, Brazilian Portuguese, Korean, and Japanese — four language groups —
@@ -155,11 +156,28 @@ fully clear. The Finnish validation, also later than the meta-analysis,
 reports 2.68 (LR+ 4.00, LR− 0.25) and $r_s$ = 0.823 with perceived
 breathiness, with nonbreathy voices defined as mean B below 0.5
 [@kankare2023abi]. The Brazilian Portuguese value
-comes from a study the meta-analysis cites as a one-page 2019 item in the
-*International Archives of Otorhinolaryngology* (vol. 23, p. 106); its
-inter-rater reliability for breathiness was below the recommended level
-[@barsties2021abi]. The later full Brazilian Portuguese validation
-[@englert2021avqi] covers the AVQI only.
+comes from a congress abstract [@englert2019abstract]. The meta-analysis cites
+it as a one-page 2019 item in the *International Archives of
+Otorhinolaryngology* (vol. 23, p. 106) [@barsties2021abi]. That citation does
+not resolve: the annals of the 18th Congress of the Otorhinolaryngology
+Foundation carry the journal's branding and S-prefixed pages, and the abstract
+is on p. S106, but the annals are not among the journal's numbered volumes.
+The meta-analysis table also labels this row with its reference 48, which is
+the Spanish validation; the intended reference is 49, cited correctly in its
+discussion [@barsties2021abi].
+
+The abstract states what the meta-analysis table omits: the task is counting
+numbers 1 to 20 plus the vowel /a/, with the voiced parts of both tasks
+equalized, in 150 speakers (113 dysphonic, 37 non-dysphonic); at 2.94 the
+sensitivity is 75.3% and the specificity 93.4%; diagnostic accuracy is 85.2%
+[@englert2019abstract]. Inter-rater reliability for breathiness was below the
+recommended level (Fleiss κ = 0.353), and the abstract reports
+overall-grade and breathiness reliability separately, so the figures the
+meta-analysis tabulates for this row are the breathiness ones
+[@englert2019abstract]. The later full Brazilian Portuguese validation
+[@englert2021avqi] draws on the same sample and the same task but covers the
+AVQI only, so this abstract remains the only source for the Brazilian
+Portuguese ABI threshold at this task.
 
 A second Brazilian Portuguese study, of 53 speakers, reports two ABI
 thresholds from the same people: 2.38 for counting 1–11 and 3.13 for the
@@ -171,8 +189,14 @@ for Brazilian Portuguese in the Finnish paper's summary table
 [@kankare2023abi] is this reading-text value. That table has errors, and the
 Englert et al. table prints LR+ values that cannot be correct, so neither is
 used here for likelihood ratios. For Brazilian Portuguese, use the row that
-matches the task: 2.94 comes from the larger sample, but the meta-analysis
-does not state its task.
+matches the task. The three published thresholds differ by task and sample
+rather than disagreeing: 2.38 for counting 1–11 (17 syllables) and 3.13 for
+the first sentence of a read text (32 syllables), both in the same 53 speakers
+[@englert2020material], and 2.94 for counting 1–20 (37 syllables) in 150
+speakers [@englert2019abstract]. The 2.94 row rests on the largest sample and
+on the task used by the Brazilian Portuguese AVQI validation
+[@englert2021avqi]; the 2.38 and 3.13 rows state their Praat version, which it
+does not.
 
 ## Confounds and cautions
 
@@ -209,9 +233,10 @@ a head-mounted condenser microphone at 44.1 kHz / 16 bit [@delgado2018avqi].
 **Evidence base.** The meta-analysis rests on six studies. Pooled sensitivity
 showed high heterogeneity (I² = 89.7%, *P* < .001), while specificity
 heterogeneity was low (I² = 45.5). The Brazilian Portuguese study reached only
-low inter-rater reliability (Fleiss κ < 0.41), with a sample skewed toward
-normal and mild breathiness (43% normal, 41% mild, 11% moderate, 5% severe)
-[@barsties2021abi].
+low inter-rater reliability for breathiness (Fleiss κ = 0.353, below the 0.41
+regarded as the minimum) [@englert2019abstract; @barsties2021abi], with a
+sample skewed toward normal and mild breathiness (43% normal, 41% mild, 11%
+moderate, 5% severe) [@barsties2021abi].
 
 **Not a stand-alone screen.** Not all voice disorders are detected by ABI —
 that cannot be expected from a measure of one perceptual dimension; higher
