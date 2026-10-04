@@ -132,30 +132,51 @@ language and the AVQI version in use; see
 | Brazilian Portuguese, counting 1–11 | 40 dysphonic, 13 healthy; 17 syllables | AVQI 03.01; Praat 6.0.06 | 1.16 | 0.86 | 0.80 | 0.87 | language-conditional |
 | Brazilian Portuguese, reading text | same 53 speakers; 32 syllables | AVQI 03.01; Praat 6.0.06 | 1.56 | 0.886 | 1.00 | 0.963 | language-conditional |
 | US English | 148 with voice disorders, 49 non-clinic-seeking; first 22 syllables of the Rainbow Passage | AVQI 03.01 in VOXplot 2.0.0; Praat 6.3.06 for extraction | 1.17 | 0.62 | 0.95 | 0.84 | language-conditional |
+| Japanese | 455 recordings, 55 from controls; 30 syllables, time-balanced | AVQI 03.01; Praat version not stated | 2.06 | 0.721 | 0.938 | 0.915 | language-conditional |
 | Persian | 136 dysphonic, 45 vocally healthy; 20 syllables, durations balanced | AVQI 03.01 in VOXplot, version not stated | 1.63 | 0.732 | 0.91 | 0.850 | language-conditional |
 | Pooled: eight AVQI v03 studies (context only) | 12 languages | multiple | none; study thresholds ranged 1.33–3.15 | 0.82 | 0.92 | 0.94 (SROC) | meta-analytic |
 
-: AVQI 03.01 diagnostic thresholds. Dutch: @barsties2016avqi; Spanish: @delgado2018avqi; German: @barsties2020german; French: @pommee2020avqi; Brazilian Portuguese: @englert2021avqi (150 speakers) and @englert2020material (53 speakers, two tasks); US English: @castillo2023avqi; Persian: @aghajanzadeh2025persian; pooled: @jayakumar2024avqi. Praat versions for the Dutch, Spanish and German rows are those cited in each paper's reference list. {#tbl-avqi-thresholds}
+: AVQI 03.01 diagnostic thresholds. Dutch: @barsties2016avqi; Spanish: @delgado2018avqi; German: @barsties2020german; French: @pommee2020avqi; Brazilian Portuguese: @englert2021avqi (150 speakers) and @englert2020material (53 speakers, two tasks); US English: @castillo2023avqi; Japanese: @hosokawa2019avqi; Persian: @aghajanzadeh2025persian; pooled: @jayakumar2024avqi. Praat versions for the Dutch, Spanish and German rows are those cited in each paper's reference list. {#tbl-avqi-thresholds}
 
 The pooled row is descriptive context, not a cutoff. Its sensitivity was
 highly heterogeneous across studies (*I*² = 95.3%), its specificity much less
 so (*I*² = 16.4%) [@jayakumar2024avqi].
 
-Two further thresholds appear in the literature only second-hand and are not
-used as cutoffs here, because their pipeline is not stated where they are
-reported: 2.43 with sensitivity 0.936 and specificity 1.00 for an internal
-Dutch validation, as reported by @barsties2016avqi, and 2.06 with sensitivity
-0.721 and specificity 0.938 for Japanese, as reported by @delgado2018avqi.
+One further set of figures belongs to the Dutch internal validation, and is
+not published as a second Dutch cutoff. @barsties2015consistency, the
+60-sample study that produced the version 03.01 weighting, reports for its
+balanced-duration condition an AROC of 0.98 at a threshold of 2.43, with
+sensitivity 1.00 and specificity 0.936. These are development-sample figures:
+the threshold was evaluated on the same recordings that produced the model's
+weights, which is what a sensitivity of exactly 1.00 and an infinite positive
+likelihood ratio indicate. The Dutch row of @tbl-avqi-thresholds therefore
+carries the external validation on 1058 samples instead
+[@barsties2016avqi]. Note that the secondary literature transposes the two
+figures, giving sensitivity 0.936 and specificity 1.00.
 
-The Japanese figure needs care. It belongs to an AVQI version 03.01 validation
-for Japanese that this reference has not yet obtained. A separate paper by the
-same group validated AVQI version **02.02** in Japanese and reports a threshold
-of 3.15, with sensitivity 72.5% and specificity 95.2%, on a standardized
-syllable number of 22 [@hosokawa2017avqi]. The two are not rival estimates:
-they belong to different versions of the index, with different regression
-weights and different speech-material lengths, so 3.15 cannot be compared with
-any threshold in @tbl-avqi-thresholds. Always pair an AVQI threshold with its
-version.
+The Japanese threshold needs care for a different reason, set out under
+*Threshold derivation criteria* below. A separate paper by the same group
+validated AVQI version **02.02** in Japanese and reports a threshold of 3.15,
+with sensitivity 72.5% and specificity 95.2%, on a standardized syllable
+number of 22 [@hosokawa2017avqi]. That is not a rival estimate of the 2.06 in
+the table: the two belong to different versions of the index, with different
+regression weights and different speech-material lengths, so 3.15 cannot be
+compared with any threshold in @tbl-avqi-thresholds. Always pair an AVQI
+threshold with its version.
+
+**Threshold derivation criteria.** The thresholds in @tbl-avqi-thresholds are
+not all derived the same way. The Japanese validation computed candidates from
+both the Youden Index and the upper 95th percentile of its control cohort. The
+Youden Index gave 1.41, with balanced sensitivity 84.4% and specificity 85.6%;
+the 95th percentile gave 2.06, at 72.1% and 93.8%; and the original Dutch
+threshold of 2.43 applied to the same sample gave 64.6% and 97.3%
+[@hosokawa2019avqi]. The authors recommend 2.06, because at that value
+sensitivity and specificity came close to what the Dutch threshold produced in
+their cohort, and the table follows them [@hosokawa2019avqi]. The consequence
+is that the Japanese row trades sensitivity for specificity relative to a
+Youden-derived cutoff, so comparing it with the Youden-derived rows compares
+two criteria and not only two languages. Some of the spread in published AVQI
+thresholds is a spread of derivation methods rather than of languages.
 
 Likelihood ratios at the optimal threshold: LR+ = 11.54, LR− = 0.23 (Dutch
 external validation) [@barsties2016avqi]; LR+ = 13.85, LR− = 0.26 (Spanish,
@@ -188,13 +209,15 @@ must be trimmed to a syllable count that yields about 3 seconds of voiced
 speech, and the count differs by language: 34 syllables in Dutch, 33 in
 Spanish, 30 in Japanese for AVQIv3 [@delgado2018avqi].
 
-**Thresholds differ by language, and by version.** Reported optimal AVQI
+**Thresholds differ by language, by version, and by derivation criterion.** Reported optimal AVQI
 version 03.01 cutoffs are 2.43 (Dutch), 2.28 (Spanish) and 2.06 (Japanese). The
 differences are small, which may indicate that AVQI is relatively insulated
 from inter-language phonetic differences [@delgado2018avqi]. The validations
 since widen the spread: 1.85 German, 2.33 French, 1.33 Brazilian Portuguese,
 1.63 Persian. A version 02.02 threshold sits on a different scale altogether,
-as the Japanese version 02.02 value of 3.15 shows [@hosokawa2017avqi].
+as the Japanese version 02.02 value of 3.15 shows [@hosokawa2017avqi]. Nor is
+a percentile-derived threshold directly comparable with a Youden-derived one,
+which is the case for the Japanese row.
 
 **Equal proportion of the two speech tasks.** Earlier work found the sustained
 vowel dominating the final AVQI score more than the continuous speech.
