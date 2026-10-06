@@ -948,7 +948,7 @@
     "href": "release-notes.html#citing-a-specific-version",
     "title": "Release notes and errata",
     "section": "Citing a specific version",
-    "text": "Citing a specific version\nThe concept DOI 10.5281/zenodo.22739049 always resolves to the latest release. To cite the version you actually read, use the versioned DOI shown on that release’s Zenodo record:\n\nLucero, J. C. (2026). Acoustic Measures of Voice Quality, v0.2.0, “Acoustic Breathiness Index”, Normative data. Zenodo. https://doi.org/10.5281/zenodo.XXXXXXXX\n\nName the chapter and the section, not their numbers. Chapter numbers shift whenever a chapter is added: the Acoustic Breathiness Index was chapter 7 in v0.1.1 and is chapter 10 in v0.2.0, because Part II opened between them. The titles are stable and the versioned DOI fixes which release you mean.",
+    "text": "Citing a specific version\nThe concept DOI 10.5281/zenodo.22739049 always resolves to the latest release. To cite the version you actually read, use the versioned DOI shown on that release’s Zenodo record:\n\nLucero, J. C. (2026). Acoustic Measures of Voice Quality, v0.2.0, “Acoustic Breathiness Index”, Normative data. Zenodo. https://doi.org/10.5281/zenodo.23198639\n\nName the chapter and the section, not their numbers. Chapter numbers shift whenever a chapter is added: the Acoustic Breathiness Index was chapter 7 in v0.1.1 and is chapter 10 in v0.2.0, because Part II opened between them. The titles are stable and the versioned DOI fixes which release you mean.",
     "crumbs": [
       "Back matter",
       "Release notes and errata"
