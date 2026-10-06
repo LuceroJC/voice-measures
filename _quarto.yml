@@ -13,6 +13,7 @@ project:
     - cpps.qmd
     - avqi.qmd
     - abi.qmd
+    - release-notes.qmd  
 
 book:
   title: "Acoustic Measures of Voice Quality"
