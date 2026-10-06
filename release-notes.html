@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Jorge C. Lucero">
-<meta name="dcterms.date" content="2026-10-06">
 
-<title>Acoustic Measures of Voice Quality</title>
+<title>Release notes and errata – Acoustic Measures of Voice Quality</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -38,7 +36,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./intro.html" rel="next">
+<link href="./appendix-adjunct-methods.html" rel="next">
+<link href="./abi.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -90,7 +89,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Welcome</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./release-notes.html">Back matter</a></li><li class="breadcrumb-item"><a href="./release-notes.html">Release notes and errata</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -120,7 +119,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Welcome</span></a>
   </div>
 </li>
@@ -210,7 +209,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./release-notes.html" class="sidebar-item-text sidebar-link">
+  <a href="./release-notes.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Release notes and errata</span></a>
   </div>
 </li>
@@ -232,60 +231,33 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#welcome" id="toc-welcome" class="nav-link active" data-scroll-target="#welcome">Welcome</a>
+  <li><a href="#v0.1.1-2026-10-06" id="toc-v0.1.1-2026-10-06" class="nav-link active" data-scroll-target="#v0.1.1-2026-10-06">v0.1.1 — 2026-10-06</a>
   <ul class="collapse">
-  <li><a href="#what-makes-it-different" id="toc-what-makes-it-different" class="nav-link" data-scroll-target="#what-makes-it-different">What makes it different</a></li>
-  <li><a href="#in-this-release" id="toc-in-this-release" class="nav-link" data-scroll-target="#in-this-release">In this release</a></li>
-  <li><a href="#coming-next" id="toc-coming-next" class="nav-link" data-scroll-target="#coming-next">Coming next</a></li>
-  <li><a href="#citing-this-reference" id="toc-citing-this-reference" class="nav-link" data-scroll-target="#citing-this-reference">Citing this reference</a></li>
-  <li><a href="#author-and-competing-interests" id="toc-author-and-competing-interests" class="nav-link" data-scroll-target="#author-and-competing-interests">Author and competing interests</a></li>
+  <li><a href="#corrections-to-v0.1.0" id="toc-corrections-to-v0.1.0" class="nav-link" data-scroll-target="#corrections-to-v0.1.0">Corrections to v0.1.0</a></li>
+  <li><a href="#added-in-v0.1.1" id="toc-added-in-v0.1.1" class="nav-link" data-scroll-target="#added-in-v0.1.1">Added in v0.1.1</a></li>
+  <li><a href="#declared-absences" id="toc-declared-absences" class="nav-link" data-scroll-target="#declared-absences">Declared absences</a></li>
+  <li><a href="#held" id="toc-held" class="nav-link" data-scroll-target="#held">Held</a></li>
   </ul></li>
+  <li><a href="#v0.1.0-2026-09-29" id="toc-v0.1.0-2026-09-29" class="nav-link" data-scroll-target="#v0.1.0-2026-09-29">v0.1.0 — 2026-09-29</a></li>
+  <li><a href="#citing-a-specific-version" id="toc-citing-a-specific-version" class="nav-link" data-scroll-target="#citing-a-specific-version">Citing a specific version</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/LuceroJC/voice-measures/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/LuceroJC/voice-measures/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/LuceroJC/voice-measures/edit/main/release-notes.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/LuceroJC/voice-measures/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./release-notes.html">Back matter</a></li><li class="breadcrumb-item"><a href="./release-notes.html">Release notes and errata</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Acoustic Measures of Voice Quality</h1>
-<p class="subtitle lead">A Living Reference</p>
+<h1 class="title"><span id="sec-release-notes" class="quarto-section-identifier">Release notes and errata</span></h1>
 </div>
 
 
-<div class="quarto-title-meta-author">
-  <div class="quarto-title-meta-heading">Author</div>
-  <div class="quarto-title-meta-heading">Affiliation</div>
-  
-    <div class="quarto-title-meta-contents">
-    <p class="author">Jorge C. Lucero <a href="https://orcid.org/0000-0003-0597-3808" class="quarto-title-author-orcid" aria-label="ORCID profile for Jorge C. Lucero"> <img alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
-  </div>
-  <div class="quarto-title-meta-contents">
-        <p class="affiliation">
-            University of Brasília
-          </p>
-      </div>
-  </div>
 
 <div class="quarto-title-meta">
 
-      
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">October 6, 2026</p>
-    </div>
-  </div>
+    
   
     
-    <div>
-    <div class="quarto-title-meta-heading">Doi</div>
-    <div class="quarto-title-meta-contents">
-      <p class="doi">
-        <a href="https://doi.org/10.5281/zenodo.22739049">10.5281/zenodo.22739049</a>
-      </p>
-    </div>
-  </div>
   </div>
   
 
@@ -293,73 +265,60 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="welcome" class="level1 unnumbered">
-<h1 class="unnumbered">Welcome</h1>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>Version 0.1 in preparation.</strong> This is an early release that grows chapter by chapter. Pages marked <em>Living draft</em> are complete and sourced, and they will be revised as new sources are added.</p>
-</div>
-</div>
-<p><em>Acoustic Measures of Voice Quality</em> is an open reference on the acoustic measures used to assess the human voice. It is written for speech-language pathologists and voice scientists. For each measure, it covers what the measure means, how it is computed, which reference values exist, and where the measure fails.</p>
-<section id="what-makes-it-different" class="level2">
-<h2 class="anchored" data-anchor-id="what-makes-it-different">What makes it different</h2>
+<p>This reference is written to be revised, and each release is deposited on Zenodo with its own versioned DOI. When a value or a statement that appeared in an earlier release is corrected, the change is recorded here, so that a reader working from an earlier version can see exactly what moved and why. Corrections are not made silently.</p>
+<p>Entries are newest first. “v0.1.0 said” refers to the text as deposited in that release’s Zenodo record, not to the live site, which is revised continuously between releases.</p>
+<section id="v0.1.1-2026-10-06" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="v0.1.1-2026-10-06">v0.1.1 — 2026-10-06</h2>
+<p>A correction and sourcing release. No chapter was added or removed. Eight statements published in v0.1.0 are corrected, five of them because the claim has since been checked against its primary source rather than a secondary citation; four new language validations are added.</p>
+<section id="corrections-to-v0.1.0" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="corrections-to-v0.1.0">Corrections to v0.1.0</h3>
+<p><strong>Signal Typing — <code>@tbl-type-measures</code>, Type 2 row.</strong> v0.1.0 followed Ludlow, Kent and Gray on what may be measured from a Type 2 signal. The table now follows Titze’s summary statement [p.&nbsp;19, pp.&nbsp;26–27], which differs. This is a substantive change to what the table says about Type 2, not a rewording. The disagreement between Titze and Sprecher et al.&nbsp;on whether Type 2 signals support perturbation analysis is now stated explicitly in Points of disagreement, together with the authors’ own acknowledgement of it.</p>
+<p><strong>AVQI — Dutch internal validation.</strong> v0.1.0 carried the sensitivity and specificity as reported in the secondary literature, which transposes them. The correct figures are <strong>sensitivity 1.00 and specificity 0.936</strong> at a threshold of 2.43, AROC 0.98. The figures are now also correctly attributed, to Barsties v. Latoszek and Maryn (2015), VD-2 condition, p.&nbsp;653, and identified as <strong>development-sample</strong> figures. They are therefore recorded as internal-validation context and not as a second Dutch cutoff; the Dutch row keeps its external validation on 1058 samples.</p>
+<p><strong>AVQI — Japanese row.</strong> v0.1.0 carried the threshold of 2.06 from a second-hand citation, without the pipeline or the derivation criterion. The value is confirmed against the primary source (Hosokawa et al.&nbsp;2019, <em>Journal of Voice</em> 33(1):125.e1–125.e12): 2.06, sensitivity 0.721, specificity 0.938, AUC 0.915, 30 syllables, 455 recordings. The derivation criterion is now stated, and it matters: 2.06 is the <strong>95th percentile of the study’s controls</strong>, not a Youden-index value. The same paper derives 1.41 by the Youden index and reports 64.6% / 97.3% for the Dutch 2.43 applied to its own sample. The authors recommend 2.06 and the table follows them, so the Japanese row is not criterion-comparable with the Youden-derived rows.</p>
+<p><strong>AVQI — threshold caveat.</strong> The caveat that thresholds differ “by language” now reads <strong>by language, by version, and by derivation criterion</strong>. Part of the published spread in AVQI thresholds is a spread of derivation methods, not of populations.</p>
+<p><strong>ABI — Japanese row.</strong> The row is promoted from a second-hand citation to its primary source (Hosokawa et al.&nbsp;2019, <em>JSLHR</em> 62(8):2617–2631): 3.44, sensitivity 76.3%, specificity 94.1%, AUC 0.939, Praat 6.0.20, 30 syllables. Three easily confused Hosokawa papers are now distinguished in the chapter — the AVQI v02.02 validation, the AVQI v03.01 validation, and this ABI validation.</p>
+<p><strong>ABI — Brazilian Portuguese provenance.</strong> v0.1.0 cited this threshold through a meta-analysis, as “Int Arch Otorhinolaryngol 2019;23:106”. That citation does not resolve. The source is abstract 8972 in the annals of the 18th Congress of the Otorhinolaryngology Foundation, p.&nbsp;S106, and is now cited directly. The meta-analysis’s Table 1 superscripts are off by one on four of six rows; this is recorded so that readers checking the meta-analysis against this reference are not misled by it.</p>
+<p><strong>ABI — evidence-base caveat.</strong> The Fleiss κ of 0.353 is now cited directly to the abstract rather than to the meta-analysis, and identified as the <strong>breathiness</strong> agreement figure specifically, not an overall one.</p>
+<p><strong>CPPS — history table.</strong> The Hillenbrand-derived cutoffs were published without their program recorded. They are <strong>SpeechTool-scale</strong> values. Praat and SpeechTool CPPS differ by about <strong>5 dB</strong> on the same 289 recordings (6.61 against 11.66), with the relation y = 1.4387x + 2.1543, r² = 0.924, so a cutoff from one program cannot be applied to output from the other. This explains why the Hillenbrand cutoffs are not low Praat values. The ADSV rows are unaffected by this correction; they remain unclassified for a separate reason, namely that no ADSV version is stated by their sources.</p>
+</section>
+<section id="added-in-v0.1.1" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="added-in-v0.1.1">Added in v0.1.1</h3>
 <ul>
-<li><strong>Every reference value comes with its pipeline.</strong> A CPPS cutoff from one program does not apply to a value from another program, and an AVQI threshold validated in one language does not apply to another. Every normative table states the software, version, settings, speech task and language behind each value, and its compatibility class.</li>
-<li><strong>Absence is declared, not filled.</strong> Where no published reference matches a pipeline, task or language, the table says so instead of borrowing a number.</li>
-<li><strong>Disagreements are shown, not averaged.</strong> When sources conflict, including misprinted equations or inconsistent summary tables, the conflict is set out with both sources.</li>
-<li><strong>Primary sources.</strong> Claims are traced to the original studies. Values are never taken from summary tables without saying so.</li>
+<li><strong>ABI, Brazilian Portuguese: 2.94</strong> — counting 1 to 20 with the voiced parts equalized (37 syllables), 150 speakers; sensitivity 75.3%, specificity 93.4%, ROC accuracy 85.2%.</li>
+<li><strong>ABI, Malayalam and Kannada: 3.66</strong> — the breathiness-referenced value. The 3.41 reported in the same study against overall grade is recorded only to prevent its misuse. The study’s two printed LR− values are impossible as printed; recomputed they are 0.40 and 0.51.</li>
+<li><strong>ABI, Persian: 2.97.</strong> The published ABI thresholds now span 2.35 to 3.69.</li>
+<li><strong>AVQI, Persian: 1.63.</strong></li>
+<li><strong>AVQI, Japanese v02.02: 3.15</strong> — on a different scale from the v03.01 value, and distinguished from it.</li>
+<li><strong>AVQI</strong>: a new subsection on threshold derivation criteria, and a caveat on the equal proportion required of the two speech tasks.</li>
+<li><strong>Signal Typing</strong>: Type 4 re-sourced to Sprecher et al.&nbsp;(2010), including the point that adding Type 4 subdivides Titze’s Type 3 rather than contradicting it.</li>
 </ul>
 </section>
-<section id="in-this-release" class="level2">
-<h2 class="anchored" data-anchor-id="in-this-release">In this release</h2>
-<p><strong>Foundations</strong></p>
+<section id="declared-absences" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="declared-absences">Declared absences</h3>
+<p>Two rows carry no Praat version, because none is stated by the source:</p>
 <ul>
-<li><a href="./foundations-signal.html">Signal Fundamentals</a>: sampling, quantization, framing and windows, and the time, frequency and cepstral domains, with computed figures.</li>
-<li><a href="./foundations-signal-typing.html">Signal Typing</a>: the Type 1–4 classification, and which measures are valid for which signals.</li>
-<li><a href="./foundations-pipeline.html">Pipeline Dependence and Reference Values</a>: why a value belongs to the software, settings, task and language that produced it, and how this reference reports reference values.</li>
+<li>the Brazilian Portuguese ABI row (2.94) — the congress abstract does not state one; the companion paper on the same sample and task states 6.0.40, which is recorded as context and not as this row’s pipeline;</li>
+<li>the Japanese AVQI v03.01 row (2.06).</li>
 </ul>
-<p><strong>Measures</strong></p>
-<ul>
-<li><a href="./cpps.html">Cepstral Peak Prominence (CPP and CPPS)</a></li>
-<li><a href="./avqi.html">Acoustic Voice Quality Index (AVQI)</a></li>
-<li><a href="./abi.html">Acoustic Breathiness Index (ABI)</a></li>
-</ul>
+<p>These are recorded as <em>not stated</em> rather than inferred. A pipeline that the source does not state is not supplied from elsewhere.</p>
 </section>
-<section id="coming-next" class="level2">
-<h2 class="anchored" data-anchor-id="coming-next">Coming next</h2>
-<p>The complete reference is planned in five parts. The chapters below are not yet written.</p>
-<ul>
-<li><strong>Foundations:</strong> recording protocol; F0 detection; voice tasks; perceptual anchors (GRBAS, CAPE-V).</li>
-<li><strong>Periodicity and stability:</strong> F0 measures; jitter; shimmer; voice breaks; perturbation caveats.</li>
-<li><strong>Noise and harmonic structure:</strong> HNR; NHR; GNE; spectral tilt.</li>
-<li><strong>Composite indices:</strong> the Dysphonia Severity Index (DSI); caveats shared by composite indices.</li>
-<li><strong>Machine-learning-derived measures:</strong> a landscape chapter and two worked examples.</li>
-<li><strong>Appendices:</strong> adjunct methods, reproducibility notes and a glossary.</li>
-</ul>
+<section id="held" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="held">Held</h3>
+<p>Normative AVQI data for Tamil is held out of the chapters until a paginated version of record exists. Its reported mean of 3.4 in normophonic speakers sits above every published v03.01 dysphonia threshold, which points to its speech material — seven whole CAPE-V sentences rather than a standardized syllable count — but that objection is an inference rather than a statement in the source, and the source carries no pagination to anchor it to.</p>
 </section>
-<section id="citing-this-reference" class="level2">
-<h2 class="anchored" data-anchor-id="citing-this-reference">Citing this reference</h2>
-<p>Cite the concept DOI, which always resolves to the latest release:</p>
+</section>
+<section id="v0.1.0-2026-09-29" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="v0.1.0-2026-09-29">v0.1.0 — 2026-09-29</h2>
+<p>First public release. Three measure chapters — Cepstral Peak Prominence (CPP and CPPS), the Acoustic Voice Quality Index (AVQI), and the Acoustic Breathiness Index (ABI) — with three Foundations chapters on signal fundamentals, signal typing, and pipeline dependence.</p>
+</section>
+<section id="citing-a-specific-version" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="citing-a-specific-version">Citing a specific version</h2>
+<p>The concept DOI <a href="https://doi.org/10.5281/zenodo.22739049">10.5281/zenodo.22739049</a> always resolves to the latest release. To cite the version you actually read, use the versioned DOI shown on that release’s Zenodo record, and give the chapter title and section:</p>
 <blockquote class="blockquote">
-<p>Lucero, J. C. (2026). <em>Acoustic Measures of Voice Quality: A Living Reference</em>. Zenodo. https://doi.org/10.5281/zenodo.22739049</p>
+<p>Lucero, J. C. (2026). <em>Acoustic Measures of Voice Quality</em>, v0.1.1, “Acoustic Breathiness Index”, §7.3. Zenodo. https://doi.org/10.5281/zenodo.XXXXXXXX</p>
 </blockquote>
-<p>To cite a specific release, use the versioned DOI listed on that release’s Zenodo record.</p>
-</section>
-<section id="author-and-competing-interests" class="level2">
-<h2 class="anchored" data-anchor-id="author-and-competing-interests">Author and competing interests</h2>
-<p>Written by Jorge C. Lucero, University of Brasília (<a href="https://orcid.org/0000-0003-0597-3808">ORCID 0000-0003-0597-3808</a>). The author also develops PhonaLab, a commercial voice-analysis application; see <a href="./intro.html#competing-interests">Competing interests</a>.</p>
-<p>The text is licensed under CC BY 4.0 and the code under the MIT License. Corrections are welcome through the <em>Report an issue</em> link in the sidebar.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -765,10 +724,13 @@ Note
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./abi.html" class="pagination-link" aria-label="Acoustic Breathiness Index (ABI)">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Acoustic Breathiness Index (ABI)</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./intro.html" class="pagination-link" aria-label="Introduction">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./appendix-adjunct-methods.html" class="pagination-link" aria-label="Adjunct Methods">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Adjunct Methods</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -780,7 +742,7 @@ Note
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/LuceroJC/voice-measures/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/LuceroJC/voice-measures/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/LuceroJC/voice-measures/edit/main/release-notes.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/LuceroJC/voice-measures/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Built with <a href="https://quarto.org">Quarto</a></p>
 </div>
