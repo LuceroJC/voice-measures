@@ -26,6 +26,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 /* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
@@ -57,6 +92,7 @@ div.csl-indent {
 <meta name="quarto:offset" content="./">
 <link href="./avqi.html" rel="next">
 <link href="./hnr.html" rel="prev">
+<link href="./favicon.svg" rel="icon" type="image/svg+xml">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -261,12 +297,6 @@ div.csl-indent {
  <span class="menu-text">Release notes and errata</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./appendix-adjunct-methods.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Adjunct Methods</span></span></a>
-  </div>
-</li>
       </ul>
   </li>
     </ul>
@@ -326,6 +356,7 @@ Note
 </div>
 <section id="definition" class="level2" data-number="8.1">
 <h2 data-number="8.1" class="anchored" data-anchor-id="definition"><span class="header-section-number">8.1</span> Definition</h2>
+<p><strong>The question cepstral peak prominence asks is how strongly a harmonic pattern stands out from the background.</strong> Unlike jitter and shimmer it never needs to find where one cycle ends and the next begins, which is why it survives in voices where cycle-by-cycle measures do not.</p>
 <p>Cepstral peak prominence (CPP) quantifies how strongly the harmonic structure of a voice signal emerges from its background. The cepstrum used in voice analysis is obtained by transforming the waveform into a spectrum, taking the logarithm, and transforming again; its horizontal axis is a time-like dimension called <em>quefrency</em> <span class="citation" data-cites="murton2020cpp">(<a href="#ref-murton2020cpp" role="doc-biblioref">Murton et al. 2020</a>)</span>. The periodic harmonic peaks of the spectrum collapse into a single dominant cepstral peak at the quefrency of the voice period. The height of that peak above a regression line through the whole cepstrum is the CPP, reported in decibels <span class="citation" data-cites="murton2020cpp">(<a href="#ref-murton2020cpp" role="doc-biblioref">Murton et al. 2020</a>)</span>. The amplitude of the dominant cepstral peak (the first <em>rahmonic</em>) reflects the strength with which the fundamental frequency emerges from competing background frequencies <span class="citation" data-cites="maryn2009cepstral">(<a href="#ref-maryn2009cepstral" role="doc-biblioref">Maryn et al. 2009</a>)</span>.</p>
 <p>Lower CPP values are associated with greater dysphonia severity <span class="citation" data-cites="murton2020cpp">(<a href="#ref-murton2020cpp" role="doc-biblioref">Murton et al. 2020</a>)</span>. Two properties distinguish CPP from the classical perturbation measures. First, it can be extracted from connected speech as well as sustained vowels. Second, it does not require direct computation of the fundamental frequency, so no pitch detection or tracking is needed — which makes cepstral measures robust in dysphonic and particularly in breathy voices, where period-by-period analysis breaks down <span class="citation" data-cites="murton2020cpp barsties2018meta">(<a href="#ref-murton2020cpp" role="doc-biblioref">Murton et al. 2020</a>; <a href="#ref-barsties2018meta" role="doc-biblioref">Barsties v. Latoszek et al. 2018</a>)</span>. The 2018 ASHA instrumental-assessment guidance recommended CPP as a general measure of dysphonia, replacing jitter, shimmer, and harmonics-to-noise ratio in that role <span class="citation" data-cites="murton2020cpp">(<a href="#ref-murton2020cpp" role="doc-biblioref">Murton et al. 2020</a>)</span>.</p>
 </section>
@@ -340,6 +371,106 @@ Note
 <li>Praat computes CPPS from a PowerCepstrogram and includes no voicing activity detection. The reference configuration used by <span class="citation" data-cites="murton2020cpp">Murton et al. (<a href="#ref-murton2020cpp" role="doc-biblioref">2020</a>)</span>: 60-Hz pitch floor, 2-ms time step, 5-kHz maximum frequency, pre-emphasis from 50 Hz, time averaging window 0.01 s, quefrency averaging window 0.001 s, peak search range 60–330 Hz, parabolic interpolation, straight tilt line over the quefrency range 0.001–0 s, robust fit.</li>
 </ul>
 <p>Because of these differences, values from different programs live on different scales and are not interchangeable (see <a href="#confounds-and-cautions">Confounds and cautions</a>).</p>
+<p><a href="#fig-cpp-measure" class="quarto-xref">Figure&nbsp;<span>8.1</span></a> follows one frame through all three domains: the waveform, the comb of harmonics in its spectrum, the single cepstral peak the comb collapses into, and the distance that is reported as CPP.</p>
+<div id="cell-fig-cpp-measure" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Show the code for this figure</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>fs, f0 <span class="op">=</span> <span class="dv">16000</span>, <span class="fl">125.0</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>T0 <span class="op">=</span> <span class="fl">1.0</span> <span class="op">/</span> f0</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>ncyc <span class="op">=</span> <span class="dv">80</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">2</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>per <span class="op">=</span> T0 <span class="op">*</span> (<span class="dv">1</span> <span class="op">+</span> <span class="fl">0.002</span> <span class="op">*</span> rng.standard_normal(ncyc))</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>amp <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> <span class="fl">0.02</span> <span class="op">*</span> rng.standard_normal(ncyc)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> vs.synth_vowel(per, amp, fs, noise_rel_db<span class="op">=-</span><span class="dv">28</span>, seed<span class="op">=</span><span class="dv">9</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span> <span class="bu">int</span>(<span class="fl">0.040</span> <span class="op">*</span> fs)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>i0 <span class="op">=</span> <span class="bu">len</span>(x) <span class="op">//</span> <span class="dv">2</span> <span class="op">-</span> L <span class="op">//</span> <span class="dv">2</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>seg <span class="op">=</span> x[i0:i0 <span class="op">+</span> L] <span class="op">*</span> np.hanning(L)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>nfft <span class="op">=</span> <span class="dv">4096</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>mag <span class="op">=</span> np.<span class="bu">abs</span>(np.fft.rfft(seg, nfft)) <span class="op">+</span> <span class="fl">1e-12</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>freq <span class="op">=</span> np.fft.rfftfreq(nfft, <span class="dv">1</span> <span class="op">/</span> fs)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>ceps <span class="op">=</span> np.fft.irfft(np.log(mag))</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> np.arange(<span class="bu">len</span>(ceps)) <span class="op">/</span> fs</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>qlo, qhi <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> <span class="dv">400</span>, <span class="dv">1</span> <span class="op">/</span> <span class="dv">60</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>fitsel <span class="op">=</span> (q <span class="op">&gt;=</span> <span class="fl">0.001</span>) <span class="op">&amp;</span> (q <span class="op">&lt;=</span> <span class="fl">0.015</span>)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>line <span class="op">=</span> np.polyval(np.polyfit(q[fitsel], ceps[fitsel], <span class="dv">1</span>), q)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>sel <span class="op">=</span> (q <span class="op">&gt;=</span> qlo) <span class="op">&amp;</span> (q <span class="op">&lt;=</span> qhi)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>ipk <span class="op">=</span> np.flatnonzero(sel)[np.argmax(ceps[sel])]</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="fl">7.6</span>, <span class="fl">2.9</span>))</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="co"># --- A: the waveform the frame is taken from</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> axes[<span class="dv">0</span>]</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>tt <span class="op">=</span> np.arange(L) <span class="op">/</span> fs</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>raw <span class="op">=</span> x[i0:i0 <span class="op">+</span> L]</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>ax.plot(tt <span class="op">*</span> <span class="fl">1e3</span>, raw, color<span class="op">=</span>vs.INK, lw<span class="op">=</span><span class="fl">0.8</span>)</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>pk <span class="op">=</span> i0 <span class="op">+</span> np.array([np.argmax(raw[:<span class="bu">int</span>(<span class="fl">0.009</span> <span class="op">*</span> fs)]),</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>                    np.argmax(raw[<span class="bu">int</span>(<span class="fl">0.009</span> <span class="op">*</span> fs):<span class="bu">int</span>(<span class="fl">0.018</span> <span class="op">*</span> fs)]) <span class="op">+</span> <span class="bu">int</span>(<span class="fl">0.009</span> <span class="op">*</span> fs)])</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>pt <span class="op">=</span> (pk <span class="op">-</span> i0) <span class="op">/</span> fs</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>ax.annotate(<span class="st">""</span>, xy<span class="op">=</span>(pt[<span class="dv">0</span>] <span class="op">*</span> <span class="fl">1e3</span>, <span class="fl">1.12</span>), xytext<span class="op">=</span>(pt[<span class="dv">1</span>] <span class="op">*</span> <span class="fl">1e3</span>, <span class="fl">1.12</span>),</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>            arrowprops<span class="op">=</span><span class="bu">dict</span>(arrowstyle<span class="op">=</span><span class="st">"&lt;-&gt;"</span>, color<span class="op">=</span>vs.GREEN, lw<span class="op">=</span><span class="fl">1.1</span>, shrinkA<span class="op">=</span><span class="dv">0</span>, shrinkB<span class="op">=</span><span class="dv">0</span>))</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>ax.text(np.mean(pt) <span class="op">*</span> <span class="fl">1e3</span>, <span class="fl">1.18</span>, <span class="st">"one period, 8 ms"</span>, ha<span class="op">=</span><span class="st">"center"</span>, va<span class="op">=</span><span class="st">"bottom"</span>,</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>        fontsize<span class="op">=</span><span class="dv">8</span>, color<span class="op">=</span>vs.GREEN)</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"Time (ms)"</span>)<span class="op">;</span> ax.set_ylabel(<span class="st">"Pressure"</span>)</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"1 · Waveform"</span>, color<span class="op">=</span>vs.INK)</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>ax.set_ylim(<span class="op">-</span><span class="fl">1.15</span>, <span class="fl">1.5</span>)<span class="op">;</span> ax.set_yticks([])<span class="op">;</span> ax.set_xlim(<span class="dv">0</span>, <span class="dv">40</span>)</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>vs.style_axes(ax)<span class="op">;</span> ax.grid(<span class="va">False</span>)</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="co"># --- B: its log spectrum</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> axes[<span class="dv">1</span>]</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> freq <span class="op">&lt;=</span> <span class="dv">4000</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>dB <span class="op">=</span> <span class="dv">20</span> <span class="op">*</span> np.log10(mag[k])<span class="op">;</span> dB <span class="op">-=</span> dB.<span class="bu">max</span>()</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>ax.plot(freq[k] <span class="op">/</span> <span class="fl">1e3</span>, dB, color<span class="op">=</span>vs.BLUE, lw<span class="op">=</span><span class="fl">0.8</span>)</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"Frequency (kHz)"</span>)<span class="op">;</span> ax.set_ylabel(<span class="st">"Level (dB, relative)"</span>)</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"2 · Log spectrum"</span>, color<span class="op">=</span>vs.INK)</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>ax.set_xlim(<span class="dv">0</span>, <span class="dv">4</span>)<span class="op">;</span> ax.set_ylim(<span class="op">-</span><span class="dv">70</span>, <span class="dv">8</span>)</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>vs.style_axes(ax)</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>ax.annotate(<span class="st">"harmonics every $F_0$"</span>, xy<span class="op">=</span>(<span class="fl">0.62</span>, <span class="op">-</span><span class="dv">10</span>), xytext<span class="op">=</span>(<span class="fl">1.25</span>, <span class="dv">4</span>),</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>            fontsize<span class="op">=</span><span class="fl">7.5</span>, color<span class="op">=</span>vs.INK,</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>            arrowprops<span class="op">=</span><span class="bu">dict</span>(arrowstyle<span class="op">=</span><span class="st">"-&gt;"</span>, color<span class="op">=</span>vs.MUTED, lw<span class="op">=</span><span class="fl">0.9</span>))</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="co"># --- C: the cepstrum, and the measurement</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> axes[<span class="dv">2</span>]</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>kk <span class="op">=</span> (q <span class="op">&gt;=</span> <span class="fl">0.0012</span>) <span class="op">&amp;</span> (q <span class="op">&lt;=</span> <span class="fl">0.016</span>)</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>ax.plot(q[kk] <span class="op">*</span> <span class="fl">1e3</span>, ceps[kk], color<span class="op">=</span>vs.INK, lw<span class="op">=</span><span class="fl">0.9</span>)</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>ax.plot(q[kk] <span class="op">*</span> <span class="fl">1e3</span>, line[kk], color<span class="op">=</span>vs.ORANGE, lw<span class="op">=</span><span class="fl">1.3</span>, ls<span class="op">=</span><span class="st">"--"</span>)</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>ax.plot([q[ipk] <span class="op">*</span> <span class="fl">1e3</span>] <span class="op">*</span> <span class="dv">2</span>, [line[ipk], ceps[ipk]], color<span class="op">=</span>vs.GREEN, lw<span class="op">=</span><span class="fl">2.4</span>,</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>        solid_capstyle<span class="op">=</span><span class="st">"butt"</span>, zorder<span class="op">=</span><span class="dv">4</span>)</span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>ax.plot(q[ipk] <span class="op">*</span> <span class="fl">1e3</span>, ceps[ipk], marker<span class="op">=</span><span class="st">"o"</span>, ms<span class="op">=</span><span class="dv">5</span>, color<span class="op">=</span>vs.GREEN,</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>        mfc<span class="op">=</span><span class="st">"white"</span>, mec<span class="op">=</span>vs.GREEN, mew<span class="op">=</span><span class="fl">1.6</span>, zorder<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>ax.annotate(<span class="st">"CPP"</span>, xy<span class="op">=</span>(q[ipk] <span class="op">*</span> <span class="fl">1e3</span>, (line[ipk] <span class="op">+</span> ceps[ipk]) <span class="op">/</span> <span class="dv">2</span>),</span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>            xytext<span class="op">=</span>(q[ipk] <span class="op">*</span> <span class="fl">1e3</span> <span class="op">+</span> <span class="fl">2.0</span>, (line[ipk] <span class="op">+</span> ceps[ipk]) <span class="op">/</span> <span class="dv">2</span>),</span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>            fontsize<span class="op">=</span><span class="dv">9</span>, color<span class="op">=</span>vs.INK, va<span class="op">=</span><span class="st">"center"</span>, fontweight<span class="op">=</span><span class="st">"bold"</span>,</span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>            arrowprops<span class="op">=</span><span class="bu">dict</span>(arrowstyle<span class="op">=</span><span class="st">"-&gt;"</span>, color<span class="op">=</span>vs.GREEN, lw<span class="op">=</span><span class="fl">1.2</span>))</span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>ax.text(q[ipk] <span class="op">*</span> <span class="fl">1e3</span>, ceps[ipk] <span class="op">+</span> <span class="fl">0.015</span>, <span class="ss">f"</span><span class="sc">{</span>q[ipk]<span class="op">*</span><span class="fl">1e3</span><span class="sc">:.1f}</span><span class="ss"> ms"</span>,</span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>        ha<span class="op">=</span><span class="st">"center"</span>, va<span class="op">=</span><span class="st">"bottom"</span>, fontsize<span class="op">=</span><span class="dv">8</span>, color<span class="op">=</span>vs.INK)</span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>ax.text(<span class="fl">0.97</span>, <span class="fl">0.03</span>, <span class="st">"dashed: regression</span><span class="ch">\n</span><span class="st">through the cepstrum"</span>,</span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>        transform<span class="op">=</span>ax.transAxes, ha<span class="op">=</span><span class="st">"right"</span>, va<span class="op">=</span><span class="st">"bottom"</span>, fontsize<span class="op">=</span><span class="fl">7.5</span>,</span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span>vs.ORANGE, linespacing<span class="op">=</span><span class="fl">1.3</span>)</span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"Quefrency (ms)"</span>)<span class="op">;</span> ax.set_ylabel(<span class="st">"Cepstral magnitude"</span>)</span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"3 · Cepstrum"</span>, color<span class="op">=</span>vs.INK)</span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a>ax.set_xlim(<span class="dv">0</span>, <span class="dv">16</span>)</span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a>pad <span class="op">=</span> <span class="fl">0.18</span> <span class="op">*</span> (ceps[kk].<span class="bu">max</span>() <span class="op">-</span> ceps[kk].<span class="bu">min</span>())</span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>ax.set_ylim(ceps[kk].<span class="bu">min</span>() <span class="op">-</span> pad, ceps[kk].<span class="bu">max</span>() <span class="op">+</span> <span class="fl">2.6</span> <span class="op">*</span> pad)</span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a>vs.style_axes(ax)</span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-cpp-measure" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Three panels left to right. The first is a vowel waveform with one period marked as 8 milliseconds. The second is a spectrum with evenly spaced harmonic peaks falling away with frequency. The third is a mostly flat cepstrum with one tall narrow peak at 8 milliseconds, a dashed regression line through the baseline, and a green bar marking the height of the peak above that line, labelled CPP.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cpp-measure-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="cpps_files/figure-html/fig-cpp-measure-output-1.png" alt="Three panels left to right. The first is a vowel waveform with one period marked as 8 milliseconds. The second is a spectrum with evenly spaced harmonic peaks falling away with frequency. The third is a mostly flat cepstrum with one tall narrow peak at 8 milliseconds, a dashed regression line through the baseline, and a green bar marking the height of the peak above that line, labelled CPP." width="826" height="308" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cpp-measure-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8.1: What the measurement is, on one 40-ms frame of a synthetic vowel (F0 = 125 Hz). <strong>1</strong> the waveform, repeating every 8 ms. <strong>2</strong> its log spectrum, a comb of harmonics spaced by F0. <strong>3</strong> the cepstrum of that spectrum, in which the whole comb collapses into a single peak at a quefrency of 8.0 ms — the voice period, and the reciprocal of 125 Hz. CPP is the vertical distance from that peak to the regression line fitted through the cepstrum, marked in green. The near-zero quefrency region, which carries the spectral envelope rather than the harmonic spacing, is outside the plotted range. The vertical scale in panel 3 is cepstral magnitude in log units; programs report CPP in decibels. The three domains are treated generally in <a href="./foundations-signal.html">Signal Fundamentals</a>. Signal is synthetic and illustrative.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
 </section>
 <section id="what-it-captures" class="level2" data-number="8.3">
 <h2 data-number="8.3" class="anchored" data-anchor-id="what-it-captures"><span class="header-section-number">8.3</span> What it captures</h2>
@@ -520,7 +651,7 @@ Table&nbsp;8.3: Reported cutoffs without a complete pipeline, shown as history. 
 <td>ADSV CPPS, factory settings; ADSV version not stated</td>
 <td>—</td>
 <td>5.53 dB (second sentence of the Rainbow Passage; AUC 0.81)</td>
-<td>unclassified</td>
+<td>unclassified (no software version)</td>
 </tr>
 <tr class="even">
 <td>Heman-Ackah et al.&nbsp;2003</td>
@@ -611,21 +742,21 @@ Table&nbsp;8.4: Normative lower limits for typical speakers <span class="citatio
 <td>ADSV CPP; version not stated</td>
 <td>8.86 dB</td>
 <td>8.09 dB</td>
-<td>unclassified</td>
+<td>unclassified (no software version)</td>
 </tr>
 <tr class="odd">
 <td>Sustained /i/, middle 1 s</td>
 <td>ADSV CPP; version not stated</td>
 <td>6.68 dB</td>
 <td>4.65 dB</td>
-<td>unclassified</td>
+<td>unclassified (no software version)</td>
 </tr>
 <tr class="even">
 <td>Rainbow Passage, sentences 2–3</td>
 <td>ADSV CPP; version not stated</td>
 <td>5.40 dB</td>
 <td>5.04 dB</td>
-<td>unclassified</td>
+<td>unclassified (no software version)</td>
 </tr>
 </tbody>
 </table>

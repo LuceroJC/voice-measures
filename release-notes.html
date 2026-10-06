@@ -36,8 +36,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./appendix-adjunct-methods.html" rel="next">
 <link href="./abi.html" rel="prev">
+<link href="./favicon.svg" rel="icon" type="image/svg+xml">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -242,12 +242,6 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Release notes and errata</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./appendix-adjunct-methods.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Adjunct Methods</span></span></a>
-  </div>
-</li>
       </ul>
   </li>
     </ul>
@@ -260,7 +254,14 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#v0.1.1-2026-10-06" id="toc-v0.1.1-2026-10-06" class="nav-link active" data-scroll-target="#v0.1.1-2026-10-06">v0.1.1 — 2026-10-06</a>
+  <li><a href="#v0.2.0-2026-10-06" id="toc-v0.2.0-2026-10-06" class="nav-link active" data-scroll-target="#v0.2.0-2026-10-06">v0.2.0 — 2026-10-06</a>
+  <ul class="collapse">
+  <li><a href="#added" id="toc-added" class="nav-link" data-scroll-target="#added">Added</a></li>
+  <li><a href="#corrections-to-v0.1.1" id="toc-corrections-to-v0.1.1" class="nav-link" data-scroll-target="#corrections-to-v0.1.1">Corrections to v0.1.1</a></li>
+  <li><a href="#provenance-corrections-no-value-changed" id="toc-provenance-corrections-no-value-changed" class="nav-link" data-scroll-target="#provenance-corrections-no-value-changed">Provenance corrections — no value changed</a></li>
+  <li><a href="#unresolved-and-visible" id="toc-unresolved-and-visible" class="nav-link" data-scroll-target="#unresolved-and-visible">Unresolved, and visible</a></li>
+  </ul></li>
+  <li><a href="#v0.1.1-2026-10-06" id="toc-v0.1.1-2026-10-06" class="nav-link" data-scroll-target="#v0.1.1-2026-10-06">v0.1.1 — 2026-10-06</a>
   <ul class="collapse">
   <li><a href="#corrections-to-v0.1.0" id="toc-corrections-to-v0.1.0" class="nav-link" data-scroll-target="#corrections-to-v0.1.0">Corrections to v0.1.0</a></li>
   <li><a href="#added-in-v0.1.1" id="toc-added-in-v0.1.1" class="nav-link" data-scroll-target="#added-in-v0.1.1">Added in v0.1.1</a></li>
@@ -296,6 +297,37 @@ ul.task-list li input[type="checkbox"] {
 
 <p>This reference is written to be revised, and each release is deposited on Zenodo with its own versioned DOI. When a value or a statement that appeared in an earlier release is corrected, the change is recorded here, so that a reader working from an earlier version can see exactly what moved and why. Corrections are not made silently.</p>
 <p>Entries are newest first. “v0.1.0 said” refers to the text as deposited in that release’s Zenodo record, not to the live site, which is revised continuously between releases.</p>
+<section id="v0.2.0-2026-10-06" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="v0.2.0-2026-10-06">v0.2.0 — 2026-10-06</h2>
+<p>The first release to add chapters rather than correct them. <strong>Part II — Periodicity and Stability opens</strong>, with Jitter and Shimmer, and the Harmonic-to-Noise Ratio joins CPPS in Part III. One published value is corrected, and a round of provenance corrections changes where values come from without changing any of them.</p>
+<section id="added" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="added">Added</h3>
+<ul>
+<li><strong><a href="./jitter.html">Jitter</a></strong>, <strong><a href="./shimmer.html">Shimmer</a></strong> and <strong><a href="./hnr.html">Harmonic-to-Noise Ratio</a></strong>: three new chapters, built on Baken and Orlikoff with the existing English primaries, and keeping the Brazilian literature only where no English source covers the fact.</li>
+<li><strong>None of the three publishes a cutoff.</strong> No reference value in the sources reviewed is compatible with a Praat-based pipeline, so each declares the absence rather than borrowing a number, and each states that PhonaLab displays no normal band and no severity band for that measure. The HNR chapter says explicitly that it does not apply the widely repeated 7 dB floor, and shows why: the figure traces to a 95 per cent confidence limit of 7.4 dB in one study on one algorithm, and a normally speaking elderly group in another study averages 5.54 dB, below it.</li>
+<li><strong>Figures</strong> in Jitter, Shimmer, HNR and CPPS, each showing what the measure asks of the waveform. The CPPS figure follows one frame through all three domains and marks the measurement itself.</li>
+<li><strong>Each measure chapter now opens with the question it asks</strong>, and the <a href="./intro.html">Introduction</a> carries a table of which measure asks which question, over all six.</li>
+</ul>
+</section>
+<section id="corrections-to-v0.1.1" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="corrections-to-v0.1.1">Corrections to v0.1.1</h3>
+<p>One published value moves, in two chapters. It was a rounding, not an arithmetic error, and the figure it rounds was never printed in the source.</p>
+<p><strong>The AVQI difference between Praat version clusters.</strong> v0.1.1 said the buggy version 6.0.46 lowered AVQI scores by “about 4.2 points on average”, in both <a href="./avqi.html">AVQI</a> and <a href="./foundations-pipeline.html">Pipeline Dependence</a>. Stappenbeck et al.&nbsp;give the difference between group 1 (v5.3.57) and group 3 (v6.0.46) in their Table 4, on the page already cited, as <strong>mean 4.16</strong>, median 4.32, range 2.60 to 5.02. The text now reports 4.16. In the same passage, “single recordings differed by up to about 0.6 points” is now <strong>0.62</strong>, the value in their Table 3.</p>
+<p>Under the standard this reference follows, a rounding is a value without provenance: 4.2 is a fair rounding of 4.16, so the arithmetic was never the fault. Publishing a number the source does not print is.</p>
+</section>
+<section id="provenance-corrections-no-value-changed" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="provenance-corrections-no-value-changed">Provenance corrections — no value changed</h3>
+<p>A content-level check of every citation in the library was built and run for the first time. It verifies that each distinctive number in a claim appears on a page that claim cites, rather than only that the cited page exists.</p>
+<ul>
+<li><strong>Ten citations were corrected to the page that carries the claim.</strong> Each was one to four pages out. Affected: the 150-speaker sample in CPPS and Pipeline Dependence, the Murton and Sauder cutoffs in CPPS, the meta-analysis range and the Dutch sample size in AVQI, the Praat version clusters and two Brazilian Portuguese thresholds in ABI, and the spectral band edges of the AVQI Slope and Tilt components. <strong>No value in any of those rows changed</strong> — only the page each is traced to.</li>
+<li><strong>The compatibility-class column is clearer.</strong> The class describes the row, not the reader: it says whether that row’s own pipeline is stated completely enough to be reused by someone running it, and it no longer names a target pipeline. Every <code>unclassified</code> cell now carries its reason — most often that no software version is stated.</li>
+</ul>
+</section>
+<section id="unresolved-and-visible" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="unresolved-and-visible">Unresolved, and visible</h3>
+<p>Two coefficient attributions could not be settled from the ingested text and are being checked against the publisher PDFs. Both are flagged where they appear rather than quietly left.</p>
+</section>
+</section>
 <section id="v0.1.1-2026-10-06" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="v0.1.1-2026-10-06">v0.1.1 — 2026-10-06</h2>
 <p>A correction and sourcing release. No chapter was added or removed. Eight statements published in v0.1.0 are corrected, five of them because the claim has since been checked against its primary source rather than a secondary citation; four new language validations are added.</p>
@@ -342,10 +374,11 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="citing-a-specific-version" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="citing-a-specific-version">Citing a specific version</h2>
-<p>The concept DOI <a href="https://doi.org/10.5281/zenodo.22739049">10.5281/zenodo.22739049</a> always resolves to the latest release. To cite the version you actually read, use the versioned DOI shown on that release’s Zenodo record, and give the chapter title and section:</p>
+<p>The concept DOI <a href="https://doi.org/10.5281/zenodo.22739049">10.5281/zenodo.22739049</a> always resolves to the latest release. To cite the version you actually read, use the versioned DOI shown on that release’s Zenodo record:</p>
 <blockquote class="blockquote">
-<p>Lucero, J. C. (2026). <em>Acoustic Measures of Voice Quality</em>, v0.1.1, “Acoustic Breathiness Index”, §7.3. Zenodo. https://doi.org/10.5281/zenodo.23190550</p>
+<p>Lucero, J. C. (2026). <em>Acoustic Measures of Voice Quality</em>, v0.2.0, “Acoustic Breathiness Index”, Normative data. Zenodo. https://doi.org/10.5281/zenodo.XXXXXXXX</p>
 </blockquote>
+<p><strong>Name the chapter and the section, not their numbers.</strong> Chapter numbers shift whenever a chapter is added: the Acoustic Breathiness Index was chapter 7 in v0.1.1 and is chapter 10 in v0.2.0, because Part II opened between them. The titles are stable and the versioned DOI fixes which release you mean.</p>
 
 
 </section>
@@ -758,9 +791,6 @@ ul.task-list li input[type="checkbox"] {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./appendix-adjunct-methods.html" class="pagination-link" aria-label="Adjunct Methods">
-        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Adjunct Methods</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

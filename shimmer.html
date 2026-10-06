@@ -26,6 +26,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 /* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
@@ -57,6 +92,7 @@ div.csl-indent {
 <meta name="quarto:offset" content="./">
 <link href="./hnr.html" rel="next">
 <link href="./jitter.html" rel="prev">
+<link href="./favicon.svg" rel="icon" type="image/svg+xml">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -261,12 +297,6 @@ div.csl-indent {
  <span class="menu-text">Release notes and errata</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./appendix-adjunct-methods.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Adjunct Methods</span></span></a>
-  </div>
-</li>
       </ul>
   </li>
     </ul>
@@ -326,9 +356,95 @@ Note
 </div>
 <section id="definition" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="definition"><span class="header-section-number">6.1</span> Definition</h2>
+<p><strong>The question shimmer asks is whether each vocal cycle is as large as the one before it.</strong> It is the amplitude counterpart of jitter, and like jitter it compares adjacent cycles only.</p>
 <p>Measures of amplitude perturbation, generally called shimmer, are analogous to those of frequency perturbation. Shimmer quantifies short-term amplitude instability that does not alter the qualitative features of the vocal waveform <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000</a>)</span>.</p>
 <p>Shimmer is likely at least as important as jitter, and perhaps more so, in its contribution to the perception of <strong>hoarseness</strong>, although there is no unanimity on this point. Its relationship to specific abnormalities of glottal function, or to more global disorders of speech, remains at the very best extremely unclear. What does seem clear is that shimmer values tend to normalise as laryngeal pathology abates <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000</a>)</span>.</p>
 <p>Shimmer has not been as carefully studied as jitter. The effects of fundamental frequency, frequency perturbation and mean amplitude on it remain incompletely characterised, and possible differences due to age and sex await clarification. As with frequency perturbation, the relationship between shimmer magnitude and vocal pathology is very murky. Shimmer measures nonetheless remain popular among clinicians, in part because they are included in most automated voice analysis systems, which make them easy to obtain <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000</a>)</span>.</p>
+<p><a href="#fig-shimmer" class="quarto-xref">Figure&nbsp;<span>6.1</span></a> shows the same vowel with and without it, and marks the quantity the measure is actually built from.</p>
+<div id="cell-fig-shimmer" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Show the code for this figure</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>fs, f0, ncyc <span class="op">=</span> <span class="dv">16000</span>, <span class="fl">125.0</span>, <span class="dv">34</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>T0 <span class="op">=</span> <span class="fl">1.0</span> <span class="op">/</span> f0</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">11</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>per <span class="op">=</span> np.full(ncyc, T0)                       <span class="co"># periods held constant throughout</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>steady <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> <span class="fl">0.01</span> <span class="op">*</span> rng.standard_normal(ncyc)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>shim   <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> <span class="fl">0.16</span> <span class="op">*</span> rng.standard_normal(ncyc)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>cases <span class="op">=</span> [(<span class="st">"Nearly steady"</span>, steady), (<span class="st">"Cycle-to-cycle shimmer"</span>, shim)]</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> peaks_per_cycle(x, per, fs):</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Peak amplitude of each cycle, and when it occurs, as a program would."""</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    b <span class="op">=</span> np.cumsum(np.concatenate([[<span class="fl">0.0</span>], per]))</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    vals, times <span class="op">=</span> [], []</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(per)):</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        s, e <span class="op">=</span> <span class="bu">int</span>(b[i] <span class="op">*</span> fs), <span class="bu">int</span>(b[i <span class="op">+</span> <span class="dv">1</span>] <span class="op">*</span> fs)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> e <span class="op">&lt;=</span> <span class="bu">len</span>(x) <span class="kw">and</span> e <span class="op">&gt;</span> s:</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>            k <span class="op">=</span> <span class="bu">int</span>(np.argmax(x[s:e]))</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>            vals.append(x[s <span class="op">+</span> k])<span class="op">;</span> times.append((s <span class="op">+</span> k) <span class="op">/</span> fs)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.array(vals), np.array(times)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="fl">6.6</span>, <span class="fl">4.3</span>),</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>                         gridspec_kw<span class="op">=</span>{<span class="st">"height_ratios"</span>: [<span class="fl">1.0</span>, <span class="fl">1.15</span>]})</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>show_s <span class="op">=</span> <span class="fl">0.075</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> j, (name, amp) <span class="kw">in</span> <span class="bu">enumerate</span>(cases):</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> vs.synth_vowel(per, amp, fs, noise_rel_db<span class="op">=-</span><span class="dv">38</span>, seed<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    t <span class="op">=</span> np.arange(<span class="bu">len</span>(x)) <span class="op">/</span> fs</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    pk, pkt <span class="op">=</span> peaks_per_cycle(x, per, fs)</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    b <span class="op">=</span> np.cumsum(np.concatenate([[<span class="fl">0.0</span>], per]))</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    ax <span class="op">=</span> axes[<span class="dv">0</span>, j]</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> t <span class="op">&lt;=</span> show_s</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    ax.plot(t[m] <span class="op">*</span> <span class="fl">1e3</span>, x[m], color<span class="op">=</span>vs.INK, lw<span class="op">=</span><span class="fl">0.9</span>)</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    cm <span class="op">=</span> pkt <span class="op">&lt;=</span> show_s</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    ax.plot(pkt[cm] <span class="op">*</span> <span class="fl">1e3</span>, pk[cm],</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>            marker<span class="op">=</span><span class="st">"o"</span>, ms<span class="op">=</span><span class="dv">4</span>, lw<span class="op">=</span><span class="fl">1.1</span>, color<span class="op">=</span>vs.GREEN, mfc<span class="op">=</span><span class="st">"white"</span>,</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>            mec<span class="op">=</span>vs.GREEN, mew<span class="op">=</span><span class="fl">1.2</span>, zorder<span class="op">=</span><span class="dv">3</span>, label<span class="op">=</span><span class="st">"Peak of each cycle"</span>)</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    rms <span class="op">=</span> np.sqrt(np.mean(x[m] <span class="op">**</span> <span class="dv">2</span>))</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>    ax.axhline(rms, color<span class="op">=</span>vs.MUTED, lw<span class="op">=</span><span class="fl">1.0</span>, ls<span class="op">=</span><span class="st">"--"</span>, zorder<span class="op">=</span><span class="dv">1</span>, label<span class="op">=</span><span class="st">"RMS level"</span>)</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>    ax.set_title(name, color<span class="op">=</span>vs.INK)</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    ax.set_ylim(<span class="op">-</span><span class="fl">1.15</span>, <span class="fl">1.3</span>)<span class="op">;</span> ax.set_yticks([])</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>    ax.set_xlim(<span class="dv">0</span>, show_s <span class="op">*</span> <span class="fl">1e3</span>)</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">"Time (ms)"</span>, labelpad<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> j <span class="op">==</span> <span class="dv">0</span>: ax.set_ylabel(<span class="st">"Pressure"</span>)</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>    vs.style_axes(ax)<span class="op">;</span> ax.grid(<span class="va">False</span>)</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>    ax <span class="op">=</span> axes[<span class="dv">1</span>, j]</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>    ax.plot(np.arange(<span class="bu">len</span>(pk)) <span class="op">+</span> <span class="dv">1</span>, pk, marker<span class="op">=</span><span class="st">"o"</span>, ms<span class="op">=</span><span class="fl">3.2</span>, lw<span class="op">=</span><span class="fl">0.9</span>,</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>            color<span class="op">=</span>vs.GREEN, mfc<span class="op">=</span><span class="st">"white"</span>, mec<span class="op">=</span>vs.GREEN, mew<span class="op">=</span><span class="fl">1.0</span>)</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>    ax.axhline(np.mean(pk), color<span class="op">=</span>vs.MUTED, lw<span class="op">=</span><span class="fl">0.9</span>, ls<span class="op">=</span><span class="st">":"</span>)</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>    ax.set_ylim(<span class="fl">0.25</span>, <span class="fl">1.5</span>)<span class="op">;</span> ax.set_xlim(<span class="dv">0</span>, ncyc <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">"Cycle number"</span>)</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> j <span class="op">==</span> <span class="dv">0</span>: ax.set_ylabel(<span class="st">"Peak amplitude</span><span class="ch">\n</span><span class="st">(relative)"</span>)</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>    vs.style_axes(ax)</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>    sh_db <span class="op">=</span> <span class="dv">20</span> <span class="op">*</span> np.mean(np.<span class="bu">abs</span>(np.diff(<span class="dv">20</span> <span class="op">*</span> np.log10(pk))))<span class="op">/</span><span class="dv">20</span><span class="op">*</span><span class="dv">20</span>  <span class="co"># mean |ΔdB|</span></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>    sh_db <span class="op">=</span> np.mean(np.<span class="bu">abs</span>(np.diff(<span class="dv">20</span> <span class="op">*</span> np.log10(pk))))</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>    sh_pct <span class="op">=</span> <span class="dv">100</span> <span class="op">*</span> np.mean(np.<span class="bu">abs</span>(np.diff(pk))) <span class="op">/</span> np.mean(pk)</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>    ax.text(<span class="fl">0.03</span>, <span class="fl">0.96</span>, <span class="ss">f"shimmer </span><span class="sc">{</span>sh_db<span class="sc">:.2f}</span><span class="ss"> dB</span><span class="ch">\n</span><span class="ss">(</span><span class="sc">{</span>sh_pct<span class="sc">:.1f}</span><span class="ss"> %)"</span>,</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>            transform<span class="op">=</span>ax.transAxes, ha<span class="op">=</span><span class="st">"left"</span>, va<span class="op">=</span><span class="st">"top"</span>, fontsize<span class="op">=</span><span class="dv">8</span>,</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>            color<span class="op">=</span>vs.INK, linespacing<span class="op">=</span><span class="fl">1.35</span>)</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>handles <span class="op">=</span> [</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>    plt.Line2D([], [], marker<span class="op">=</span><span class="st">"o"</span>, color<span class="op">=</span>vs.GREEN, mfc<span class="op">=</span><span class="st">"white"</span>, mec<span class="op">=</span>vs.GREEN,</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>               mew<span class="op">=</span><span class="fl">1.2</span>, ms<span class="op">=</span><span class="dv">5</span>, label<span class="op">=</span><span class="st">"Peak amplitude of each cycle"</span>),</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>    plt.Line2D([], [], color<span class="op">=</span>vs.MUTED, ls<span class="op">=</span><span class="st">"--"</span>, lw<span class="op">=</span><span class="fl">1.0</span>, label<span class="op">=</span><span class="st">"RMS level of the segment"</span>),</span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>fig.legend(handles<span class="op">=</span>handles, loc<span class="op">=</span><span class="st">"lower center"</span>, ncol<span class="op">=</span><span class="dv">2</span>, frameon<span class="op">=</span><span class="va">False</span>, fontsize<span class="op">=</span><span class="dv">8</span>,</span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>           bbox_to_anchor<span class="op">=</span>(<span class="fl">0.55</span>, <span class="op">-</span><span class="fl">0.02</span>))</span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>fig.tight_layout(rect<span class="op">=</span>(<span class="dv">0</span>, <span class="fl">0.045</span>, <span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-shimmer" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Two columns of paired panels. On the left the per-cycle peaks trace a nearly flat line across the waveform; on the right they rise and fall irregularly. The lower panels plot those peaks against cycle number, flat on the left and scattered on the right.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-shimmer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="shimmer_files/figure-html/fig-shimmer-output-1.png" alt="Two columns of paired panels. On the left the per-cycle peaks trace a nearly flat line across the waveform; on the right they rise and fall irregularly. The lower panels plot those peaks against cycle number, flat on the left and scattered on the right." width="724" height="481" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-shimmer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.1: Two synthetic vowels with identical periods throughout, differing only in the amplitude of successive cycles. Top: the waveform, with the peak of each cycle marked and the RMS level of the whole segment dashed. Shimmer is computed from the per-cycle peak, not from the RMS, and the two must not be confused. Bottom: the peak amplitude of each cycle. The right-hand voice measures 1.58 dB, about 17 %, against 0.10 dB for the left. Signals are synthetic and illustrative.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
 </section>
 <section id="computation" class="level2" data-number="6.2">
 <h2 data-number="6.2" class="anchored" data-anchor-id="computation"><span class="header-section-number">6.2</span> Computation</h2>
@@ -408,7 +524,7 @@ Table&nbsp;6.2: Shimmer values from other pipelines, for context only. Source: <
 <td>Sustained vowels of 5 s at 70–80 dB SPL, F0 held to ±10 Hz; 3-second segment of the least variable of 3 trials</td>
 <td>/a/ 0.47 (SD 0.34), /i/ 0.37 (0.28), /u/ 0.33 (0.31); overall 0.39 (0.31)</td>
 <td>Software not stated; task and level stated in full</td>
-<td>unclassified</td>
+<td>unclassified (analysis software not stated)</td>
 </tr>
 <tr class="even">
 <td>Shimmer in dB</td>
@@ -416,7 +532,7 @@ Table&nbsp;6.2: Shimmer values from other pipelines, for context only. Source: <
 <td>As above</td>
 <td>/a/ 0.33 (SD 0.22), /i/ 0.23 (0.08), /u/ 0.19 (0.04); overall 0.25 (0.11)</td>
 <td>As above</td>
-<td>unclassified</td>
+<td>unclassified (analysis software not stated)</td>
 </tr>
 <tr class="odd">
 <td>Shimmer in dB</td>
@@ -424,7 +540,7 @@ Table&nbsp;6.2: Shimmer values from other pipelines, for context only. Source: <
 <td>As above</td>
 <td>95 per cent critical region above 0.98 dB</td>
 <td>As above</td>
-<td>unclassified</td>
+<td>unclassified (analysis software not stated)</td>
 </tr>
 <tr class="even">
 <td>Shimmer in dB</td>
@@ -432,7 +548,7 @@ Table&nbsp;6.2: Shimmer values from other pipelines, for context only. Source: <
 <td>Sustained /a/, at least 8 s excluding the first and last seconds</td>
 <td>0.37 dB at a baseline of 63.32 dB SPL; 0.31 at 74.30; 0.21 at 84.80</td>
 <td>Not stated</td>
-<td>unclassified</td>
+<td>unclassified (pipeline not stated)</td>
 </tr>
 <tr class="odd">
 <td>APQ, acoustic signal</td>
@@ -440,7 +556,7 @@ Table&nbsp;6.2: Shimmer values from other pipelines, for context only. Source: <
 <td>Sustained /a/ at comfortable pitch and loudness, steadiest 1.5 s, mean F0 108.1 Hz</td>
 <td>40.3 × 10⁻⁴ (SD 13.6 × 10⁻⁴)</td>
 <td>Eleven-point smoothing; pretracheal contact microphone</td>
-<td>unclassified</td>
+<td>unclassified (analysis software not stated)</td>
 </tr>
 <tr class="even">
 <td>APQ, acoustic signal</td>
@@ -448,7 +564,7 @@ Table&nbsp;6.2: Shimmer values from other pipelines, for context only. Source: <
 <td>As above, mean F0 206.0 Hz</td>
 <td>32.9 × 10⁻⁴ (SD 20.9 × 10⁻⁴)</td>
 <td>As above</td>
-<td>unclassified</td>
+<td>unclassified (analysis software not stated)</td>
 </tr>
 <tr class="odd">
 <td>APQ, inverse-filtered residue</td>
@@ -456,7 +572,7 @@ Table&nbsp;6.2: Shimmer values from other pipelines, for context only. Source: <
 <td>As above, mean F0 120.0 Hz</td>
 <td>5.97 per cent (SD 3.10)</td>
 <td>Five-point smoothing</td>
-<td>unclassified</td>
+<td>unclassified (analysis software not stated)</td>
 </tr>
 <tr class="even">
 <td>APQ, inverse-filtered residue</td>
@@ -464,7 +580,7 @@ Table&nbsp;6.2: Shimmer values from other pipelines, for context only. Source: <
 <td>As above, mean F0 206.0 Hz</td>
 <td>6.81 per cent (SD 3.15)</td>
 <td>Five-point smoothing</td>
-<td>unclassified</td>
+<td>unclassified (analysis software not stated)</td>
 </tr>
 </tbody>
 </table>

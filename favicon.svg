@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64"
+     role="img" aria-label="Acoustic Measures of Voice Quality">
+  <title>Acoustic Measures of Voice Quality</title>
+  <rect width="64" height="64" rx="13" fill="#1a6fb0"/>
+  <g fill="#ffffff">
+    <rect x="11" y="32" width="9" height="20" rx="3.5"/>
+    <rect x="22" y="18" width="9" height="34" rx="3.5"/>
+    <rect x="33" y="26" width="9" height="26" rx="3.5"/>
+    <rect x="44" y="38" width="9" height="14" rx="3.5"/>
+  </g>
+</svg>

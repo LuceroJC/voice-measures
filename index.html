@@ -39,6 +39,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./intro.html" rel="next">
+<link href="./favicon.svg" rel="icon" type="image/svg+xml">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -243,12 +244,6 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Release notes and errata</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./appendix-adjunct-methods.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Adjunct Methods</span></span></a>
-  </div>
-</li>
       </ul>
   </li>
     </ul>
@@ -334,7 +329,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Version 0.1 in preparation.</strong> This is an early release that grows chapter by chapter. Pages marked <em>Living draft</em> are complete and sourced, and they will be revised as new sources are added.</p>
+<p><strong>A living reference.</strong> It grows chapter by chapter, and each release is deposited on Zenodo with its own versioned DOI. Pages marked <em>Living draft</em> are complete and sourced, and are revised as new sources are added. What changed in each release — including corrections to values published earlier — is recorded on the <a href="./release-notes.html">Release notes and errata</a> page.</p>
 </div>
 </div>
 <p><em>Acoustic Measures of Voice Quality</em> is an open reference on the acoustic measures used to assess the human voice. It is written for speech-language pathologists and voice scientists. For each measure, it covers what the measure means, how it is computed, which reference values exist, and where the measure fails.</p>
@@ -355,20 +350,30 @@ Note
 <li><a href="./foundations-signal-typing.html">Signal Typing</a>: the Type 1–4 classification, and which measures are valid for which signals.</li>
 <li><a href="./foundations-pipeline.html">Pipeline Dependence and Reference Values</a>: why a value belongs to the software, settings, task and language that produced it, and how this reference reports reference values.</li>
 </ul>
-<p><strong>Measures</strong></p>
+<p><strong>Periodicity and stability</strong></p>
 <ul>
-<li><a href="./cpps.html">Cepstral Peak Prominence (CPP and CPPS)</a></li>
-<li><a href="./avqi.html">Acoustic Voice Quality Index (AVQI)</a></li>
-<li><a href="./abi.html">Acoustic Breathiness Index (ABI)</a></li>
+<li><a href="./jitter.html">Jitter</a>: does each cycle last as long as the one before it?</li>
+<li><a href="./shimmer.html">Shimmer</a>: is each cycle as large as the one before it?</li>
 </ul>
+<p><strong>Noise and harmonic structure</strong></p>
+<ul>
+<li><a href="./hnr.html">Harmonic-to-Noise Ratio (HNR)</a>: how much of the sound is periodic at all?</li>
+<li><a href="./cpps.html">Cepstral Peak Prominence (CPP and CPPS)</a>: how strongly does a harmonic pattern stand out from the background?</li>
+</ul>
+<p><strong>Composite indices</strong></p>
+<ul>
+<li><a href="./avqi.html">Acoustic Voice Quality Index (AVQI)</a>: how severe does the voice sound overall?</li>
+<li><a href="./abi.html">Acoustic Breathiness Index (ABI)</a>: how breathy does it sound?</li>
+</ul>
+<p>The jitter, shimmer and HNR chapters publish <strong>no cutoff</strong>: no reference value in the sources reviewed is compatible with a Praat-based pipeline, so the absence is declared. Each explains why, and what the published values from other systems can and cannot be used for.</p>
 </section>
 <section id="coming-next" class="level2">
 <h2 class="anchored" data-anchor-id="coming-next">Coming next</h2>
 <p>The complete reference is planned in five parts. The chapters below are not yet written.</p>
 <ul>
 <li><strong>Foundations:</strong> recording protocol; F0 detection; voice tasks; perceptual anchors (GRBAS, CAPE-V).</li>
-<li><strong>Periodicity and stability:</strong> F0 measures; jitter; shimmer; voice breaks; perturbation caveats.</li>
-<li><strong>Noise and harmonic structure:</strong> HNR; NHR; GNE; spectral tilt.</li>
+<li><strong>Periodicity and stability:</strong> F0 measures; voice breaks; perturbation caveats.</li>
+<li><strong>Noise and harmonic structure:</strong> NHR; GNE; spectral tilt.</li>
 <li><strong>Composite indices:</strong> the Dysphonia Severity Index (DSI); caveats shared by composite indices.</li>
 <li><strong>Machine-learning-derived measures:</strong> a landscape chapter and two worked examples.</li>
 <li><strong>Appendices:</strong> adjunct methods, reproducibility notes and a glossary.</li>

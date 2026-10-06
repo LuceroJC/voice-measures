@@ -38,6 +38,7 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="./">
 <link href="./foundations-signal.html" rel="next">
 <link href="./index.html" rel="prev">
+<link href="./favicon.svg" rel="icon" type="image/svg+xml">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -242,12 +243,6 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Release notes and errata</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./appendix-adjunct-methods.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Adjunct Methods</span></span></a>
-  </div>
-</li>
       </ul>
   </li>
     </ul>
@@ -261,7 +256,10 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#what-this-reference-is" id="toc-what-this-reference-is" class="nav-link active" data-scroll-target="#what-this-reference-is"><span class="header-section-number">1.1</span> What this reference is</a></li>
-  <li><a href="#how-the-reference-is-organised" id="toc-how-the-reference-is-organised" class="nav-link" data-scroll-target="#how-the-reference-is-organised"><span class="header-section-number">1.2</span> How the reference is organised</a></li>
+  <li><a href="#how-the-reference-is-organised" id="toc-how-the-reference-is-organised" class="nav-link" data-scroll-target="#how-the-reference-is-organised"><span class="header-section-number">1.2</span> How the reference is organised</a>
+  <ul class="collapse">
+  <li><a href="#which-measure-asks-which-question" id="toc-which-measure-asks-which-question" class="nav-link" data-scroll-target="#which-measure-asks-which-question"><span class="header-section-number">1.2.1</span> Which measure asks which question</a></li>
+  </ul></li>
   <li><a href="#how-to-use-it" id="toc-how-to-use-it" class="nav-link" data-scroll-target="#how-to-use-it"><span class="header-section-number">1.3</span> How to use it</a></li>
   <li><a href="#versioning-dois-and-citation" id="toc-versioning-dois-and-citation" class="nav-link" data-scroll-target="#versioning-dois-and-citation"><span class="header-section-number">1.4</span> Versioning, DOIs, and citation</a></li>
   <li><a href="#competing-interests" id="toc-competing-interests" class="nav-link" data-scroll-target="#competing-interests"><span class="header-section-number">1.5</span> Competing interests</a></li>
@@ -312,7 +310,7 @@ Note
 </section>
 <section id="how-the-reference-is-organised" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="how-the-reference-is-organised"><span class="header-section-number">1.2</span> How the reference is organised</h2>
-<p>The reference is planned in five parts, ordered by what the measure captures rather than by clinical context. This release contains three Foundations chapters (signal fundamentals, signal typing, and pipeline dependence) and three measure chapters (CPPS, AVQI and ABI). The other chapters are listed on the <a href="./index.html">home page</a> and are added as they are written. Chapters within each part follow a common template — definition, computation, normative values, clinical interpretation, caveats, and disagreements among sources when they arise.</p>
+<p>The reference is planned in five parts, ordered by what the measure captures rather than by clinical context. This release contains three Foundations chapters (signal fundamentals, signal typing, and pipeline dependence) and six measure chapters (jitter, shimmer, HNR, CPPS, AVQI and ABI). The other chapters are listed on the <a href="./index.html">home page</a> and are added as they are written. Chapters within each part follow a common template — definition, computation, normative values, clinical interpretation, caveats, and disagreements among sources when they arise.</p>
 <ul>
 <li><strong>Part I — Foundations.</strong> Signal fundamentals, recording protocol, signal typing, F0 detection, voice tasks, perceptual anchors.</li>
 <li><strong>Part II — Periodicity and stability.</strong> F0 measures, jitter variants, shimmer variants, voice breaks, and the shared perturbation-caveats discussion.</li>
@@ -320,7 +318,53 @@ Note
 <li><strong>Part IV — Composite indices.</strong> AVQI, ABI, DSI, and the shared composite-caveats discussion.</li>
 <li><strong>Part V — ML-derived measures.</strong> A landscape chapter plus two representative example measures (feature-based and end-to-end).</li>
 </ul>
+<section id="which-measure-asks-which-question" class="level3" data-number="1.2.1">
+<h3 data-number="1.2.1" class="anchored" data-anchor-id="which-measure-asks-which-question"><span class="header-section-number">1.2.1</span> Which measure asks which question</h3>
+<p>Every measure in Parts II to IV is computed from the same thing — a recorded pressure waveform — and they differ in what they ask of it. The four written so far divide as follows.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Measure</th>
+<th>The question it asks of the waveform</th>
+<th>Chapter</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Jitter</td>
+<td>Is each cycle the same <strong>length</strong> as the one before it?</td>
+<td><a href="./jitter.html">Jitter</a></td>
+</tr>
+<tr class="even">
+<td>Shimmer</td>
+<td>Is each cycle the same <strong>size</strong> as the one before it?</td>
+<td><a href="./shimmer.html">Shimmer</a></td>
+</tr>
+<tr class="odd">
+<td>HNR</td>
+<td>How much of the sound is <strong>periodic</strong> rather than noise?</td>
+<td><a href="./hnr.html">HNR</a></td>
+</tr>
+<tr class="even">
+<td>CPP / CPPS</td>
+<td>How strongly does a <strong>harmonic pattern</strong> stand out from the background?</td>
+<td><a href="./cpps.html">CPPS</a></td>
+</tr>
+<tr class="odd">
+<td>AVQI</td>
+<td>Combining several of the above, how <strong>dysphonic</strong> does the voice sound?</td>
+<td><a href="./avqi.html">AVQI</a></td>
+</tr>
+<tr class="even">
+<td>ABI</td>
+<td>Combining several of the above, how <strong>breathy</strong> does the voice sound?</td>
+<td><a href="./abi.html">ABI</a></td>
+</tr>
+</tbody>
+</table>
+<p>Jitter and shimmer are cycle-by-cycle measures: they need the cycles to be found first, which is why they are confined to nearly periodic signals. HNR and CPP ask about the signal as a whole, and CPP in particular needs no cycle boundaries at all. That difference governs which measure survives in a disordered voice, and it is taken up in each chapter.</p>
 <p>Back matter includes appendices on adjunct methods (EGG and aerodynamic measures at the level they inform acoustic interpretation), reproducibility notes for Praat and PhonaLab, and a glossary.</p>
+</section>
 </section>
 <section id="how-to-use-it" class="level2" data-number="1.3">
 <h2 data-number="1.3" class="anchored" data-anchor-id="how-to-use-it"><span class="header-section-number">1.3</span> How to use it</h2>
