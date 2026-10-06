@@ -207,7 +207,7 @@ use the versioned DOI shown on that release's Zenodo record:
 
 > Lucero, J. C. (2026). *Acoustic Measures of Voice Quality*, v0.2.0,
 > "Acoustic Breathiness Index", Normative data. Zenodo.
-> https://doi.org/10.5281/zenodo.XXXXXXXX
+> https://doi.org/10.5281/zenodo.23198639
 
 **Name the chapter and the section, not their numbers.** Chapter numbers shift
 whenever a chapter is added: the Acoustic Breathiness Index was chapter 7 in
