@@ -57,6 +57,10 @@ book:
     #   Part V:   ml-landscape, ml-feature-based, ml-end-to-end
     #   Back:     appendix-adjunct-methods, appendix-reproducibility,
     #             appendix-glossary
+    - part: "Back matter"
+      chapters:
+        - release-notes.qmd
+        - appendix-adjunct-methods.qmd
 
 bibliography: references.bib
 lang: en

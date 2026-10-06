@@ -9,8 +9,8 @@ authors:
 repository-code: "https://github.com/LuceroJC/voice-measures"
 url: "https://voicemeasures.org"
 license: CC-BY-4.0
-version: "0.1.0"
-date-released: "2026-09-29"
+version: "0.1.1"
+date-released: "2026-10-06"
 
 identifiers:
   - type: doi
