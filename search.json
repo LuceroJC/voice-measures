@@ -124,7 +124,7 @@
     "href": "intro.html#contributing-and-errata",
     "title": "1  Introduction",
     "section": "1.7 Contributing and errata",
-    "text": "1.7 Contributing and errata\nCorrections, additions, and disagreements are welcome. The reference is maintained on GitHub at github.com/LuceroJC/voice-measures — open an issue with a specific chapter and page, and where possible cite a source. Contributed sections are credited in the changelog.\nThe reference is written to be updated. Findings that survive on the site for a full release cycle without correction can be treated as verified; findings marked as draft are still under review.",
+    "text": "1.7 Contributing and errata\nCorrections, additions, and disagreements are welcome. The reference is maintained on GitHub at github.com/LuceroJC/voice-measures — open an issue with a specific chapter and page, and where possible cite a source. Contributed sections are credited in the changelog.\nCorrections to values or statements that appeared in an earlier release are recorded in Release notes and errata, with what the earlier release said and what replaced it. Corrections are not made silently.\nThe reference is written to be updated. Findings that survive on the site for a full release cycle without correction can be treated as verified; findings marked as draft are still under review.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
     ]
