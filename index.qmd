@@ -5,9 +5,11 @@ number-sections: false
 # Welcome {.unnumbered}
 
 ::: {.callout-note}
-**Version 0.1 in preparation.** This is an early release that grows chapter by
-chapter. Pages marked *Living draft* are complete and sourced, and they will be
-revised as new sources are added.
+**A living reference.** It grows chapter by chapter, and each release is
+deposited on Zenodo with its own versioned DOI. Pages marked *Living draft* are
+complete and sourced, and are revised as new sources are added. What changed in
+each release — including corrections to values published earlier — is recorded
+on the [Release notes and errata](release-notes.qmd) page.
 :::
 
 *Acoustic Measures of Voice Quality* is an open reference on the acoustic
@@ -45,11 +47,28 @@ the measure fails.
   value belongs to the software, settings, task and language that produced
   it, and how this reference reports reference values.
 
-**Measures**
+**Periodicity and stability**
 
-- [Cepstral Peak Prominence (CPP and CPPS)](cpps.qmd)
-- [Acoustic Voice Quality Index (AVQI)](avqi.qmd)
-- [Acoustic Breathiness Index (ABI)](abi.qmd)
+- [Jitter](jitter.qmd): does each cycle last as long as the one before it?
+- [Shimmer](shimmer.qmd): is each cycle as large as the one before it?
+
+**Noise and harmonic structure**
+
+- [Harmonic-to-Noise Ratio (HNR)](hnr.qmd): how much of the sound is periodic
+  at all?
+- [Cepstral Peak Prominence (CPP and CPPS)](cpps.qmd): how strongly does a
+  harmonic pattern stand out from the background?
+
+**Composite indices**
+
+- [Acoustic Voice Quality Index (AVQI)](avqi.qmd): how severe does the voice
+  sound overall?
+- [Acoustic Breathiness Index (ABI)](abi.qmd): how breathy does it sound?
+
+The jitter, shimmer and HNR chapters publish **no cutoff**: no reference value
+in the sources reviewed is compatible with a Praat-based pipeline, so the
+absence is declared. Each explains why, and what the published values from
+other systems can and cannot be used for.
 
 ## Coming next
 
@@ -58,9 +77,9 @@ yet written.
 
 - **Foundations:** recording protocol; F0 detection; voice tasks; perceptual
   anchors (GRBAS, CAPE-V).
-- **Periodicity and stability:** F0 measures; jitter; shimmer; voice breaks;
-  perturbation caveats.
-- **Noise and harmonic structure:** HNR; NHR; GNE; spectral tilt.
+- **Periodicity and stability:** F0 measures; voice breaks; perturbation
+  caveats.
+- **Noise and harmonic structure:** NHR; GNE; spectral tilt.
 - **Composite indices:** the Dysphonia Severity Index (DSI); caveats shared by
   composite indices.
 - **Machine-learning-derived measures:** a landscape chapter and two worked

@@ -10,6 +10,10 @@ issue* link in the sidebar.
 
 ## Definition
 
+**The question the AVQI asks is how severe the voice sounds overall.** Unlike
+the measures in Parts II and III it asks nothing of the waveform directly: it
+combines several of them into one score aimed at perceived overall quality.
+
 The Acoustic Voice Quality Index (AVQI) is an objective method to quantify the
 severity of overall voice quality in concatenated continuous speech and
 sustained phonation segments [@barsties2016avqi]. It is a multivariate

@@ -31,7 +31,7 @@ in the Foundations section.
 The reference is planned in five parts, ordered by what the measure captures
 rather than by clinical context. This release contains three Foundations
 chapters (signal fundamentals, signal typing, and pipeline dependence) and
-three measure chapters (CPPS, AVQI and ABI). The other chapters are listed on
+six measure chapters (jitter, shimmer, HNR, CPPS, AVQI and ABI). The other chapters are listed on
 the [home page](index.qmd) and are added as they are written. Chapters within each part follow a common template — definition,
 computation, normative values, clinical interpretation, caveats, and
 disagreements among sources when they arise.
@@ -47,6 +47,27 @@ disagreements among sources when they arise.
   composite-caveats discussion.
 - **Part V — ML-derived measures.** A landscape chapter plus two
   representative example measures (feature-based and end-to-end).
+
+### Which measure asks which question
+
+Every measure in Parts II to IV is computed from the same thing — a recorded
+pressure waveform — and they differ in what they ask of it. The four written so
+far divide as follows.
+
+| Measure | The question it asks of the waveform | Chapter |
+|---|---|---|
+| Jitter | Is each cycle the same **length** as the one before it? | [Jitter](jitter.qmd) |
+| Shimmer | Is each cycle the same **size** as the one before it? | [Shimmer](shimmer.qmd) |
+| HNR | How much of the sound is **periodic** rather than noise? | [HNR](hnr.qmd) |
+| CPP / CPPS | How strongly does a **harmonic pattern** stand out from the background? | [CPPS](cpps.qmd) |
+| AVQI | Combining several of the above, how **dysphonic** does the voice sound? | [AVQI](avqi.qmd) |
+| ABI | Combining several of the above, how **breathy** does the voice sound? | [ABI](abi.qmd) |
+
+Jitter and shimmer are cycle-by-cycle measures: they need the cycles to be
+found first, which is why they are confined to nearly periodic signals. HNR and
+CPP ask about the signal as a whole, and CPP in particular needs no cycle
+boundaries at all. That difference governs which measure survives in a
+disordered voice, and it is taken up in each chapter.
 
 Back matter includes appendices on adjunct methods (EGG and aerodynamic
 measures at the level they inform acoustic interpretation),

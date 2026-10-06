@@ -1,5 +1,12 @@
 ---
 title: "Shimmer (Amplitude Perturbation)"
+execute:
+  echo: true
+jupyter: python3
+format:
+  html:
+    code-fold: true
+    code-summary: "Show the code for this figure"
 ---
 
 ::: {.callout-note}
@@ -8,7 +15,27 @@ revised as further sources are incorporated. Found an error? Use the *Report an
 issue* link in the sidebar.
 :::
 
+```{python}
+#| label: setup
+#| include: false
+import sys, os
+sys.path.insert(0, os.path.abspath("_code"))
+import numpy as np
+import matplotlib.pyplot as plt
+import vmsynth as vs
+
+plt.rcParams.update({
+    "figure.dpi": 110, "savefig.dpi": 200,
+    "font.size": 9.5, "axes.titlesize": 9.5, "axes.titleweight": "bold",
+    "axes.titlelocation": "left", "axes.labelsize": 9,
+})
+```
+
 ## Definition
+
+**The question shimmer asks is whether each vocal cycle is as large as the one
+before it.** It is the amplitude counterpart of jitter, and like jitter it
+compares adjacent cycles only.
 
 Measures of amplitude perturbation, generally called shimmer, are analogous to
 those of frequency perturbation. Shimmer quantifies short-term amplitude
@@ -29,6 +56,84 @@ As with frequency perturbation, the relationship between shimmer magnitude and
 vocal pathology is very murky. Shimmer measures nonetheless remain popular
 among clinicians, in part because they are included in most automated voice
 analysis systems, which make them easy to obtain [@baken2000clinical].
+
+
+@fig-shimmer shows the same vowel with and without it, and marks the quantity
+the measure is actually built from.
+
+```{python}
+#| label: fig-shimmer
+#| fig-cap: "Two synthetic vowels with identical periods throughout, differing only in the amplitude of successive cycles. Top: the waveform, with the peak of each cycle marked and the RMS level of the whole segment dashed. Shimmer is computed from the per-cycle peak, not from the RMS, and the two must not be confused. Bottom: the peak amplitude of each cycle. The right-hand voice measures 1.58 dB, about 17 %, against 0.10 dB for the left. Signals are synthetic and illustrative."
+#| fig-alt: "Two columns of paired panels. On the left the per-cycle peaks trace a nearly flat line across the waveform; on the right they rise and fall irregularly. The lower panels plot those peaks against cycle number, flat on the left and scattered on the right."
+
+fs, f0, ncyc = 16000, 125.0, 34
+T0 = 1.0 / f0
+rng = np.random.default_rng(11)
+per = np.full(ncyc, T0)                       # periods held constant throughout
+steady = 1 + 0.01 * rng.standard_normal(ncyc)
+shim   = 1 + 0.16 * rng.standard_normal(ncyc)
+cases = [("Nearly steady", steady), ("Cycle-to-cycle shimmer", shim)]
+
+def peaks_per_cycle(x, per, fs):
+    """Peak amplitude of each cycle, and when it occurs, as a program would."""
+    b = np.cumsum(np.concatenate([[0.0], per]))
+    vals, times = [], []
+    for i in range(len(per)):
+        s, e = int(b[i] * fs), int(b[i + 1] * fs)
+        if e <= len(x) and e > s:
+            k = int(np.argmax(x[s:e]))
+            vals.append(x[s + k]); times.append((s + k) / fs)
+    return np.array(vals), np.array(times)
+
+fig, axes = plt.subplots(2, 2, figsize=(6.6, 4.3),
+                         gridspec_kw={"height_ratios": [1.0, 1.15]})
+show_s = 0.075
+for j, (name, amp) in enumerate(cases):
+    x = vs.synth_vowel(per, amp, fs, noise_rel_db=-38, seed=3)
+    t = np.arange(len(x)) / fs
+    pk, pkt = peaks_per_cycle(x, per, fs)
+    b = np.cumsum(np.concatenate([[0.0], per]))
+
+    ax = axes[0, j]
+    m = t <= show_s
+    ax.plot(t[m] * 1e3, x[m], color=vs.INK, lw=0.9)
+    cm = pkt <= show_s
+    ax.plot(pkt[cm] * 1e3, pk[cm],
+            marker="o", ms=4, lw=1.1, color=vs.GREEN, mfc="white",
+            mec=vs.GREEN, mew=1.2, zorder=3, label="Peak of each cycle")
+    rms = np.sqrt(np.mean(x[m] ** 2))
+    ax.axhline(rms, color=vs.MUTED, lw=1.0, ls="--", zorder=1, label="RMS level")
+    ax.set_title(name, color=vs.INK)
+    ax.set_ylim(-1.15, 1.3); ax.set_yticks([])
+    ax.set_xlim(0, show_s * 1e3)
+    ax.set_xlabel("Time (ms)", labelpad=1)
+    if j == 0: ax.set_ylabel("Pressure")
+    vs.style_axes(ax); ax.grid(False)
+
+    ax = axes[1, j]
+    ax.plot(np.arange(len(pk)) + 1, pk, marker="o", ms=3.2, lw=0.9,
+            color=vs.GREEN, mfc="white", mec=vs.GREEN, mew=1.0)
+    ax.axhline(np.mean(pk), color=vs.MUTED, lw=0.9, ls=":")
+    ax.set_ylim(0.25, 1.5); ax.set_xlim(0, ncyc + 1)
+    ax.set_xlabel("Cycle number")
+    if j == 0: ax.set_ylabel("Peak amplitude\n(relative)")
+    vs.style_axes(ax)
+    sh_db = 20 * np.mean(np.abs(np.diff(20 * np.log10(pk))))/20*20  # mean |ΔdB|
+    sh_db = np.mean(np.abs(np.diff(20 * np.log10(pk))))
+    sh_pct = 100 * np.mean(np.abs(np.diff(pk))) / np.mean(pk)
+    ax.text(0.03, 0.96, f"shimmer {sh_db:.2f} dB\n({sh_pct:.1f} %)",
+            transform=ax.transAxes, ha="left", va="top", fontsize=8,
+            color=vs.INK, linespacing=1.35)
+handles = [
+    plt.Line2D([], [], marker="o", color=vs.GREEN, mfc="white", mec=vs.GREEN,
+               mew=1.2, ms=5, label="Peak amplitude of each cycle"),
+    plt.Line2D([], [], color=vs.MUTED, ls="--", lw=1.0, label="RMS level of the segment"),
+]
+fig.legend(handles=handles, loc="lower center", ncol=2, frameon=False, fontsize=8,
+           bbox_to_anchor=(0.55, -0.02))
+fig.tight_layout(rect=(0, 0.045, 1, 1))
+plt.show()
+```
 
 ## Computation
 
@@ -67,14 +172,14 @@ The values below come from other pipelines and are shown for context only.
 
 | Measure | Population | Task | Value | Pipeline | Class |
 |---|---|---|---|---|---|
-| Shimmer in dB | 31 men, 18–38 y (mean 26.6) | Sustained vowels of 5 s at 70–80 dB SPL, F0 held to ±10 Hz; 3-second segment of the least variable of 3 trials | /a/ 0.47 (SD 0.34), /i/ 0.37 (0.28), /u/ 0.33 (0.31); overall 0.39 (0.31) | Software not stated; task and level stated in full | unclassified |
-| Shimmer in dB | 20 women, 25–49 y (mean 36.8) | As above | /a/ 0.33 (SD 0.22), /i/ 0.23 (0.08), /u/ 0.19 (0.04); overall 0.25 (0.11) | As above | unclassified |
-| Shimmer in dB | The combined sample | As above | 95 per cent critical region above 0.98 dB | As above | unclassified |
-| Shimmer in dB | 10 men, 26–37 y (mean 31.8) | Sustained /a/, at least 8 s excluding the first and last seconds | 0.37 dB at a baseline of 63.32 dB SPL; 0.31 at 74.30; 0.21 at 84.80 | Not stated | unclassified |
-| APQ, acoustic signal | 7 men (mean 27.7 y) | Sustained /a/ at comfortable pitch and loudness, steadiest 1.5 s, mean F0 108.1 Hz | 40.3 × 10⁻⁴ (SD 13.6 × 10⁻⁴) | Eleven-point smoothing; pretracheal contact microphone | unclassified |
-| APQ, acoustic signal | 2 women (mean 29.5 y) | As above, mean F0 206.0 Hz | 32.9 × 10⁻⁴ (SD 20.9 × 10⁻⁴) | As above | unclassified |
-| APQ, inverse-filtered residue | 8 men (mean 28.4 y) | As above, mean F0 120.0 Hz | 5.97 per cent (SD 3.10) | Five-point smoothing | unclassified |
-| APQ, inverse-filtered residue | 2 women (mean 29.5 y) | As above, mean F0 206.0 Hz | 6.81 per cent (SD 3.15) | Five-point smoothing | unclassified |
+| Shimmer in dB | 31 men, 18–38 y (mean 26.6) | Sustained vowels of 5 s at 70–80 dB SPL, F0 held to ±10 Hz; 3-second segment of the least variable of 3 trials | /a/ 0.47 (SD 0.34), /i/ 0.37 (0.28), /u/ 0.33 (0.31); overall 0.39 (0.31) | Software not stated; task and level stated in full | unclassified (analysis software not stated) |
+| Shimmer in dB | 20 women, 25–49 y (mean 36.8) | As above | /a/ 0.33 (SD 0.22), /i/ 0.23 (0.08), /u/ 0.19 (0.04); overall 0.25 (0.11) | As above | unclassified (analysis software not stated) |
+| Shimmer in dB | The combined sample | As above | 95 per cent critical region above 0.98 dB | As above | unclassified (analysis software not stated) |
+| Shimmer in dB | 10 men, 26–37 y (mean 31.8) | Sustained /a/, at least 8 s excluding the first and last seconds | 0.37 dB at a baseline of 63.32 dB SPL; 0.31 at 74.30; 0.21 at 84.80 | Not stated | unclassified (pipeline not stated) |
+| APQ, acoustic signal | 7 men (mean 27.7 y) | Sustained /a/ at comfortable pitch and loudness, steadiest 1.5 s, mean F0 108.1 Hz | 40.3 × 10⁻⁴ (SD 13.6 × 10⁻⁴) | Eleven-point smoothing; pretracheal contact microphone | unclassified (analysis software not stated) |
+| APQ, acoustic signal | 2 women (mean 29.5 y) | As above, mean F0 206.0 Hz | 32.9 × 10⁻⁴ (SD 20.9 × 10⁻⁴) | As above | unclassified (analysis software not stated) |
+| APQ, inverse-filtered residue | 8 men (mean 28.4 y) | As above, mean F0 120.0 Hz | 5.97 per cent (SD 3.10) | Five-point smoothing | unclassified (analysis software not stated) |
+| APQ, inverse-filtered residue | 2 women (mean 29.5 y) | As above, mean F0 206.0 Hz | 6.81 per cent (SD 3.15) | Five-point smoothing | unclassified (analysis software not stated) |
 
 : Shimmer values from other pipelines, for context only. Source: @baken2000clinical. {#tbl-shimmer-context}
 

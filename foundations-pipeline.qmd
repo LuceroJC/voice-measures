@@ -322,9 +322,17 @@ same task, and for language-dependent indices the same language.
 | pipeline-compatible | A published value whose stated pipeline meets the compatibility rule | Compare only measurements made with the same pipeline |
 | language-conditional | A cutoff validated in a named language | Use for that language, task and stated pipeline; no cutoff is endorsed for a language without its own validation |
 | meta-analytic | Pooled across studies or analysis systems | Descriptive context only, with its heterogeneity; never a cutoff, including pooled "weighted" thresholds |
-| unclassified | The source does not state enough of the pipeline to place the value | Shown only as history, labelled as such; never a cutoff |
+| unclassified | The source does not state enough of the pipeline to place the value. Always written with its reason: `unclassified (no software version)`, `unclassified (pipeline not stated)` | Shown only as history, labelled as such; never a cutoff |
 
 : Compatibility classes used in Normative data tables. {#tbl-evidence-classes}
+
+**The class describes the row, not you.** It says whether that row's own
+pipeline is stated completely enough to be reused by someone running it. It
+does not say whether the value matches the pipeline *you* are measuring with:
+that comparison is yours to make from the Pipeline cell, which is why the
+Pipeline cell carries the detail. A class cell therefore never names a target
+pipeline, and a row can be `pipeline-compatible` for someone running that
+program while being no use at all to someone running another one.
 
 Where the reviewed sources give no usable reference for a population, task or
 language, the table says so instead of borrowing a value from another

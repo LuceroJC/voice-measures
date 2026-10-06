@@ -1,5 +1,12 @@
 ---
 title: "Cepstral Peak Prominence (CPP and CPPS)"
+execute:
+  echo: true
+jupyter: python3
+format:
+  html:
+    code-fold: true
+    code-summary: "Show the code for this figure"
 ---
 
 ::: {.callout-note}
@@ -8,7 +15,28 @@ revised as further sources are incorporated. Found an error? Use the *Report an
 issue* link in the sidebar.
 :::
 
+```{python}
+#| label: setup
+#| include: false
+import sys, os
+sys.path.insert(0, os.path.abspath("_code"))
+import numpy as np
+import matplotlib.pyplot as plt
+import vmsynth as vs
+
+plt.rcParams.update({
+    "figure.dpi": 110, "savefig.dpi": 200,
+    "font.size": 9.5, "axes.titlesize": 9.5, "axes.titleweight": "bold",
+    "axes.titlelocation": "left", "axes.labelsize": 9,
+})
+```
+
 ## Definition
+
+**The question cepstral peak prominence asks is how strongly a harmonic
+pattern stands out from the background.** Unlike jitter and shimmer it never
+needs to find where one cycle ends and the next begins, which is why it
+survives in voices where cycle-by-cycle measures do not.
 
 Cepstral peak prominence (CPP) quantifies how strongly the harmonic structure
 of a voice signal emerges from its background. The cepstrum used in voice
@@ -82,6 +110,100 @@ that matter:
 Because of these differences, values from different programs live on different
 scales and are not interchangeable (see [Confounds and cautions]).
 
+
+@fig-cpp-measure follows one frame through all three domains: the waveform,
+the comb of harmonics in its spectrum, the single cepstral peak the comb
+collapses into, and the distance that is reported as CPP.
+
+```{python}
+#| label: fig-cpp-measure
+#| fig-cap: "What the measurement is, on one 40-ms frame of a synthetic vowel (F0 = 125 Hz). **1** the waveform, repeating every 8 ms. **2** its log spectrum, a comb of harmonics spaced by F0. **3** the cepstrum of that spectrum, in which the whole comb collapses into a single peak at a quefrency of 8.0 ms — the voice period, and the reciprocal of 125 Hz. CPP is the vertical distance from that peak to the regression line fitted through the cepstrum, marked in green. The near-zero quefrency region, which carries the spectral envelope rather than the harmonic spacing, is outside the plotted range. The vertical scale in panel 3 is cepstral magnitude in log units; programs report CPP in decibels. The three domains are treated generally in [Signal Fundamentals](foundations-signal.qmd). Signal is synthetic and illustrative."
+#| fig-alt: "Three panels left to right. The first is a vowel waveform with one period marked as 8 milliseconds. The second is a spectrum with evenly spaced harmonic peaks falling away with frequency. The third is a mostly flat cepstrum with one tall narrow peak at 8 milliseconds, a dashed regression line through the baseline, and a green bar marking the height of the peak above that line, labelled CPP."
+
+fs, f0 = 16000, 125.0
+T0 = 1.0 / f0
+ncyc = 80
+rng = np.random.default_rng(2)
+per = T0 * (1 + 0.002 * rng.standard_normal(ncyc))
+amp = 1 + 0.02 * rng.standard_normal(ncyc)
+x = vs.synth_vowel(per, amp, fs, noise_rel_db=-28, seed=9)
+
+L = int(0.040 * fs)
+i0 = len(x) // 2 - L // 2
+seg = x[i0:i0 + L] * np.hanning(L)
+nfft = 4096
+mag = np.abs(np.fft.rfft(seg, nfft)) + 1e-12
+freq = np.fft.rfftfreq(nfft, 1 / fs)
+ceps = np.fft.irfft(np.log(mag))
+q = np.arange(len(ceps)) / fs
+
+qlo, qhi = 1 / 400, 1 / 60
+fitsel = (q >= 0.001) & (q <= 0.015)
+line = np.polyval(np.polyfit(q[fitsel], ceps[fitsel], 1), q)
+sel = (q >= qlo) & (q <= qhi)
+ipk = np.flatnonzero(sel)[np.argmax(ceps[sel])]
+
+fig, axes = plt.subplots(1, 3, figsize=(7.6, 2.9))
+
+# --- A: the waveform the frame is taken from
+ax = axes[0]
+tt = np.arange(L) / fs
+raw = x[i0:i0 + L]
+ax.plot(tt * 1e3, raw, color=vs.INK, lw=0.8)
+pk = i0 + np.array([np.argmax(raw[:int(0.009 * fs)]),
+                    np.argmax(raw[int(0.009 * fs):int(0.018 * fs)]) + int(0.009 * fs)])
+pt = (pk - i0) / fs
+ax.annotate("", xy=(pt[0] * 1e3, 1.12), xytext=(pt[1] * 1e3, 1.12),
+            arrowprops=dict(arrowstyle="<->", color=vs.GREEN, lw=1.1, shrinkA=0, shrinkB=0))
+ax.text(np.mean(pt) * 1e3, 1.18, "one period, 8 ms", ha="center", va="bottom",
+        fontsize=8, color=vs.GREEN)
+ax.set_xlabel("Time (ms)"); ax.set_ylabel("Pressure")
+ax.set_title("1 · Waveform", color=vs.INK)
+ax.set_ylim(-1.15, 1.5); ax.set_yticks([]); ax.set_xlim(0, 40)
+vs.style_axes(ax); ax.grid(False)
+
+# --- B: its log spectrum
+ax = axes[1]
+k = freq <= 4000
+dB = 20 * np.log10(mag[k]); dB -= dB.max()
+ax.plot(freq[k] / 1e3, dB, color=vs.BLUE, lw=0.8)
+ax.set_xlabel("Frequency (kHz)"); ax.set_ylabel("Level (dB, relative)")
+ax.set_title("2 · Log spectrum", color=vs.INK)
+ax.set_xlim(0, 4); ax.set_ylim(-70, 8)
+vs.style_axes(ax)
+ax.annotate("harmonics every $F_0$", xy=(0.62, -10), xytext=(1.25, 4),
+            fontsize=7.5, color=vs.INK,
+            arrowprops=dict(arrowstyle="->", color=vs.MUTED, lw=0.9))
+
+# --- C: the cepstrum, and the measurement
+ax = axes[2]
+kk = (q >= 0.0012) & (q <= 0.016)
+ax.plot(q[kk] * 1e3, ceps[kk], color=vs.INK, lw=0.9)
+ax.plot(q[kk] * 1e3, line[kk], color=vs.ORANGE, lw=1.3, ls="--")
+ax.plot([q[ipk] * 1e3] * 2, [line[ipk], ceps[ipk]], color=vs.GREEN, lw=2.4,
+        solid_capstyle="butt", zorder=4)
+ax.plot(q[ipk] * 1e3, ceps[ipk], marker="o", ms=5, color=vs.GREEN,
+        mfc="white", mec=vs.GREEN, mew=1.6, zorder=5)
+ax.annotate("CPP", xy=(q[ipk] * 1e3, (line[ipk] + ceps[ipk]) / 2),
+            xytext=(q[ipk] * 1e3 + 2.0, (line[ipk] + ceps[ipk]) / 2),
+            fontsize=9, color=vs.INK, va="center", fontweight="bold",
+            arrowprops=dict(arrowstyle="->", color=vs.GREEN, lw=1.2))
+ax.text(q[ipk] * 1e3, ceps[ipk] + 0.015, f"{q[ipk]*1e3:.1f} ms",
+        ha="center", va="bottom", fontsize=8, color=vs.INK)
+ax.text(0.97, 0.03, "dashed: regression\nthrough the cepstrum",
+        transform=ax.transAxes, ha="right", va="bottom", fontsize=7.5,
+        color=vs.ORANGE, linespacing=1.3)
+ax.set_xlabel("Quefrency (ms)"); ax.set_ylabel("Cepstral magnitude")
+ax.set_title("3 · Cepstrum", color=vs.INK)
+ax.set_xlim(0, 16)
+pad = 0.18 * (ceps[kk].max() - ceps[kk].min())
+ax.set_ylim(ceps[kk].min() - pad, ceps[kk].max() + 2.6 * pad)
+vs.style_axes(ax)
+
+fig.tight_layout()
+plt.show()
+```
+
 ## What it captures
 
 CPP behaves as a general index of overall dysphonia severity. In the
@@ -149,7 +271,7 @@ from another paper's summary table. They are not used as cutoffs here.
 
 | Study | Language | Pipeline | Sustained vowel | Running speech | Class |
 |---|---|---|---|---|---|
-| Sauder et al. 2017 | English | ADSV CPPS, factory settings; ADSV version not stated | — | 5.53 dB (second sentence of the Rainbow Passage; AUC 0.81) | unclassified |
+| Sauder et al. 2017 | English | ADSV CPPS, factory settings; ADSV version not stated | — | 5.53 dB (second sentence of the Rainbow Passage; AUC 0.81) | unclassified (no software version) |
 | Heman-Ackah et al. 2003 | English | CPPS (Hillenbrand) | 10 dB | 5 dB | unclassified (as tabulated by Murton et al.) |
 | Heman-Ackah et al. 2014 | English | CPPS (Hillenbrand) | — | 4.0 dB | unclassified (as tabulated by Murton et al.) |
 | Yu et al. 2018 | Korean | ADSV CPP | 12 dB | 7 dB | unclassified (as tabulated by Murton et al.) |
@@ -177,9 +299,9 @@ settings except a CPP threshold of 1 dB and vocalic event detection.
 | Sustained /a/, middle 1 s | Praat 6.0.50 CPPS, Watts et al. settings | 11.72 dB | 11.05 dB | pipeline-compatible |
 | Sustained /i/, middle 1 s | Praat 6.0.50 CPPS, Watts et al. settings | 12.01 dB | 10.37 dB | pipeline-compatible |
 | Rainbow Passage, sentences 2–3 | Praat 6.0.50 CPPS, Watts et al. settings | 6.40 dB | 6.49 dB | pipeline-compatible |
-| Sustained /a/, middle 1 s | ADSV CPP; version not stated | 8.86 dB | 8.09 dB | unclassified |
-| Sustained /i/, middle 1 s | ADSV CPP; version not stated | 6.68 dB | 4.65 dB | unclassified |
-| Rainbow Passage, sentences 2–3 | ADSV CPP; version not stated | 5.40 dB | 5.04 dB | unclassified |
+| Sustained /a/, middle 1 s | ADSV CPP; version not stated | 8.86 dB | 8.09 dB | unclassified (no software version) |
+| Sustained /i/, middle 1 s | ADSV CPP; version not stated | 6.68 dB | 4.65 dB | unclassified (no software version) |
+| Rainbow Passage, sentences 2–3 | ADSV CPP; version not stated | 5.40 dB | 5.04 dB | unclassified (no software version) |
 
 : Normative lower limits for typical speakers [@buckley2023cpp]. The ADSV rows are shown for comparison with the Praat rows; the ADSV version is not stated, so they are not used as reference limits. {#tbl-cpp-norms}
 

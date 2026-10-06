@@ -28,6 +28,7 @@ book:
   date: today
   doi: "10.5281/zenodo.22739049"
   site-url: "https://voicemeasures.org"
+  favicon: favicon.svg
   repo-url: "https://github.com/LuceroJC/voice-measures"
   repo-actions: [edit, issue]
   sidebar:
@@ -69,7 +70,6 @@ book:
     - part: "Back matter"
       chapters:
         - release-notes.qmd
-        - appendix-adjunct-methods.qmd
 
 bibliography: references.bib
 lang: en

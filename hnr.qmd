@@ -1,5 +1,12 @@
 ---
 title: "Harmonic-to-Noise Ratio (HNR)"
+execute:
+  echo: true
+jupyter: python3
+format:
+  html:
+    code-fold: true
+    code-summary: "Show the code for this figure"
 ---
 
 ::: {.callout-note}
@@ -8,7 +15,27 @@ revised as further sources are incorporated. Found an error? Use the *Report an
 issue* link in the sidebar.
 :::
 
+```{python}
+#| label: setup
+#| include: false
+import sys, os
+sys.path.insert(0, os.path.abspath("_code"))
+import numpy as np
+import matplotlib.pyplot as plt
+import vmsynth as vs
+
+plt.rcParams.update({
+    "figure.dpi": 110, "savefig.dpi": 200,
+    "font.size": 9.5, "axes.titlesize": 9.5, "axes.titleweight": "bold",
+    "axes.titlelocation": "left", "axes.labelsize": 9,
+})
+```
+
 ## Definition
+
+**The question the harmonic-to-noise ratio asks is how much of the sound is
+periodic at all.** Unlike jitter and shimmer it does not compare one cycle with
+the next: it weighs the energy that repeats against the energy that does not.
 
 A characteristic feature of hoarseness is the replacement of harmonics by noise
 energy: aperiodic sound intensifies at the expense of the periodic signal. It
@@ -21,6 +48,65 @@ perfectly periodic waves and random noise. The H/N ratio is the mean amplitude
 of the wave divided by the mean amplitude of the isolated noise components for
 the train of waves, and for convenience it is expressed in decibels
 [@baken2000clinical].
+
+
+@fig-hnr shows the harmonics being replaced by noise as the ratio falls.
+
+```{python}
+#| label: fig-hnr
+#| fig-cap: "The same synthetic vowel (F0 = 150 Hz) with three levels of added aspiration noise. Top: the waveform. Bottom: the log spectrum to 4 kHz; the faint vertical lines in the left-hand panel mark the harmonic series. With little noise the harmonics stand clear to 4 kHz. As noise rises they fill in from the top down, so that in the right-hand panel the comb survives only below about 1.5 kHz. This is the replacement of harmonics by noise energy that the ratio is built to quantify. The labels give the noise level used in the synthesis relative to the voiced component; they are not measured HNR values, and the signals are synthetic and illustrative."
+#| fig-alt: "Three columns. The top waveforms grow progressively more irregular from left to right. The spectra below show a clear comb of harmonic peaks on the left, partly filled in at the middle, and smeared above about 1.5 kHz on the right."
+
+fs, f0 = 16000, 150.0
+T0 = 1.0 / f0
+ncyc = 90
+rng = np.random.default_rng(5)
+per = T0 * (1 + 0.002 * rng.standard_normal(ncyc))
+amp = 1 + 0.02 * rng.standard_normal(ncyc)
+
+levels = [("Little noise", -35), ("Moderate noise", -12), ("Noise-dominated", 6)]
+
+def log_spectrum(x, fs, win_s=0.040, nfft=4096):
+    L = int(win_s * fs)
+    seg = x[len(x) // 2 - L // 2: len(x) // 2 + L // 2] * np.hanning(L)
+    S = np.abs(np.fft.rfft(seg, nfft))
+    f = np.fft.rfftfreq(nfft, 1 / fs)
+    return f, 20 * np.log10(S + 1e-12)
+
+fig, axes = plt.subplots(2, 3, figsize=(7.4, 4.5),
+                         gridspec_kw={"height_ratios": [0.85, 1.2]})
+show_s = 0.030
+for j, (name, nd) in enumerate(levels):
+    x = vs.synth_vowel(per, amp, fs, noise_rel_db=nd, seed=21)
+    t = np.arange(len(x)) / fs
+
+    ax = axes[0, j]
+    m = t <= show_s
+    ax.plot(t[m] * 1e3, x[m], color=vs.INK, lw=0.85)
+    ax.set_title(name, color=vs.INK)
+    ax.set_ylim(-1.2, 1.2); ax.set_yticks([]); ax.set_xlim(0, show_s * 1e3)
+    ax.set_xlabel("Time (ms)", labelpad=1)
+    if j == 0: ax.set_ylabel("Pressure")
+    vs.style_axes(ax); ax.grid(False)
+
+    ax = axes[1, j]
+    f, S = log_spectrum(x, fs)
+    k = f <= 4000
+    S = S - S[k].max()
+    if j == 0:
+        for h in np.arange(f0, 4000, f0):
+            ax.axvline(h / 1e3, color=vs.GRID, lw=0.7, zorder=0)
+    ax.plot(f[k] / 1e3, S[k], color=vs.BLUE, lw=0.8)
+    ax.set_ylim(-70, 6); ax.set_xlim(0, 4)
+    ax.set_xlabel("Frequency (kHz)")
+    if j == 0: ax.set_ylabel("Level (dB, relative)")
+    vs.style_axes(ax)
+    ax.text(0.97, 0.96, f"noise at {nd:+d} dB\nrelative to voicing",
+            transform=ax.transAxes, ha="right", va="top", fontsize=8,
+            color=vs.INK, linespacing=1.35)
+fig.tight_layout()
+plt.show()
+```
 
 ## Computation
 
@@ -64,14 +150,14 @@ The values below come from other pipelines and are shown for context only.
 
 | Population | Task | Value | Pipeline | Class |
 |---|---|---|---|---|
-| 22 men and 20 women with no demonstrable vocal disorder | Sustained /a/ | Mean H/N 11.9 dB (SD 2.32), range 7.0–17.0; sexes did not differ significantly; 95 per cent confidence limit 7.4 dB | Yumoto's method; software and settings not stated | unclassified |
-| 12 men and 8 women with various laryngeal pathologies, before surgery | Sustained /a/ | Mean H/N 1.6 dB; after surgery 11.3 dB (SD 3.13), range 5.9–17.6, with about 95 per cent reaching the expected normal range | As above | unclassified |
+| 22 men and 20 women with no demonstrable vocal disorder | Sustained /a/ | Mean H/N 11.9 dB (SD 2.32), range 7.0–17.0; sexes did not differ significantly; 95 per cent confidence limit 7.4 dB | Yumoto's method; software and settings not stated | unclassified (software and settings not stated) |
+| 12 men and 8 women with various laryngeal pathologies, before surgery | Sustained /a/ | Mean H/N 1.6 dB; after surgery 11.3 dB (SD 3.13), range 5.9–17.6, with about 95 per cent reaching the expected normal range | As above | unclassified (software and settings not stated) |
 | 14 women per group, three age groups | Sustained vowel, onset and offset discarded | Young 7.82 dB, middle-aged 7.86 dB, elderly 5.54 dB; the elderly group differed significantly from both younger groups | Kay Elemetrics CSL 4300; Yumoto's method except that the signal is not preemphasized; 51.2 kHz, 2-second frame; MiniDisc at 44.1 kHz | unclassified for a Praat pipeline |
-| Brazilian women and men, modal register | Sustained vowel | Women 9.4 dB; men 8.6 dB | Soundscope 2.0; algorithm and settings not stated; reported second-hand | unclassified |
-| Women and men, modal register | Sustained vowel | Women 13.9 dB; men 11.8 dB | Soundscope 2.0; second-hand | unclassified |
-| Women and men, falsetto register | Sustained vowel | Women 15.6 dB; men 15 dB | Soundscope 2.0; second-hand | unclassified |
-| Pulse (basal) register | Sustained vowel | Not reliably computable: the noise component is high | Soundscope 2.0; second-hand | unclassified |
-| NNE, normal limit | Not stated | Normal up to −10 dB; values nearer zero, such as −5 or −3 dB, strongly indicate phonatory aperiodicity | Not stated | unclassified |
+| Brazilian women and men, modal register | Sustained vowel | Women 9.4 dB; men 8.6 dB | Soundscope 2.0; algorithm and settings not stated; reported second-hand | unclassified (algorithm and settings not stated) |
+| Women and men, modal register | Sustained vowel | Women 13.9 dB; men 11.8 dB | Soundscope 2.0; second-hand | unclassified (algorithm and settings not stated) |
+| Women and men, falsetto register | Sustained vowel | Women 15.6 dB; men 15 dB | Soundscope 2.0; second-hand | unclassified (algorithm and settings not stated) |
+| Pulse (basal) register | Sustained vowel | Not reliably computable: the noise component is high | Soundscope 2.0; second-hand | unclassified (algorithm and settings not stated) |
+| NNE, normal limit | Not stated | Normal up to −10 dB; values nearer zero, such as −5 or −3 dB, strongly indicate phonatory aperiodicity | Not stated | unclassified (pipeline not stated) |
 
 : HNR and NNE values from other pipelines, for context only. Yumoto and spectral-noise rows: @baken2000clinical. Age-group row: @ferrand2002hnr. Brazilian and NNE rows: @behlauespecialista. {#tbl-hnr-context}
 

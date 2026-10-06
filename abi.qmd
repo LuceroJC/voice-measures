@@ -10,6 +10,10 @@ issue* link in the sidebar.
 
 ## Definition
 
+**The question the ABI asks is how breathy the voice sounds.** Like the AVQI it
+combines several acoustic markers into a single score, but it is aimed at one
+perceptual dimension rather than at overall severity.
+
 The Acoustic Breathiness Index (ABI) is a multiparametric, nine-variable
 acoustic measure that quantifies the degree of perceived breathiness with a
 single score, computed from concatenated samples of continuous speech and the
