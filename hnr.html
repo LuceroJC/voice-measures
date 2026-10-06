@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Jorge C. Lucero">
-<meta name="dcterms.date" content="2026-10-06">
 
-<title>Acoustic Measures of Voice Quality</title>
+<title>7&nbsp; Harmonic-to-Noise Ratio (HNR) – Acoustic Measures of Voice Quality</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -28,7 +26,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -38,7 +55,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./intro.html" rel="next">
+<link href="./cpps.html" rel="next">
+<link href="./shimmer.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -90,7 +108,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Welcome</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./hnr.html">Part III — Noise and Harmonic Structure</a></li><li class="breadcrumb-item"><a href="./hnr.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Harmonic-to-Noise Ratio (HNR)</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -120,7 +138,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Welcome</span></a>
   </div>
 </li>
@@ -193,7 +211,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./hnr.html" class="sidebar-item-text sidebar-link">
+  <a href="./hnr.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Harmonic-to-Noise Ratio (HNR)</span></span></a>
   </div>
 </li>
@@ -261,60 +279,34 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#welcome" id="toc-welcome" class="nav-link active" data-scroll-target="#welcome">Welcome</a>
+  <li><a href="#definition" id="toc-definition" class="nav-link active" data-scroll-target="#definition"><span class="header-section-number">7.1</span> Definition</a></li>
+  <li><a href="#computation" id="toc-computation" class="nav-link" data-scroll-target="#computation"><span class="header-section-number">7.2</span> Computation</a></li>
+  <li><a href="#normative-data" id="toc-normative-data" class="nav-link" data-scroll-target="#normative-data"><span class="header-section-number">7.3</span> Normative data</a>
   <ul class="collapse">
-  <li><a href="#what-makes-it-different" id="toc-what-makes-it-different" class="nav-link" data-scroll-target="#what-makes-it-different">What makes it different</a></li>
-  <li><a href="#in-this-release" id="toc-in-this-release" class="nav-link" data-scroll-target="#in-this-release">In this release</a></li>
-  <li><a href="#coming-next" id="toc-coming-next" class="nav-link" data-scroll-target="#coming-next">Coming next</a></li>
-  <li><a href="#citing-this-reference" id="toc-citing-this-reference" class="nav-link" data-scroll-target="#citing-this-reference">Citing this reference</a></li>
-  <li><a href="#author-and-competing-interests" id="toc-author-and-competing-interests" class="nav-link" data-scroll-target="#author-and-competing-interests">Author and competing interests</a></li>
+  <li><a href="#where-the-7-db-bound-comes-from" id="toc-where-the-7-db-bound-comes-from" class="nav-link" data-scroll-target="#where-the-7-db-bound-comes-from"><span class="header-section-number">7.3.1</span> Where the 7 dB bound comes from</a></li>
   </ul></li>
+  <li><a href="#what-it-captures" id="toc-what-it-captures" class="nav-link" data-scroll-target="#what-it-captures"><span class="header-section-number">7.4</span> What it captures</a></li>
+  <li><a href="#confounds-and-cautions" id="toc-confounds-and-cautions" class="nav-link" data-scroll-target="#confounds-and-cautions"><span class="header-section-number">7.5</span> Confounds and cautions</a></li>
+  <li><a href="#points-of-disagreement" id="toc-points-of-disagreement" class="nav-link" data-scroll-target="#points-of-disagreement"><span class="header-section-number">7.6</span> Points of disagreement</a></li>
+  <li><a href="#compute-it-in-phonalab" id="toc-compute-it-in-phonalab" class="nav-link" data-scroll-target="#compute-it-in-phonalab"><span class="header-section-number">7.7</span> Compute it in PhonaLab</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/LuceroJC/voice-measures/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/LuceroJC/voice-measures/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/LuceroJC/voice-measures/edit/main/hnr.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/LuceroJC/voice-measures/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./hnr.html">Part III — Noise and Harmonic Structure</a></li><li class="breadcrumb-item"><a href="./hnr.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Harmonic-to-Noise Ratio (HNR)</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Acoustic Measures of Voice Quality</h1>
-<p class="subtitle lead">A Living Reference</p>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Harmonic-to-Noise Ratio (HNR)</span></h1>
 </div>
 
 
-<div class="quarto-title-meta-author">
-  <div class="quarto-title-meta-heading">Author</div>
-  <div class="quarto-title-meta-heading">Affiliation</div>
-  
-    <div class="quarto-title-meta-contents">
-    <p class="author">Jorge C. Lucero <a href="https://orcid.org/0000-0003-0597-3808" class="quarto-title-author-orcid" aria-label="ORCID profile for Jorge C. Lucero"> <img alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
-  </div>
-  <div class="quarto-title-meta-contents">
-        <p class="affiliation">
-            University of Brasília
-          </p>
-      </div>
-  </div>
 
 <div class="quarto-title-meta">
 
-      
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">October 6, 2026</p>
-    </div>
-  </div>
+    
   
     
-    <div>
-    <div class="quarto-title-meta-heading">Doi</div>
-    <div class="quarto-title-meta-contents">
-      <p class="doi">
-        <a href="https://doi.org/10.5281/zenodo.22739049">10.5281/zenodo.22739049</a>
-      </p>
-    </div>
-  </div>
   </div>
   
 
@@ -322,8 +314,6 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="welcome" class="level1 unnumbered">
-<h1 class="unnumbered">Welcome</h1>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -334,61 +324,198 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Version 0.1 in preparation.</strong> This is an early release that grows chapter by chapter. Pages marked <em>Living draft</em> are complete and sourced, and they will be revised as new sources are added.</p>
+<p><strong>Living draft.</strong> This chapter reflects the sources cited below and will be revised as further sources are incorporated. Found an error? Use the <em>Report an issue</em> link in the sidebar.</p>
 </div>
 </div>
-<p><em>Acoustic Measures of Voice Quality</em> is an open reference on the acoustic measures used to assess the human voice. It is written for speech-language pathologists and voice scientists. For each measure, it covers what the measure means, how it is computed, which reference values exist, and where the measure fails.</p>
-<section id="what-makes-it-different" class="level2">
-<h2 class="anchored" data-anchor-id="what-makes-it-different">What makes it different</h2>
-<ul>
-<li><strong>Every reference value comes with its pipeline.</strong> A CPPS cutoff from one program does not apply to a value from another program, and an AVQI threshold validated in one language does not apply to another. Every normative table states the software, version, settings, speech task and language behind each value, and its compatibility class.</li>
-<li><strong>Absence is declared, not filled.</strong> Where no published reference matches a pipeline, task or language, the table says so instead of borrowing a number.</li>
-<li><strong>Disagreements are shown, not averaged.</strong> When sources conflict, including misprinted equations or inconsistent summary tables, the conflict is set out with both sources.</li>
-<li><strong>Primary sources.</strong> Claims are traced to the original studies. Values are never taken from summary tables without saying so.</li>
-</ul>
+<section id="definition" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="definition"><span class="header-section-number">7.1</span> Definition</h2>
+<p>A characteristic feature of hoarseness is the replacement of harmonics by noise energy: aperiodic sound intensifies at the expense of the periodic signal. It is therefore reasonable to conclude that the best index of hoarseness might be the ratio of one to the other, and that is what the harmonic-to-noise ratio measures <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000</a>)</span>.</p>
+<p>The conceptual basis is simple. The voice is considered to have two components, perfectly periodic waves and random noise. The H/N ratio is the mean amplitude of the wave divided by the mean amplitude of the isolated noise components for the train of waves, and for convenience it is expressed in decibels <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000</a>)</span>.</p>
 </section>
-<section id="in-this-release" class="level2">
-<h2 class="anchored" data-anchor-id="in-this-release">In this release</h2>
-<p><strong>Foundations</strong></p>
-<ul>
-<li><a href="./foundations-signal.html">Signal Fundamentals</a>: sampling, quantization, framing and windows, and the time, frequency and cepstral domains, with computed figures.</li>
-<li><a href="./foundations-signal-typing.html">Signal Typing</a>: the Type 1–4 classification, and which measures are valid for which signals.</li>
-<li><a href="./foundations-pipeline.html">Pipeline Dependence and Reference Values</a>: why a value belongs to the software, settings, task and language that produced it, and how this reference reports reference values.</li>
-</ul>
-<p><strong>Measures</strong></p>
-<ul>
-<li><a href="./cpps.html">Cepstral Peak Prominence (CPP and CPPS)</a></li>
-<li><a href="./avqi.html">Acoustic Voice Quality Index (AVQI)</a></li>
-<li><a href="./abi.html">Acoustic Breathiness Index (ABI)</a></li>
-</ul>
+<section id="computation" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="computation"><span class="header-section-number">7.2</span> Computation</h2>
+<p>The ratio approach was taken first by Kojima and colleagues and by Kitajima, but their computational procedure was complex and inconvenient. It was soon improved upon by Yumoto and colleagues, whose procedure was to objectify and quantify the features that appear in the spectrogram of the hoarse voice <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000</a>)</span>.</p>
+<p><strong>Neutralized noise energy</strong> (NNE) is a related measure with a different strategy. Regular changes over the sampling interval influence the assessment of noise, analogous to the long-term drift problems that plague jitter and shimmer. NNE avoids that contaminating influence by basing its analysis on relatively few vocal periods and detecting the noise component of the spectrum with a specially designed <strong>adaptive comb filter</strong>. Like the H/N ratio it is expressed in decibels <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000</a>)</span>.</p>
+<p>An older family of measures quantifies <strong>spectral noise</strong> directly rather than as a ratio. In one such method, speakers sustained vowels for 7 s at a monitored 75 dB SPL; a 2-second segment was looped and repeatedly scanned by a spectrum analyzer at a very narrow 3 Hz bandwidth, and the minimum noise value was measured for each 100-Hz segment of the spectrum from 200 to 8000 Hz <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000</a>)</span>.</p>
 </section>
-<section id="coming-next" class="level2">
-<h2 class="anchored" data-anchor-id="coming-next">Coming next</h2>
-<p>The complete reference is planned in five parts. The chapters below are not yet written.</p>
-<ul>
-<li><strong>Foundations:</strong> recording protocol; F0 detection; voice tasks; perceptual anchors (GRBAS, CAPE-V).</li>
-<li><strong>Periodicity and stability:</strong> F0 measures; jitter; shimmer; voice breaks; perturbation caveats.</li>
-<li><strong>Noise and harmonic structure:</strong> HNR; NHR; GNE; spectral tilt.</li>
-<li><strong>Composite indices:</strong> the Dysphonia Severity Index (DSI); caveats shared by composite indices.</li>
-<li><strong>Machine-learning-derived measures:</strong> a landscape chapter and two worked examples.</li>
-<li><strong>Appendices:</strong> adjunct methods, reproducibility notes and a glossary.</li>
-</ul>
+<section id="normative-data" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="normative-data"><span class="header-section-number">7.3</span> Normative data</h2>
+<p><strong>This reference publishes no HNR cutoff.</strong></p>
+<p>HNR is strongly implementation-dependent, and no source reviewed here states a Praat version and settings for an HNR reference value. Under the rule in <a href="./foundations-pipeline.html">Pipeline Dependence and Reference Values</a>, the absence is declared rather than filled.</p>
+<div id="tbl-hnr-cutoffs" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-hnr-cutoffs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;7.1: HNR reference values for a Praat-based pipeline.
+</figcaption>
+<div aria-describedby="tbl-hnr-cutoffs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Population</th>
+<th>Task</th>
+<th>Pipeline</th>
+<th>Cutoff</th>
+<th>Class</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Any, measured in Praat</td>
+<td>Sustained /a/</td>
+<td>—</td>
+<td>No published reference</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>The values below come from other pipelines and are shown for context only.</p>
+<div id="tbl-hnr-context" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-hnr-context-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;7.2: HNR and NNE values from other pipelines, for context only. Yumoto and spectral-noise rows: <span class="citation" data-cites="baken2000clinical">Baken and Orlikoff (<a href="#ref-baken2000clinical" role="doc-biblioref">2000</a>)</span>. Age-group row: <span class="citation" data-cites="ferrand2002hnr">Ferrand (<a href="#ref-ferrand2002hnr" role="doc-biblioref">2002</a>)</span>. Brazilian and NNE rows: <span class="citation" data-cites="behlauespecialista">Behlau (<a href="#ref-behlauespecialista" role="doc-biblioref">n.d.</a>)</span>.
+</figcaption>
+<div aria-describedby="tbl-hnr-context-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Population</th>
+<th>Task</th>
+<th>Value</th>
+<th>Pipeline</th>
+<th>Class</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>22 men and 20 women with no demonstrable vocal disorder</td>
+<td>Sustained /a/</td>
+<td>Mean H/N 11.9 dB (SD 2.32), range 7.0–17.0; sexes did not differ significantly; 95 per cent confidence limit 7.4 dB</td>
+<td>Yumoto’s method; software and settings not stated</td>
+<td>unclassified</td>
+</tr>
+<tr class="even">
+<td>12 men and 8 women with various laryngeal pathologies, before surgery</td>
+<td>Sustained /a/</td>
+<td>Mean H/N 1.6 dB; after surgery 11.3 dB (SD 3.13), range 5.9–17.6, with about 95 per cent reaching the expected normal range</td>
+<td>As above</td>
+<td>unclassified</td>
+</tr>
+<tr class="odd">
+<td>14 women per group, three age groups</td>
+<td>Sustained vowel, onset and offset discarded</td>
+<td>Young 7.82 dB, middle-aged 7.86 dB, elderly 5.54 dB; the elderly group differed significantly from both younger groups</td>
+<td>Kay Elemetrics CSL 4300; Yumoto’s method except that the signal is not preemphasized; 51.2 kHz, 2-second frame; MiniDisc at 44.1 kHz</td>
+<td>unclassified for a Praat pipeline</td>
+</tr>
+<tr class="even">
+<td>Brazilian women and men, modal register</td>
+<td>Sustained vowel</td>
+<td>Women 9.4 dB; men 8.6 dB</td>
+<td>Soundscope 2.0; algorithm and settings not stated; reported second-hand</td>
+<td>unclassified</td>
+</tr>
+<tr class="odd">
+<td>Women and men, modal register</td>
+<td>Sustained vowel</td>
+<td>Women 13.9 dB; men 11.8 dB</td>
+<td>Soundscope 2.0; second-hand</td>
+<td>unclassified</td>
+</tr>
+<tr class="even">
+<td>Women and men, falsetto register</td>
+<td>Sustained vowel</td>
+<td>Women 15.6 dB; men 15 dB</td>
+<td>Soundscope 2.0; second-hand</td>
+<td>unclassified</td>
+</tr>
+<tr class="odd">
+<td>Pulse (basal) register</td>
+<td>Sustained vowel</td>
+<td>Not reliably computable: the noise component is high</td>
+<td>Soundscope 2.0; second-hand</td>
+<td>unclassified</td>
+</tr>
+<tr class="even">
+<td>NNE, normal limit</td>
+<td>Not stated</td>
+<td>Normal up to −10 dB; values nearer zero, such as −5 or −3 dB, strongly indicate phonatory aperiodicity</td>
+<td>Not stated</td>
+<td>unclassified</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<section id="where-the-7-db-bound-comes-from" class="level3" data-number="7.3.1">
+<h3 data-number="7.3.1" class="anchored" data-anchor-id="where-the-7-db-bound-comes-from"><span class="header-section-number">7.3.1</span> Where the 7 dB bound comes from</h3>
+<p>The widely repeated figure traces to Yumoto’s series, whose 95 per cent confidence limit for normal speakers was <strong>7.4 dB</strong>, with a normal mean of 11.9 dB <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000</a>)</span>. The same 7.4 dB figure is reported independently <span class="citation" data-cites="ferrand2002hnr">(<a href="#ref-ferrand2002hnr" role="doc-biblioref">Ferrand 2002</a>)</span>. It is commonly carried rounded to 7 dB, with the stronger claim that a ratio below 7 dB is necessarily pathological <span class="citation" data-cites="behlauespecialista">(<a href="#ref-behlauespecialista" role="doc-biblioref">Behlau, n.d.</a>)</span>.</p>
+<p>Three cautions follow. The bound belongs to the Yumoto algorithm family and is not a cross-system constant. In Yumoto’s own data, three of the twenty preoperative dysphonic subjects had ratios above the 7.4 dB limit, and they were the ones with very slight clinical hoarseness <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000</a>)</span>. And in the age-group series above, the healthy young and middle-aged means of 7.82 dB and 7.86 dB sit only just above the bound, while the elderly group’s mean of 5.54 dB falls below it although the group was normally speaking <span class="citation" data-cites="ferrand2002hnr">(<a href="#ref-ferrand2002hnr" role="doc-biblioref">Ferrand 2002</a>)</span>. <strong>A 7 dB floor applied to older speakers would classify healthy voices as pathological.</strong></p>
 </section>
-<section id="citing-this-reference" class="level2">
-<h2 class="anchored" data-anchor-id="citing-this-reference">Citing this reference</h2>
-<p>Cite the concept DOI, which always resolves to the latest release:</p>
+</section>
+<section id="what-it-captures" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="what-it-captures"><span class="header-section-number">7.4</span> What it captures</h2>
+<p>HNR rises with better harmonic structure and falls with more noise. It is lower in men and higher in women, and highest in falsetto, then modal, then pulse register — so a value is interpretable only in the register in which the voice was recorded <span class="citation" data-cites="behlauespecialista">(<a href="#ref-behlauespecialista" role="doc-biblioref">Behlau, n.d.</a>)</span>.</p>
+<p>Diffuse mass lesions can give paradoxically high values: in Reinke’s oedema the preserved harmonic component can keep the ratio high, so HNR alone can under-flag these voices. Small glottal gaps can give a low ratio or raised NNE, without exact correlation to the perceptual grade of dysphonia. The measure is useful for monitoring the course of paralytic dysphonias and partial laryngectomies <span class="citation" data-cites="behlauespecialista">(<a href="#ref-behlauespecialista" role="doc-biblioref">Behlau, n.d.</a>)</span>.</p>
+<p><strong>NNE discriminates dysphonic voices better than HNR.</strong> In three groups of women — complete glottal coaptation, mid-posterior triangular gap, and vocal nodules — NNE was the <em>most sensitive</em> acoustic parameter and HNR did not differentiate the groups; F0 and jitter were also similar across groups, while shimmer was significantly higher in the nodule group <span class="citation" data-cites="behlauespecialista">(<a href="#ref-behlauespecialista" role="doc-biblioref">Behlau, n.d.</a>)</span>. Published NNE data remain scarce, but preliminary reports suggest the measure performs well in discriminating abnormal voices <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000</a>)</span>.</p>
+<p><strong>What NNE tracks perceptually.</strong> In 26 girls and 24 boys aged ten, normal and dysphonic, NNE correlated most strongly with perceived breathiness, .78 in girls and .77 in boys; less with hoarseness, .50 and .57; and least with roughness, .38 and .48 <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000</a>)</span>.</p>
+<p>The two measures are complementary: HNR appears more informative in normal voices, NNE in dysphonic ones <span class="citation" data-cites="behlauespecialista">(<a href="#ref-behlauespecialista" role="doc-biblioref">Behlau, n.d.</a>)</span>.</p>
+</section>
+<section id="confounds-and-cautions" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="confounds-and-cautions"><span class="header-section-number">7.5</span> Confounds and cautions</h2>
+<p><strong>The most recording-sensitive of the common measures.</strong> In a three-system comparison, only fundamental frequency was resistant to differences in recording condition, and the harmonic-to-noise ratio was the <em>most sensitive</em> parameter of those examined <span class="citation" data-cites="behlauespecialista">(<a href="#ref-behlauespecialista" role="doc-biblioref">Behlau, n.d.</a>)</span>.</p>
+<p><strong>System dependence.</strong> Extraction methods differ across programs and were often unstated in older studies, so values from different systems are not directly comparable; the software and version must be reported <span class="citation" data-cites="behlauespecialista">(<a href="#ref-behlauespecialista" role="doc-biblioref">Behlau, n.d.</a>)</span>. The general warning in the English textbook is that different analysis systems may produce dissimilar results on the same signal, and that until inter-laboratory standards are agreed upon, comparison of data sets must be undertaken with caution <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000</a>)</span>. See <a href="./foundations-pipeline.html">Pipeline Dependence and Reference Values</a>.</p>
+<p><strong>Spectral noise alone is a weak discriminator.</strong> Measured directly rather than as a ratio, spectral noise has been found to be only a fair differentiator of rough and abnormal voices <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000</a>)</span>.</p>
+<p><strong>Harmonic amplitude does not fall indefinitely as noise rises.</strong> As interharmonic spectral noise increases, energy at the harmonic frequencies does decrease, but only up to a point <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000</a>)</span>.</p>
+<p><strong>Vowel and fundamental frequency both matter.</strong> Vowels differ in median noise level in a consistent order, and among normal children a high fundamental frequency was associated with lower noise levels — though that relationship did not hold for the dysphonic children in the same study <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000</a>)</span>.</p>
+<p><strong>Signal typing applies.</strong> As with jitter and shimmer, HNR is reliably measurable only on Type 1 signals <span class="citation" data-cites="titze1995workshop">(<a href="#ref-titze1995workshop" role="doc-biblioref">Titze 1995</a>)</span>.</p>
+</section>
+<section id="points-of-disagreement" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="points-of-disagreement"><span class="header-section-number">7.6</span> Points of disagreement</h2>
+<p><strong>How firm is the 7 dB floor.</strong> The Behlau chapter states that a ratio below 7 dB is necessarily pathological <span class="citation" data-cites="behlauespecialista">(<a href="#ref-behlauespecialista" role="doc-biblioref">Behlau, n.d.</a>)</span>. Yumoto’s own series, the origin of the figure, found three preoperative dysphonic subjects above the 7.4 dB limit <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000</a>)</span>, and the normally speaking elderly group above averaged 5.54 dB, below it <span class="citation" data-cites="ferrand2002hnr">(<a href="#ref-ferrand2002hnr" role="doc-biblioref">Ferrand 2002</a>)</span>. The bound is a 95 per cent confidence limit on one algorithm and one sample, not a diagnostic constant.</p>
+<p><strong>Cohort and software both move the normal range.</strong> The two sets of Brazilian modal-register means in <a href="#tbl-hnr-context" class="quarto-xref">Table&nbsp;<span>7.2</span></a> differ by roughly 3 to 4 dB despite both using the same program on Brazilian speakers <span class="citation" data-cites="behlauespecialista">(<a href="#ref-behlauespecialista" role="doc-biblioref">Behlau, n.d.</a>)</span>. The sources reviewed here do not explain the gap. Any normative threshold used clinically should be tied to its extraction system and reference cohort rather than treated as universal.</p>
+<p><strong>Whether HNR or NNE should be the primary clinical noise measure</strong> remains open. The sources reviewed so far favour NNE for dysphonic voices and HNR for normal-voice screening <span class="citation" data-cites="behlauespecialista">(<a href="#ref-behlauespecialista" role="doc-biblioref">Behlau, n.d.</a>)</span>.</p>
+</section>
+<section id="compute-it-in-phonalab" class="level2" data-number="7.7">
+<h2 data-number="7.7" class="anchored" data-anchor-id="compute-it-in-phonalab"><span class="header-section-number">7.7</span> Compute it in PhonaLab</h2>
 <blockquote class="blockquote">
-<p>Lucero, J. C. (2026). <em>Acoustic Measures of Voice Quality: A Living Reference</em>. Zenodo. https://doi.org/10.5281/zenodo.22739049</p>
+<p><strong><a href="https://phonalab.com">Open PhonaLab →</a></strong></p>
+<p><em>PhonaLab is developed by the author of this reference; see <a href="./intro.html#competing-interests">Competing interests</a>.</em></p>
+<p>PhonaLab reports HNR with its algorithm, settings and task stated alongside the value. It deliberately shows <strong>no normal band and no severity band</strong> for HNR, because no published reference value is compatible with its pipeline — see <a href="#tbl-hnr-cutoffs" class="quarto-xref">Table&nbsp;<span>7.1</span></a>. In particular it does not apply a 7 dB floor.</p>
 </blockquote>
-<p>To cite a specific release, use the versioned DOI listed on that release’s Zenodo record.</p>
-</section>
-<section id="author-and-competing-interests" class="level2">
-<h2 class="anchored" data-anchor-id="author-and-competing-interests">Author and competing interests</h2>
-<p>Written by Jorge C. Lucero, University of Brasília (<a href="https://orcid.org/0000-0003-0597-3808">ORCID 0000-0003-0597-3808</a>). The author also develops PhonaLab, a commercial voice-analysis application; see <a href="./intro.html#competing-interests">Competing interests</a>.</p>
-<p>The text is licensed under CC BY 4.0 and the code under the MIT License. Corrections are welcome through the <em>Report an issue</em> link in the sidebar.</p>
 
 
-</section>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-baken2000clinical" class="csl-entry" role="listitem">
+Baken, Ronald J., and Robert F. Orlikoff. 2000. <em>Clinical Measurement of Speech and Voice</em>. 2nd ed. Singular Thomson Learning.
+</div>
+<div id="ref-behlauespecialista" class="csl-entry" role="listitem">
+Behlau, Mara. n.d. <em>Voz: O Livro Do Especialista</em>. Editora Revinter.
+</div>
+<div id="ref-ferrand2002hnr" class="csl-entry" role="listitem">
+Ferrand, Carole T. 2002. <span>“Harmonics-to-<span>Noise</span> <span>Ratio</span>: An Index of Vocal Aging.”</span> <em>Journal of Voice</em> 16 (4): 480–87. <a href="https://doi.org/10.1016/S0892-1997(02)00123-6">https://doi.org/10.1016/S0892-1997(02)00123-6</a>.
+</div>
+<div id="ref-titze1995workshop" class="csl-entry" role="listitem">
+Titze, Ingo R. 1995. <em>Workshop on <span>Acoustic</span> <span>Voice</span> <span>Analysis</span>: Summary Statement</em>. National Center for Voice; Speech.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->
@@ -794,10 +921,13 @@ Note
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./shimmer.html" class="pagination-link" aria-label="Shimmer (Amplitude Perturbation)">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Shimmer (Amplitude Perturbation)</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./intro.html" class="pagination-link" aria-label="Introduction">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./cpps.html" class="pagination-link" aria-label="Cepstral Peak Prominence (CPP and CPPS)">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Cepstral Peak Prominence (CPP and CPPS)</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -809,7 +939,7 @@ Note
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/LuceroJC/voice-measures/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/LuceroJC/voice-measures/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/LuceroJC/voice-measures/edit/main/hnr.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/LuceroJC/voice-measures/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Built with <a href="https://quarto.org">Quarto</a></p>
 </div>

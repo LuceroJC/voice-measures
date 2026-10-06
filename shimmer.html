@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Jorge C. Lucero">
-<meta name="dcterms.date" content="2026-10-06">
 
-<title>Acoustic Measures of Voice Quality</title>
+<title>6&nbsp; Shimmer (Amplitude Perturbation) – Acoustic Measures of Voice Quality</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -28,7 +26,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -38,7 +55,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./intro.html" rel="next">
+<link href="./hnr.html" rel="next">
+<link href="./jitter.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -90,7 +108,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Welcome</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./jitter.html">Part II — Periodicity and Stability</a></li><li class="breadcrumb-item"><a href="./shimmer.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Shimmer (Amplitude Perturbation)</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -120,7 +138,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Welcome</span></a>
   </div>
 </li>
@@ -176,7 +194,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./shimmer.html" class="sidebar-item-text sidebar-link">
+  <a href="./shimmer.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Shimmer (Amplitude Perturbation)</span></span></a>
   </div>
 </li>
@@ -261,60 +279,31 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#welcome" id="toc-welcome" class="nav-link active" data-scroll-target="#welcome">Welcome</a>
-  <ul class="collapse">
-  <li><a href="#what-makes-it-different" id="toc-what-makes-it-different" class="nav-link" data-scroll-target="#what-makes-it-different">What makes it different</a></li>
-  <li><a href="#in-this-release" id="toc-in-this-release" class="nav-link" data-scroll-target="#in-this-release">In this release</a></li>
-  <li><a href="#coming-next" id="toc-coming-next" class="nav-link" data-scroll-target="#coming-next">Coming next</a></li>
-  <li><a href="#citing-this-reference" id="toc-citing-this-reference" class="nav-link" data-scroll-target="#citing-this-reference">Citing this reference</a></li>
-  <li><a href="#author-and-competing-interests" id="toc-author-and-competing-interests" class="nav-link" data-scroll-target="#author-and-competing-interests">Author and competing interests</a></li>
-  </ul></li>
+  <li><a href="#definition" id="toc-definition" class="nav-link active" data-scroll-target="#definition"><span class="header-section-number">6.1</span> Definition</a></li>
+  <li><a href="#computation" id="toc-computation" class="nav-link" data-scroll-target="#computation"><span class="header-section-number">6.2</span> Computation</a></li>
+  <li><a href="#normative-data" id="toc-normative-data" class="nav-link" data-scroll-target="#normative-data"><span class="header-section-number">6.3</span> Normative data</a></li>
+  <li><a href="#what-it-captures" id="toc-what-it-captures" class="nav-link" data-scroll-target="#what-it-captures"><span class="header-section-number">6.4</span> What it captures</a></li>
+  <li><a href="#confounds-and-cautions" id="toc-confounds-and-cautions" class="nav-link" data-scroll-target="#confounds-and-cautions"><span class="header-section-number">6.5</span> Confounds and cautions</a></li>
+  <li><a href="#points-of-disagreement" id="toc-points-of-disagreement" class="nav-link" data-scroll-target="#points-of-disagreement"><span class="header-section-number">6.6</span> Points of disagreement</a></li>
+  <li><a href="#compute-it-in-phonalab" id="toc-compute-it-in-phonalab" class="nav-link" data-scroll-target="#compute-it-in-phonalab"><span class="header-section-number">6.7</span> Compute it in PhonaLab</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/LuceroJC/voice-measures/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/LuceroJC/voice-measures/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/LuceroJC/voice-measures/edit/main/shimmer.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/LuceroJC/voice-measures/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./jitter.html">Part II — Periodicity and Stability</a></li><li class="breadcrumb-item"><a href="./shimmer.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Shimmer (Amplitude Perturbation)</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Acoustic Measures of Voice Quality</h1>
-<p class="subtitle lead">A Living Reference</p>
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Shimmer (Amplitude Perturbation)</span></h1>
 </div>
 
 
-<div class="quarto-title-meta-author">
-  <div class="quarto-title-meta-heading">Author</div>
-  <div class="quarto-title-meta-heading">Affiliation</div>
-  
-    <div class="quarto-title-meta-contents">
-    <p class="author">Jorge C. Lucero <a href="https://orcid.org/0000-0003-0597-3808" class="quarto-title-author-orcid" aria-label="ORCID profile for Jorge C. Lucero"> <img alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
-  </div>
-  <div class="quarto-title-meta-contents">
-        <p class="affiliation">
-            University of Brasília
-          </p>
-      </div>
-  </div>
 
 <div class="quarto-title-meta">
 
-      
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">October 6, 2026</p>
-    </div>
-  </div>
+    
   
     
-    <div>
-    <div class="quarto-title-meta-heading">Doi</div>
-    <div class="quarto-title-meta-contents">
-      <p class="doi">
-        <a href="https://doi.org/10.5281/zenodo.22739049">10.5281/zenodo.22739049</a>
-      </p>
-    </div>
-  </div>
   </div>
   
 
@@ -322,8 +311,6 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="welcome" class="level1 unnumbered">
-<h1 class="unnumbered">Welcome</h1>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -334,61 +321,205 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Version 0.1 in preparation.</strong> This is an early release that grows chapter by chapter. Pages marked <em>Living draft</em> are complete and sourced, and they will be revised as new sources are added.</p>
+<p><strong>Living draft.</strong> This chapter reflects the sources cited below and will be revised as further sources are incorporated. Found an error? Use the <em>Report an issue</em> link in the sidebar.</p>
 </div>
 </div>
-<p><em>Acoustic Measures of Voice Quality</em> is an open reference on the acoustic measures used to assess the human voice. It is written for speech-language pathologists and voice scientists. For each measure, it covers what the measure means, how it is computed, which reference values exist, and where the measure fails.</p>
-<section id="what-makes-it-different" class="level2">
-<h2 class="anchored" data-anchor-id="what-makes-it-different">What makes it different</h2>
-<ul>
-<li><strong>Every reference value comes with its pipeline.</strong> A CPPS cutoff from one program does not apply to a value from another program, and an AVQI threshold validated in one language does not apply to another. Every normative table states the software, version, settings, speech task and language behind each value, and its compatibility class.</li>
-<li><strong>Absence is declared, not filled.</strong> Where no published reference matches a pipeline, task or language, the table says so instead of borrowing a number.</li>
-<li><strong>Disagreements are shown, not averaged.</strong> When sources conflict, including misprinted equations or inconsistent summary tables, the conflict is set out with both sources.</li>
-<li><strong>Primary sources.</strong> Claims are traced to the original studies. Values are never taken from summary tables without saying so.</li>
-</ul>
+<section id="definition" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="definition"><span class="header-section-number">6.1</span> Definition</h2>
+<p>Measures of amplitude perturbation, generally called shimmer, are analogous to those of frequency perturbation. Shimmer quantifies short-term amplitude instability that does not alter the qualitative features of the vocal waveform <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000</a>)</span>.</p>
+<p>Shimmer is likely at least as important as jitter, and perhaps more so, in its contribution to the perception of <strong>hoarseness</strong>, although there is no unanimity on this point. Its relationship to specific abnormalities of glottal function, or to more global disorders of speech, remains at the very best extremely unclear. What does seem clear is that shimmer values tend to normalise as laryngeal pathology abates <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000</a>)</span>.</p>
+<p>Shimmer has not been as carefully studied as jitter. The effects of fundamental frequency, frequency perturbation and mean amplitude on it remain incompletely characterised, and possible differences due to age and sex await clarification. As with frequency perturbation, the relationship between shimmer magnitude and vocal pathology is very murky. Shimmer measures nonetheless remain popular among clinicians, in part because they are included in most automated voice analysis systems, which make them easy to obtain <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000</a>)</span>.</p>
 </section>
-<section id="in-this-release" class="level2">
-<h2 class="anchored" data-anchor-id="in-this-release">In this release</h2>
-<p><strong>Foundations</strong></p>
-<ul>
-<li><a href="./foundations-signal.html">Signal Fundamentals</a>: sampling, quantization, framing and windows, and the time, frequency and cepstral domains, with computed figures.</li>
-<li><a href="./foundations-signal-typing.html">Signal Typing</a>: the Type 1–4 classification, and which measures are valid for which signals.</li>
-<li><a href="./foundations-pipeline.html">Pipeline Dependence and Reference Values</a>: why a value belongs to the software, settings, task and language that produced it, and how this reference reports reference values.</li>
-</ul>
-<p><strong>Measures</strong></p>
-<ul>
-<li><a href="./cpps.html">Cepstral Peak Prominence (CPP and CPPS)</a></li>
-<li><a href="./avqi.html">Acoustic Voice Quality Index (AVQI)</a></li>
-<li><a href="./abi.html">Acoustic Breathiness Index (ABI)</a></li>
-</ul>
+<section id="computation" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="computation"><span class="header-section-number">6.2</span> Computation</h2>
+<p>Amplitude perturbation is based on the <strong>peak amplitude</strong> of the acoustic wave associated with each phonatory cycle. This is a different value from the rms or average amplitude normally used as the basis of sound pressure level, and the two must not be confused. Without a very elaborate and highly impractical evaluation of the complex vowel waveform, there is no way to convert average peak amplitude to a different intensity measure <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000</a>)</span>.</p>
+<p>Shimmer is reported either in decibels or, normalised against mean amplitude, as a percentage. The <strong>amplitude perturbation quotient</strong> (APQ) applies a moving average to remove the effect of long-term amplitude drift, which is not the quantity of interest but which inflates the measured value. Published APQ data use different smoothing widths, five-point and eleven-point among them <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000</a>)</span>.</p>
 </section>
-<section id="coming-next" class="level2">
-<h2 class="anchored" data-anchor-id="coming-next">Coming next</h2>
-<p>The complete reference is planned in five parts. The chapters below are not yet written.</p>
-<ul>
-<li><strong>Foundations:</strong> recording protocol; F0 detection; voice tasks; perceptual anchors (GRBAS, CAPE-V).</li>
-<li><strong>Periodicity and stability:</strong> F0 measures; jitter; shimmer; voice breaks; perturbation caveats.</li>
-<li><strong>Noise and harmonic structure:</strong> HNR; NHR; GNE; spectral tilt.</li>
-<li><strong>Composite indices:</strong> the Dysphonia Severity Index (DSI); caveats shared by composite indices.</li>
-<li><strong>Machine-learning-derived measures:</strong> a landscape chapter and two worked examples.</li>
-<li><strong>Appendices:</strong> adjunct methods, reproducibility notes and a glossary.</li>
-</ul>
+<section id="normative-data" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="normative-data"><span class="header-section-number">6.3</span> Normative data</h2>
+<p><strong>This reference publishes no shimmer cutoff.</strong></p>
+<p>No source reviewed here states a Praat version and settings for a shimmer reference value. Under the rule in <a href="./foundations-pipeline.html">Pipeline Dependence and Reference Values</a>, an algorithm-defined measure can be compared with a reference only when the reference states the same algorithm, settings, software version and task. No published shimmer reference meets that test against a Praat-based pipeline.</p>
+<div id="tbl-shimmer-cutoffs" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-shimmer-cutoffs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;6.1: Shimmer reference values for a Praat-based pipeline.
+</figcaption>
+<div aria-describedby="tbl-shimmer-cutoffs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Population</th>
+<th>Task</th>
+<th>Pipeline</th>
+<th>Cutoff</th>
+<th>Class</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Any, measured in Praat</td>
+<td>Sustained /a/</td>
+<td>—</td>
+<td>No published reference</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>The values below come from other pipelines and are shown for context only.</p>
+<div id="tbl-shimmer-context" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-shimmer-context-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;6.2: Shimmer values from other pipelines, for context only. Source: <span class="citation" data-cites="baken2000clinical">Baken and Orlikoff (<a href="#ref-baken2000clinical" role="doc-biblioref">2000</a>)</span>.
+</figcaption>
+<div aria-describedby="tbl-shimmer-context-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Measure</th>
+<th>Population</th>
+<th>Task</th>
+<th>Value</th>
+<th>Pipeline</th>
+<th>Class</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Shimmer in dB</td>
+<td>31 men, 18–38 y (mean 26.6)</td>
+<td>Sustained vowels of 5 s at 70–80 dB SPL, F0 held to ±10 Hz; 3-second segment of the least variable of 3 trials</td>
+<td>/a/ 0.47 (SD 0.34), /i/ 0.37 (0.28), /u/ 0.33 (0.31); overall 0.39 (0.31)</td>
+<td>Software not stated; task and level stated in full</td>
+<td>unclassified</td>
+</tr>
+<tr class="even">
+<td>Shimmer in dB</td>
+<td>20 women, 25–49 y (mean 36.8)</td>
+<td>As above</td>
+<td>/a/ 0.33 (SD 0.22), /i/ 0.23 (0.08), /u/ 0.19 (0.04); overall 0.25 (0.11)</td>
+<td>As above</td>
+<td>unclassified</td>
+</tr>
+<tr class="odd">
+<td>Shimmer in dB</td>
+<td>The combined sample</td>
+<td>As above</td>
+<td>95 per cent critical region above 0.98 dB</td>
+<td>As above</td>
+<td>unclassified</td>
+</tr>
+<tr class="even">
+<td>Shimmer in dB</td>
+<td>10 men, 26–37 y (mean 31.8)</td>
+<td>Sustained /a/, at least 8 s excluding the first and last seconds</td>
+<td>0.37 dB at a baseline of 63.32 dB SPL; 0.31 at 74.30; 0.21 at 84.80</td>
+<td>Not stated</td>
+<td>unclassified</td>
+</tr>
+<tr class="odd">
+<td>APQ, acoustic signal</td>
+<td>7 men (mean 27.7 y)</td>
+<td>Sustained /a/ at comfortable pitch and loudness, steadiest 1.5 s, mean F0 108.1 Hz</td>
+<td>40.3 × 10⁻⁴ (SD 13.6 × 10⁻⁴)</td>
+<td>Eleven-point smoothing; pretracheal contact microphone</td>
+<td>unclassified</td>
+</tr>
+<tr class="even">
+<td>APQ, acoustic signal</td>
+<td>2 women (mean 29.5 y)</td>
+<td>As above, mean F0 206.0 Hz</td>
+<td>32.9 × 10⁻⁴ (SD 20.9 × 10⁻⁴)</td>
+<td>As above</td>
+<td>unclassified</td>
+</tr>
+<tr class="odd">
+<td>APQ, inverse-filtered residue</td>
+<td>8 men (mean 28.4 y)</td>
+<td>As above, mean F0 120.0 Hz</td>
+<td>5.97 per cent (SD 3.10)</td>
+<td>Five-point smoothing</td>
+<td>unclassified</td>
+</tr>
+<tr class="even">
+<td>APQ, inverse-filtered residue</td>
+<td>2 women (mean 29.5 y)</td>
+<td>As above, mean F0 206.0 Hz</td>
+<td>6.81 per cent (SD 3.15)</td>
+<td>Five-point smoothing</td>
+<td>unclassified</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>For contrast, the same source reports pathological APQ values on the acoustic signal of 16.7 × 10⁻⁴ in two women with chronic laryngitis, 41.0 × 10⁻⁴ in two men with nodules, 111.3 × 10⁻⁴ in two men with unilateral paralysis, and 120.1 × 10⁻⁴ in one man with a tumour <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000</a>)</span>. The separation from the normal values is large, but the samples are very small and the smoothing width differs between the two source studies, so the comparison is suggestive rather than diagnostic.</p>
 </section>
-<section id="citing-this-reference" class="level2">
-<h2 class="anchored" data-anchor-id="citing-this-reference">Citing this reference</h2>
-<p>Cite the concept DOI, which always resolves to the latest release:</p>
+<section id="what-it-captures" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="what-it-captures"><span class="header-section-number">6.4</span> What it captures</h2>
+<p>Shimmer appears to be inversely, though nonlinearly, proportional to mean vocal intensity, and shimmer and jitter tend to covary <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000</a>)</span>. The loudness effect is visible in <a href="#tbl-shimmer-context" class="quarto-xref">Table&nbsp;<span>6.2</span></a>: mean shimmer falls from 0.37 dB to 0.21 dB as baseline level rises from about 63 to about 85 dB SPL, and the difference between the soft and loud conditions is significant <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000</a>)</span>.</p>
+<p>Vowels differ. In the normative series, /a/ gives significantly higher shimmer than /i/ and /u/ in both sexes, and men and women differ significantly for /i/ and /u/ but not for /a/ <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000</a>)</span>.</p>
+<p>Clinically, shimmer rises in conditions that reduce glottal resistance — vocal fold paralysis is the paradigmatic case, and glottal gaps of any kind also raise it — and with mass lesions or diffuse oedema of the folds <span class="citation" data-cites="behlauespecialista">(<a href="#ref-behlauespecialista" role="doc-biblioref">Behlau, n.d.</a>)</span>. Perceptually it correlates with noise, reported as <em>rouquidão</em> (hoarseness), and with <em>soprosidade</em> (breathiness) <span class="citation" data-cites="behlauespecialista">(<a href="#ref-behlauespecialista" role="doc-biblioref">Behlau, n.d.</a>)</span>; the independent judgement in the English textbook is that shimmer contributes at least as much as jitter to perceived hoarseness <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000</a>)</span>. It is less directly tied to specific dysphonia categories than jitter: it moves in more clinical situations but is a weaker classifier on its own <span class="citation" data-cites="behlauespecialista">(<a href="#ref-behlauespecialista" role="doc-biblioref">Behlau, n.d.</a>)</span>.</p>
+</section>
+<section id="confounds-and-cautions" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="confounds-and-cautions"><span class="header-section-number">6.5</span> Confounds and cautions</h2>
+<p><strong>Accuracy is limited first by bit resolution.</strong> The accuracy of an amplitude perturbation measure can be no better than the precision of the peak amplitude values it is computed from, and the most important limiting factor is the bit resolution of the analog-to-digital converter <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000</a>)</span>.</p>
+<p><strong>Microphone.</strong> Shimmer measurement clearly requires a high-quality air microphone <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000</a>)</span>.</p>
+<p><strong>Recording.</strong> Analog tape recorders add frequency and amplitude variation of their own, inflating perturbation measures. A digital recorder adds significantly less; direct acquisition through the A/D system is preferable <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000</a>)</span>.</p>
+<p><strong>Unit ambiguity.</strong> Percent shimmer and shimmer in decibels are different quantities with different definitions, and systems differ in which they report and how they compute it. Across four systems compared directly, one system’s shimmer is based on a relative average perturbation while a hand-marking system follows a decibel definition <span class="citation" data-cites="bielamowicz1996perturbation">(<a href="#ref-bielamowicz1996perturbation" role="doc-biblioref">Bielamowicz et al. 1996</a>)</span>. A bare percentage names neither the unit’s definition nor the program.</p>
+<p><strong>System dependence.</strong> Under standardized recording and analysis procedures across three systems, amplitude perturbation measurements did not agree <span class="citation" data-cites="karnell1995perturbation">(<a href="#ref-karnell1995perturbation" role="doc-biblioref">Karnell et al. 1995</a>)</span>, and across four systems the rank-order correlations between similar perturbation measures were poor <span class="citation" data-cites="bielamowicz1996perturbation">(<a href="#ref-bielamowicz1996perturbation" role="doc-biblioref">Bielamowicz et al. 1996</a>)</span>. The comparisons are set out in <a href="./foundations-pipeline.html">Pipeline Dependence and Reference Values</a>.</p>
+<p><strong>Aperiodicity defeats the measure.</strong> Measures of aperiodicity apparently cannot be reliably applied to voices that are even mildly aperiodic <span class="citation" data-cites="bielamowicz1996perturbation">(<a href="#ref-bielamowicz1996perturbation" role="doc-biblioref">Bielamowicz et al. 1996</a>)</span>. As with jitter, reliable numerical shimmer requires a Type 1 signal <span class="citation" data-cites="titze1995workshop">(<a href="#ref-titze1995workshop" role="doc-biblioref">Titze 1995</a>)</span>.</p>
+<p><strong>Electroglottographic shimmer is not acoustic shimmer.</strong> Because EGG amplitude reflects contact area rather than acoustic signal amplitude, shimmer from an EGG waveform cannot be substituted for or compared with acoustic shimmer <span class="citation" data-cites="behlauespecialista">(<a href="#ref-behlauespecialista" role="doc-biblioref">Behlau, n.d.</a>)</span>.</p>
+</section>
+<section id="points-of-disagreement" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="points-of-disagreement"><span class="header-section-number">6.6</span> Points of disagreement</h2>
+<p><strong>Bit depth.</strong> The sources set different minima. The Behlau chapter gives a minimum of 16 bits for the analog-to-digital card <span class="citation" data-cites="behlauespecialista">(<a href="#ref-behlauespecialista" role="doc-biblioref">Behlau, n.d.</a>)</span>. Baken and Orlikoff treat bit resolution as the chief limit on shimmer accuracy but set a lower bar for clinical adequacy <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000</a>)</span>. A measurement made near the lower bound of either recommendation should be reported with its bit depth.</p>
+<p><strong>The 3 per cent limit has no traceable pipeline.</strong> It is given as an upper limit of normality for relative measures with no software, version or settings attached, and without specifying whether the unit is percent or decibels <span class="citation" data-cites="behlauespecialista">(<a href="#ref-behlauespecialista" role="doc-biblioref">Behlau, n.d.</a>)</span>. It is therefore not listed as a reference value above. The comparable figure from an English source — a 95 per cent critical region above 0.98 dB — is in decibels, on a stated task, and is not interchangeable with a percentage <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000</a>)</span>.</p>
+</section>
+<section id="compute-it-in-phonalab" class="level2" data-number="6.7">
+<h2 data-number="6.7" class="anchored" data-anchor-id="compute-it-in-phonalab"><span class="header-section-number">6.7</span> Compute it in PhonaLab</h2>
 <blockquote class="blockquote">
-<p>Lucero, J. C. (2026). <em>Acoustic Measures of Voice Quality: A Living Reference</em>. Zenodo. https://doi.org/10.5281/zenodo.22739049</p>
+<p><strong><a href="https://phonalab.com">Open PhonaLab →</a></strong></p>
+<p><em>PhonaLab is developed by the author of this reference; see <a href="./intro.html#competing-interests">Competing interests</a>.</em></p>
+<p>PhonaLab reports shimmer with its algorithm, settings and task stated alongside the value, and in a named unit. It deliberately shows <strong>no normal band and no severity band</strong> for shimmer, because no published reference value is compatible with its pipeline — see <a href="#tbl-shimmer-cutoffs" class="quarto-xref">Table&nbsp;<span>6.1</span></a>.</p>
 </blockquote>
-<p>To cite a specific release, use the versioned DOI listed on that release’s Zenodo record.</p>
-</section>
-<section id="author-and-competing-interests" class="level2">
-<h2 class="anchored" data-anchor-id="author-and-competing-interests">Author and competing interests</h2>
-<p>Written by Jorge C. Lucero, University of Brasília (<a href="https://orcid.org/0000-0003-0597-3808">ORCID 0000-0003-0597-3808</a>). The author also develops PhonaLab, a commercial voice-analysis application; see <a href="./intro.html#competing-interests">Competing interests</a>.</p>
-<p>The text is licensed under CC BY 4.0 and the code under the MIT License. Corrections are welcome through the <em>Report an issue</em> link in the sidebar.</p>
 
 
-</section>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-baken2000clinical" class="csl-entry" role="listitem">
+Baken, Ronald J., and Robert F. Orlikoff. 2000. <em>Clinical Measurement of Speech and Voice</em>. 2nd ed. Singular Thomson Learning.
+</div>
+<div id="ref-behlauespecialista" class="csl-entry" role="listitem">
+Behlau, Mara. n.d. <em>Voz: O Livro Do Especialista</em>. Editora Revinter.
+</div>
+<div id="ref-bielamowicz1996perturbation" class="csl-entry" role="listitem">
+Bielamowicz, Steven, Jody Kreiman, Bruce R. Gerratt, Marc S. Dauer, and Gerald S. Berke. 1996. <span>“Comparison of Voice Analysis Systems for Perturbation Measurement.”</span> <em>Journal of Speech and Hearing Research</em> 39 (1): 126–34. <a href="https://doi.org/10.1044/jshr.3901.126">https://doi.org/10.1044/jshr.3901.126</a>.
+</div>
+<div id="ref-karnell1995perturbation" class="csl-entry" role="listitem">
+Karnell, Michael P., Kelly Dailey Hall, and Karen L. Landahl. 1995. <span>“Comparison of Fundamental Frequency and Perturbation Measurements Among Three Analysis Systems.”</span> <em>Journal of Voice</em> 9 (4): 383–93. <a href="https://doi.org/10.1016/S0892-1997(05)80200-0">https://doi.org/10.1016/S0892-1997(05)80200-0</a>.
+</div>
+<div id="ref-titze1995workshop" class="csl-entry" role="listitem">
+Titze, Ingo R. 1995. <em>Workshop on <span>Acoustic</span> <span>Voice</span> <span>Analysis</span>: Summary Statement</em>. National Center for Voice; Speech.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->
@@ -794,10 +925,13 @@ Note
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./jitter.html" class="pagination-link" aria-label="Jitter (Frequency Perturbation)">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Jitter (Frequency Perturbation)</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./intro.html" class="pagination-link" aria-label="Introduction">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./hnr.html" class="pagination-link" aria-label="Harmonic-to-Noise Ratio (HNR)">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Harmonic-to-Noise Ratio (HNR)</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -809,7 +943,7 @@ Note
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/LuceroJC/voice-measures/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/LuceroJC/voice-measures/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/LuceroJC/voice-measures/edit/main/shimmer.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/LuceroJC/voice-measures/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Built with <a href="https://quarto.org">Quarto</a></p>
 </div>
