@@ -238,10 +238,10 @@ reliable analysis requires optimal data-acquisition conditions
 **The Praat version matters.** With the same AVQI 03.01 script and the same
 218 German recordings, seven Praat versions formed three clusters. Praat
 6.0.44 introduced a bug in the CPPS computation that 6.0.47 fixed. With
-version 6.0.46, AVQI scores were on average about 4.2 points lower, and
+version 6.0.46, AVQI scores were on average 4.16 points lower, and
 sensitivity at the German threshold of 1.85 fell from 72% to 23%. Across the
 unaffected versions, mean differences were negligible, but single recordings
-differed by up to about 0.6 points [@stappenbeck2020praat]. The authors
+differed by up to 0.62 points [@stappenbeck2020praat]. The authors
 recommend using the Praat version of the validation study for the language
 in question, or checking a new version against an earlier one on test
 recordings [@stappenbeck2020praat].

@@ -1,12 +1,179 @@
 ---
-title: "Shimmer"
+title: "Shimmer (Amplitude Perturbation)"
 ---
 
-::: {.callout-warning}
-**Placeholder.** This chapter is planned but not yet written. See the
-[book plan](https://github.com/LuceroJC/voice-measures/blob/main/PLAN.md)
-for its intended scope and target release. In the meantime, the
-[Introduction](intro.qmd) shows where this chapter sits in the reference.
+::: {.callout-note}
+**Living draft.** This chapter reflects the sources cited below and will be
+revised as further sources are incorporated. Found an error? Use the *Report an
+issue* link in the sidebar.
 :::
 
-*This page will be replaced with a full chapter in a later release.*
+## Definition
+
+Measures of amplitude perturbation, generally called shimmer, are analogous to
+those of frequency perturbation. Shimmer quantifies short-term amplitude
+instability that does not alter the qualitative features of the vocal waveform
+[@baken2000clinical].
+
+Shimmer is likely at least as important as jitter, and perhaps more so, in its
+contribution to the perception of **hoarseness**, although there is no
+unanimity on this point. Its relationship to specific abnormalities of glottal
+function, or to more global disorders of speech, remains at the very best
+extremely unclear. What does seem clear is that shimmer values tend to
+normalise as laryngeal pathology abates [@baken2000clinical].
+
+Shimmer has not been as carefully studied as jitter. The effects of fundamental
+frequency, frequency perturbation and mean amplitude on it remain incompletely
+characterised, and possible differences due to age and sex await clarification.
+As with frequency perturbation, the relationship between shimmer magnitude and
+vocal pathology is very murky. Shimmer measures nonetheless remain popular
+among clinicians, in part because they are included in most automated voice
+analysis systems, which make them easy to obtain [@baken2000clinical].
+
+## Computation
+
+Amplitude perturbation is based on the **peak amplitude** of the acoustic wave
+associated with each phonatory cycle. This is a different value from the rms or
+average amplitude normally used as the basis of sound pressure level, and the
+two must not be confused. Without a very elaborate and highly impractical
+evaluation of the complex vowel waveform, there is no way to convert average
+peak amplitude to a different intensity measure [@baken2000clinical].
+
+Shimmer is reported either in decibels or, normalised against mean amplitude,
+as a percentage. The **amplitude perturbation quotient** (APQ) applies a moving
+average to remove the effect of long-term amplitude drift, which is not the
+quantity of interest but which inflates the measured value. Published APQ data
+use different smoothing widths, five-point and eleven-point among them
+[@baken2000clinical].
+
+## Normative data
+
+**This reference publishes no shimmer cutoff.**
+
+No source reviewed here states a Praat version and settings for a shimmer
+reference value. Under the rule in
+[Pipeline Dependence and Reference Values](foundations-pipeline.qmd), an
+algorithm-defined measure can be compared with a reference only when the
+reference states the same algorithm, settings, software version and task. No
+published shimmer reference meets that test against a Praat-based pipeline.
+
+| Population | Task | Pipeline | Cutoff | Class |
+|---|---|---|---|---|
+| Any, measured in Praat | Sustained /a/ | — | No published reference | — |
+
+: Shimmer reference values for a Praat-based pipeline. {#tbl-shimmer-cutoffs}
+
+The values below come from other pipelines and are shown for context only.
+
+| Measure | Population | Task | Value | Pipeline | Class |
+|---|---|---|---|---|---|
+| Shimmer in dB | 31 men, 18–38 y (mean 26.6) | Sustained vowels of 5 s at 70–80 dB SPL, F0 held to ±10 Hz; 3-second segment of the least variable of 3 trials | /a/ 0.47 (SD 0.34), /i/ 0.37 (0.28), /u/ 0.33 (0.31); overall 0.39 (0.31) | Software not stated; task and level stated in full | unclassified |
+| Shimmer in dB | 20 women, 25–49 y (mean 36.8) | As above | /a/ 0.33 (SD 0.22), /i/ 0.23 (0.08), /u/ 0.19 (0.04); overall 0.25 (0.11) | As above | unclassified |
+| Shimmer in dB | The combined sample | As above | 95 per cent critical region above 0.98 dB | As above | unclassified |
+| Shimmer in dB | 10 men, 26–37 y (mean 31.8) | Sustained /a/, at least 8 s excluding the first and last seconds | 0.37 dB at a baseline of 63.32 dB SPL; 0.31 at 74.30; 0.21 at 84.80 | Not stated | unclassified |
+| APQ, acoustic signal | 7 men (mean 27.7 y) | Sustained /a/ at comfortable pitch and loudness, steadiest 1.5 s, mean F0 108.1 Hz | 40.3 × 10⁻⁴ (SD 13.6 × 10⁻⁴) | Eleven-point smoothing; pretracheal contact microphone | unclassified |
+| APQ, acoustic signal | 2 women (mean 29.5 y) | As above, mean F0 206.0 Hz | 32.9 × 10⁻⁴ (SD 20.9 × 10⁻⁴) | As above | unclassified |
+| APQ, inverse-filtered residue | 8 men (mean 28.4 y) | As above, mean F0 120.0 Hz | 5.97 per cent (SD 3.10) | Five-point smoothing | unclassified |
+| APQ, inverse-filtered residue | 2 women (mean 29.5 y) | As above, mean F0 206.0 Hz | 6.81 per cent (SD 3.15) | Five-point smoothing | unclassified |
+
+: Shimmer values from other pipelines, for context only. Source: @baken2000clinical. {#tbl-shimmer-context}
+
+For contrast, the same source reports pathological APQ values on the acoustic
+signal of 16.7 × 10⁻⁴ in two women with chronic laryngitis, 41.0 × 10⁻⁴ in two
+men with nodules, 111.3 × 10⁻⁴ in two men with unilateral paralysis, and
+120.1 × 10⁻⁴ in one man with a tumour [@baken2000clinical]. The separation from
+the normal values is large, but the samples are very small and the smoothing
+width differs between the two source studies, so the comparison is suggestive
+rather than diagnostic.
+
+## What it captures
+
+Shimmer appears to be inversely, though nonlinearly, proportional to mean vocal
+intensity, and shimmer and jitter tend to covary [@baken2000clinical]. The
+loudness effect is visible in @tbl-shimmer-context: mean shimmer falls from
+0.37 dB to 0.21 dB as baseline level rises from about 63 to about 85 dB SPL,
+and the difference between the soft and loud conditions is significant
+[@baken2000clinical].
+
+Vowels differ. In the normative series, /a/ gives significantly higher shimmer
+than /i/ and /u/ in both sexes, and men and women differ significantly for /i/
+and /u/ but not for /a/ [@baken2000clinical].
+
+Clinically, shimmer rises in conditions that reduce glottal resistance — vocal
+fold paralysis is the paradigmatic case, and glottal gaps of any kind also
+raise it — and with mass lesions or diffuse oedema of the folds
+[@behlauespecialista]. Perceptually it correlates with noise, reported as
+*rouquidão* (hoarseness), and with *soprosidade* (breathiness)
+[@behlauespecialista]; the independent judgement in the English textbook is
+that shimmer contributes at least as much as jitter to perceived hoarseness
+[@baken2000clinical]. It is less directly tied to specific dysphonia categories
+than jitter: it moves in more clinical situations but is a weaker classifier on
+its own [@behlauespecialista].
+
+## Confounds and cautions
+
+**Accuracy is limited first by bit resolution.** The accuracy of an amplitude
+perturbation measure can be no better than the precision of the peak amplitude
+values it is computed from, and the most important limiting factor is the bit
+resolution of the analog-to-digital converter [@baken2000clinical].
+
+**Microphone.** Shimmer measurement clearly requires a high-quality air
+microphone [@baken2000clinical].
+
+**Recording.** Analog tape recorders add frequency and amplitude variation of
+their own, inflating perturbation measures. A digital recorder adds
+significantly less; direct acquisition through the A/D system is preferable
+[@baken2000clinical].
+
+**Unit ambiguity.** Percent shimmer and shimmer in decibels are different
+quantities with different definitions, and systems differ in which they report
+and how they compute it. Across four systems compared directly, one system's
+shimmer is based on a relative average perturbation while a hand-marking system
+follows a decibel definition [@bielamowicz1996perturbation]. A bare percentage
+names neither the unit's definition nor the program.
+
+**System dependence.** Under standardized recording and analysis procedures
+across three systems, amplitude perturbation measurements did not agree
+[@karnell1995perturbation], and across four systems the rank-order correlations
+between similar perturbation measures were poor
+[@bielamowicz1996perturbation]. The comparisons are set out in
+[Pipeline Dependence and Reference Values](foundations-pipeline.qmd).
+
+**Aperiodicity defeats the measure.** Measures of aperiodicity apparently
+cannot be reliably applied to voices that are even mildly aperiodic
+[@bielamowicz1996perturbation]. As with jitter, reliable numerical shimmer
+requires a Type 1 signal [@titze1995workshop].
+
+**Electroglottographic shimmer is not acoustic shimmer.** Because EGG amplitude
+reflects contact area rather than acoustic signal amplitude, shimmer from an
+EGG waveform cannot be substituted for or compared with acoustic shimmer
+[@behlauespecialista].
+
+## Points of disagreement
+
+**Bit depth.** The sources set different minima. The Behlau chapter gives a
+minimum of 16 bits for the analog-to-digital card [@behlauespecialista]. Baken
+and Orlikoff treat bit resolution as the chief limit on shimmer accuracy but
+set a lower bar for clinical adequacy [@baken2000clinical]. A measurement made
+near the lower bound of either recommendation should be reported with its bit
+depth.
+
+**The 3 per cent limit has no traceable pipeline.** It is given as an upper
+limit of normality for relative measures with no software, version or settings
+attached, and without specifying whether the unit is percent or decibels
+[@behlauespecialista]. It is therefore not listed as a reference value above.
+The comparable figure from an English source — a 95 per cent critical region
+above 0.98 dB — is in decibels, on a stated task, and is not interchangeable
+with a percentage [@baken2000clinical].
+
+## Compute it in PhonaLab
+
+> **[Open PhonaLab →](https://phonalab.com)**
+>
+> *PhonaLab is developed by the author of this reference; see
+> [Competing interests](intro.qmd#competing-interests).*
+>
+> PhonaLab reports shimmer with its algorithm, settings and task stated
+> alongside the value, and in a named unit. It deliberately shows **no normal
+> band and no severity band** for shimmer, because no published reference value
+> is compatible with its pipeline — see @tbl-shimmer-cutoffs.

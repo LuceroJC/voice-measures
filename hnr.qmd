@@ -1,12 +1,189 @@
 ---
-title: "Harmonics-to-Noise Ratio"
+title: "Harmonic-to-Noise Ratio (HNR)"
 ---
 
-::: {.callout-warning}
-**Placeholder.** This chapter is planned but not yet written. See the
-[book plan](https://github.com/LuceroJC/voice-measures/blob/main/PLAN.md)
-for its intended scope and target release. In the meantime, the
-[Introduction](intro.qmd) shows where this chapter sits in the reference.
+::: {.callout-note}
+**Living draft.** This chapter reflects the sources cited below and will be
+revised as further sources are incorporated. Found an error? Use the *Report an
+issue* link in the sidebar.
 :::
 
-*This page will be replaced with a full chapter in a later release.*
+## Definition
+
+A characteristic feature of hoarseness is the replacement of harmonics by noise
+energy: aperiodic sound intensifies at the expense of the periodic signal. It
+is therefore reasonable to conclude that the best index of hoarseness might be
+the ratio of one to the other, and that is what the harmonic-to-noise ratio
+measures [@baken2000clinical].
+
+The conceptual basis is simple. The voice is considered to have two components,
+perfectly periodic waves and random noise. The H/N ratio is the mean amplitude
+of the wave divided by the mean amplitude of the isolated noise components for
+the train of waves, and for convenience it is expressed in decibels
+[@baken2000clinical].
+
+## Computation
+
+The ratio approach was taken first by Kojima and colleagues and by Kitajima,
+but their computational procedure was complex and inconvenient. It was soon
+improved upon by Yumoto and colleagues, whose procedure was to objectify and
+quantify the features that appear in the spectrogram of the hoarse voice
+[@baken2000clinical].
+
+**Neutralized noise energy** (NNE) is a related measure with a different
+strategy. Regular changes over the sampling interval influence the assessment
+of noise, analogous to the long-term drift problems that plague jitter and
+shimmer. NNE avoids that contaminating influence by basing its analysis on
+relatively few vocal periods and detecting the noise component of the spectrum
+with a specially designed **adaptive comb filter**. Like the H/N ratio it is
+expressed in decibels [@baken2000clinical].
+
+An older family of measures quantifies **spectral noise** directly rather than
+as a ratio. In one such method, speakers sustained vowels for 7 s at a
+monitored 75 dB SPL; a 2-second segment was looped and repeatedly scanned by a
+spectrum analyzer at a very narrow 3 Hz bandwidth, and the minimum noise value
+was measured for each 100-Hz segment of the spectrum from 200 to 8000 Hz
+[@baken2000clinical].
+
+## Normative data
+
+**This reference publishes no HNR cutoff.**
+
+HNR is strongly implementation-dependent, and no source reviewed here states a
+Praat version and settings for an HNR reference value. Under the rule in
+[Pipeline Dependence and Reference Values](foundations-pipeline.qmd), the
+absence is declared rather than filled.
+
+| Population | Task | Pipeline | Cutoff | Class |
+|---|---|---|---|---|
+| Any, measured in Praat | Sustained /a/ | — | No published reference | — |
+
+: HNR reference values for a Praat-based pipeline. {#tbl-hnr-cutoffs}
+
+The values below come from other pipelines and are shown for context only.
+
+| Population | Task | Value | Pipeline | Class |
+|---|---|---|---|---|
+| 22 men and 20 women with no demonstrable vocal disorder | Sustained /a/ | Mean H/N 11.9 dB (SD 2.32), range 7.0–17.0; sexes did not differ significantly; 95 per cent confidence limit 7.4 dB | Yumoto's method; software and settings not stated | unclassified |
+| 12 men and 8 women with various laryngeal pathologies, before surgery | Sustained /a/ | Mean H/N 1.6 dB; after surgery 11.3 dB (SD 3.13), range 5.9–17.6, with about 95 per cent reaching the expected normal range | As above | unclassified |
+| 14 women per group, three age groups | Sustained vowel, onset and offset discarded | Young 7.82 dB, middle-aged 7.86 dB, elderly 5.54 dB; the elderly group differed significantly from both younger groups | Kay Elemetrics CSL 4300; Yumoto's method except that the signal is not preemphasized; 51.2 kHz, 2-second frame; MiniDisc at 44.1 kHz | unclassified for a Praat pipeline |
+| Brazilian women and men, modal register | Sustained vowel | Women 9.4 dB; men 8.6 dB | Soundscope 2.0; algorithm and settings not stated; reported second-hand | unclassified |
+| Women and men, modal register | Sustained vowel | Women 13.9 dB; men 11.8 dB | Soundscope 2.0; second-hand | unclassified |
+| Women and men, falsetto register | Sustained vowel | Women 15.6 dB; men 15 dB | Soundscope 2.0; second-hand | unclassified |
+| Pulse (basal) register | Sustained vowel | Not reliably computable: the noise component is high | Soundscope 2.0; second-hand | unclassified |
+| NNE, normal limit | Not stated | Normal up to −10 dB; values nearer zero, such as −5 or −3 dB, strongly indicate phonatory aperiodicity | Not stated | unclassified |
+
+: HNR and NNE values from other pipelines, for context only. Yumoto and spectral-noise rows: @baken2000clinical. Age-group row: @ferrand2002hnr. Brazilian and NNE rows: @behlauespecialista. {#tbl-hnr-context}
+
+### Where the 7 dB bound comes from
+
+The widely repeated figure traces to Yumoto's series, whose 95 per cent
+confidence limit for normal speakers was **7.4 dB**, with a normal mean of
+11.9 dB [@baken2000clinical]. The same 7.4 dB figure is reported independently
+[@ferrand2002hnr]. It is commonly carried rounded to 7 dB, with the stronger
+claim that a ratio below 7 dB is necessarily pathological
+[@behlauespecialista].
+
+Three cautions follow. The bound belongs to the Yumoto algorithm family and is
+not a cross-system constant. In Yumoto's own data, three of the twenty
+preoperative dysphonic subjects had ratios above the 7.4 dB limit, and they
+were the ones with very slight clinical hoarseness [@baken2000clinical]. And
+in the age-group series above, the healthy young and middle-aged means of
+7.82 dB and 7.86 dB sit only just above the bound, while the elderly group's
+mean of 5.54 dB falls below it although the group was normally speaking
+[@ferrand2002hnr]. **A 7 dB floor applied to older speakers would classify
+healthy voices as pathological.**
+
+## What it captures
+
+HNR rises with better harmonic structure and falls with more noise. It is lower
+in men and higher in women, and highest in falsetto, then modal, then pulse
+register — so a value is interpretable only in the register in which the voice
+was recorded [@behlauespecialista].
+
+Diffuse mass lesions can give paradoxically high values: in Reinke's oedema the
+preserved harmonic component can keep the ratio high, so HNR alone can
+under-flag these voices. Small glottal gaps can give a low ratio or raised NNE,
+without exact correlation to the perceptual grade of dysphonia. The measure is
+useful for monitoring the course of paralytic dysphonias and partial
+laryngectomies [@behlauespecialista].
+
+**NNE discriminates dysphonic voices better than HNR.** In three groups of
+women — complete glottal coaptation, mid-posterior triangular gap, and vocal
+nodules — NNE was the *most sensitive* acoustic parameter and HNR did not
+differentiate the groups; F0 and jitter were also similar across groups, while
+shimmer was significantly higher in the nodule group [@behlauespecialista].
+Published NNE data remain scarce, but preliminary reports suggest the measure
+performs well in discriminating abnormal voices [@baken2000clinical].
+
+**What NNE tracks perceptually.** In 26 girls and 24 boys aged ten, normal and
+dysphonic, NNE correlated most strongly with perceived breathiness, .78 in
+girls and .77 in boys; less with hoarseness, .50 and .57; and least with
+roughness, .38 and .48 [@baken2000clinical].
+
+The two measures are complementary: HNR appears more informative in normal
+voices, NNE in dysphonic ones [@behlauespecialista].
+
+## Confounds and cautions
+
+**The most recording-sensitive of the common measures.** In a three-system
+comparison, only fundamental frequency was resistant to differences in
+recording condition, and the harmonic-to-noise ratio was the *most sensitive*
+parameter of those examined [@behlauespecialista].
+
+**System dependence.** Extraction methods differ across programs and were often
+unstated in older studies, so values from different systems are not directly
+comparable; the software and version must be reported
+[@behlauespecialista]. The general warning in the English textbook is that
+different analysis systems may produce dissimilar results on the same signal,
+and that until inter-laboratory standards are agreed upon, comparison of data
+sets must be undertaken with caution [@baken2000clinical]. See
+[Pipeline Dependence and Reference Values](foundations-pipeline.qmd).
+
+**Spectral noise alone is a weak discriminator.** Measured directly rather than
+as a ratio, spectral noise has been found to be only a fair differentiator of
+rough and abnormal voices [@baken2000clinical].
+
+**Harmonic amplitude does not fall indefinitely as noise rises.** As
+interharmonic spectral noise increases, energy at the harmonic frequencies does
+decrease, but only up to a point [@baken2000clinical].
+
+**Vowel and fundamental frequency both matter.** Vowels differ in median noise
+level in a consistent order, and among normal children a high fundamental
+frequency was associated with lower noise levels — though that relationship did
+not hold for the dysphonic children in the same study [@baken2000clinical].
+
+**Signal typing applies.** As with jitter and shimmer, HNR is reliably
+measurable only on Type 1 signals [@titze1995workshop].
+
+## Points of disagreement
+
+**How firm is the 7 dB floor.** The Behlau chapter states that a ratio below
+7 dB is necessarily pathological [@behlauespecialista]. Yumoto's own series,
+the origin of the figure, found three preoperative dysphonic subjects above the
+7.4 dB limit [@baken2000clinical], and the normally speaking elderly group
+above averaged 5.54 dB, below it [@ferrand2002hnr]. The bound is a 95 per cent
+confidence limit on one algorithm and one sample, not a diagnostic constant.
+
+**Cohort and software both move the normal range.** The two sets of Brazilian
+modal-register means in @tbl-hnr-context differ by roughly 3 to 4 dB despite
+both using the same program on Brazilian speakers [@behlauespecialista]. The
+sources reviewed here do not explain the gap. Any normative threshold used
+clinically should be tied to its extraction system and reference cohort rather
+than treated as universal.
+
+**Whether HNR or NNE should be the primary clinical noise measure** remains
+open. The sources reviewed so far favour NNE for dysphonic voices and HNR for
+normal-voice screening [@behlauespecialista].
+
+## Compute it in PhonaLab
+
+> **[Open PhonaLab →](https://phonalab.com)**
+>
+> *PhonaLab is developed by the author of this reference; see
+> [Competing interests](intro.qmd#competing-interests).*
+>
+> PhonaLab reports HNR with its algorithm, settings and task stated alongside
+> the value. It deliberately shows **no normal band and no severity band** for
+> HNR, because no published reference value is compatible with its pipeline —
+> see @tbl-hnr-cutoffs. In particular it does not apply a 7 dB floor.

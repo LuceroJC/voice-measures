@@ -13,6 +13,9 @@ project:
     - cpps.qmd
     - avqi.qmd
     - abi.qmd
+    - jitter.qmd
+    - shimmer.qmd
+    - hnr.qmd
     - release-notes.qmd  
 
 book:
@@ -40,8 +43,13 @@ book:
         - foundations-signal.qmd
         - foundations-signal-typing.qmd
         - foundations-pipeline.qmd
+    - part: "Part II — Periodicity and Stability"
+      chapters:
+        - jitter.qmd
+        - shimmer.qmd
     - part: "Part III — Noise and Harmonic Structure"
       chapters:
+        - hnr.qmd
         - cpps.qmd
     - part: "Part IV — Composite Indices"
       chapters:

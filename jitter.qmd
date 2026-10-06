@@ -1,12 +1,197 @@
 ---
-title: "Jitter"
+title: "Jitter (Frequency Perturbation)"
 ---
 
-::: {.callout-warning}
-**Placeholder.** This chapter is planned but not yet written. See the
-[book plan](https://github.com/LuceroJC/voice-measures/blob/main/PLAN.md)
-for its intended scope and target release. In the meantime, the
-[Introduction](intro.qmd) shows where this chapter sits in the reference.
+::: {.callout-note}
+**Living draft.** This chapter reflects the sources cited below and will be
+revised as further sources are incorporated. Found an error? Use the *Report an
+issue* link in the sidebar.
 :::
 
-*This page will be replaced with a full chapter in a later release.*
+## Definition
+
+Jitter is the variability of the fundamental frequency — or, reciprocally, of
+the fundamental period — from one cycle to the next. It measures how much a
+given period differs from the period that immediately follows it, not how much
+it differs from a cycle at the other end of the utterance. It therefore
+captures the frequency variability that is *not* accounted for by voluntary
+changes in F0 [@baken2000clinical].
+
+In an ideal and perfectly stable mechanism there would be no difference between
+fundamental periods except when a speaker purposely changed pitch, and
+perturbation would be zero. To the extent that jitter is not zero, perturbation
+is an acoustic correlate of erratic vibratory patterns arising from diminished
+neuromotor and aerodynamic control and from altered tissue rheology
+[@baken2000clinical].
+
+## Computation
+
+There is a very large number of ways an index of frequency perturbation might
+be calculated, and each has different advantages and drawbacks. All of them can
+legitimately be called indices of jitter. The plurality of methods and the
+perils of interpretation call for judicious — "very judicious" —
+application [@baken2000clinical].
+
+**Absolute measures** ignore the speaker's F0. Several have been devised,
+although none has proven very popular. Lieberman's *perturbation factor* is the
+percentage of period differences equal to or greater than half a millisecond.
+The *directional perturbation factor* (DPF) is the percentage of period
+differences that change sign [@baken2000clinical].
+
+**F0-related measures** exist because the magnitude of perturbation correlates
+considerably with mean fundamental frequency: larger cycle-to-cycle period
+differences go with longer fundamental periods, so higher frequencies tend to
+show less perturbation. In one series of six men sustaining tones at roughly
+2-semitone intervals, mean perturbation decreased as F0 increased with a
+correlation of −.95, though the relationship is neither monotonic nor
+invariable. There is no way to compensate exactly for mean F0 and obtain an
+"uninfluenced" index; the best compromise is a ratio of mean perturbation to
+mean period, which is what most jitter indices compute [@baken2000clinical].
+
+**Relative average perturbation** (RAP), also called the *frequency
+perturbation quotient*, addresses a problem all the preceding indices share:
+even during a sustained vowel, F0 may drift slowly in ways that are not of
+interest but that inflate the measure. RAP estimates a drift-free value for
+each period by averaging it with the periods before and after it — a three-point
+straight-line average [@baken2000clinical].
+
+## Normative data
+
+**This reference publishes no jitter cutoff.**
+
+No source reviewed here states a Praat version and settings for a jitter
+reference value. Under the rule set out in
+[Pipeline Dependence and Reference Values](foundations-pipeline.qmd), an
+algorithm-defined measure can be compared with a reference only when the
+reference states the same algorithm, settings, software version and task. No
+published jitter reference meets that test against a Praat-based pipeline, so
+the absence is declared rather than filled.
+
+| Population | Task | Pipeline | Cutoff | Class |
+|---|---|---|---|---|
+| Any, measured in Praat | Sustained /a/ | — | No published reference | — |
+
+: Jitter reference values for a Praat-based pipeline. {#tbl-jitter-cutoffs}
+
+There is a second reason for caution, independent of the first and specific to
+jitter: at normal speaking frequencies the measurement error is of the same
+order as the quantity being measured. See *Confounds and cautions* below.
+
+The values below are from other pipelines and are shown for context only. Each
+is attributed to the study the textbook names; none states a software version,
+and where the analysis system is named it is given.
+
+| Measure | Population | Task | Value | Pipeline | Class |
+|---|---|---|---|---|---|
+| Jitter ratio | 6 men, 26–33 y | Sustained vowel, mean F0 109.8 Hz | 0.461 (range 0.408–0.590); absolute 0.042 ms | Not stated | unclassified |
+| Jitter ratio | 6 men, 68–80 y | Sustained vowel, mean F0 120.1 Hz | 0.625 (range 0.468–0.740); absolute 0.053 ms | Not stated | unclassified |
+| Jitter factor | 4 men, 21–37 y | Sustained vowel, four frequencies | 0.47 at 102 Hz; 0.53 at 142 Hz; 0.43 at 198 Hz; 0.97 at 275 Hz | Not stated | unclassified |
+| Jitter factor | 5 men, 55–71 y | Sustained vowel, mean F0 115.3 Hz | 0.99 (range 0.76–1.49) | Not stated | unclassified |
+| RAP × 100 | 24 men, 18–25 y | Sustained /a/, mean F0 117.8 Hz | 0.38 (SD 0.169) | Kay Elemetrics Visi-Pitch; version and settings not stated | unclassified |
+| RAP × 100 | 25 women, 18–25 y | Sustained /a/, mean F0 222.9 Hz | 0.89 (SD 0.622) | As above | unclassified |
+| RAP × 100 | 50 men, mean 30 y | Sustained /a/, mean F0 107.5 Hz | 0.28 (SD 0.12) | Not stated | unclassified |
+| DPF | 20 men, 20 women | Sustained /a/, /u/, /i/ | Men 46.24, 49.26, 46.37; women 48.79, 52.77, 52.04 per cent sign change | Not stated; called tentative norms | unclassified |
+| Relative jitter | 14 women per group, three age groups | Sustained vowel, onset and offset discarded | Young 0.69, middle-aged 0.57, elderly 0.66 per cent; groups did not differ significantly | Kay Elemetrics CSL 4300, voice analysis function; 51.2 kHz, 2-second frame; MiniDisc at 44.1 kHz | unclassified for a Praat pipeline | 
+
+: Jitter values from other pipelines, for context only. Textbook rows: @baken2000clinical. Age-group row: @ferrand2002hnr. {#tbl-jitter-context}
+
+The last row of @tbl-jitter-context is the best-documented in it and still
+cannot serve as a cutoff for a Praat measurement. Its pipeline is stated completely; it simply
+belongs to another engine.
+
+## Confounds and cautions
+
+**The measurement error can be as large as the measurement.** Perturbation can
+be no more accurate than the period determinations it is computed from, which
+are limited by the sampling frequency and the F0-extraction method. At a
+sampling rate of 25,000 per second the maximum relative jitter error is about
+0.2 per cent for a voice averaging 100 Hz, and about 0.6 per cent at 300 Hz.
+Compared with the expected jitter of a normal voice, the error in both cases is
+quite large, and raising the sampling rate enough is generally not feasible
+[@baken2000clinical].
+
+**Never report an index without inspecting the F0 record.** "Undertaking a
+numerical analysis of vocal frequency perturbation without checking for signs
+of patterns of F0 variation is very poor practice indeed." The textbook's
+illustration is an 81-year-old woman diagnosed with spasmodic dysphonia whose
+F0 record shows a slow frequency tremor with a superimposed faster tremor and
+intervals of diplophonia. A single jitter index would have missed the salient
+features of her problem [@baken2000clinical].
+
+**Extraction algorithm.** There are three basic choices — zero crossing, peak
+picking and waveform matching. Peak-picking and zero-crossing methods cannot be
+relied upon for adequate precision, especially for the perturbations
+characteristic of normal voices, and are seriously affected by additive noise.
+Waveform matching loses accuracy when frequency variations are large. Filtering
+can improve the first two in principle, but may also degrade the resulting
+measure [@baken2000clinical].
+
+**Vibrato is not jitter.** Vibrato is a periodic variation of F0 of up to about
+3 per cent, or about 1.4 semitones, at about 4 to 7 cycles per second, usually
+accompanied by comparable amplitude variation [@baken2000clinical].
+
+**Minimum sample.** For normal voices with only minimal roughness, as few as 30
+consecutive cycles may be adequate, though more cycles reduce the variability
+introduced by analysing from different starting points, which carry different
+amounts of residual onset transition [@baken2000clinical].
+
+**Recording.** Analog tape recorders introduce considerable frequency and
+amplitude variation of their own, which inflates perturbation measures; they
+should not be used unless absolutely necessary. A digital recorder adds
+significantly less, and acquiring the sample through the A/D system directly
+into the computer is preferable. Cardioid condenser microphones with a balanced
+output are preferred, set close to the speaker [@baken2000clinical].
+
+**Signal typing.** Numerical jitter is reliable only on Type 1 signals. On Type
+2 signals, visual analysis of stable segments is the fallback; on Type 3
+signals neither numerical nor visual analysis holds
+[@titze1995workshop; @behlauespecialista]. Taken with the finding that measures
+of aperiodicity apparently cannot be reliably applied to voices that are even
+mildly aperiodic [@bielamowicz1996perturbation], this confines reliable jitter
+to Type 1 signals — which excludes much of the clinical population the measure
+is used on.
+
+**System dependence.** Different analysis systems may produce dissimilar
+results on the same signal, and software characteristics do not account for all
+of the variability; until inter-laboratory standards are agreed upon,
+comparison of data sets must be undertaken with caution [@baken2000clinical].
+The size of the problem is set out in
+[Pipeline Dependence and Reference Values](foundations-pipeline.qmd), which
+compares three and four analysis systems directly
+[@karnell1995perturbation; @bielamowicz1996perturbation].
+
+## Points of disagreement
+
+**Direction of the F0 effect.** The sources disagree on the sign. Baken and
+Orlikoff state that larger cycle-to-cycle differences go with longer
+fundamental periods, so perturbation decreases as F0 rises
+[@baken2000clinical]. The Behlau chapter states that low F0 and weak intensity
+give lower values [@behlauespecialista]. These cannot both hold; this chapter
+follows the English primary, which reports the correlation and the caution that
+the relationship is not monotonic.
+
+**Minimum number of cycles.** Baken and Orlikoff put the minimum at about 30
+consecutive cycles for a normal voice [@baken2000clinical]; the Behlau chapter
+recommends at least 1 second and at least 100 cycles in its F0 guidance
+[@behlauespecialista]. The two are not strictly comparable — one is a minimum
+for a valid perturbation estimate, the other a recommendation for F0 analysis —
+but a clinician reading both will meet different numbers.
+
+**The figure 0.5 means two different things.** In Baken and Orlikoff, 0.5 ms is
+the threshold inside Lieberman's perturbation factor [@baken2000clinical]. In
+the Behlau chapter, 0.5 per cent is given as an upper limit of normality for
+relative measures, with no software, version or settings attached
+[@behlauespecialista]. They are not the same quantity, and the second has no
+traceable pipeline, so it is not listed as a reference value above.
+
+## Compute it in PhonaLab
+
+> **[Open PhonaLab →](https://phonalab.com)**
+>
+> *PhonaLab is developed by the author of this reference; see
+> [Competing interests](intro.qmd#competing-interests).*
+>
+> PhonaLab reports jitter with its algorithm, settings and task stated
+> alongside the value. It deliberately shows **no normal band and no severity
+> band** for jitter, because no published reference value is compatible with
+> its pipeline — the reasoning is in @tbl-jitter-cutoffs above.
