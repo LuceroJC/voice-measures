@@ -1,0 +1,139 @@
+# Release notes and errata {#sec-release-notes .unnumbered}
+
+This reference is written to be revised, and each release is deposited on
+Zenodo with its own versioned DOI. When a value or a statement that appeared
+in an earlier release is corrected, the change is recorded here, so that a
+reader working from an earlier version can see exactly what moved and why.
+Corrections are not made silently.
+
+Entries are newest first. "v0.1.0 said" refers to the text as deposited in
+that release's Zenodo record, not to the live site, which is revised
+continuously between releases.
+
+## v0.1.1 — 2026-10-06 {.unnumbered}
+
+A correction and sourcing release. No chapter was added or removed. Eight
+statements published in v0.1.0 are corrected, five of them because the claim
+has since been checked against its primary source rather than a secondary
+citation; four new language validations are added.
+
+### Corrections to v0.1.0 {.unnumbered}
+
+**Signal Typing — `@tbl-type-measures`, Type 2 row.** v0.1.0 followed Ludlow,
+Kent and Gray on what may be measured from a Type 2 signal. The table now
+follows Titze's summary statement [p. 19, pp. 26–27], which differs. This is a
+substantive change to what the table says about Type 2, not a rewording. The
+disagreement between Titze and Sprecher et al. on whether Type 2 signals
+support perturbation analysis is now stated explicitly in Points of
+disagreement, together with the authors' own acknowledgement of it.
+
+**AVQI — Dutch internal validation.** v0.1.0 carried the sensitivity and
+specificity as reported in the secondary literature, which transposes them.
+The correct figures are **sensitivity 1.00 and specificity 0.936** at a
+threshold of 2.43, AROC 0.98. The figures are now also correctly attributed,
+to Barsties v. Latoszek and Maryn (2015), VD-2 condition, p. 653, and
+identified as **development-sample** figures. They are therefore recorded as
+internal-validation context and not as a second Dutch cutoff; the Dutch row
+keeps its external validation on 1058 samples.
+
+**AVQI — Japanese row.** v0.1.0 carried the threshold of 2.06 from a
+second-hand citation, without the pipeline or the derivation criterion. The
+value is confirmed against the primary source (Hosokawa et al. 2019, *Journal
+of Voice* 33(1):125.e1–125.e12): 2.06, sensitivity 0.721, specificity 0.938,
+AUC 0.915, 30 syllables, 455 recordings. The derivation criterion is now
+stated, and it matters: 2.06 is the **95th percentile of the study's
+controls**, not a Youden-index value. The same paper derives 1.41 by the
+Youden index and reports 64.6% / 97.3% for the Dutch 2.43 applied to its own
+sample. The authors recommend 2.06 and the table follows them, so the Japanese
+row is not criterion-comparable with the Youden-derived rows.
+
+**AVQI — threshold caveat.** The caveat that thresholds differ "by language"
+now reads **by language, by version, and by derivation criterion**. Part of
+the published spread in AVQI thresholds is a spread of derivation methods, not
+of populations.
+
+**ABI — Japanese row.** The row is promoted from a second-hand citation to its
+primary source (Hosokawa et al. 2019, *JSLHR* 62(8):2617–2631): 3.44,
+sensitivity 76.3%, specificity 94.1%, AUC 0.939, Praat 6.0.20, 30 syllables.
+Three easily confused Hosokawa papers are now distinguished in the chapter —
+the AVQI v02.02 validation, the AVQI v03.01 validation, and this ABI
+validation.
+
+**ABI — Brazilian Portuguese provenance.** v0.1.0 cited this threshold through
+a meta-analysis, as "Int Arch Otorhinolaryngol 2019;23:106". That citation
+does not resolve. The source is abstract 8972 in the annals of the 18th
+Congress of the Otorhinolaryngology Foundation, p. S106, and is now cited
+directly. The meta-analysis's Table 1 superscripts are off by one on four of
+six rows; this is recorded so that readers checking the meta-analysis against
+this reference are not misled by it.
+
+**ABI — evidence-base caveat.** The Fleiss κ of 0.353 is now cited directly to
+the abstract rather than to the meta-analysis, and identified as the
+**breathiness** agreement figure specifically, not an overall one.
+
+**CPPS — history table.** The Hillenbrand-derived cutoffs were published
+without their program recorded. They are **SpeechTool-scale** values. Praat
+and SpeechTool CPPS differ by about **5 dB** on the same 289 recordings (6.61
+against 11.66), with the relation y = 1.4387x + 2.1543, r² = 0.924, so a
+cutoff from one program cannot be applied to output from the other. This
+explains why the Hillenbrand cutoffs are not low Praat values. The ADSV rows
+are unaffected by this correction; they remain unclassified for a separate
+reason, namely that no ADSV version is stated by their sources.
+
+### Added in v0.1.1 {.unnumbered}
+
+- **ABI, Brazilian Portuguese: 2.94** — counting 1 to 20 with the voiced parts
+  equalized (37 syllables), 150 speakers; sensitivity 75.3%, specificity
+  93.4%, ROC accuracy 85.2%.
+- **ABI, Malayalam and Kannada: 3.66** — the breathiness-referenced value. The
+  3.41 reported in the same study against overall grade is recorded only to
+  prevent its misuse. The study's two printed LR− values are impossible as
+  printed; recomputed they are 0.40 and 0.51.
+- **ABI, Persian: 2.97.** The published ABI thresholds now span 2.35 to 3.69.
+- **AVQI, Persian: 1.63.**
+- **AVQI, Japanese v02.02: 3.15** — on a different scale from the v03.01
+  value, and distinguished from it.
+- **AVQI**: a new subsection on threshold derivation criteria, and a caveat on
+  the equal proportion required of the two speech tasks.
+- **Signal Typing**: Type 4 re-sourced to Sprecher et al. (2010), including
+  the point that adding Type 4 subdivides Titze's Type 3 rather than
+  contradicting it.
+
+### Declared absences {.unnumbered}
+
+Two rows carry no Praat version, because none is stated by the source:
+
+- the Brazilian Portuguese ABI row (2.94) — the congress abstract does not
+  state one; the companion paper on the same sample and task states 6.0.40,
+  which is recorded as context and not as this row's pipeline;
+- the Japanese AVQI v03.01 row (2.06).
+
+These are recorded as *not stated* rather than inferred. A pipeline that the
+source does not state is not supplied from elsewhere.
+
+### Held {.unnumbered}
+
+Normative AVQI data for Tamil is held out of the chapters until a paginated
+version of record exists. Its reported mean of 3.4 in normophonic speakers
+sits above every published v03.01 dysphonia threshold, which points to its
+speech material — seven whole CAPE-V sentences rather than a standardized
+syllable count — but that objection is an inference rather than a statement in
+the source, and the source carries no pagination to anchor it to.
+
+## v0.1.0 — 2026-09-29 {.unnumbered}
+
+First public release. Three measure chapters — Cepstral Peak Prominence (CPP
+and CPPS), the Acoustic Voice Quality Index (AVQI), and the Acoustic
+Breathiness Index (ABI) — with three Foundations chapters on signal
+fundamentals, signal typing, and pipeline dependence.
+
+## Citing a specific version {.unnumbered}
+
+The concept DOI [10.5281/zenodo.22739049](https://doi.org/10.5281/zenodo.22739049)
+always resolves to the latest release. To cite the version you actually read,
+use the versioned DOI shown on that release's Zenodo record, and give the
+chapter title and section:
+
+> Lucero, J. C. (2026). *Acoustic Measures of Voice Quality*, v0.1.1,
+> "Acoustic Breathiness Index", §7.3. Zenodo.
+> https://doi.org/10.5281/zenodo.XXXXXXXX
