@@ -6,3 +6,4 @@ __pycache__/
 # NOTE: do NOT ignore /_freeze/ — commit it so CI reuses cached execution.
 
 **/*.quarto_ipynb
+batch*.patch
