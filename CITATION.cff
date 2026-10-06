@@ -17,7 +17,7 @@ identifiers:
     value: "10.5281/zenodo.22739049"
     description: "Concept DOI (all versions)"
   - type: doi
-    value: "10.5281/zenodo.23045678"
-    description: "Version DOI (v0.1.0)"
+    value: "10.5281/zenodo.23190550"
+    description: "Version DOI (v0.1.1)"
 # The archived Zenodo record classifies this as a book (see .zenodo.json).
 # CFF's top-level type field only accepts software/dataset, so it is omitted here.
