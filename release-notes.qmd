@@ -76,11 +76,24 @@ a page that claim cites, rather than only that the cited page exists.
   pipeline. Every `unclassified` cell now carries its reason — most often that
   no software version is stated.
 
-### Unresolved, and visible {.unnumbered}
+### Corrected after deposit {.unnumbered}
 
-Two coefficient attributions could not be settled from the ingested text and
-are being checked against the publisher PDFs. Both are flagged where they
-appear rather than quietly left.
+*2026-10-06.* As first published, this entry carried a paragraph headed
+"Unresolved, and visible", saying that two coefficient attributions were still
+being checked against the publisher PDFs. That was already out of date when the
+release was deposited, and the paragraph has been removed. Both had been
+settled:
+
+- The AVQI **Tilt coefficient of 0.093** attributed to Englert et al. (2021) is
+  present in the equation on p. 160.e17. It is absent from this library's
+  extracted text because displayed equations do not survive PDF text
+  extraction — a limitation now recorded against that source, so that
+  coefficient claims on it are known to need a check against the PDF.
+- The second was the Stappenbeck figure corrected under *Corrections to
+  v0.1.1* above, in this same release.
+
+The Zenodo deposit for v0.2.0 still contains the original paragraph. This note
+is the correction of record.
 
 ## v0.1.1 — 2026-10-06 {.unnumbered}
 
