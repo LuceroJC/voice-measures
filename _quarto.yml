@@ -16,7 +16,8 @@ project:
     - jitter.qmd
     - shimmer.qmd
     - hnr.qmd
-    - release-notes.qmd  
+    - release-notes.qmd
+    - gne.qmd  
 
 book:
   title: "Acoustic Measures of Voice Quality"
@@ -51,6 +52,7 @@ book:
     - part: "Part III — Noise and Harmonic Structure"
       chapters:
         - hnr.qmd
+        - gne.qmd
         - cpps.qmd
     - part: "Part IV — Composite Indices"
       chapters:
