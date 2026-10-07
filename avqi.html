@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>9&nbsp; Acoustic Voice Quality Index (AVQI) – Acoustic Measures of Voice Quality</title>
+<title>10&nbsp; Acoustic Voice Quality Index (AVQI) – Acoustic Measures of Voice Quality</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -138,7 +138,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./avqi.html">Part IV — Composite Indices</a></li><li class="breadcrumb-item"><a href="./avqi.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Acoustic Voice Quality Index (AVQI)</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./avqi.html">Part IV — Composite Indices</a></li><li class="breadcrumb-item"><a href="./avqi.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Acoustic Voice Quality Index (AVQI)</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -247,8 +247,14 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./gne.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Glottal-to-Noise Excitation Ratio (GNE)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./cpps.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Cepstral Peak Prominence (CPP and CPPS)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Cepstral Peak Prominence (CPP and CPPS)</span></span></a>
   </div>
 </li>
       </ul>
@@ -265,13 +271,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./avqi.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Acoustic Voice Quality Index (AVQI)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Acoustic Voice Quality Index (AVQI)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./abi.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Acoustic Breathiness Index (ABI)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Acoustic Breathiness Index (ABI)</span></span></a>
   </div>
 </li>
       </ul>
@@ -303,28 +309,28 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#definition" id="toc-definition" class="nav-link active" data-scroll-target="#definition"><span class="header-section-number">9.1</span> Definition</a></li>
-  <li><a href="#computation" id="toc-computation" class="nav-link" data-scroll-target="#computation"><span class="header-section-number">9.2</span> Computation</a>
+  <li><a href="#definition" id="toc-definition" class="nav-link active" data-scroll-target="#definition"><span class="header-section-number">10.1</span> Definition</a></li>
+  <li><a href="#computation" id="toc-computation" class="nav-link" data-scroll-target="#computation"><span class="header-section-number">10.2</span> Computation</a>
   <ul class="collapse">
-  <li><a href="#speech-material-and-concatenation" id="toc-speech-material-and-concatenation" class="nav-link" data-scroll-target="#speech-material-and-concatenation"><span class="header-section-number">9.2.1</span> Speech material and concatenation</a></li>
-  <li><a href="#component-measures" id="toc-component-measures" class="nav-link" data-scroll-target="#component-measures"><span class="header-section-number">9.2.2</span> Component measures</a></li>
-  <li><a href="#regression-equation-version-03.01" id="toc-regression-equation-version-03.01" class="nav-link" data-scroll-target="#regression-equation-version-03.01"><span class="header-section-number">9.2.3</span> Regression equation (version 03.01)</a></li>
-  <li><a href="#versions-02.02-and-03.01" id="toc-versions-02.02-and-03.01" class="nav-link" data-scroll-target="#versions-02.02-and-03.01"><span class="header-section-number">9.2.4</span> Versions 02.02 and 03.01</a></li>
+  <li><a href="#speech-material-and-concatenation" id="toc-speech-material-and-concatenation" class="nav-link" data-scroll-target="#speech-material-and-concatenation"><span class="header-section-number">10.2.1</span> Speech material and concatenation</a></li>
+  <li><a href="#component-measures" id="toc-component-measures" class="nav-link" data-scroll-target="#component-measures"><span class="header-section-number">10.2.2</span> Component measures</a></li>
+  <li><a href="#regression-equation-version-03.01" id="toc-regression-equation-version-03.01" class="nav-link" data-scroll-target="#regression-equation-version-03.01"><span class="header-section-number">10.2.3</span> Regression equation (version 03.01)</a></li>
+  <li><a href="#versions-02.02-and-03.01" id="toc-versions-02.02-and-03.01" class="nav-link" data-scroll-target="#versions-02.02-and-03.01"><span class="header-section-number">10.2.4</span> Versions 02.02 and 03.01</a></li>
   </ul></li>
-  <li><a href="#what-it-captures" id="toc-what-it-captures" class="nav-link" data-scroll-target="#what-it-captures"><span class="header-section-number">9.3</span> What it captures</a></li>
-  <li><a href="#normative-data" id="toc-normative-data" class="nav-link" data-scroll-target="#normative-data"><span class="header-section-number">9.4</span> Normative data</a></li>
-  <li><a href="#confounds-and-cautions" id="toc-confounds-and-cautions" class="nav-link" data-scroll-target="#confounds-and-cautions"><span class="header-section-number">9.5</span> Confounds and cautions</a></li>
-  <li><a href="#validation" id="toc-validation" class="nav-link" data-scroll-target="#validation"><span class="header-section-number">9.6</span> Validation</a></li>
-  <li><a href="#compute-it-in-phonalab" id="toc-compute-it-in-phonalab" class="nav-link" data-scroll-target="#compute-it-in-phonalab"><span class="header-section-number">9.7</span> Compute it in PhonaLab</a></li>
+  <li><a href="#what-it-captures" id="toc-what-it-captures" class="nav-link" data-scroll-target="#what-it-captures"><span class="header-section-number">10.3</span> What it captures</a></li>
+  <li><a href="#normative-data" id="toc-normative-data" class="nav-link" data-scroll-target="#normative-data"><span class="header-section-number">10.4</span> Normative data</a></li>
+  <li><a href="#confounds-and-cautions" id="toc-confounds-and-cautions" class="nav-link" data-scroll-target="#confounds-and-cautions"><span class="header-section-number">10.5</span> Confounds and cautions</a></li>
+  <li><a href="#validation" id="toc-validation" class="nav-link" data-scroll-target="#validation"><span class="header-section-number">10.6</span> Validation</a></li>
+  <li><a href="#compute-it-in-phonalab" id="toc-compute-it-in-phonalab" class="nav-link" data-scroll-target="#compute-it-in-phonalab"><span class="header-section-number">10.7</span> Compute it in PhonaLab</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/LuceroJC/voice-measures/edit/main/avqi.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/LuceroJC/voice-measures/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./avqi.html">Part IV — Composite Indices</a></li><li class="breadcrumb-item"><a href="./avqi.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Acoustic Voice Quality Index (AVQI)</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./avqi.html">Part IV — Composite Indices</a></li><li class="breadcrumb-item"><a href="./avqi.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Acoustic Voice Quality Index (AVQI)</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Acoustic Voice Quality Index (AVQI)</span></h1>
+<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Acoustic Voice Quality Index (AVQI)</span></h1>
 </div>
 
 
@@ -354,25 +360,25 @@ Note
 <p><strong>Living draft.</strong> This chapter reflects the sources cited below and will be revised as further sources are incorporated. Found an error? Use the <em>Report an issue</em> link in the sidebar.</p>
 </div>
 </div>
-<section id="definition" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="definition"><span class="header-section-number">9.1</span> Definition</h2>
+<section id="definition" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="definition"><span class="header-section-number">10.1</span> Definition</h2>
 <p><strong>The question the AVQI asks is how severe the voice sounds overall.</strong> Unlike the measures in Parts II and III it asks nothing of the waveform directly: it combines several of them into one score aimed at perceived overall quality.</p>
 <p>The Acoustic Voice Quality Index (AVQI) is an objective method to quantify the severity of overall voice quality in concatenated continuous speech and sustained phonation segments <span class="citation" data-cites="barsties2016avqi">(<a href="#ref-barsties2016avqi" role="doc-biblioref">Barsties and Maryn 2016</a>)</span>. It is a multivariate construct based on linear regression that combines six acoustic markers into a single score for the whole voice sample <span class="citation" data-cites="barsties2016avqi">(<a href="#ref-barsties2016avqi" role="doc-biblioref">Barsties and Maryn 2016</a>)</span>. That score represents the overall voice quality — the hoarseness level — of the sample <span class="citation" data-cites="delgado2018avqi">(<a href="#ref-delgado2018avqi" role="doc-biblioref">Delgado Hernández et al. 2018</a>)</span>.</p>
 <p>The index was proposed by <span class="citation" data-cites="maryn2010ecological">Maryn, Corthals, et al. (<a href="#ref-maryn2010ecological" role="doc-biblioref">2010</a>)</span> and was one of the first measures to combine both speech types <span class="citation" data-cites="delgado2018avqi">(<a href="#ref-delgado2018avqi" role="doc-biblioref">Delgado Hernández et al. 2018</a>)</span>. The rationale for the combination: sustained vowels are easily elicited and less affected by articulation and dialect, while continuous speech is more representative of a patient’s daily voice <span class="citation" data-cites="delgado2018avqi">(<a href="#ref-delgado2018avqi" role="doc-biblioref">Delgado Hernández et al. 2018</a>)</span>.</p>
 </section>
-<section id="computation" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="computation"><span class="header-section-number">9.2</span> Computation</h2>
-<section id="speech-material-and-concatenation" class="level3" data-number="9.2.1">
-<h3 data-number="9.2.1" class="anchored" data-anchor-id="speech-material-and-concatenation"><span class="header-section-number">9.2.1</span> Speech material and concatenation</h3>
+<section id="computation" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="computation"><span class="header-section-number">10.2</span> Computation</h2>
+<section id="speech-material-and-concatenation" class="level3" data-number="10.2.1">
+<h3 data-number="10.2.1" class="anchored" data-anchor-id="speech-material-and-concatenation"><span class="header-section-number">10.2.1</span> Speech material and concatenation</h3>
 <p>The subject sustains the vowel [a:] for longer than 3 seconds, and a 3-second mid-vowel portion is selected. The subject also reads a phonetically balanced text aloud at comfortable pitch and loudness. For AVQI version 03.01 in Dutch, the continuous-speech part is trimmed to the first 34 syllables of the text, the 3-second [a:] segment is appended, and the result is saved as a single sound file <span class="citation" data-cites="barsties2016avqi">(<a href="#ref-barsties2016avqi" role="doc-biblioref">Barsties and Maryn 2016</a>)</span>. Acoustic analysis is applied only to the voiced segments of the continuous speech — extracted by an automated Praat detection script — plus the appended vowel segment <span class="citation" data-cites="barsties2016avqi">(<a href="#ref-barsties2016avqi" role="doc-biblioref">Barsties and Maryn 2016</a>)</span>.</p>
 </section>
-<section id="component-measures" class="level3" data-number="9.2.2">
-<h3 data-number="9.2.2" class="anchored" data-anchor-id="component-measures"><span class="header-section-number">9.2.2</span> Component measures</h3>
+<section id="component-measures" class="level3" data-number="10.2.2">
+<h3 data-number="10.2.2" class="anchored" data-anchor-id="component-measures"><span class="header-section-number">10.2.2</span> Component measures</h3>
 <p>All six parameters are obtained in Praat from the concatenated signal <span class="citation" data-cites="barsties2016avqi delgado2018avqi">(<a href="#ref-barsties2016avqi" role="doc-biblioref">Barsties and Maryn 2016</a>; <a href="#ref-delgado2018avqi" role="doc-biblioref">Delgado Hernández et al. 2018</a>)</span>:</p>
 <div id="tbl-avqi-components" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-avqi-components-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;9.1: The six AVQI components <span class="citation" data-cites="barsties2016avqi">(<a href="#ref-barsties2016avqi" role="doc-biblioref">Barsties and Maryn 2016</a>)</span>.
+Table&nbsp;10.1: The six AVQI components <span class="citation" data-cites="barsties2016avqi">(<a href="#ref-barsties2016avqi" role="doc-biblioref">Barsties and Maryn 2016</a>)</span>.
 </figcaption>
 <div aria-describedby="tbl-avqi-components-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
@@ -413,8 +419,8 @@ Table&nbsp;9.1: The six AVQI components <span class="citation" data-cites="barst
 </figure>
 </div>
 </section>
-<section id="regression-equation-version-03.01" class="level3" data-number="9.2.3">
-<h3 data-number="9.2.3" class="anchored" data-anchor-id="regression-equation-version-03.01"><span class="header-section-number">9.2.3</span> Regression equation (version 03.01)</h3>
+<section id="regression-equation-version-03.01" class="level3" data-number="10.2.3">
+<h3 data-number="10.2.3" class="anchored" data-anchor-id="regression-equation-version-03.01"><span class="header-section-number">10.2.3</span> Regression equation (version 03.01)</h3>
 <p>As printed by <span class="citation" data-cites="barsties2016avqi">Barsties and Maryn (<a href="#ref-barsties2016avqi" role="doc-biblioref">2016</a>)</span>:</p>
 <p><span class="math display">\[
 \text{AVQI}_{03.01} = \bigl(4.152 - 0.177\,\text{CPPS} - 0.006\,\text{HNR}
@@ -436,24 +442,24 @@ Table&nbsp;9.1: The six AVQI components <span class="citation" data-cites="barst
 </div>
 </div>
 </section>
-<section id="versions-02.02-and-03.01" class="level3" data-number="9.2.4">
-<h3 data-number="9.2.4" class="anchored" data-anchor-id="versions-02.02-and-03.01"><span class="header-section-number">9.2.4</span> Versions 02.02 and 03.01</h3>
+<section id="versions-02.02-and-03.01" class="level3" data-number="10.2.4">
+<h3 data-number="10.2.4" class="anchored" data-anchor-id="versions-02.02-and-03.01"><span class="header-section-number">10.2.4</span> Versions 02.02 and 03.01</h3>
 <p>In the earlier AVQI versions the analyzed continuous-speech part was much shorter than the constant 3-second vowel part (1.53 s of voiced speech in Dutch, 1.99 s in Japanese) <span class="citation" data-cites="delgado2018avqi">(<a href="#ref-delgado2018avqi" role="doc-biblioref">Delgado Hernández et al. 2018</a>)</span>. Version 03.01 balances the analyzed durations of the two speech types by expanding the continuous-speech sample from 17–22 syllables to around 34 syllables, for higher ecological validity and balanced internal consistency <span class="citation" data-cites="barsties2016avqi delgado2018avqi">(<a href="#ref-barsties2016avqi" role="doc-biblioref">Barsties and Maryn 2016</a>; <a href="#ref-delgado2018avqi" role="doc-biblioref">Delgado Hernández et al. 2018</a>)</span>. Early AVQI workflows required both SpeechTool and Praat; once CPPS was implemented in Praat, the index ran in Praat alone, with highly comparable outcomes <span class="citation" data-cites="barsties2016avqi">(<a href="#ref-barsties2016avqi" role="doc-biblioref">Barsties and Maryn 2016</a>)</span>.</p>
 <p>The regression-based combination of measures over a concatenated sample was explored for tracheoesophageal (alaryngeal) voice by <span class="citation" data-cites="maryn2009cepstral">Maryn et al. (<a href="#ref-maryn2009cepstral" role="doc-biblioref">2009</a>)</span>, where a two-factor model combining CPP with the prominence of the second spectral harmonic reached <em>r<sub>s</sub></em> = 0.87 with listener judgments.</p>
 </section>
 </section>
-<section id="what-it-captures" class="level2" data-number="9.3">
-<h2 data-number="9.3" class="anchored" data-anchor-id="what-it-captures"><span class="header-section-number">9.3</span> What it captures</h2>
+<section id="what-it-captures" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="what-it-captures"><span class="header-section-number">10.3</span> What it captures</h2>
 <p>The AVQI quantifies overall voice quality as judged by the grade (G) of the GRBAS scale — the degree of hoarseness or voice abnormality <span class="citation" data-cites="barsties2016avqi delgado2018avqi">(<a href="#ref-barsties2016avqi" role="doc-biblioref">Barsties and Maryn 2016</a>; <a href="#ref-delgado2018avqi" role="doc-biblioref">Delgado Hernández et al. 2018</a>)</span>. Concurrent validity with mean perceptual G is strong: <em>r</em> = 0.815 in the Dutch external validation (66.4% of variance) <span class="citation" data-cites="barsties2016avqi">(<a href="#ref-barsties2016avqi" role="doc-biblioref">Barsties and Maryn 2016</a>)</span> and <em>r</em> = 0.835 in Spanish (69.7% of variance) <span class="citation" data-cites="delgado2018avqi">(<a href="#ref-delgado2018avqi" role="doc-biblioref">Delgado Hernández et al. 2018</a>)</span>. CPPS is the main factor in the multivariate model <span class="citation" data-cites="barsties2016avqi">(<a href="#ref-barsties2016avqi" role="doc-biblioref">Barsties and Maryn 2016</a>)</span>. <span class="citation" data-cites="barsties2018meta">Barsties v. Latoszek et al. (<a href="#ref-barsties2018meta" role="doc-biblioref">2018</a>)</span> report, from the earlier overall-voice-quality meta-analysis of Maryn, Roy et al.&nbsp;(2009), weighted correlations for CPPS of 0.63 for sustained vowels and 0.88 for continuous speech.</p>
 <p>A previous AVQI investigation <span class="citation" data-cites="maryn2010avqi">(<a href="#ref-maryn2010avqi" role="doc-biblioref">Maryn, De Bodt, et al. 2010</a>)</span> reported high sensitivity to voice changes through voice therapy <span class="citation" data-cites="barsties2016avqi">(<a href="#ref-barsties2016avqi" role="doc-biblioref">Barsties and Maryn 2016</a>)</span>.</p>
 </section>
-<section id="normative-data" class="level2" data-number="9.4">
-<h2 data-number="9.4" class="anchored" data-anchor-id="normative-data"><span class="header-section-number">9.4</span> Normative data</h2>
+<section id="normative-data" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="normative-data"><span class="header-section-number">10.4</span> Normative data</h2>
 <p>Diagnostic thresholds separate normophonic from hoarse voices, with hoarseness defined as mean perceptual grade G ≥ 0.5 <span class="citation" data-cites="barsties2016avqi">(<a href="#ref-barsties2016avqi" role="doc-biblioref">Barsties and Maryn 2016</a>)</span>. The threshold differs between AVQI versions and languages <span class="citation" data-cites="barsties2020german">(<a href="#ref-barsties2020german" role="doc-biblioref">Barsties v. Latoszek et al. 2020</a>)</span>, so each row states its language and pipeline. Use the row validated for the patient’s language and the AVQI version in use; see <a href="./foundations-pipeline.html">Pipeline Dependence and Reference Values</a>.</p>
 <div id="tbl-avqi-thresholds" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-avqi-thresholds-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;9.2: AVQI 03.01 diagnostic thresholds. Dutch: <span class="citation" data-cites="barsties2016avqi">Barsties and Maryn (<a href="#ref-barsties2016avqi" role="doc-biblioref">2016</a>)</span>; Spanish: <span class="citation" data-cites="delgado2018avqi">Delgado Hernández et al. (<a href="#ref-delgado2018avqi" role="doc-biblioref">2018</a>)</span>; German: <span class="citation" data-cites="barsties2020german">Barsties v. Latoszek et al. (<a href="#ref-barsties2020german" role="doc-biblioref">2020</a>)</span>; French: <span class="citation" data-cites="pommee2020avqi">Pommée et al. (<a href="#ref-pommee2020avqi" role="doc-biblioref">2020</a>)</span>; Brazilian Portuguese: <span class="citation" data-cites="englert2021avqi">Englert et al. (<a href="#ref-englert2021avqi" role="doc-biblioref">2021</a>)</span> (150 speakers) and <span class="citation" data-cites="englert2020material">Englert et al. (<a href="#ref-englert2020material" role="doc-biblioref">2020</a>)</span> (53 speakers, two tasks); US English: <span class="citation" data-cites="castillo2023avqi">Castillo-Allendes et al. (<a href="#ref-castillo2023avqi" role="doc-biblioref">2023</a>)</span>; Japanese: <span class="citation" data-cites="hosokawa2019avqi">Hosokawa et al. (<a href="#ref-hosokawa2019avqi" role="doc-biblioref">2019</a>)</span>; Persian: <span class="citation" data-cites="aghajanzadeh2025persian">Aghajanzadeh et al. (<a href="#ref-aghajanzadeh2025persian" role="doc-biblioref">2025</a>)</span>; pooled: <span class="citation" data-cites="jayakumar2024avqi">Jayakumar and Benoy (<a href="#ref-jayakumar2024avqi" role="doc-biblioref">2024</a>)</span>. Praat versions for the Dutch, Spanish and German rows are those cited in each paper’s reference list.
+Table&nbsp;10.2: AVQI 03.01 diagnostic thresholds. Dutch: <span class="citation" data-cites="barsties2016avqi">Barsties and Maryn (<a href="#ref-barsties2016avqi" role="doc-biblioref">2016</a>)</span>; Spanish: <span class="citation" data-cites="delgado2018avqi">Delgado Hernández et al. (<a href="#ref-delgado2018avqi" role="doc-biblioref">2018</a>)</span>; German: <span class="citation" data-cites="barsties2020german">Barsties v. Latoszek et al. (<a href="#ref-barsties2020german" role="doc-biblioref">2020</a>)</span>; French: <span class="citation" data-cites="pommee2020avqi">Pommée et al. (<a href="#ref-pommee2020avqi" role="doc-biblioref">2020</a>)</span>; Brazilian Portuguese: <span class="citation" data-cites="englert2021avqi">Englert et al. (<a href="#ref-englert2021avqi" role="doc-biblioref">2021</a>)</span> (150 speakers) and <span class="citation" data-cites="englert2020material">Englert et al. (<a href="#ref-englert2020material" role="doc-biblioref">2020</a>)</span> (53 speakers, two tasks); US English: <span class="citation" data-cites="castillo2023avqi">Castillo-Allendes et al. (<a href="#ref-castillo2023avqi" role="doc-biblioref">2023</a>)</span>; Japanese: <span class="citation" data-cites="hosokawa2019avqi">Hosokawa et al. (<a href="#ref-hosokawa2019avqi" role="doc-biblioref">2019</a>)</span>; Persian: <span class="citation" data-cites="aghajanzadeh2025persian">Aghajanzadeh et al. (<a href="#ref-aghajanzadeh2025persian" role="doc-biblioref">2025</a>)</span>; pooled: <span class="citation" data-cites="jayakumar2024avqi">Jayakumar and Benoy (<a href="#ref-jayakumar2024avqi" role="doc-biblioref">2024</a>)</span>. Praat versions for the Dutch, Spanish and German rows are those cited in each paper’s reference list.
 </figcaption>
 <div aria-describedby="tbl-avqi-thresholds-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
@@ -596,15 +602,15 @@ Table&nbsp;9.2: AVQI 03.01 diagnostic thresholds. Dutch: <span class="citation" 
 </figure>
 </div>
 <p>The pooled row is descriptive context, not a cutoff. Its sensitivity was highly heterogeneous across studies (<em>I</em>² = 95.3%), its specificity much less so (<em>I</em>² = 16.4%) <span class="citation" data-cites="jayakumar2024avqi">(<a href="#ref-jayakumar2024avqi" role="doc-biblioref">Jayakumar and Benoy 2024</a>)</span>.</p>
-<p>One further set of figures belongs to the Dutch internal validation, and is not published as a second Dutch cutoff. <span class="citation" data-cites="barsties2015consistency">Barsties and Maryn (<a href="#ref-barsties2015consistency" role="doc-biblioref">2015</a>)</span>, the 60-sample study that produced the version 03.01 weighting, reports for its balanced-duration condition an AROC of 0.98 at a threshold of 2.43, with sensitivity 1.00 and specificity 0.936. These are development-sample figures: the threshold was evaluated on the same recordings that produced the model’s weights, which is what a sensitivity of exactly 1.00 and an infinite positive likelihood ratio indicate. The Dutch row of <a href="#tbl-avqi-thresholds" class="quarto-xref">Table&nbsp;<span>9.2</span></a> therefore carries the external validation on 1058 samples instead <span class="citation" data-cites="barsties2016avqi">(<a href="#ref-barsties2016avqi" role="doc-biblioref">Barsties and Maryn 2016</a>)</span>. Note that the secondary literature transposes the two figures, giving sensitivity 0.936 and specificity 1.00.</p>
-<p>The Japanese threshold needs care for a different reason, set out under <em>Threshold derivation criteria</em> below. A separate paper by the same group validated AVQI version <strong>02.02</strong> in Japanese and reports a threshold of 3.15, with sensitivity 72.5% and specificity 95.2%, on a standardized syllable number of 22 <span class="citation" data-cites="hosokawa2017avqi">(<a href="#ref-hosokawa2017avqi" role="doc-biblioref">Hosokawa et al. 2017</a>)</span>. That is not a rival estimate of the 2.06 in the table: the two belong to different versions of the index, with different regression weights and different speech-material lengths, so 3.15 cannot be compared with any threshold in <a href="#tbl-avqi-thresholds" class="quarto-xref">Table&nbsp;<span>9.2</span></a>. Always pair an AVQI threshold with its version.</p>
-<p><strong>Threshold derivation criteria.</strong> The thresholds in <a href="#tbl-avqi-thresholds" class="quarto-xref">Table&nbsp;<span>9.2</span></a> are not all derived the same way. The Japanese validation computed candidates from both the Youden Index and the upper 95th percentile of its control cohort. The Youden Index gave 1.41, with balanced sensitivity 84.4% and specificity 85.6%; the 95th percentile gave 2.06, at 72.1% and 93.8%; and the original Dutch threshold of 2.43 applied to the same sample gave 64.6% and 97.3% <span class="citation" data-cites="hosokawa2019avqi">(<a href="#ref-hosokawa2019avqi" role="doc-biblioref">Hosokawa et al. 2019</a>)</span>. The authors recommend 2.06, because at that value sensitivity and specificity came close to what the Dutch threshold produced in their cohort, and the table follows them <span class="citation" data-cites="hosokawa2019avqi">(<a href="#ref-hosokawa2019avqi" role="doc-biblioref">Hosokawa et al. 2019</a>)</span>. The consequence is that the Japanese row trades sensitivity for specificity relative to a Youden-derived cutoff, so comparing it with the Youden-derived rows compares two criteria and not only two languages. Some of the spread in published AVQI thresholds is a spread of derivation methods rather than of languages.</p>
+<p>One further set of figures belongs to the Dutch internal validation, and is not published as a second Dutch cutoff. <span class="citation" data-cites="barsties2015consistency">Barsties and Maryn (<a href="#ref-barsties2015consistency" role="doc-biblioref">2015</a>)</span>, the 60-sample study that produced the version 03.01 weighting, reports for its balanced-duration condition an AROC of 0.98 at a threshold of 2.43, with sensitivity 1.00 and specificity 0.936. These are development-sample figures: the threshold was evaluated on the same recordings that produced the model’s weights, which is what a sensitivity of exactly 1.00 and an infinite positive likelihood ratio indicate. The Dutch row of <a href="#tbl-avqi-thresholds" class="quarto-xref">Table&nbsp;<span>10.2</span></a> therefore carries the external validation on 1058 samples instead <span class="citation" data-cites="barsties2016avqi">(<a href="#ref-barsties2016avqi" role="doc-biblioref">Barsties and Maryn 2016</a>)</span>. Note that the secondary literature transposes the two figures, giving sensitivity 0.936 and specificity 1.00.</p>
+<p>The Japanese threshold needs care for a different reason, set out under <em>Threshold derivation criteria</em> below. A separate paper by the same group validated AVQI version <strong>02.02</strong> in Japanese and reports a threshold of 3.15, with sensitivity 72.5% and specificity 95.2%, on a standardized syllable number of 22 <span class="citation" data-cites="hosokawa2017avqi">(<a href="#ref-hosokawa2017avqi" role="doc-biblioref">Hosokawa et al. 2017</a>)</span>. That is not a rival estimate of the 2.06 in the table: the two belong to different versions of the index, with different regression weights and different speech-material lengths, so 3.15 cannot be compared with any threshold in <a href="#tbl-avqi-thresholds" class="quarto-xref">Table&nbsp;<span>10.2</span></a>. Always pair an AVQI threshold with its version.</p>
+<p><strong>Threshold derivation criteria.</strong> The thresholds in <a href="#tbl-avqi-thresholds" class="quarto-xref">Table&nbsp;<span>10.2</span></a> are not all derived the same way. The Japanese validation computed candidates from both the Youden Index and the upper 95th percentile of its control cohort. The Youden Index gave 1.41, with balanced sensitivity 84.4% and specificity 85.6%; the 95th percentile gave 2.06, at 72.1% and 93.8%; and the original Dutch threshold of 2.43 applied to the same sample gave 64.6% and 97.3% <span class="citation" data-cites="hosokawa2019avqi">(<a href="#ref-hosokawa2019avqi" role="doc-biblioref">Hosokawa et al. 2019</a>)</span>. The authors recommend 2.06, because at that value sensitivity and specificity came close to what the Dutch threshold produced in their cohort, and the table follows them <span class="citation" data-cites="hosokawa2019avqi">(<a href="#ref-hosokawa2019avqi" role="doc-biblioref">Hosokawa et al. 2019</a>)</span>. The consequence is that the Japanese row trades sensitivity for specificity relative to a Youden-derived cutoff, so comparing it with the Youden-derived rows compares two criteria and not only two languages. Some of the spread in published AVQI thresholds is a spread of derivation methods rather than of languages.</p>
 <p>Likelihood ratios at the optimal threshold: LR+ = 11.54, LR− = 0.23 (Dutch external validation) <span class="citation" data-cites="barsties2016avqi">(<a href="#ref-barsties2016avqi" role="doc-biblioref">Barsties and Maryn 2016</a>)</span>; LR+ = 13.85, LR− = 0.26 (Spanish, threshold chosen by the Youden index) <span class="citation" data-cites="delgado2018avqi">(<a href="#ref-delgado2018avqi" role="doc-biblioref">Delgado Hernández et al. 2018</a>)</span>; LR+ = 7.40, LR− = 0.31 (German) <span class="citation" data-cites="barsties2020german">(<a href="#ref-barsties2020german" role="doc-biblioref">Barsties v. Latoszek et al. 2020</a>)</span>; LR+ = 8.38, LR− = 0.23 (Brazilian Portuguese) <span class="citation" data-cites="englert2021avqi">(<a href="#ref-englert2021avqi" role="doc-biblioref">Englert et al. 2021</a>)</span>; LR+ = 12.46, LR− = 0.40 (US English) <span class="citation" data-cites="castillo2023avqi">(<a href="#ref-castillo2023avqi" role="doc-biblioref">Castillo-Allendes et al. 2023</a>)</span>. The LR+ values printed by <span class="citation" data-cites="englert2020material">Englert et al. (<a href="#ref-englert2020material" role="doc-biblioref">2020</a>)</span> are below 1 or negative and cannot be correct, so they are not reproduced here.</p>
 <p>The original AVQI, which carried no version number, reported two cutoff options: 2.36 (sensitivity 91%, specificity 59%) and 2.95 (sensitivity 74%, specificity 96%). The authors suggest 2.95 may be more appropriate when the main interest is screening <span class="citation" data-cites="maryn2010ecological">(<a href="#ref-maryn2010ecological" role="doc-biblioref">Maryn, Corthals, et al. 2010</a>)</span>. These values apply to that version only.</p>
 <p>The US English validation standardized the continuous-speech part at 22 syllables of the Rainbow Passage, recorded in a quiet environment (ambient noise below 35 dB) with a head-mounted microphone at 44.1 kHz / 16 bit, and computed the index in VOXplot 2.0.0, which the authors state uses established Praat algorithms and the same equation <span class="citation" data-cites="castillo2023avqi">(<a href="#ref-castillo2023avqi" role="doc-biblioref">Castillo-Allendes et al. 2023</a>)</span>. Its threshold, 1.17, lies below the range of the AVQI meta-analysis, whose literature search ended in July 2021 <span class="citation" data-cites="jayakumar2024avqi">(<a href="#ref-jayakumar2024avqi" role="doc-biblioref">Jayakumar and Benoy 2024</a>)</span>. The authors note that other English dialects and accents remain to be examined <span class="citation" data-cites="castillo2023avqi">(<a href="#ref-castillo2023avqi" role="doc-biblioref">Castillo-Allendes et al. 2023</a>)</span>.</p>
 </section>
-<section id="confounds-and-cautions" class="level2" data-number="9.5">
-<h2 data-number="9.5" class="anchored" data-anchor-id="confounds-and-cautions"><span class="header-section-number">9.5</span> Confounds and cautions</h2>
+<section id="confounds-and-cautions" class="level2" data-number="10.5">
+<h2 data-number="10.5" class="anchored" data-anchor-id="confounds-and-cautions"><span class="header-section-number">10.5</span> Confounds and cautions</h2>
 <p><strong>Language-specific standardization is required.</strong> The continuous-speech part must be trimmed to a syllable count that yields about 3 seconds of voiced speech, and the count differs by language: 34 syllables in Dutch, 33 in Spanish, 30 in Japanese for AVQIv3 <span class="citation" data-cites="delgado2018avqi">(<a href="#ref-delgado2018avqi" role="doc-biblioref">Delgado Hernández et al. 2018</a>)</span>.</p>
 <p><strong>Thresholds differ by language, by version, and by derivation criterion.</strong> Reported optimal AVQI version 03.01 cutoffs are 2.43 (Dutch), 2.28 (Spanish) and 2.06 (Japanese). The differences are small, which may indicate that AVQI is relatively insulated from inter-language phonetic differences <span class="citation" data-cites="delgado2018avqi">(<a href="#ref-delgado2018avqi" role="doc-biblioref">Delgado Hernández et al. 2018</a>)</span>. The validations since widen the spread: 1.85 German, 2.33 French, 1.33 Brazilian Portuguese, 1.63 Persian. A version 02.02 threshold sits on a different scale altogether, as the Japanese version 02.02 value of 3.15 shows <span class="citation" data-cites="hosokawa2017avqi">(<a href="#ref-hosokawa2017avqi" role="doc-biblioref">Hosokawa et al. 2017</a>)</span>. Nor is a percentile-derived threshold directly comparable with a Youden-derived one, which is the case for the Japanese row.</p>
 <p><strong>Equal proportion of the two speech tasks.</strong> Earlier work found the sustained vowel dominating the final AVQI score more than the continuous speech. <span class="citation" data-cites="barsties2015consistency">Barsties and Maryn (<a href="#ref-barsties2015consistency" role="doc-biblioref">2015</a>)</span> tested three speech-material durations against that: 17 syllables plus 3 s of sustained phonation, a customised continuous-speech length plus 3 s, and a whole text plus 3 s. Concurrent validity was comparable across all three (<em>r</em><sub>s</sub> 0.891 to 0.929), but precision was best, and the two tasks’ contributions balanced, in the middle condition. This is the reasoning behind the standardized syllable count that the later validations use.</p>
@@ -615,12 +621,12 @@ Table&nbsp;9.2: AVQI 03.01 diagnostic thresholds. Dutch: <span class="citation" 
 <p><strong>Base rates affect ROC statistics.</strong> The Dutch external validation sample contained 8% normophonia and 92% dysphonia; likelihood ratios were used because they are less vulnerable to base-rate differences than ROC statistics alone <span class="citation" data-cites="barsties2016avqi">(<a href="#ref-barsties2016avqi" role="doc-biblioref">Barsties and Maryn 2016</a>)</span>.</p>
 <p><strong>Voicing detection is part of the pipeline.</strong> Voiced segments of continuous speech are extracted automatically by a Praat script before measurement <span class="citation" data-cites="barsties2016avqi">(<a href="#ref-barsties2016avqi" role="doc-biblioref">Barsties and Maryn 2016</a>)</span>.</p>
 </section>
-<section id="validation" class="level2" data-number="9.6">
-<h2 data-number="9.6" class="anchored" data-anchor-id="validation"><span class="header-section-number">9.6</span> Validation</h2>
+<section id="validation" class="level2" data-number="10.6">
+<h2 data-number="10.6" class="anchored" data-anchor-id="validation"><span class="header-section-number">10.6</span> Validation</h2>
 <p>Across 1118 subjects in two studies, AVQI 03.01 showed a homogeneous weighted mean correlation of <em>r</em> = 0.821 with perceptual overall voice quality, against <em>r</em> = 0.790 for the initial AVQI model pooled over 507 subjects <span class="citation" data-cites="barsties2016avqi">(<a href="#ref-barsties2016avqi" role="doc-biblioref">Barsties and Maryn 2016</a>)</span>. In the same pooled analysis, the Dysphonia Severity Index reached a heterogeneous weighted mean <em>r</em> = 0.524 and the Cepstral Spectral Index of Dysphonia <em>r</em> = 0.788 (sustained vowel) and 0.748 (continuous speech); AVQI 03.01 reached the highest concurrent validity among these multiparametric indices <span class="citation" data-cites="barsties2016avqi">(<a href="#ref-barsties2016avqi" role="doc-biblioref">Barsties and Maryn 2016</a>)</span>. Language validations include Dutch <span class="citation" data-cites="barsties2016avqi">(<a href="#ref-barsties2016avqi" role="doc-biblioref">Barsties and Maryn 2016</a>)</span> and Spanish <span class="citation" data-cites="delgado2018avqi">(<a href="#ref-delgado2018avqi" role="doc-biblioref">Delgado Hernández et al. 2018</a>)</span>, with Japanese figures reported in the latter.</p>
 </section>
-<section id="compute-it-in-phonalab" class="level2" data-number="9.7">
-<h2 data-number="9.7" class="anchored" data-anchor-id="compute-it-in-phonalab"><span class="header-section-number">9.7</span> Compute it in PhonaLab</h2>
+<section id="compute-it-in-phonalab" class="level2" data-number="10.7">
+<h2 data-number="10.7" class="anchored" data-anchor-id="compute-it-in-phonalab"><span class="header-section-number">10.7</span> Compute it in PhonaLab</h2>
 <blockquote class="blockquote">
 <p><strong><a href="https://phonalab.com">Open PhonaLab →</a></strong></p>
 <p><em>PhonaLab is developed by the author of this reference; see <a href="./intro.html#competing-interests">Competing interests</a>.</em></p>
@@ -1087,12 +1093,12 @@ Stappenbeck, Lydia, Ben Barsties v. Latoszek, Ben Janotte, and Bernhard Lehnert.
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./cpps.html" class="pagination-link" aria-label="Cepstral Peak Prominence (CPP and CPPS)">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Cepstral Peak Prominence (CPP and CPPS)</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Cepstral Peak Prominence (CPP and CPPS)</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./abi.html" class="pagination-link" aria-label="Acoustic Breathiness Index (ABI)">
-        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Acoustic Breathiness Index (ABI)</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Acoustic Breathiness Index (ABI)</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

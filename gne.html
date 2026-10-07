@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.19">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>8&nbsp; Glottal-to-Noise Excitation Ratio (GNE) – Acoustic Measures of Voice Quality</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./cpps.html" rel="next">
+<link href="./hnr.html" rel="prev">
+<link href="./favicon.svg" rel="icon" type="image/svg+xml">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-5c01c0ce2b51dbeda25ce515ef8205e7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{&quot;token&quot;: &quot;b81dffd01ef647da838f61336a77571c&quot;}"></script><!-- End Cloudflare Web Analytics -->
+
+
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./hnr.html">Part III — Noise and Harmonic Structure</a></li><li class="breadcrumb-item"><a href="./gne.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Glottal-to-Noise Excitation Ratio (GNE)</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Acoustic Measures of Voice Quality</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/LuceroJC/voice-measures" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part I — Foundations</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./foundations-signal.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Signal Fundamentals</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./foundations-signal-typing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Signal Typing</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./foundations-pipeline.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Pipeline Dependence and Reference Values</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part II — Periodicity and Stability</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./jitter.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Jitter (Frequency Perturbation)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./shimmer.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Shimmer (Amplitude Perturbation)</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part III — Noise and Harmonic Structure</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./hnr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Harmonic-to-Noise Ratio (HNR)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./gne.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Glottal-to-Noise Excitation Ratio (GNE)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cpps.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Cepstral Peak Prominence (CPP and CPPS)</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part IV — Composite Indices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./avqi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Acoustic Voice Quality Index (AVQI)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./abi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Acoustic Breathiness Index (ABI)</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Back matter</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./release-notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Release notes and errata</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#definition" id="toc-definition" class="nav-link active" data-scroll-target="#definition"><span class="header-section-number">8.1</span> Definition</a></li>
+  <li><a href="#how-it-is-computed" id="toc-how-it-is-computed" class="nav-link" data-scroll-target="#how-it-is-computed"><span class="header-section-number">8.2</span> How it is computed</a>
+  <ul class="collapse">
+  <li><a href="#the-bandwidth-is-part-of-the-measure" id="toc-the-bandwidth-is-part-of-the-measure" class="nav-link" data-scroll-target="#the-bandwidth-is-part-of-the-measure"><span class="header-section-number">8.2.1</span> The bandwidth is part of the measure</a></li>
+  <li><a href="#two-names-one-measure" id="toc-two-names-one-measure" class="nav-link" data-scroll-target="#two-names-one-measure"><span class="header-section-number">8.2.2</span> Two names, one measure</a></li>
+  </ul></li>
+  <li><a href="#what-it-captures" id="toc-what-it-captures" class="nav-link" data-scroll-target="#what-it-captures"><span class="header-section-number">8.3</span> What it captures</a></li>
+  <li><a href="#sec-gne-scale" id="toc-sec-gne-scale" class="nav-link" data-scroll-target="#sec-gne-scale"><span class="header-section-number">8.4</span> Read the scale before reading any number</a></li>
+  <li><a href="#normative-data" id="toc-normative-data" class="nav-link" data-scroll-target="#normative-data"><span class="header-section-number">8.5</span> Normative data</a></li>
+  <li><a href="#published-cutoffs" id="toc-published-cutoffs" class="nav-link" data-scroll-target="#published-cutoffs"><span class="header-section-number">8.6</span> Published cutoffs</a></li>
+  <li><a href="#confounds-and-cautions" id="toc-confounds-and-cautions" class="nav-link" data-scroll-target="#confounds-and-cautions"><span class="header-section-number">8.7</span> Confounds and cautions</a></li>
+  <li><a href="#validation" id="toc-validation" class="nav-link" data-scroll-target="#validation"><span class="header-section-number">8.8</span> Validation</a></li>
+  <li><a href="#compute-it-in-phonalab" id="toc-compute-it-in-phonalab" class="nav-link" data-scroll-target="#compute-it-in-phonalab"><span class="header-section-number">8.9</span> Compute it in PhonaLab</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/LuceroJC/voice-measures/edit/main/gne.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/LuceroJC/voice-measures/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./hnr.html">Part III — Noise and Harmonic Structure</a></li><li class="breadcrumb-item"><a href="./gne.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Glottal-to-Noise Excitation Ratio (GNE)</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Glottal-to-Noise Excitation Ratio (GNE)</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Living draft.</strong> This chapter reflects the sources cited below and will be revised as further sources are incorporated. Found an error? Use the <em>Report an issue</em> link in the sidebar.</p>
+</div>
+</div>
+<section id="definition" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="definition"><span class="header-section-number">8.1</span> Definition</h2>
+<p>GNE asks a question none of the other noise measures can answer cleanly: <strong>is this signal driven by vocal fold vibration, or by turbulent air?</strong> It quantifies the amount of voice excitation by glottal oscillations against excitation by turbulent noise <span class="citation" data-cites="michaelis1997gne">(<a href="#ref-michaelis1997gne" role="doc-biblioref">Michaelis et al. 1997</a>)</span>. A clear, non-breathy voice gives a high GNE.</p>
+<p>What makes it unusual is what it ignores. Jitter and shimmer describe a voice that is <em>irregular</em>; the classical noise measures describe a voice that is <em>noisy</em>; and most of them cannot tell the two apart. GNE was built so that deviations from periodicity do not influence the degree of turbulence it measures <span class="citation" data-cites="michaelis1997gne">(<a href="#ref-michaelis1997gne" role="doc-biblioref">Michaelis et al. 1997</a>)</span>. Its authors put the consequence bluntly: in normal voices a jitter up to 1% and a shimmer up to 3% can be observed, and even at those everyday levels the normalized noise energy (NNE) and the cepstrum-based harmonics-to-noise ratio (CHNR) cannot distinguish variation in amplitude or periodicity from added noise — so a proper evaluation of voice quality cannot be obtained from them, and in particular they cannot reliably separate pathologies that produce turbulent noise from those that produce irregular glottal excitation <span class="citation" data-cites="michaelis1997gne">(<a href="#ref-michaelis1997gne" role="doc-biblioref">Michaelis et al. 1997</a>)</span>.</p>
+<p>GNE is also not a model of perception. A related interband-correlation technique had been proposed as a model of roughness perception; the GNE approach is motivated only by the speech production process and signal theory and does not intend to model any perceptive effect <span class="citation" data-cites="michaelis1997gne">(<a href="#ref-michaelis1997gne" role="doc-biblioref">Michaelis et al. 1997</a>)</span>.</p>
+</section>
+<section id="how-it-is-computed" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="how-it-is-computed"><span class="header-section-number">8.2</span> How it is computed</h2>
+<p>The method rests on the correlation between <strong>Hilbert envelopes of different frequency bands</strong> <span class="citation" data-cites="michaelis1997gne">(<a href="#ref-michaelis1997gne" role="doc-biblioref">Michaelis et al. 1997</a>)</span>. A single glottal closure excites every frequency channel at once, so all the envelopes share a shape and correlate highly. Turbulent noise excites each channel with its own narrow-band noise, and those are uncorrelated — provided the windows defining adjacent channels do not overlap too much <span class="citation" data-cites="michaelis1997gne">(<a href="#ref-michaelis1997gne" role="doc-biblioref">Michaelis et al. 1997</a>)</span>.</p>
+<p>Six steps <span class="citation" data-cites="michaelis1997gne">(<a href="#ref-michaelis1997gne" role="doc-biblioref">Michaelis et al. 1997</a>)</span>:</p>
+<ol type="1">
+<li>Down-sample to 10 kHz.</li>
+<li>Inverse filter the signal, by linear prediction of order 13 computed with the autocorrelation method over a 30-ms Hann window at 10-ms shift. This flattens the spectrum into a train of near-delta pulses whose peaks presumably mark the instants of glottal closure.</li>
+<li>Compute the Hilbert envelopes of frequency bands of fixed bandwidth at different centre frequencies.</li>
+<li>For every pair of envelopes whose centre frequencies differ by at least half the bandwidth, compute the cross-correlation.</li>
+<li>Take the maximum of each correlation function, searching a delay of −3 to +3 samples (±0.3 ms), because the envelopes differ in phase.</li>
+<li>Take the maximum of those maxima. That is GNE.</li>
+</ol>
+<p>Step 1 has a practical consequence worth noting: the authors observe that recovery of the pulse train is imperfect for material digitized at 48 or 50 kHz, because voice energy nearly vanishes above 5 kHz <span class="citation" data-cites="michaelis1997gne">(<a href="#ref-michaelis1997gne" role="doc-biblioref">Michaelis et al. 1997</a>)</span>.</p>
+<section id="the-bandwidth-is-part-of-the-measure" class="level3" data-number="8.2.1">
+<h3 data-number="8.2.1" class="anchored" data-anchor-id="the-bandwidth-is-part-of-the-measure"><span class="header-section-number">8.2.1</span> The bandwidth is part of the measure</h3>
+<p>GNE is bounded above by 1 and reaches 0. How it behaves between those bounds depends on the <strong>envelope bandwidth</strong>, which is not a setting but a choice of measure:</p>
+<div id="tbl-gne-bandwidths" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-gne-bandwidths-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;8.1: The three bandwidth conditions of <span class="citation" data-cites="michaelis1997gne">Michaelis et al. (<a href="#ref-michaelis1997gne" role="doc-biblioref">1997</a>)</span>.
+</figcaption>
+<div aria-describedby="tbl-gne-bandwidths-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Bandwidth</th>
+<th>Centre frequencies</th>
+<th>Behaviour on synthesized signals</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1000 Hz</td>
+<td>500–4500 Hz, 80-Hz steps</td>
+<td>falls monotonically from 0.9999 to zero as the relative noise level rises from −50 to +20 dB; falls with rising <em>f</em><sub>0</sub></td>
+</tr>
+<tr class="even">
+<td>2000 Hz</td>
+<td>1000–4000 Hz, 100-Hz steps</td>
+<td>falls from 0.998 to zero; falls with rising <em>f</em><sub>0</sub></td>
+</tr>
+<tr class="odd">
+<td>3000 Hz</td>
+<td>1500–3500 Hz, 100-Hz steps</td>
+<td>weakest dependence on <em>f</em><sub>0</sub>; smallest dynamic range</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>These are synthesized signals, varied in noise level, <em>f</em><sub>0</sub>, jitter and shimmer. They show how the measure behaves; <strong>they are not reference values for human speakers.</strong></p>
+</section>
+<section id="two-names-one-measure" class="level3" data-number="8.2.2">
+<h3 data-number="8.2.2" class="anchored" data-anchor-id="two-names-one-measure"><span class="header-section-number">8.2.2</span> Two names, one measure</h3>
+<p>This is the trap the literature sets. The same computation is named by its bandwidth in one tradition and by its maximum frequency in the other:</p>
+<ul>
+<li><strong>“GNE 1000 Hz”</strong> — Praat <code>To Harmonicity (gne): 500, 4500, 1000, 80</code>, reduced by <code>Get maximum</code>.</li>
+<li><strong>“GNEmax-4500 Hz”</strong> — the term the <a href="./abi.html">ABI</a> uses, and the call the ABI’s own Praat script issues: <code>500, 4500, 1000, 80</code>, reduced by <code>Get maximum</code>.</li>
+</ul>
+<p>They are the same call and the same reduction <span class="citation" data-cites="abreu2022voxmoreplugin">(<a href="#ref-abreu2022voxmoreplugin" role="doc-biblioref">Abreu et al. 2022</a>)</span>. A reader meeting both names in two papers is meeting one measure. A reader meeting <strong>“GNE 2000 Hz”</strong> is not — that is a different measure.</p>
+</section>
+</section>
+<section id="what-it-captures" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="what-it-captures"><span class="header-section-number">8.3</span> What it captures</h2>
+<p><strong>Independence from perturbation, as a measured property.</strong> GNE assesses additive noise independently of jitter and shimmer, where NNE and CHNR do not <span class="citation" data-cites="michaelis1998features">(<a href="#ref-michaelis1998features" role="doc-biblioref">Michaelis et al. 1998</a>)</span>. Correlations between any GNE measure and any jitter or shimmer measure were insignificant for the normal group and significantly lower than the other noise measures’ for the pathological group <span class="citation" data-cites="michaelis1998features">(<a href="#ref-michaelis1998features" role="doc-biblioref">Michaelis et al. 1998</a>)</span>. This is the property that separates GNE from the rest of the noise family — and it is why a low GNE alongside normal perturbation values is informative rather than contradictory.</p>
+<p>The independence is not absolute. On synthesized signals at a 1000-Hz bandwidth, <strong>GNE falls once jitter exceeds about 1%</strong>, and the dependence grows with <em>f</em><sub>0</sub> <span class="citation" data-cites="michaelis1997gne">(<a href="#ref-michaelis1997gne" role="doc-biblioref">Michaelis et al. 1997</a>)</span>. Since normal voices reach about 1% jitter, the onset sits at the edge of the normal range rather than safely outside it. “Independent of jitter and shimmer”, as the secondary literature often puts it, is true of shimmer and approximately true of jitter.</p>
+<p><strong>The noise axis of the hoarseness diagram.</strong> The diagram is a two-dimensional plane: its horizontal axis is the <em>irregularity component</em>, built from jitter, shimmer and mean period correlation over a waveform-matching segmentation into glottal cycles, and its vertical axis is the <em>noise component</em>, which is GNE <span class="citation" data-cites="frohlich2000hoarseness">(<a href="#ref-frohlich2000hoarseness" role="doc-biblioref">Fröhlich et al. 2000</a>)</span>. GNE is not merely used in the diagram; it is the whole noise dimension. Its authors state the reason directly: two axes can only vary independently if the noise axis is built from a measure that perturbation does not move <span class="citation" data-cites="frohlich2000hoarseness">(<a href="#ref-frohlich2000hoarseness" role="doc-biblioref">Fröhlich et al. 2000</a>)</span>.</p>
+<p><strong>Bandwidth selects the percept.</strong> Meta-analytically, GNE at a 1000-Hz bandwidth is among the strongest predictors of perceived <strong>roughness</strong> (weighted <em>r</em> = .65, two studies) and at 3000 Hz among the strongest of perceived <strong>breathiness</strong> (.73, two studies) <span class="citation" data-cites="barsties2018meta">(<a href="#ref-barsties2018meta" role="doc-biblioref">Barsties v. Latoszek et al. 2018</a>)</span>. Of 86 acoustic measures reviewed for roughness and 85 for breathiness on sustained vowels, GNE 1000 was one of 13 named most promising for roughness and GNE 3000 one of 12 for breathiness <span class="citation" data-cites="barsties2018meta">(<a href="#ref-barsties2018meta" role="doc-biblioref">Barsties v. Latoszek et al. 2018</a>)</span>.</p>
+<p><strong>A real irregular voice.</strong> Comparing a normal voice with a recording of vocal fry, the harmonics in the fry spectrum are broadened by jitter, but the Hilbert envelopes stay similar — so GNE is about the same for both, while NNE and CHNR overestimate the noise energy <span class="citation" data-cites="michaelis1997gne">(<a href="#ref-michaelis1997gne" role="doc-biblioref">Michaelis et al. 1997</a>)</span>.</p>
+</section>
+<section id="sec-gne-scale" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="sec-gne-scale"><span class="header-section-number">8.4</span> Read the scale before reading any number</h2>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Two incompatible scales are in use.</strong> A GNE value on one is meaningless on the other, and the published normative values are on the one clinicians are least likely to expect.</p>
+</div>
+</div>
+<div id="tbl-gne-scales" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-gne-scales-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;8.2: The two GNE scales.
+</figcaption>
+<div aria-describedby="tbl-gne-scales-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Scale</th>
+<th>Range</th>
+<th>Direction</th>
+<th>Reported by</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>GNE</strong>, the raw correlation maximum</td>
+<td>0 to just under 1</td>
+<td>higher is cleaner</td>
+<td>Praat <code>To Harmonicity (gne)</code>, the ABI script, VOXplot, VoxMore</td>
+</tr>
+<tr class="even">
+<td><strong>GNEl = 10·log<sub>10</sub>(1 − GNE)</strong></td>
+<td>negative</td>
+<td><em>more negative</em> is cleaner</td>
+<td><span class="citation" data-cites="godino2010gne">Godino-Llorente et al. (<a href="#ref-godino2010gne" role="doc-biblioref">2010</a>)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>The log transform is not an eccentricity of one paper: the Göttingen group’s own feature table gives GNE the transform log(1 − <em>x</em>) <span class="citation" data-cites="michaelis1998features">(<a href="#ref-michaelis1998features" role="doc-biblioref">Michaelis et al. 1998</a>)</span>, and the original paper plots its results as 1 − GNE on a logarithmic axis <span class="citation" data-cites="michaelis1997gne">(<a href="#ref-michaelis1997gne" role="doc-biblioref">Michaelis et al. 1997</a>)</span>.</p>
+<p><strong>Convert before comparing:</strong> GNE = 1 − 10<sup>(GNEl/10)</sup>. A GNEl of −21.28 is a GNE of 0.9926. Converting fixes the scale and nothing else — window length, bandwidth, frequency step and software still differ between every pair of sources below.</p>
+</section>
+<section id="normative-data" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="normative-data"><span class="header-section-number">8.5</span> Normative data</h2>
+<p>One study publishes GNE normative values: means, standard deviations and percentiles for normal and pathological groups, separated by gender, from 226 talkers of the MEEI/Kay Elemetrics database (53 normal, 173 pathological), sustained /ah/ <span class="citation" data-cites="godino2010gne">(<a href="#ref-godino2010gne" role="doc-biblioref">Godino-Llorente et al. 2010</a>)</span>. All values are <strong>GNEl</strong>; the right-hand column converts the clinically actionable figure onto the raw GNE scale.</p>
+<div id="tbl-gne-norms" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-gne-norms-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;8.3: Normative values, bandwidth 1000 Hz, frequency shift 300 Hz <span class="citation" data-cites="godino2010gne">(<a href="#ref-godino2010gne" role="doc-biblioref">Godino-Llorente et al. 2010</a>)</span>. Conversions computed for this reference; see <code>wiki/measures/gne.md</code>.
+</figcaption>
+<div aria-describedby="tbl-gne-norms-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Group</th>
+<th>Normal mean (GNEl)</th>
+<th>Normal 95th pct (GNEl)</th>
+<th>95th pct as GNE</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>All</td>
+<td>−21.28 (SD 2.31)</td>
+<td>−17.92</td>
+<td>0.9839</td>
+</tr>
+<tr class="even">
+<td>Female</td>
+<td>−21.89 (SD 2.08)</td>
+<td>−18.84</td>
+<td>0.9869</td>
+</tr>
+<tr class="odd">
+<td>Male</td>
+<td>−20.34 (SD 2.37)</td>
+<td>−17.44</td>
+<td>0.9820</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>The pathological group averaged GNEl −14.17 (SD 3.31), with a 5th percentile of −19.39 <span class="citation" data-cites="godino2010gne">(<a href="#ref-godino2010gne" role="doc-biblioref">Godino-Llorente et al. 2010</a>)</span>. At a 3000-Hz bandwidth the normal mean is −11.89 and the 95th percentile −7.33, a GNE of 0.8151 <span class="citation" data-cites="godino2010gne">(<a href="#ref-godino2010gne" role="doc-biblioref">Godino-Llorente et al. 2010</a>)</span> — the same voices, a different number, because the bandwidth is part of the measure.</p>
+<p>The authors report <strong>no significant difference between the genders</strong> and state that their database revealed no statistical evidence that the normative values differ for males and females, while still tabulating them separately <span class="citation" data-cites="godino2010gne">(<a href="#ref-godino2010gne" role="doc-biblioref">Godino-Llorente et al. 2010</a>)</span>. Both facts belong together.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>These are not Praat values.</strong> They were computed with WPCVox, the authors’ own application, whose version is not stated, at a window length of 60 ms <span class="citation" data-cites="godino2010gne">(<a href="#ref-godino2010gne" role="doc-biblioref">Godino-Llorente et al. 2010</a>)</span>. They are the reference values that exist; they are not a normal band for a Praat or PhonaLab measurement. See <a href="./foundations-pipeline.html">Pipeline dependence</a>.</p>
+</div>
+</div>
+</section>
+<section id="published-cutoffs" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="published-cutoffs"><span class="header-section-number">8.6</span> Published cutoffs</h2>
+<p>Cutoffs exist, and they do not all answer the same question. Two discriminate the <strong>presence of a voice disorder</strong>; two discriminate a <strong>perceptual dimension</strong>. They must not be pooled or compared.</p>
+<div id="tbl-gne-cutoffs" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-gne-cutoffs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;8.4: Published GNE cutoffs, with their compatibility class <span class="citation" data-cites="feliciano2026cutoffs barsties2023voxplot">(<a href="#ref-feliciano2026cutoffs" role="doc-biblioref">Feliciano et al. 2026</a>; <a href="#ref-barsties2023voxplot" role="doc-biblioref">Barsties v. Latoszek et al. 2023</a>)</span>.
+</figcaption>
+<div aria-describedby="tbl-gne-cutoffs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Measure</th>
+<th>Discriminates</th>
+<th>Cutoff</th>
+<th>AUC</th>
+<th>Sens.</th>
+<th>Spec.</th>
+<th>Pipeline</th>
+<th>Class</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>GNE 2000 Hz</td>
+<td>voice disorder</td>
+<td>&gt; 0.92</td>
+<td>0.785</td>
+<td>70.97%</td>
+<td>73.61%</td>
+<td>Praat 6.2.10 + VoxMore v1.0.0, pt-BR, sustained [a]</td>
+<td>pipeline-compatible</td>
+</tr>
+<tr class="even">
+<td>GNE 1000 Hz</td>
+<td>voice disorder</td>
+<td>&gt; 0.92</td>
+<td>0.76</td>
+<td>83.87%</td>
+<td>54.65%</td>
+<td>as above</td>
+<td>pipeline-compatible</td>
+</tr>
+<tr class="odd">
+<td>GNE 3000 Hz</td>
+<td>voice disorder</td>
+<td>&gt; 0.9</td>
+<td>0.76</td>
+<td>64.52%</td>
+<td>82.16%</td>
+<td>as above</td>
+<td>pipeline-compatible</td>
+</tr>
+<tr class="even">
+<td>GNEmax-4500 Hz</td>
+<td>perceived breathiness</td>
+<td>0.89</td>
+<td>0.886</td>
+<td>91.7%</td>
+<td>74.3%</td>
+<td>VOXplot on Praat algorithms, <strong>no version stated</strong>, German, sustained [a:]</td>
+<td>unclassified (no software version)</td>
+</tr>
+<tr class="odd">
+<td>GNEmax-4500 Hz</td>
+<td>perceived hoarseness</td>
+<td>0.91</td>
+<td>0.798</td>
+<td>88.9%</td>
+<td>62.3%</td>
+<td>as above</td>
+<td>unclassified (no software version)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>The first three come from 376 Brazilian Portuguese speakers, 277 with and 99 without a voice disorder, against a reference standard combining videolaryngostroboscopy with perceptual judgement <span class="citation" data-cites="feliciano2026cutoffs">(<a href="#ref-feliciano2026cutoffs" role="doc-biblioref">Feliciano et al. 2026</a>)</span>. They are <code>pipeline-compatible</code> because the study states Praat 6.2.10 and the plugin’s own source supplies the four arguments to <code>To Harmonicity (gne)</code> <span class="citation" data-cites="abreu2022voxmoreplugin">(<a href="#ref-abreu2022voxmoreplugin" role="doc-biblioref">Abreu et al. 2022</a>)</span> — so a reader running that pipeline can reproduce them. Two qualifications: the study does not state which plugin build it ran, and <strong>the class describes the row, not a licence.</strong> A cutoff is pipeline-compatible for the pipeline it names, not for yours.</p>
+<p>The last two come from 218 German voice samples, by the Youden index, against perceptual ratings <span class="citation" data-cites="barsties2023voxplot">(<a href="#ref-barsties2023voxplot" role="doc-biblioref">Barsties v. Latoszek et al. 2023</a>)</span>. They are <code>unclassified</code> because no software version appears anywhere in that article — neither VOXplot’s nor the Praat algorithms’ underneath. That sample is also <strong>not independent</strong> of material cited elsewhere in this reference: the recordings and perceptual judgements come from the German AVQI/ABI validation and have been re-analysed more than once.</p>
+<p>Note from the table that GNE separated breathiness better than hoarseness in the one study that tested both — AUC 0.886 against 0.798 <span class="citation" data-cites="barsties2023voxplot">(<a href="#ref-barsties2023voxplot" role="doc-biblioref">Barsties v. Latoszek et al. 2023</a>)</span>, which is what a measure designed for breathiness should do.</p>
+</section>
+<section id="confounds-and-cautions" class="level2" data-number="8.7">
+<h2 data-number="8.7" class="anchored" data-anchor-id="confounds-and-cautions"><span class="header-section-number">8.7</span> Confounds and cautions</h2>
+<p><strong>No compatible reference exists for a Praat pipeline.</strong> Every GNE reference value published to date was computed by something else: WPCVox for the norms, VOXplot without a stated version, VoxMore for the Brazilian cutoffs. Report a Praat GNE with its settings and state that no compatible reference exists, rather than borrowing one.</p>
+<p><strong>The bandwidth is not a setting.</strong> Eight distinct GNE measures come from one script by varying bandwidth and maximum frequency <span class="citation" data-cites="barsties2017abi">(<a href="#ref-barsties2017abi" role="doc-biblioref">Barsties v. Latoszek et al. 2017</a>)</span>, the bandwidth determines which percept the measure tracks <span class="citation" data-cites="barsties2018meta">(<a href="#ref-barsties2018meta" role="doc-biblioref">Barsties v. Latoszek et al. 2018</a>)</span>, and it changes the measure’s dynamic range and its sensitivity to <em>f</em><sub>0</sub> <span class="citation" data-cites="michaelis1997gne">(<a href="#ref-michaelis1997gne" role="doc-biblioref">Michaelis et al. 1997</a>)</span>. A value reported as “GNE” without its bandwidth and frequency range is not comparable with anything.</p>
+<p><strong>Which bandwidth is best depends on the purpose, and the literature says so.</strong> For detecting disorder at all, screening accuracy peaked at a 1000-Hz bandwidth (AUC 0.97) and fell to 0.86 at 3000 Hz <span class="citation" data-cites="godino2010gne">(<a href="#ref-godino2010gne" role="doc-biblioref">Godino-Llorente et al. 2010</a>)</span>. For the hoarseness diagram, Michaelis and colleagues used 3000 Hz, because at that bandwidth GNE correlates least with jitter and shimmer and can therefore serve as an independent axis. <span class="citation" data-cites="godino2010gne">Godino-Llorente et al. (<a href="#ref-godino2010gne" role="doc-biblioref">2010</a>)</span> address the conflict directly and conclude that the choice depends on the intended use — 3000 Hz for an independent noise axis, 1000 Hz for screening, accepting that the narrower band integrates more aperiodicity information. The mechanism both sides agree on: too narrow and some filter channels carry no harmonic energy, too wide and the envelope estimate degrades <span class="citation" data-cites="godino2010gne">(<a href="#ref-godino2010gne" role="doc-biblioref">Godino-Llorente et al. 2010</a>)</span>.</p>
+<p><strong>Window length and frequency shift.</strong> Screening accuracy was insensitive to window length across 30–500 ms, and 60 ms was chosen as a trade-off; frequency shift barely mattered, with AUC 0.97 at 100, 200 and 300 Hz alike <span class="citation" data-cites="godino2010gne">(<a href="#ref-godino2010gne" role="doc-biblioref">Godino-Llorente et al. 2010</a>)</span>. Whether that study’s “frequency shift” is Praat’s <code>step</code> argument is <strong>not established by any source cited here</strong>: Praat’s default step is 80 Hz and the study’s choice is 300 Hz.</p>
+<p><strong>Recording conditions.</strong> Environmental noise and software significantly affect GNE as well as the perturbation measures, though less substantially <span class="citation" data-cites="barsties2018meta">(<a href="#ref-barsties2018meta" role="doc-biblioref">Barsties v. Latoszek et al. 2018</a>)</span>.</p>
+<p><strong>Software version.</strong> GNE is one of the ABI’s two principal markers, and Praat versions running an identical script on identical recordings have produced materially different index values; see <a href="./foundations-pipeline.html">Pipeline dependence</a>. No study tests GNE itself across Praat versions.</p>
+<p><strong>Signal typing: promising, unproven.</strong> GNE is claimed to be applicable even to highly irregular glottal oscillations <span class="citation" data-cites="michaelis1997gne">(<a href="#ref-michaelis1997gne" role="doc-biblioref">Michaelis et al. 1997</a>)</span>, the mechanism supports the claim, and the vocal-fry comparison is a worked case. But no study evaluates GNE against the Type 1–4 framework (see <a href="./foundations-signal-typing.html">Signal typing</a>), and one recording is not a validation. The perturbation argument for restricting analysis to Type 1 signals does not transfer to a measure that needs no <em>f</em><sub>0</sub> estimate — which is a reason to investigate, not a reason to assume.</p>
+</section>
+<section id="validation" class="level2" data-number="8.8">
+<h2 data-number="8.8" class="anchored" data-anchor-id="validation"><span class="header-section-number">8.8</span> Validation</h2>
+<p>The development paper <span class="citation" data-cites="michaelis1997gne">(<a href="#ref-michaelis1997gne" role="doc-biblioref">Michaelis et al. 1997</a>)</span> and its sequel <span class="citation" data-cites="michaelis1998features">(<a href="#ref-michaelis1998features" role="doc-biblioref">Michaelis et al. 1998</a>)</span> establish the algorithm and the independence property on synthesized signals. <span class="citation" data-cites="frohlich2000hoarseness">Fröhlich et al. (<a href="#ref-frohlich2000hoarseness" role="doc-biblioref">2000</a>)</span> puts GNE to clinical use as the noise axis of the hoarseness diagram. <span class="citation" data-cites="godino2010gne">Godino-Llorente et al. (<a href="#ref-godino2010gne" role="doc-biblioref">2010</a>)</span> is the only dedicated evaluation of GNE as a standalone screening measure and the only source of normative values. <span class="citation" data-cites="feliciano2026cutoffs">Feliciano et al. (<a href="#ref-feliciano2026cutoffs" role="doc-biblioref">2026</a>)</span> and <span class="citation" data-cites="barsties2023voxplot">Barsties v. Latoszek et al. (<a href="#ref-barsties2023voxplot" role="doc-biblioref">2023</a>)</span> supply the modern cutoffs. The pooled perceptual correlations <span class="citation" data-cites="barsties2018meta">(<a href="#ref-barsties2018meta" role="doc-biblioref">Barsties v. Latoszek et al. 2018</a>)</span> rest on two studies per percept and are descriptive context, not thresholds.</p>
+<p>What is still missing is a GNE reference computed with a stated, current, widely used pipeline. Until one exists, this chapter publishes no GNE normal band.</p>
+</section>
+<section id="compute-it-in-phonalab" class="level2" data-number="8.9">
+<h2 data-number="8.9" class="anchored" data-anchor-id="compute-it-in-phonalab"><span class="header-section-number">8.9</span> Compute it in PhonaLab</h2>
+<blockquote class="blockquote">
+<p><strong><a href="https://phonalab.com">Open PhonaLab →</a></strong></p>
+<p>GNE is reported as a component of the Acoustic Breathiness Index, where the provenance belongs to the ABI cutoff for your language and task. PhonaLab displays no GNE normal band, because no compatible reference exists.</p>
+</blockquote>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-abreu2022voxmoreplugin" class="csl-entry" role="listitem">
+Abreu, Samuel Ribeiro de, Ronei Marcos de Moraes, and Leonardo Wanderley Lopes. 2022. <em><span>VoxMore</span>: A <span>P</span>raat Plugin for Voice Acoustic Analysis</em>. <a href="https://github.com/abreusamuel/VoxMore" class="uri">Https://github.com/abreusamuel/VoxMore</a>.
+</div>
+<div id="ref-barsties2017abi" class="csl-entry" role="listitem">
+Barsties v. Latoszek, Ben, Youri Maryn, Ellen Gerrits, and Marc De Bodt. 2017. <span>“The <span>Acoustic</span> <span>Breathiness</span> <span>Index</span> (<span>ABI</span>): A Multivariate Acoustic Model for Breathiness.”</span> <em>Journal of Voice</em> 31 (4): 511.e11–27. <a href="https://doi.org/10.1016/j.jvoice.2016.11.017">https://doi.org/10.1016/j.jvoice.2016.11.017</a>.
+</div>
+<div id="ref-barsties2018meta" class="csl-entry" role="listitem">
+Barsties v. Latoszek, Ben, Youri Maryn, Ellen Gerrits, and Marc De Bodt. 2018. <span>“A Meta-Analysis: Acoustic Measurement of Roughness and Breathiness.”</span> <em>Journal of Speech, Language, and Hearing Research</em> 61 (2): 298–323. <a href="https://doi.org/10.1044/2017_JSLHR-S-16-0188">https://doi.org/10.1044/2017_JSLHR-S-16-0188</a>.
+</div>
+<div id="ref-barsties2023voxplot" class="csl-entry" role="listitem">
+Barsties v. Latoszek, Ben, Jörg Mayer, Christopher R. Watts, and Bernhard Lehnert. 2023. <span>“Advances in Clinical Voice Quality Analysis with <span>VOXplot</span>.”</span> <em>Journal of Clinical Medicine</em> 12 (14): 4644. <a href="https://doi.org/10.3390/jcm12144644">https://doi.org/10.3390/jcm12144644</a>.
+</div>
+<div id="ref-feliciano2026cutoffs" class="csl-entry" role="listitem">
+Feliciano, Amanda, Mara Behlau, Jordana Balbinot, Samuel Ribeiro de Abreu, Vanessa Veis Ribeiro, and Leonardo Wanderley Lopes. 2026. <span>“Accuracy and Cut-Off Values of Different Acoustic Measures in the Sustained Vowel Task of <span>B</span>razilian <span>P</span>ortuguese Speakers.”</span> <em>CoDAS</em> 38 (4): e20250288. <a href="https://doi.org/10.1590/2317-1782/e20250288en">https://doi.org/10.1590/2317-1782/e20250288en</a>.
+</div>
+<div id="ref-frohlich2000hoarseness" class="csl-entry" role="listitem">
+Fröhlich, Matthias, Dirk Michaelis, Hans Werner Strube, and Eberhard Kruse. 2000. <span>“Acoustic Voice Analysis by Means of the Hoarseness Diagram.”</span> <em>Journal of Speech, Language, and Hearing Research</em> 43 (3): 706–20. <a href="https://doi.org/10.1044/jslhr.4303.706">https://doi.org/10.1044/jslhr.4303.706</a>.
+</div>
+<div id="ref-godino2010gne" class="csl-entry" role="listitem">
+Godino-Llorente, Juan Ignacio, Víctor Osma-Ruiz, Nicolás Sáenz-Lechón, Pedro Gómez-Vilda, Manuel Blanco-Velasco, and Fernando Cruz-Roldán. 2010. <span>“The Effectiveness of the Glottal to Noise Excitation Ratio for the Screening of Voice Disorders.”</span> <em>Journal of Voice</em> 24 (1): 47–56. <a href="https://doi.org/10.1016/j.jvoice.2008.04.006">https://doi.org/10.1016/j.jvoice.2008.04.006</a>.
+</div>
+<div id="ref-michaelis1998features" class="csl-entry" role="listitem">
+Michaelis, Dirk, Matthias Fröhlich, and Hans Werner Strube. 1998. <span>“Selection and Combination of Acoustic Features for the Description of Pathologic Voices.”</span> <em>Journal of the Acoustical Society of America</em> 103 (3): 1628–39. <a href="https://doi.org/10.1121/1.421305">https://doi.org/10.1121/1.421305</a>.
+</div>
+<div id="ref-michaelis1997gne" class="csl-entry" role="listitem">
+Michaelis, Dirk, Tino Gramss, and Hans Werner Strube. 1997. <span>“Glottal-to-Noise Excitation Ratio – a New Measure for Describing Pathological Voices.”</span> <em>Acustica / Acta Acustica</em> 83 (4): 700–706.
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/voicemeasures\.org");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./hnr.html" class="pagination-link" aria-label="Harmonic-to-Noise Ratio (HNR)">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Harmonic-to-Noise Ratio (HNR)</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./cpps.html" class="pagination-link" aria-label="Cepstral Peak Prominence (CPP and CPPS)">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Cepstral Peak Prominence (CPP and CPPS)</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Jorge C. Lucero · Text: CC BY 4.0 · Code: MIT</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/LuceroJC/voice-measures/edit/main/gne.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/LuceroJC/voice-measures/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>Built with <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
