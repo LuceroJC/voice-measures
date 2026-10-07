@@ -1,12 +1,312 @@
 ---
-title: "Glottal-to-Noise Excitation Ratio"
+title: "Glottal-to-Noise Excitation Ratio (GNE)"
 ---
 
-::: {.callout-warning}
-**Placeholder.** This chapter is planned but not yet written. See the
-[book plan](https://github.com/LuceroJC/voice-measures/blob/main/PLAN.md)
-for its intended scope and target release. In the meantime, the
-[Introduction](intro.qmd) shows where this chapter sits in the reference.
+::: {.callout-note}
+**Living draft.** This chapter reflects the sources cited below and will be
+revised as further sources are incorporated. Found an error? Use the *Report an
+issue* link in the sidebar.
 :::
 
-*This page will be replaced with a full chapter in a later release.*
+## Definition
+
+GNE asks a question none of the other noise measures can answer cleanly: **is
+this signal driven by vocal fold vibration, or by turbulent air?** It
+quantifies the amount of voice excitation by glottal oscillations against
+excitation by turbulent noise [@michaelis1997gne]. A clear, non-breathy voice
+gives a high GNE.
+
+What makes it unusual is what it ignores. Jitter and shimmer describe a voice
+that is *irregular*; the classical noise measures describe a voice that is
+*noisy*; and most of them cannot tell the two apart. GNE was built so that
+deviations from periodicity do not influence the degree of turbulence it
+measures [@michaelis1997gne]. Its authors put the consequence bluntly: in
+normal voices a jitter up to 1% and a shimmer up to 3% can be observed, and
+even at those everyday levels the normalized noise energy (NNE) and the
+cepstrum-based harmonics-to-noise ratio (CHNR) cannot distinguish variation in
+amplitude or periodicity from added noise — so a proper evaluation of voice
+quality cannot be obtained from them, and in particular they cannot reliably
+separate pathologies that produce turbulent noise from those that produce
+irregular glottal excitation [@michaelis1997gne].
+
+GNE is also not a model of perception. A related interband-correlation
+technique had been proposed as a model of roughness perception; the GNE
+approach is motivated only by the speech production process and signal theory
+and does not intend to model any perceptive effect [@michaelis1997gne].
+
+## How it is computed
+
+The method rests on the correlation between **Hilbert envelopes of different
+frequency bands** [@michaelis1997gne]. A single glottal closure excites every
+frequency channel at once, so all the envelopes share a shape and correlate
+highly. Turbulent noise excites each channel with its own narrow-band noise,
+and those are uncorrelated — provided the windows defining adjacent channels
+do not overlap too much [@michaelis1997gne].
+
+Six steps [@michaelis1997gne]:
+
+1. Down-sample to 10 kHz.
+2. Inverse filter the signal, by linear prediction of order 13 computed with
+   the autocorrelation method over a 30-ms Hann window at 10-ms shift. This
+   flattens the spectrum into a train of near-delta pulses whose peaks
+   presumably mark the instants of glottal closure.
+3. Compute the Hilbert envelopes of frequency bands of fixed bandwidth at
+   different centre frequencies.
+4. For every pair of envelopes whose centre frequencies differ by at least
+   half the bandwidth, compute the cross-correlation.
+5. Take the maximum of each correlation function, searching a delay of
+   −3 to +3 samples (±0.3 ms), because the envelopes differ in phase.
+6. Take the maximum of those maxima. That is GNE.
+
+Step 1 has a practical consequence worth noting: the authors observe that
+recovery of the pulse train is imperfect for material digitized at 48 or
+50 kHz, because voice energy nearly vanishes above 5 kHz [@michaelis1997gne].
+
+### The bandwidth is part of the measure
+
+GNE is bounded above by 1 and reaches 0. How it behaves between those bounds
+depends on the **envelope bandwidth**, which is not a setting but a choice of
+measure:
+
+| Bandwidth | Centre frequencies | Behaviour on synthesized signals |
+|---|---|---|
+| 1000 Hz | 500–4500 Hz, 80-Hz steps | falls monotonically from 0.9999 to zero as the relative noise level rises from −50 to +20 dB; falls with rising *f*~0~ |
+| 2000 Hz | 1000–4000 Hz, 100-Hz steps | falls from 0.998 to zero; falls with rising *f*~0~ |
+| 3000 Hz | 1500–3500 Hz, 100-Hz steps | weakest dependence on *f*~0~; smallest dynamic range |
+
+: The three bandwidth conditions of @michaelis1997gne. {#tbl-gne-bandwidths}
+
+These are synthesized signals, varied in noise level, *f*~0~, jitter and
+shimmer. They show how the measure behaves; **they are not reference values for
+human speakers.**
+
+### Two names, one measure
+
+This is the trap the literature sets. The same computation is named by its
+bandwidth in one tradition and by its maximum frequency in the other:
+
+- **"GNE 1000 Hz"** — Praat `To Harmonicity (gne): 500, 4500, 1000, 80`,
+  reduced by `Get maximum`.
+- **"GNEmax-4500 Hz"** — the term the [ABI](abi.qmd) uses, and the call the
+  ABI's own Praat script issues: `500, 4500, 1000, 80`, reduced by
+  `Get maximum`.
+
+They are the same call and the same reduction [@abreu2022voxmoreplugin]. A
+reader meeting both names in two papers is meeting one measure. A reader
+meeting **"GNE 2000 Hz"** is not — that is a different measure.
+
+## What it captures
+
+**Independence from perturbation, as a measured property.** GNE assesses
+additive noise independently of jitter and shimmer, where NNE and CHNR do not
+[@michaelis1998features]. Correlations between any GNE measure and any jitter
+or shimmer measure were insignificant for the normal group and significantly
+lower than the other noise measures' for the pathological group
+[@michaelis1998features]. This is the property that separates GNE from the
+rest of the noise family — and it is why a low GNE alongside normal
+perturbation values is informative rather than contradictory.
+
+The independence is not absolute. On synthesized signals at a 1000-Hz
+bandwidth, **GNE falls once jitter exceeds about 1%**, and the dependence
+grows with *f*~0~ [@michaelis1997gne]. Since normal voices reach about 1%
+jitter, the onset sits at the edge of the normal range rather than safely
+outside it. "Independent of jitter and shimmer", as the secondary literature
+often puts it, is true of shimmer and approximately true of jitter.
+
+**The noise axis of the hoarseness diagram.** The diagram is a two-dimensional
+plane: its horizontal axis is the *irregularity component*, built from jitter,
+shimmer and mean period correlation over a waveform-matching segmentation into
+glottal cycles, and its vertical axis is the *noise component*, which is GNE
+[@frohlich2000hoarseness]. GNE is not merely used in the diagram; it is the
+whole noise dimension. Its authors state the reason directly: two axes can
+only vary independently if the noise axis is built from a measure that
+perturbation does not move [@frohlich2000hoarseness].
+
+**Bandwidth selects the percept.** Meta-analytically, GNE at a 1000-Hz
+bandwidth is among the strongest predictors of perceived **roughness**
+(weighted *r* = .65, two studies) and at 3000 Hz among the strongest of
+perceived **breathiness** (.73, two studies) [@barsties2018meta]. Of 86
+acoustic measures reviewed for roughness and 85 for breathiness on sustained
+vowels, GNE 1000 was one of 13 named most promising for roughness and GNE 3000
+one of 12 for breathiness [@barsties2018meta].
+
+**A real irregular voice.** Comparing a normal voice with a recording of vocal
+fry, the harmonics in the fry spectrum are broadened by jitter, but the Hilbert
+envelopes stay similar — so GNE is about the same for both, while NNE and CHNR
+overestimate the noise energy [@michaelis1997gne].
+
+## Read the scale before reading any number {#sec-gne-scale}
+
+::: {.callout-important}
+**Two incompatible scales are in use.** A GNE value on one is meaningless on
+the other, and the published normative values are on the one clinicians are
+least likely to expect.
+:::
+
+| Scale | Range | Direction | Reported by |
+|---|---|---|---|
+| **GNE**, the raw correlation maximum | 0 to just under 1 | higher is cleaner | Praat `To Harmonicity (gne)`, the ABI script, VOXplot, VoxMore |
+| **GNEl = 10·log~10~(1 − GNE)** | negative | *more negative* is cleaner | @godino2010gne |
+
+: The two GNE scales. {#tbl-gne-scales}
+
+The log transform is not an eccentricity of one paper: the Göttingen group's
+own feature table gives GNE the transform log(1 − *x*)
+[@michaelis1998features], and the original paper plots its results as 1 − GNE
+on a logarithmic axis [@michaelis1997gne].
+
+**Convert before comparing:** GNE = 1 − 10^(GNEl/10)^. A GNEl of −21.28 is a
+GNE of 0.9926. Converting fixes the scale and nothing else — window length,
+bandwidth, frequency step and software still differ between every pair of
+sources below.
+
+## Normative data
+
+One study publishes GNE normative values: means, standard deviations and
+percentiles for normal and pathological groups, separated by gender, from 226
+talkers of the MEEI/Kay Elemetrics database (53 normal, 173 pathological),
+sustained /ah/ [@godino2010gne]. All values are **GNEl**; the right-hand column
+converts the clinically actionable figure onto the raw GNE scale.
+
+| Group | Normal mean (GNEl) | Normal 95th pct (GNEl) | 95th pct as GNE |
+|---|---|---|---|
+| All | −21.28 (SD 2.31) | −17.92 | 0.9839 |
+| Female | −21.89 (SD 2.08) | −18.84 | 0.9869 |
+| Male | −20.34 (SD 2.37) | −17.44 | 0.9820 |
+
+: Normative values, bandwidth 1000 Hz, frequency shift 300 Hz [@godino2010gne]. Conversions computed for this reference; see `wiki/measures/gne.md`. {#tbl-gne-norms}
+
+The pathological group averaged GNEl −14.17 (SD 3.31),
+with a 5th percentile of −19.39 [@godino2010gne]. At a 3000-Hz bandwidth the
+normal mean is −11.89 and the 95th percentile −7.33, a GNE of 0.8151
+[@godino2010gne] — the same voices, a different number, because the bandwidth
+is part of the measure.
+
+The authors report **no significant difference between the genders** and state
+that their database revealed no statistical evidence that the normative values
+differ for males and females, while still tabulating them separately
+[@godino2010gne]. Both facts belong together.
+
+::: {.callout-warning}
+**These are not Praat values.** They were computed with WPCVox, the authors'
+own application, whose version is not stated, at a window length of 60 ms
+[@godino2010gne]. They are the reference values that exist; they are not a
+normal band for a Praat or PhonaLab measurement. See
+[Pipeline dependence](foundations-pipeline.qmd).
+:::
+
+## Published cutoffs
+
+Cutoffs exist, and they do not all answer the same question. Two discriminate
+the **presence of a voice disorder**; two discriminate a **perceptual
+dimension**. They must not be pooled or compared.
+
+| Measure | Discriminates | Cutoff | AUC | Sens. | Spec. | Pipeline | Class |
+|---|---|---|---|---|---|---|---|
+| GNE 2000 Hz | voice disorder | > 0.92 | 0.785 | 70.97% | 73.61% | Praat 6.2.10 + VoxMore v1.0.0, pt-BR, sustained [a] | pipeline-compatible |
+| GNE 1000 Hz | voice disorder | > 0.92 | 0.76 | 83.87% | 54.65% | as above | pipeline-compatible |
+| GNE 3000 Hz | voice disorder | > 0.9 | 0.76 | 64.52% | 82.16% | as above | pipeline-compatible |
+| GNEmax-4500 Hz | perceived breathiness | 0.89 | 0.886 | 91.7% | 74.3% | VOXplot on Praat algorithms, **no version stated**, German, sustained [a:] | unclassified (no software version) |
+| GNEmax-4500 Hz | perceived hoarseness | 0.91 | 0.798 | 88.9% | 62.3% | as above | unclassified (no software version) |
+
+: Published GNE cutoffs, with their compatibility class [@feliciano2026cutoffs; @barsties2023voxplot]. {#tbl-gne-cutoffs}
+
+The first three come from 376 Brazilian Portuguese speakers, 277 with and 99
+without a voice disorder, against a reference standard combining
+videolaryngostroboscopy with perceptual judgement [@feliciano2026cutoffs].
+They are `pipeline-compatible` because the study states Praat 6.2.10 and the
+plugin's own source supplies the four arguments to `To Harmonicity (gne)`
+[@abreu2022voxmoreplugin] — so a reader running that pipeline can reproduce
+them. Two qualifications: the study does not state which plugin build it ran,
+and **the class describes the row, not a licence.** A cutoff is
+pipeline-compatible for the pipeline it names, not for yours.
+
+The last two come from 218 German voice samples, by the Youden index, against
+perceptual ratings [@barsties2023voxplot]. They are `unclassified` because no
+software version appears anywhere in that article — neither VOXplot's nor the
+Praat algorithms' underneath. That sample is also **not independent** of
+material cited elsewhere in this reference: the recordings and perceptual
+judgements come from the German AVQI/ABI validation and have been re-analysed
+more than once.
+
+Note from the table that GNE separated breathiness better than hoarseness in
+the one study that tested both — AUC 0.886 against 0.798
+[@barsties2023voxplot], which is what a measure designed for breathiness
+should do.
+
+## Confounds and cautions
+
+**No compatible reference exists for a Praat pipeline.** Every GNE reference
+value published to date was computed by something else: WPCVox for the norms,
+VOXplot without a stated version, VoxMore for the Brazilian cutoffs. Report a
+Praat GNE with its settings and state that no compatible reference exists,
+rather than borrowing one.
+
+**The bandwidth is not a setting.** Eight distinct GNE measures come from one
+script by varying bandwidth and maximum frequency [@barsties2017abi], the
+bandwidth determines which percept the measure tracks [@barsties2018meta], and
+it changes the measure's dynamic range and its sensitivity to *f*~0~
+[@michaelis1997gne]. A value reported as "GNE" without its bandwidth and
+frequency range is not comparable with anything.
+
+**Which bandwidth is best depends on the purpose, and the literature says so.**
+For detecting disorder at all, screening accuracy peaked at a 1000-Hz bandwidth
+(AUC 0.97) and fell to 0.86 at 3000 Hz [@godino2010gne]. For the hoarseness
+diagram, Michaelis and colleagues used 3000 Hz, because at that bandwidth GNE
+correlates least with jitter and shimmer and can therefore serve as an
+independent axis. @godino2010gne address the conflict directly and conclude
+that the choice depends on the intended use — 3000 Hz for an independent noise
+axis, 1000 Hz for screening, accepting that the narrower band integrates more
+aperiodicity information. The mechanism both sides agree on: too narrow and
+some filter channels carry no harmonic energy, too wide and the envelope
+estimate degrades [@godino2010gne].
+
+**Window length and frequency shift.** Screening accuracy was insensitive to
+window length across 30–500 ms, and 60 ms was chosen as a trade-off; frequency
+shift barely mattered, with AUC 0.97 at 100, 200 and 300 Hz alike
+[@godino2010gne]. Whether that study's "frequency shift" is Praat's `step`
+argument is **not established by any source cited here**: Praat's default step
+is 80 Hz and the study's choice is 300 Hz.
+
+**Recording conditions.** Environmental noise and software significantly affect
+GNE as well as the perturbation measures, though less substantially
+[@barsties2018meta].
+
+**Software version.** GNE is one of the ABI's two principal markers, and Praat
+versions running an identical script on identical recordings have produced
+materially different index values; see
+[Pipeline dependence](foundations-pipeline.qmd). No study tests GNE itself
+across Praat versions.
+
+**Signal typing: promising, unproven.** GNE is claimed to be applicable even
+to highly irregular glottal oscillations [@michaelis1997gne], the mechanism
+supports the claim, and the vocal-fry comparison is a worked case. But no
+study evaluates GNE against the Type 1–4 framework (see
+[Signal typing](foundations-signal-typing.qmd)), and one recording is not a
+validation. The perturbation argument for restricting analysis to Type 1
+signals does not transfer to a measure that needs no *f*~0~ estimate — which
+is a reason to investigate, not a reason to assume.
+
+## Validation
+
+The development paper [@michaelis1997gne] and its sequel
+[@michaelis1998features] establish the algorithm and the independence
+property on synthesized signals. @frohlich2000hoarseness puts GNE to clinical
+use as the noise axis of the hoarseness diagram. @godino2010gne is the only
+dedicated evaluation of GNE as a standalone screening measure and the only
+source of normative values. @feliciano2026cutoffs and @barsties2023voxplot
+supply the modern cutoffs. The pooled perceptual correlations
+[@barsties2018meta] rest on two studies per percept and are descriptive
+context, not thresholds.
+
+What is still missing is a GNE reference computed with a stated, current,
+widely used pipeline. Until one exists, this chapter publishes no GNE normal
+band.
+
+## Compute it in PhonaLab
+
+> **[Open PhonaLab →](https://phonalab.com)**
+>
+> GNE is reported as a component of the Acoustic Breathiness Index, where the
+> provenance belongs to the ABI cutoff for your language and task. PhonaLab
+> displays no GNE normal band, because no compatible reference exists.
