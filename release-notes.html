@@ -260,11 +260,13 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#v0.3.0-unreleased" id="toc-v0.3.0-unreleased" class="nav-link active" data-scroll-target="#v0.3.0-unreleased">v0.3.0 — unreleased</a>
+  <li><a href="#v0.3.0-2026-10-08" id="toc-v0.3.0-2026-10-08" class="nav-link active" data-scroll-target="#v0.3.0-2026-10-08">v0.3.0 — 2026-10-08</a>
   <ul class="collapse">
   <li><a href="#added" id="toc-added" class="nav-link" data-scroll-target="#added">Added</a></li>
   <li><a href="#corrections-to-v0.2.0" id="toc-corrections-to-v0.2.0" class="nav-link" data-scroll-target="#corrections-to-v0.2.0">Corrections to v0.2.0</a></li>
   <li><a href="#fixed" id="toc-fixed" class="nav-link" data-scroll-target="#fixed">Fixed</a></li>
+  <li><a href="#corrections-to-the-gne-chapter-before-its-first-release" id="toc-corrections-to-the-gne-chapter-before-its-first-release" class="nav-link" data-scroll-target="#corrections-to-the-gne-chapter-before-its-first-release">Corrections to the GNE chapter, before its first release</a></li>
+  <li><a href="#corrections-to-v0.2.0-second-tier" id="toc-corrections-to-v0.2.0-second-tier" class="nav-link" data-scroll-target="#corrections-to-v0.2.0-second-tier">Corrections to v0.2.0, second tier</a></li>
   <li><a href="#still-open" id="toc-still-open" class="nav-link" data-scroll-target="#still-open">Still open</a></li>
   </ul></li>
   <li><a href="#v0.2.0-2026-10-06" id="toc-v0.2.0-2026-10-06" class="nav-link" data-scroll-target="#v0.2.0-2026-10-06">v0.2.0 — 2026-10-06</a>
@@ -310,13 +312,13 @@ ul.task-list li input[type="checkbox"] {
 
 <p>This reference is written to be revised, and each release is deposited on Zenodo with its own versioned DOI. When a value or a statement that appeared in an earlier release is corrected, the change is recorded here, so that a reader working from an earlier version can see exactly what moved and why. Corrections are not made silently.</p>
 <p>Entries are newest first. “v0.1.0 said” refers to the text as deposited in that release’s Zenodo record, not to the live site, which is revised continuously between releases.</p>
-<section id="v0.3.0-unreleased" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="v0.3.0-unreleased">v0.3.0 — unreleased</h2>
+<section id="v0.3.0-2026-10-08" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="v0.3.0-2026-10-08">v0.3.0 — 2026-10-08</h2>
 <p><strong>Part III gains the Glottal-to-Noise Excitation Ratio</strong>, and the three chapters released in v0.2.0 are corrected in six places. None of the six is a wrong number. All six are a claim that says more than the page it cites, which is the failure mode a numeric check cannot see.</p>
 <section id="added" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="added">Added</h3>
 <ul>
-<li><strong><a href="./gne.html">Glottal-to-Noise Excitation Ratio</a></strong>, built on Michaelis, Gramss and Strube’s 1997 primary with the Göttingen follow-ups, the hoarseness-diagram paper, Godino-Llorente’s screening study and the two recent cutoff sources. The chapter publishes no normal band: every GNE reference value available was computed by software other than Praat, and the published norms are on GNEl, a negative inverted scale, so a scale section sits between the measure and the first table and no figure can be reached without passing it.</li>
+<li><strong><a href="./gne.html">Glottal-to-Noise Excitation Ratio</a></strong>, built on Michaelis, Gramss and Strube’s 1997 primary with the Göttingen follow-ups, the hoarseness-diagram paper, Godino-Llorente’s screening study and the two recent cutoff sources. The chapter publishes no normal band: every GNE reference value available was computed by software other than Praat, and the published norms are on GNEl, a negative inverted scale, so a scale section sits between the measure and the first table and no figure can be reached without passing it. It is the first chapter in this reference to be claim-audited before its first release rather than after; what that found is below.</li>
 <li><strong>A figure for the GNE scale</strong>, showing the transform and placing the same three normative values on both the GNE and the GNEl ruler, which is where the compression that causes the misreadings becomes visible.</li>
 </ul>
 </section>
@@ -336,9 +338,35 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>The DOI in <code>CITATION.cff</code></strong> carried a doubled dot (<code>10.5281/zenodo..23198639</code>). <code>CITATION.cff</code> is the file GitHub, Zenodo and reference managers read, so the malformed version was the one that would have propagated into other people’s bibliographies.</li>
 </ul>
 </section>
+<section id="corrections-to-the-gne-chapter-before-its-first-release" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="corrections-to-the-gne-chapter-before-its-first-release">Corrections to the GNE chapter, before its first release</h3>
+<p>The GNE chapter was put through the same audit before being deposited, rather than after. Three independent reviewers checked <strong>157 citation-bearing claims</strong> against page-limited packets — each reviewer saw the chapter’s source entry and only the pages it cites from its own group of sources.</p>
+<p>The quantitative work came through clean. Every normative cell, every scale conversion, every sensitivity, specificity, area under the curve and threshold, and every Praat call argument was checked against the table row it came from, and none was wrong.</p>
+<p><strong>One correction matters enough to state here.</strong> The chapter said that correlations between GNE and perturbation measures were “significantly lower than the other noise measures’” for the pathological group. The source’s significance test covers only the 2000- and 3000-Hz variants. The 1000-Hz variant — the one Praat computes in the ABI script and in VoxMore, and so the one behind the cutoffs this chapter publishes — correlates .57 to .66 with jitter and shimmer in that group, and the authors’ own wording is that the pattern “can be interpreted” as independence. The independence that makes GNE useful is demonstrated for the wider bandwidths; for the narrow one it is an extrapolation, and the chapter now says so.</p>
+<p>Thirteen further corrections of attribution and scope were applied, and four dropped hedges restored. The one most likely to affect someone reproducing a published value: the VoxMore plugin refuses any recording that is not 44,100 Hz and mono, while the study whose cutoffs this chapter publishes reports a 44,000 Hz sampling rate. No source reviewed resolves which figure is wrong, and the chapter now carries the conflict rather than the tidier of the two numbers.</p>
+</section>
+<section id="corrections-to-v0.2.0-second-tier" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="corrections-to-v0.2.0-second-tier">Corrections to v0.2.0, second tier</h3>
+<p>The October audit’s second tier is also applied in this release, across Jitter, Shimmer and HNR. None changes a published value; all are attribution or scope. In brief:</p>
+<ul>
+<li><strong>“Neutralized noise energy” is “Normalized”.</strong> The measure’s own name was wrong, carried in from a translation note.</li>
+<li><strong>“The ratio approach was taken <em>first</em> by Kojima…”</strong> The source does not say first, and names earlier work.</li>
+<li><strong>The H/N ratio is the mean amplitude of “the average wave”</strong> — the noise-free period estimate — not “the wave”.</li>
+<li><strong>Five sources of vocal perturbation, not four.</strong> The two missing were aerodynamic and chaotic oscillation, the latter being much of why jitter misbehaves on disordered voices.</li>
+<li><strong>The validity of jitter now carries the same page’s three refusals of it:</strong> not a sole diagnostic criterion, no guide to the cause of a dysphonia, and “perhaps overused”.</li>
+<li><strong>Reinke’s oedema is no longer generalised to diffuse mass lesions</strong>, and the clinical consequence the source does not state has been removed.</li>
+<li><strong>Baken and Orlikoff’s bit-depth minimum is 10 bits</strong>, which is a real disagreement with the Behlau chapter’s 16, and is now stated as numbers rather than as “a lower bar”.</li>
+<li><strong>The Behlau normality limits do name a program</strong> (Dr.&nbsp;Speech), which also fixes the shimmer unit as a percentage. Both values are still excluded, on the narrower ground that no version or settings are given.</li>
+<li><strong>The analog-tape recording caution belongs to jitter</strong> in the source; its application to shimmer is now marked as this reference’s extension.</li>
+<li><strong>Findings reported second-hand are now attributed</strong> to the investigators the textbook names, rather than read as the textbook’s own.</li>
+<li><strong>The interpolation remedy</strong> for sampling-rate error, offered in the same breath as the error, is no longer omitted.</li>
+</ul>
+</section>
 <section id="still-open" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="still-open">Still open</h3>
-<p>The same audit raised a second tier of attribution and scope findings, and a third of roughly twenty places where a source’s hedge is stated flatly. Neither tier is corrected here. They are recorded so that a reader knows the chapters have been read this closely and that the reading is not finished.</p>
+<p>The third tier — roughly twenty places where a source’s “may”, “tends to” or “appears” is stated flatly — is not corrected. Individually small, together they are the chapters’ voice drifting from the sources’ caution, and the pass is still owed.</p>
+<p>Eleven claims in the GNE chapter could not be checked, most because a claim’s supporting text sits on a page the chapter’s source entry does not cite. That class of defect — the right claim with the wrong page behind it — accounted for six of this round’s findings, and the reference entries behind every chapter will need a pass of their own for it.</p>
+<p>One cross-chapter note: the two sources that print the ABI intercept disagree in the ninth decimal (<code>5.0447740915</code> against <code>5.0447730915</code>, the latter matching both Praat scripts). The <a href="./abi.html">ABI</a> chapter does not yet record this.</p>
 </section>
 </section>
 <section id="v0.2.0-2026-10-06" class="level2 unnumbered">
