@@ -235,10 +235,30 @@ measure [@baken2000clinical].
 3 per cent, or about 1.4 semitones, at about 4 to 7 cycles per second, usually
 accompanied by comparable amplitude variation [@baken2000clinical].
 
-**Minimum sample.** For normal voices with only minimal roughness, as few as 30
-consecutive cycles may be adequate, though more cycles reduce the variability
-introduced by analysing from different starting points, which carry different
-amounts of residual onset transition [@baken2000clinical].
+**Minimum sample: 30 cycles grades severity, it does not quantify it.** For
+normal voices with only minimal roughness, as few as 30 consecutive cycles may
+be adequate, and a clinically disordered voice can be graded as to severity
+with only that many. More precise quantification of dysfunction requires
+larger samples. Karnell is cited for both figures: for a high-quality
+recording, up to 190 cycles are necessary to reach an estimate with a minimal
+value, taken to be optimally valid, while 110 consecutive samples are likely
+to produce an estimate of jitter within 5 per cent of a minimal value, which
+may be good enough for routine clinical use [@baken2000clinical]. More cycles
+also reduce the variability introduced by analysing from different starting
+points, which carry different amounts of residual onset transition
+[@baken2000clinical]. On these figures the two sources substantially agree:
+the Behlau chapter recommends at least 1 second and at least 100 cycles in its
+F0 guidance [@behlauespecialista].
+
+::: {.callout-note collapse="true"}
+## Erratum, v0.3.0
+
+Before v0.3.0 this section presented 30 consecutive cycles as an adequate
+sample, and listed the comparison with the Behlau figure as a point of
+disagreement. The cited page says 30 cycles can grade severity but that
+quantification needs 110 to 190, which substantially agrees with Behlau rather
+than conflicting with it. See the [release notes](release-notes.qmd).
+:::
 
 **Recording.** Analog tape recorders introduce considerable frequency and
 amplitude variation of their own, which inflates perturbation measures; they
@@ -274,13 +294,6 @@ fundamental periods, so perturbation decreases as F0 rises
 give lower values [@behlauespecialista]. These cannot both hold; this chapter
 follows the English primary, which reports the correlation and the caution that
 the relationship is not monotonic.
-
-**Minimum number of cycles.** Baken and Orlikoff put the minimum at about 30
-consecutive cycles for a normal voice [@baken2000clinical]; the Behlau chapter
-recommends at least 1 second and at least 100 cycles in its F0 guidance
-[@behlauespecialista]. The two are not strictly comparable — one is a minimum
-for a valid perturbation estimate, the other a recommendation for F0 analysis —
-but a clinician reading both will meet different numbers.
 
 **The figure 0.5 means two different things.** In Baken and Orlikoff, 0.5 ms is
 the threshold inside Lieberman's perturbation factor [@baken2000clinical]. In

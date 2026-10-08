@@ -199,8 +199,14 @@ women — complete glottal coaptation, mid-posterior triangular gap, and vocal
 nodules — NNE was the *most sensitive* acoustic parameter and HNR did not
 differentiate the groups; F0 and jitter were also similar across groups, while
 shimmer was significantly higher in the nodule group [@behlauespecialista].
-Published NNE data remain scarce, but preliminary reports suggest the measure
-performs well in discriminating abnormal voices [@baken2000clinical].
+Published NNE data remain scarce. Preliminary reports suggest the measure
+performs well in discriminating abnormal voices, but the same page records a
+null result: in ten adult patients tested before and after treatment, NNE did
+not differ significantly despite a significant reduction in jitter and
+shimmer and the patients' own report of improvement, and a significant change
+appeared only when NNE was restricted to energy between 1 and 4 kHz. The
+textbook concludes that the clinical usefulness of NNE, or of some
+modification of it, remains unclear [@baken2000clinical].
 
 **What NNE tracks perceptually.** In 26 girls and 24 boys aged ten, normal and
 dysphonic, NNE correlated most strongly with perceived breathiness, .78 in
@@ -217,14 +223,24 @@ comparison, only fundamental frequency was resistant to differences in
 recording condition, and the harmonic-to-noise ratio was the *most sensitive*
 parameter of those examined [@behlauespecialista].
 
-**System dependence.** Extraction methods differ across programs and were often
-unstated in older studies, so values from different systems are not directly
-comparable; the software and version must be reported
-[@behlauespecialista]. The general warning in the English textbook is that
-different analysis systems may produce dissimilar results on the same signal,
-and that until inter-laboratory standards are agreed upon, comparison of data
-sets must be undertaken with caution [@baken2000clinical]. See
+**System dependence.** Different analysis systems may produce dissimilar
+results when analysing the same signal, and until inter-laboratory standards
+are agreed upon, comparison of data sets must be undertaken with caution; the
+warning is general to perturbation and noise analysis [@baken2000clinical].
+Every HNR value in the table above therefore carries its pipeline and its
+compatibility class, and a value whose analysis software is unstated cannot be
+compared with one whose software is. See
 [Pipeline Dependence and Reference Values](foundations-pipeline.qmd).
+
+::: {.callout-note collapse="true"}
+## Erratum, v0.3.0
+
+Before v0.3.0 this section attributed to the Behlau chapter a statement that
+extraction methods are typically unreported in the older literature and that
+software and version must be reported. The cited page covers only signal
+typing, and no ingested source makes that claim. See the
+[release notes](release-notes.qmd).
+:::
 
 **Spectral noise alone is a weak discriminator.** Measured directly rather than
 as a ratio, spectral noise has been found to be only a fair differentiator of
@@ -259,8 +275,11 @@ clinically should be tied to its extraction system and reference cohort rather
 than treated as universal.
 
 **Whether HNR or NNE should be the primary clinical noise measure** remains
-open. The sources reviewed so far favour NNE for dysphonic voices and HNR for
-normal-voice screening [@behlauespecialista].
+open, and the two sources reviewed do not agree. The Behlau chapter suggests
+HNR for normal voices and NNE for dysphonic ones [@behlauespecialista]. The
+English textbook declines to endorse NNE, concluding that its clinical
+usefulness, or that of some modification of it, remains unclear
+[@baken2000clinical].
 
 ## Compute it in PhonaLab
 

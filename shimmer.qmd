@@ -174,7 +174,7 @@ The values below come from other pipelines and are shown for context only.
 |---|---|---|---|---|---|
 | Shimmer in dB | 31 men, 18–38 y (mean 26.6) | Sustained vowels of 5 s at 70–80 dB SPL, F0 held to ±10 Hz; 3-second segment of the least variable of 3 trials | /a/ 0.47 (SD 0.34), /i/ 0.37 (0.28), /u/ 0.33 (0.31); overall 0.39 (0.31) | Software not stated; task and level stated in full | unclassified (analysis software not stated) |
 | Shimmer in dB | 20 women, 25–49 y (mean 36.8) | As above | /a/ 0.33 (SD 0.22), /i/ 0.23 (0.08), /u/ 0.19 (0.04); overall 0.25 (0.11) | As above | unclassified (analysis software not stated) |
-| Shimmer in dB | The combined sample | As above | 95 per cent critical region above 0.98 dB | As above | unclassified (analysis software not stated) |
+| Shimmer in dB | The 31 men above | As above | 95 per cent critical region above 0.98 dB | As above | unclassified (analysis software not stated) |
 | Shimmer in dB | 10 men, 26–37 y (mean 31.8) | Sustained /a/, at least 8 s excluding the first and last seconds | 0.37 dB at a baseline of 63.32 dB SPL; 0.31 at 74.30; 0.21 at 84.80 | Not stated | unclassified (pipeline not stated) |
 | APQ, acoustic signal | 7 men (mean 27.7 y) | Sustained /a/ at comfortable pitch and loudness, steadiest 1.5 s, mean F0 108.1 Hz | 40.3 × 10⁻⁴ (SD 13.6 × 10⁻⁴) | Eleven-point smoothing; pretracheal contact microphone | unclassified (analysis software not stated) |
 | APQ, acoustic signal | 2 women (mean 29.5 y) | As above, mean F0 206.0 Hz | 32.9 × 10⁻⁴ (SD 20.9 × 10⁻⁴) | As above | unclassified (analysis software not stated) |
@@ -183,13 +183,28 @@ The values below come from other pipelines and are shown for context only.
 
 : Shimmer values from other pipelines, for context only. Source: @baken2000clinical. {#tbl-shimmer-context}
 
-For contrast, the same source reports pathological APQ values on the acoustic
-signal of 16.7 × 10⁻⁴ in two women with chronic laryngitis, 41.0 × 10⁻⁴ in two
-men with nodules, 111.3 × 10⁻⁴ in two men with unilateral paralysis, and
-120.1 × 10⁻⁴ in one man with a tumour [@baken2000clinical]. The separation from
-the normal values is large, but the samples are very small and the smoothing
-width differs between the two source studies, so the comparison is suggestive
-rather than diagnostic.
+The same source reports pathological APQ values of 16.7 × 10⁻⁴ in two women
+with chronic laryngitis, 41.0 × 10⁻⁴ in two men with nodules, 111.3 × 10⁻⁴ in
+two men with unilateral paralysis, and 120.1 × 10⁻⁴ in one man with a tumour
+[@baken2000clinical]. These are not a contrast with the rows above and must
+not be read as one. Every pathological row in the source table carries the
+five-point inverse-filtering note, where the normal acoustic rows carry the
+eleven-point note, and the table states no signal type for the pathological
+block [@baken2000clinical]. The values do not separate cleanly either: chronic
+laryngitis at 16.7 × 10⁻⁴ falls below both normal means, and nodules at
+41.0 × 10⁻⁴ sits on the normal male mean of 40.3 × 10⁻⁴. Only paralysis and
+tumour stand clear of the normal range, at roughly three times the normal male
+mean, and every row rests on one or two speakers.
+
+::: {.callout-note collapse="true"}
+## Erratum, v0.3.0
+
+Before v0.3.0 this paragraph labelled the pathological values as acoustic-signal
+measurements and stated that their separation from the normal values was large.
+Both were wrong: the source attributes every pathological row to the
+inverse-filtering note, and two of the four values fall at or below the normal
+means. See the [release notes](release-notes.qmd).
+:::
 
 ## What it captures
 
@@ -268,8 +283,9 @@ limit of normality for relative measures with no software, version or settings
 attached, and without specifying whether the unit is percent or decibels
 [@behlauespecialista]. It is therefore not listed as a reference value above.
 The comparable figure from an English source — a 95 per cent critical region
-above 0.98 dB — is in decibels, on a stated task, and is not interchangeable
-with a percentage [@baken2000clinical].
+above 0.98 dB — is in decibels, is on a stated task, applies to the 31-man
+sample alone and not to the women, and is not interchangeable with a
+percentage [@baken2000clinical].
 
 ## Compute it in PhonaLab
 

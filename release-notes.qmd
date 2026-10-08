@@ -10,6 +10,101 @@ Entries are newest first. "v0.1.0 said" refers to the text as deposited in
 that release's Zenodo record, not to the live site, which is revised
 continuously between releases.
 
+## v0.3.0 — unreleased {.unnumbered}
+
+**Part III gains the Glottal-to-Noise Excitation Ratio**, and the three
+chapters released in v0.2.0 are corrected in six places. None of the six is a
+wrong number. All six are a claim that says more than the page it cites, which
+is the failure mode a numeric check cannot see.
+
+### Added {.unnumbered}
+
+- **[Glottal-to-Noise Excitation Ratio](gne.qmd)**, built on Michaelis,
+  Gramss and Strube's 1997 primary with the Göttingen follow-ups, the
+  hoarseness-diagram paper, Godino-Llorente's screening study and the two
+  recent cutoff sources. The chapter publishes no normal band: every GNE
+  reference value available was computed by software other than Praat, and
+  the published norms are on GNEl, a negative inverted scale, so a scale
+  section sits between the measure and the first table and no figure can be
+  reached without passing it.
+- **A figure for the GNE scale**, showing the transform and placing the same
+  three normative values on both the GNE and the GNEl ruler, which is where
+  the compression that causes the misreadings becomes visible.
+
+### Corrections to v0.2.0 {.unnumbered}
+
+These six come from a claim-level audit of the Jitter, Shimmer and HNR
+chapters. Each of the three entries behind them was packaged with only the
+source pages it cites and read by an independent reviewer who had not seen it
+written; 188 citation-bearing claims were checked. The method is recorded
+because the result argues for it: the automated check that verifies numbers
+against cited pages had passed all three chapters, and found none of these.
+
+**Jitter, minimum sample.** v0.2.0 said that "as few as 30 consecutive cycles
+may be adequate", and listed the gap between that and the Behlau chapter's
+100 cycles as a point of disagreement. The cited page says 30 cycles can
+*grade* a disordered voice as to severity, but that quantification needs
+larger samples: up to 190 cycles to reach a minimal value, and 110
+consecutive samples to come within 5 per cent of one. A clinician following
+the old text would have analysed 30 cycles. The disagreement also dissolves —
+at 110 cycles the two sources substantially agree — so it is removed rather
+than restated.
+
+**Shimmer, pathological APQ.** v0.2.0 described the pathological values as
+measured "on the acoustic signal" and said their separation from the normal
+values was large. Neither holds. Every pathological row in the source table
+carries the inverse-filtering, five-point-smoothing note, where the normal
+acoustic rows carry the eleven-point note, so the rows are not comparable
+with the normals above them. And the figures contradict the claim: chronic
+laryngitis at 16.7 × 10⁻⁴ falls *below* both normal means, and nodules at
+41.0 × 10⁻⁴ sits on the normal male mean of 40.3 × 10⁻⁴.
+
+**Shimmer, the 0.98 dB critical region.** v0.2.0 attributed the 95 per cent
+critical region to "the combined sample". In the source table it belongs to
+the men's column — Horii's 31 men — and the women's column has no critical
+region at all; the women's mean, 0.25 dB, is well below the men's 0.39 dB.
+The footnote markers in the text extraction were damaged, so the mapping was
+confirmed against a render of the printed page before the correction was
+made.
+
+**HNR, NNE listed as an alias.** The reference entry behind the chapter listed
+NNE among HNR's aliases. The two are distinct measures with **opposite sign
+conventions** — HNR positive in decibels, NNE negative with a normal limit up
+to −10 dB — so the alias could have led a reader to read a −10 dB limit
+against an HNR scale. Removed. The chapter text itself was correct and is
+unchanged on this point.
+
+**HNR, the evidence for NNE.** v0.2.0 reported that "preliminary reports
+suggest the measure performs well" and stopped there. The same page continues
+with a null result — NNE unchanged before and after treatment in ten
+patients, despite significant reductions in jitter and shimmer — and
+concludes that the clinical usefulness of NNE "remains unclear". The chapter
+now carries both, and the open question about HNR against NNE is restated as
+a genuine disagreement between the two sources rather than a shared
+preference.
+
+**HNR, the system-dependence caveat.** The claim that extraction methods are
+typically unreported in the older literature, and that software and version
+must therefore be reported, was cited to a page covering only signal typing.
+No source reviewed makes that claim. The caveat now rests on the English
+textbook's statement that different systems may produce dissimilar results on
+the same signal, which that source does make, and the reporting requirement
+is stated as this reference's own practice rather than as a finding.
+
+### Fixed {.unnumbered}
+
+- **The DOI in `CITATION.cff`** carried a doubled dot
+  (`10.5281/zenodo..23198639`). `CITATION.cff` is the file GitHub, Zenodo and
+  reference managers read, so the malformed version was the one that would
+  have propagated into other people's bibliographies.
+
+### Still open {.unnumbered}
+
+The same audit raised a second tier of attribution and scope findings, and a
+third of roughly twenty places where a source's hedge is stated flatly.
+Neither tier is corrected here. They are recorded so that a reader knows the
+chapters have been read this closely and that the reading is not finished.
+
 ## v0.2.0 — 2026-10-06 {.unnumbered}
 
 The first release to add chapters rather than correct them. **Part II —
