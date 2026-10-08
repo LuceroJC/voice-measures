@@ -9,8 +9,8 @@ authors:
 repository-code: "https://github.com/LuceroJC/voice-measures"
 url: "https://voicemeasures.org"
 license: CC-BY-4.0
-version: "0.2.0"
-date-released: "2026-10-06"
+version: "0.3.0"
+date-released: "2026-10-08"
 
 identifiers:
   - type: doi
@@ -19,5 +19,7 @@ identifiers:
   - type: doi
     value: "10.5281/zenodo.23198639"
     description: "Version DOI (v0.2)"
+  # TODO at tag time: add the v0.3 version DOI Zenodo mints for this release,
+  # as v0.2's was added in commit 755ce12.
 # The archived Zenodo record classifies this as a book (see .zenodo.json).
 # CFF's top-level type field only accepts software/dataset, so it is omitted here.

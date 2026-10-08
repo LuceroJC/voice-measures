@@ -110,13 +110,16 @@ plt.show()
 
 ## Computation
 
-The ratio approach was taken first by Kojima and colleagues and by Kitajima,
-but their computational procedure was complex and inconvenient. It was soon
+The ratio approach was taken by Kojima and colleagues and by Kitajima, but
+their computational procedure was complex and inconvenient. The textbook does
+not call theirs the first, and the Behlau chapter names earlier work — Isshiki,
+Yanagihara and Morimoto (1966), Hiroto (1967), and Emanuel and Sansone (1969)
+[@behlauespecialista]. It was soon
 improved upon by Yumoto and colleagues, whose procedure was to objectify and
 quantify the features that appear in the spectrogram of the hoarse voice
 [@baken2000clinical].
 
-**Neutralized noise energy** (NNE) is a related measure with a different
+**Normalized noise energy** (NNE) is a related measure with a different
 strategy. Regular changes over the sampling interval influence the assessment
 of noise, analogous to the long-term drift problems that plague jitter and
 shimmer. NNE avoids that contaminating influence by basing its analysis on
@@ -187,9 +190,11 @@ in men and higher in women, and highest in falsetto, then modal, then pulse
 register — so a value is interpretable only in the register in which the voice
 was recorded [@behlauespecialista].
 
-Diffuse mass lesions can give paradoxically high values: in Reinke's oedema the
-preserved harmonic component can keep the ratio high, so HNR alone can
-under-flag these voices. Small glottal gaps can give a low ratio or raised NNE,
+Reinke's oedema can give paradoxically high values: the source's statement is
+specific to that condition, where the harmonic component present can keep the
+ratio high. It does not generalise this to diffuse mass lesions, and it does
+not state that HNR alone would therefore under-flag such voices. Small glottal
+gaps can give a low ratio or raised NNE,
 without exact correlation to the perceptual grade of dysphonia. The measure is
 useful for monitoring the course of paralytic dysphonias and partial
 laryngectomies [@behlauespecialista].
@@ -208,10 +213,12 @@ appeared only when NNE was restricted to energy between 1 and 4 kHz. The
 textbook concludes that the clinical usefulness of NNE, or of some
 modification of it, remains unclear [@baken2000clinical].
 
-**What NNE tracks perceptually.** In 26 girls and 24 boys aged ten, normal and
-dysphonic, NNE correlated most strongly with perceived breathiness, .78 in
-girls and .77 in boys; less with hoarseness, .50 and .57; and least with
-roughness, .38 and .48 [@baken2000clinical].
+**What NNE tracks perceptually.** McAllister, Sundberg and Hibi, as cited by
+the textbook, reported a "reasonable correlation" between NNE and perceived
+breathiness, hoarseness and roughness in 26 girls and 24 boys aged ten, normal
+and dysphonic. It was strongest for breathiness, .78 in girls and .77 in boys;
+less for hoarseness, .50 and .57; and least for roughness, .38 and .48
+[@baken2000clinical].
 
 The two measures are complementary: HNR appears more informative in normal
 voices, NNE in dysphonic ones [@behlauespecialista].
@@ -244,11 +251,13 @@ typing, and no ingested source makes that claim. See the
 
 **Spectral noise alone is a weak discriminator.** Measured directly rather than
 as a ratio, spectral noise has been found to be only a fair differentiator of
-rough and abnormal voices [@baken2000clinical].
+rough and abnormal voices, a result the textbook attributes to Emanuel and
+Austin [@baken2000clinical].
 
-**Harmonic amplitude does not fall indefinitely as noise rises.** As
-interharmonic spectral noise increases, energy at the harmonic frequencies does
-decrease, but only up to a point [@baken2000clinical].
+**Harmonic amplitude does not fall indefinitely as noise rises.** Emanuel and
+Whitehead, as cited by the textbook, found that as interharmonic spectral noise
+increases, energy at the harmonic frequencies does decrease, but only up to a
+point [@baken2000clinical].
 
 **Vowel and fundamental frequency both matter.** Vowels differ in median noise
 level in a consistent order, and among normal children a high fundamental

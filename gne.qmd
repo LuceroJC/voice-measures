@@ -121,14 +121,32 @@ meeting **"GNE 2000 Hz"** is not — that is a different measure.
 
 ## What it captures
 
-**Independence from perturbation, as a measured property.** GNE assesses
-additive noise independently of jitter and shimmer, where NNE and CHNR do not
-[@michaelis1998features]. Correlations between any GNE measure and any jitter
-or shimmer measure were insignificant for the normal group and significantly
-lower than the other noise measures' for the pathological group
-[@michaelis1998features]. This is the property that separates GNE from the
-rest of the noise family — and it is why a low GNE alongside normal
-perturbation values is informative rather than contradictory.
+**Independence from perturbation, as a measured property.** GNE is held to
+assess additive noise independently of jitter and shimmer, where NNE and CHNR
+do not [@michaelis1998features]. The real-speech evidence is weaker than that
+summary suggests, and it is weakest for the variant most often computed.
+
+For the normal group, no significant correlation was found between any GNE
+measure and any jitter or shimmer measure. For the pathological group every
+value is significant, and the GNE correlations are only described as *smaller*
+than those of NNE and CHNR; the pairwise significance test, run on two
+perturbation measures, found that **GNE at 2000 and 3000 Hz** were
+significantly smaller than the NNE and CHNR correlations. The 1000-Hz variant
+is not among them — it correlates .57 to .66 with jitter and shimmer in the
+pathological group — and the authors' own wording is that the pattern "can be
+interpreted" as independence [@michaelis1998features].
+
+This matters because the 1000-Hz variant is the one Praat computes in the ABI
+script and in VoxMore. For the wider bandwidths the independence is
+demonstrated; for the one behind the cutoffs below, it is an extrapolation.
+
+::: {.callout-note collapse="true"}
+## Erratum, v0.3.0
+
+Before v0.3.0 this section said the correlations were "significantly lower than
+the other noise measures'" for every GNE variant. The significance test covers
+only the 2000- and 3000-Hz variants. See the [release notes](release-notes.qmd).
+:::
 
 The independence is not absolute. On synthesized signals at a 1000-Hz
 bandwidth, **GNE falls once jitter exceeds about 1%**, and the dependence
@@ -141,12 +159,18 @@ often puts it, is true of shimmer and approximately true of jitter.
 plane: its horizontal axis is the *irregularity component*, built from jitter,
 shimmer and mean period correlation over a waveform-matching segmentation into
 glottal cycles, and its vertical axis is the *noise component*, which is GNE
-[@frohlich2000hoarseness]. GNE is not merely used in the diagram; it is the
-whole noise dimension. Its authors state the reason directly: two axes can
-only vary independently if the noise axis is built from a measure that
-perturbation does not move [@frohlich2000hoarseness].
+[@frohlich2000hoarseness]. GNE is not merely used in the diagram; it alone
+supplies the noise dimension. Its authors do not claim the independence as
+their own finding — they cite Michaelis, Gramss and Strube for it, and scope it
+to tests on synthetic signals [@frohlich2000hoarseness]. That two axes can only
+vary independently if the noise axis is built from a measure perturbation does
+not move is this reference's reading, not their statement.
 
-**Bandwidth selects the percept.** Meta-analytically, GNE at a 1000-Hz
+**Bandwidth shifts which percept the measure tracks best.** It does not select
+it: the same meta-analysis reports that a lower bandwidth also reached an
+acceptable effect size for roughness, and tabulates GNE at 2000 Hz as the
+single strongest breathiness correlation it holds [@barsties2018meta].
+Meta-analytically, GNE at a 1000-Hz
 bandwidth is among the strongest predictors of perceived **roughness**
 (weighted *r* = .65, two studies) and at 3000 Hz among the strongest of
 perceived **breathiness** (.73, two studies) [@barsties2018meta]. Of 86
@@ -314,9 +338,14 @@ videolaryngostroboscopy with perceptual judgement [@feliciano2026cutoffs].
 They are `pipeline-compatible` because the study states Praat 6.2.10 and the
 plugin's own source supplies the four arguments to `To Harmonicity (gne)`
 [@abreu2022voxmoreplugin] — so a reader running that pipeline can reproduce
-them. Two qualifications: the study does not state which plugin build it ran,
-and **the class describes the row, not a licence.** A cutoff is
-pipeline-compatible for the pipeline it names, not for yours.
+them. Three qualifications. The study does not state which plugin build it ran.
+Two stated constraints do not agree: the plugin refuses any recording that is
+not 44,100 Hz and mono, while the study reports a 44,000 Hz sampling rate, and
+no source reviewed resolves which figure is wrong; the plugin also analyses at
+most the three central seconds of a recording, so the analysed segment is
+shorter than the five-second minimum the study specifies. And **the class
+describes the row, not a licence.** A cutoff is pipeline-compatible for the
+pipeline it names, not for yours.
 
 The last two come from 218 German voice samples, by the Youden index, against
 perceptual ratings [@barsties2023voxplot]. They are `unclassified` because no

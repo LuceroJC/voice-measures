@@ -10,7 +10,7 @@ Entries are newest first. "v0.1.0 said" refers to the text as deposited in
 that release's Zenodo record, not to the live site, which is revised
 continuously between releases.
 
-## v0.3.0 — unreleased {.unnumbered}
+## v0.3.0 — 2026-10-08 {.unnumbered}
 
 **Part III gains the Glottal-to-Noise Excitation Ratio**, and the three
 chapters released in v0.2.0 are corrected in six places. None of the six is a
@@ -26,7 +26,9 @@ is the failure mode a numeric check cannot see.
   reference value available was computed by software other than Praat, and
   the published norms are on GNEl, a negative inverted scale, so a scale
   section sits between the measure and the first table and no figure can be
-  reached without passing it.
+  reached without passing it. It is the first chapter in this reference to be
+  claim-audited before its first release rather than after; what that found is
+  below.
 - **A figure for the GNE scale**, showing the transform and placing the same
   three normative values on both the GNE and the GNEl ruler, which is where
   the compression that causes the misreadings becomes visible.
@@ -98,12 +100,85 @@ is stated as this reference's own practice rather than as a finding.
   reference managers read, so the malformed version was the one that would
   have propagated into other people's bibliographies.
 
+### Corrections to the GNE chapter, before its first release {.unnumbered}
+
+The GNE chapter was put through the same audit before being deposited, rather
+than after. Three independent reviewers checked **157 citation-bearing claims**
+against page-limited packets — each reviewer saw the chapter's source entry and
+only the pages it cites from its own group of sources.
+
+The quantitative work came through clean. Every normative cell, every scale
+conversion, every sensitivity, specificity, area under the curve and threshold,
+and every Praat call argument was checked against the table row it came from,
+and none was wrong.
+
+**One correction matters enough to state here.** The chapter said that
+correlations between GNE and perturbation measures were "significantly lower
+than the other noise measures'" for the pathological group. The source's
+significance test covers only the 2000- and 3000-Hz variants. The 1000-Hz
+variant — the one Praat computes in the ABI script and in VoxMore, and so the
+one behind the cutoffs this chapter publishes — correlates .57 to .66 with
+jitter and shimmer in that group, and the authors' own wording is that the
+pattern "can be interpreted" as independence. The independence that makes GNE
+useful is demonstrated for the wider bandwidths; for the narrow one it is an
+extrapolation, and the chapter now says so.
+
+Thirteen further corrections of attribution and scope were applied, and four
+dropped hedges restored. The one most likely to affect someone reproducing a
+published value: the VoxMore plugin refuses any recording that is not 44,100 Hz
+and mono, while the study whose cutoffs this chapter publishes reports a
+44,000 Hz sampling rate. No source reviewed resolves which figure is wrong, and
+the chapter now carries the conflict rather than the tidier of the two numbers.
+
+### Corrections to v0.2.0, second tier {.unnumbered}
+
+The October audit's second tier is also applied in this release, across Jitter,
+Shimmer and HNR. None changes a published value; all are attribution or scope.
+In brief:
+
+- **"Neutralized noise energy" is "Normalized".** The measure's own name was
+  wrong, carried in from a translation note.
+- **"The ratio approach was taken *first* by Kojima…"** The source does not say
+  first, and names earlier work.
+- **The H/N ratio is the mean amplitude of "the average wave"** — the noise-free
+  period estimate — not "the wave".
+- **Five sources of vocal perturbation, not four.** The two missing were
+  aerodynamic and chaotic oscillation, the latter being much of why jitter
+  misbehaves on disordered voices.
+- **The validity of jitter now carries the same page's three refusals of it:**
+  not a sole diagnostic criterion, no guide to the cause of a dysphonia, and
+  "perhaps overused".
+- **Reinke's oedema is no longer generalised to diffuse mass lesions**, and the
+  clinical consequence the source does not state has been removed.
+- **Baken and Orlikoff's bit-depth minimum is 10 bits**, which is a real
+  disagreement with the Behlau chapter's 16, and is now stated as numbers
+  rather than as "a lower bar".
+- **The Behlau normality limits do name a program** (Dr. Speech), which also
+  fixes the shimmer unit as a percentage. Both values are still excluded, on
+  the narrower ground that no version or settings are given.
+- **The analog-tape recording caution belongs to jitter** in the source; its
+  application to shimmer is now marked as this reference's extension.
+- **Findings reported second-hand are now attributed** to the investigators the
+  textbook names, rather than read as the textbook's own.
+- **The interpolation remedy** for sampling-rate error, offered in the same
+  breath as the error, is no longer omitted.
+
 ### Still open {.unnumbered}
 
-The same audit raised a second tier of attribution and scope findings, and a
-third of roughly twenty places where a source's hedge is stated flatly.
-Neither tier is corrected here. They are recorded so that a reader knows the
-chapters have been read this closely and that the reading is not finished.
+The third tier — roughly twenty places where a source's "may", "tends to" or
+"appears" is stated flatly — is not corrected. Individually small, together
+they are the chapters' voice drifting from the sources' caution, and the pass
+is still owed.
+
+Eleven claims in the GNE chapter could not be checked, most because a claim's
+supporting text sits on a page the chapter's source entry does not cite. That
+class of defect — the right claim with the wrong page behind it — accounted for
+six of this round's findings, and the reference entries behind every chapter
+will need a pass of their own for it.
+
+One cross-chapter note: the two sources that print the ABI intercept disagree
+in the ninth decimal (`5.0447740915` against `5.0447730915`, the latter matching
+both Praat scripts). The [ABI](abi.qmd) chapter does not yet record this.
 
 ## v0.2.0 — 2026-10-06 {.unnumbered}
 

@@ -206,14 +206,15 @@ belongs to another engine.
 
 ## Confounds and cautions
 
-**The measurement error can be as large as the measurement.** Perturbation can
+**The measurement error is large relative to normal jitter.** Perturbation can
 be no more accurate than the period determinations it is computed from, which
 are limited by the sampling frequency and the F0-extraction method. At a
 sampling rate of 25,000 per second the maximum relative jitter error is about
 0.2 per cent for a voice averaging 100 Hz, and about 0.6 per cent at 300 Hz.
 Compared with the expected jitter of a normal voice, the error in both cases is
-quite large, and raising the sampling rate enough is generally not feasible
-[@baken2000clinical].
+quite large, and raising the sampling rate enough is generally not feasible.
+The source gives a remedy in the same breath: the limitations of sampling rate
+can be greatly lessened by the use of interpolation [@baken2000clinical].
 
 **Never report an index without inspecting the F0 record.** "Undertaking a
 numerical analysis of vocal frequency perturbation without checking for signs
@@ -224,7 +225,8 @@ intervals of diplophonia. A single jitter index would have missed the salient
 features of her problem [@baken2000clinical].
 
 **Extraction algorithm.** There are three basic choices — zero crossing, peak
-picking and waveform matching. Peak-picking and zero-crossing methods cannot be
+picking and waveform matching. The conclusions that follow are Titze and
+Liang's, reported by the textbook. Peak-picking and zero-crossing methods cannot be
 relied upon for adequate precision, especially for the perturbations
 characteristic of normal voices, and are seriously affected by additive noise.
 Waveform matching loses accuracy when frequency variations are large. Filtering
@@ -298,9 +300,11 @@ the relationship is not monotonic.
 **The figure 0.5 means two different things.** In Baken and Orlikoff, 0.5 ms is
 the threshold inside Lieberman's perturbation factor [@baken2000clinical]. In
 the Behlau chapter, 0.5 per cent is given as an upper limit of normality for
-relative measures, with no software, version or settings attached
-[@behlauespecialista]. They are not the same quantity, and the second has no
-traceable pipeline, so it is not listed as a reference value above.
+relative measures, and the page does name a program — Dr. Speech (Tiger DRS),
+which uses jitter PPQ [@behlauespecialista]. They are not the same quantity.
+The Behlau figure is still not listed as a reference value above, but on the
+narrower ground that no version or settings are stated, not that no software is
+named.
 
 ## Compute it in PhonaLab
 

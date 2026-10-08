@@ -240,10 +240,14 @@ resolution of the analog-to-digital converter [@baken2000clinical].
 **Microphone.** Shimmer measurement clearly requires a high-quality air
 microphone [@baken2000clinical].
 
-**Recording.** Analog tape recorders add frequency and amplitude variation of
-their own, inflating perturbation measures. A digital recorder adds
-significantly less; direct acquisition through the A/D system is preferable
-[@baken2000clinical].
+**Recording, carried over from the jitter literature.** Analog tape recorders
+add frequency and amplitude variation of their own, which *tends to* inflate
+perturbation measures. The source restricts its recommendation to samples for
+**jitter** analysis, and offers two alternatives without ranking them: a
+digital audio tape recorder, which adds significantly less, or acquiring the
+sample through the A/D system directly [@baken2000clinical]. Applying this to
+shimmer is reasonable, since the same recorders vary amplitude as well as
+frequency, but no source reviewed states it for shimmer.
 
 **Unit ambiguity.** Percent shimmer and shimmer in decibels are different
 quantities with different definitions, and systems differ in which they report
@@ -271,17 +275,19 @@ EGG waveform cannot be substituted for or compared with acoustic shimmer
 
 ## Points of disagreement
 
-**Bit depth.** The sources set different minima. The Behlau chapter gives a
-minimum of 16 bits for the analog-to-digital card [@behlauespecialista]. Baken
-and Orlikoff treat bit resolution as the chief limit on shimmer accuracy but
-set a lower bar for clinical adequacy [@baken2000clinical]. A measurement made
-near the lower bound of either recommendation should be reported with its bit
-depth.
+**Bit depth.** The sources set different minima, and the gap is wide. The
+Behlau chapter gives a minimum of 16 bits for the analog-to-digital card
+[@behlauespecialista]. Baken and Orlikoff treat bit resolution as the most
+important factor limiting shimmer accuracy, and state that 10 bits should be
+considered a minimum [@baken2000clinical]. A measurement made near the lower
+bound of either recommendation should be reported with its bit depth.
 
 **The 3 per cent limit has no traceable pipeline.** It is given as an upper
-limit of normality for relative measures with no software, version or settings
-attached, and without specifying whether the unit is percent or decibels
-[@behlauespecialista]. It is therefore not listed as a reference value above.
+limit of normality for relative measures, and the page names a program —
+Dr. Speech, which uses shimmer APQ — and fixes the unit as a percentage
+[@behlauespecialista]. What it does not give is a version or settings, which is
+the ground on which it is excluded here, so it is not listed as a reference
+value above.
 The comparable figure from an English source — a 95 per cent critical region
 above 0.98 dB — is in decibels, is on a stated task, applies to the 31-man
 sample alone and not to the women, and is not interchangeable with a
