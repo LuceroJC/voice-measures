@@ -260,9 +260,16 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#v0.2.0-2026-10-06" id="toc-v0.2.0-2026-10-06" class="nav-link active" data-scroll-target="#v0.2.0-2026-10-06">v0.2.0 — 2026-10-06</a>
+  <li><a href="#v0.3.0-unreleased" id="toc-v0.3.0-unreleased" class="nav-link active" data-scroll-target="#v0.3.0-unreleased">v0.3.0 — unreleased</a>
   <ul class="collapse">
   <li><a href="#added" id="toc-added" class="nav-link" data-scroll-target="#added">Added</a></li>
+  <li><a href="#corrections-to-v0.2.0" id="toc-corrections-to-v0.2.0" class="nav-link" data-scroll-target="#corrections-to-v0.2.0">Corrections to v0.2.0</a></li>
+  <li><a href="#fixed" id="toc-fixed" class="nav-link" data-scroll-target="#fixed">Fixed</a></li>
+  <li><a href="#still-open" id="toc-still-open" class="nav-link" data-scroll-target="#still-open">Still open</a></li>
+  </ul></li>
+  <li><a href="#v0.2.0-2026-10-06" id="toc-v0.2.0-2026-10-06" class="nav-link" data-scroll-target="#v0.2.0-2026-10-06">v0.2.0 — 2026-10-06</a>
+  <ul class="collapse">
+  <li><a href="#added-1" id="toc-added-1" class="nav-link" data-scroll-target="#added-1">Added</a></li>
   <li><a href="#corrections-to-v0.1.1" id="toc-corrections-to-v0.1.1" class="nav-link" data-scroll-target="#corrections-to-v0.1.1">Corrections to v0.1.1</a></li>
   <li><a href="#provenance-corrections-no-value-changed" id="toc-provenance-corrections-no-value-changed" class="nav-link" data-scroll-target="#provenance-corrections-no-value-changed">Provenance corrections — no value changed</a></li>
   <li><a href="#corrected-after-deposit" id="toc-corrected-after-deposit" class="nav-link" data-scroll-target="#corrected-after-deposit">Corrected after deposit</a></li>
@@ -303,11 +310,42 @@ ul.task-list li input[type="checkbox"] {
 
 <p>This reference is written to be revised, and each release is deposited on Zenodo with its own versioned DOI. When a value or a statement that appeared in an earlier release is corrected, the change is recorded here, so that a reader working from an earlier version can see exactly what moved and why. Corrections are not made silently.</p>
 <p>Entries are newest first. “v0.1.0 said” refers to the text as deposited in that release’s Zenodo record, not to the live site, which is revised continuously between releases.</p>
+<section id="v0.3.0-unreleased" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="v0.3.0-unreleased">v0.3.0 — unreleased</h2>
+<p><strong>Part III gains the Glottal-to-Noise Excitation Ratio</strong>, and the three chapters released in v0.2.0 are corrected in six places. None of the six is a wrong number. All six are a claim that says more than the page it cites, which is the failure mode a numeric check cannot see.</p>
+<section id="added" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="added">Added</h3>
+<ul>
+<li><strong><a href="./gne.html">Glottal-to-Noise Excitation Ratio</a></strong>, built on Michaelis, Gramss and Strube’s 1997 primary with the Göttingen follow-ups, the hoarseness-diagram paper, Godino-Llorente’s screening study and the two recent cutoff sources. The chapter publishes no normal band: every GNE reference value available was computed by software other than Praat, and the published norms are on GNEl, a negative inverted scale, so a scale section sits between the measure and the first table and no figure can be reached without passing it.</li>
+<li><strong>A figure for the GNE scale</strong>, showing the transform and placing the same three normative values on both the GNE and the GNEl ruler, which is where the compression that causes the misreadings becomes visible.</li>
+</ul>
+</section>
+<section id="corrections-to-v0.2.0" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="corrections-to-v0.2.0">Corrections to v0.2.0</h3>
+<p>These six come from a claim-level audit of the Jitter, Shimmer and HNR chapters. Each of the three entries behind them was packaged with only the source pages it cites and read by an independent reviewer who had not seen it written; 188 citation-bearing claims were checked. The method is recorded because the result argues for it: the automated check that verifies numbers against cited pages had passed all three chapters, and found none of these.</p>
+<p><strong>Jitter, minimum sample.</strong> v0.2.0 said that “as few as 30 consecutive cycles may be adequate”, and listed the gap between that and the Behlau chapter’s 100 cycles as a point of disagreement. The cited page says 30 cycles can <em>grade</em> a disordered voice as to severity, but that quantification needs larger samples: up to 190 cycles to reach a minimal value, and 110 consecutive samples to come within 5 per cent of one. A clinician following the old text would have analysed 30 cycles. The disagreement also dissolves — at 110 cycles the two sources substantially agree — so it is removed rather than restated.</p>
+<p><strong>Shimmer, pathological APQ.</strong> v0.2.0 described the pathological values as measured “on the acoustic signal” and said their separation from the normal values was large. Neither holds. Every pathological row in the source table carries the inverse-filtering, five-point-smoothing note, where the normal acoustic rows carry the eleven-point note, so the rows are not comparable with the normals above them. And the figures contradict the claim: chronic laryngitis at 16.7 × 10⁻⁴ falls <em>below</em> both normal means, and nodules at 41.0 × 10⁻⁴ sits on the normal male mean of 40.3 × 10⁻⁴.</p>
+<p><strong>Shimmer, the 0.98 dB critical region.</strong> v0.2.0 attributed the 95 per cent critical region to “the combined sample”. In the source table it belongs to the men’s column — Horii’s 31 men — and the women’s column has no critical region at all; the women’s mean, 0.25 dB, is well below the men’s 0.39 dB. The footnote markers in the text extraction were damaged, so the mapping was confirmed against a render of the printed page before the correction was made.</p>
+<p><strong>HNR, NNE listed as an alias.</strong> The reference entry behind the chapter listed NNE among HNR’s aliases. The two are distinct measures with <strong>opposite sign conventions</strong> — HNR positive in decibels, NNE negative with a normal limit up to −10 dB — so the alias could have led a reader to read a −10 dB limit against an HNR scale. Removed. The chapter text itself was correct and is unchanged on this point.</p>
+<p><strong>HNR, the evidence for NNE.</strong> v0.2.0 reported that “preliminary reports suggest the measure performs well” and stopped there. The same page continues with a null result — NNE unchanged before and after treatment in ten patients, despite significant reductions in jitter and shimmer — and concludes that the clinical usefulness of NNE “remains unclear”. The chapter now carries both, and the open question about HNR against NNE is restated as a genuine disagreement between the two sources rather than a shared preference.</p>
+<p><strong>HNR, the system-dependence caveat.</strong> The claim that extraction methods are typically unreported in the older literature, and that software and version must therefore be reported, was cited to a page covering only signal typing. No source reviewed makes that claim. The caveat now rests on the English textbook’s statement that different systems may produce dissimilar results on the same signal, which that source does make, and the reporting requirement is stated as this reference’s own practice rather than as a finding.</p>
+</section>
+<section id="fixed" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="fixed">Fixed</h3>
+<ul>
+<li><strong>The DOI in <code>CITATION.cff</code></strong> carried a doubled dot (<code>10.5281/zenodo..23198639</code>). <code>CITATION.cff</code> is the file GitHub, Zenodo and reference managers read, so the malformed version was the one that would have propagated into other people’s bibliographies.</li>
+</ul>
+</section>
+<section id="still-open" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="still-open">Still open</h3>
+<p>The same audit raised a second tier of attribution and scope findings, and a third of roughly twenty places where a source’s hedge is stated flatly. Neither tier is corrected here. They are recorded so that a reader knows the chapters have been read this closely and that the reading is not finished.</p>
+</section>
+</section>
 <section id="v0.2.0-2026-10-06" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="v0.2.0-2026-10-06">v0.2.0 — 2026-10-06</h2>
 <p>The first release to add chapters rather than correct them. <strong>Part II — Periodicity and Stability opens</strong>, with Jitter and Shimmer, and the Harmonic-to-Noise Ratio joins CPPS in Part III. One published value is corrected, and a round of provenance corrections changes where values come from without changing any of them.</p>
-<section id="added" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="added">Added</h3>
+<section id="added-1" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="added-1">Added</h3>
 <ul>
 <li><strong><a href="./jitter.html">Jitter</a></strong>, <strong><a href="./shimmer.html">Shimmer</a></strong> and <strong><a href="./hnr.html">Harmonic-to-Noise Ratio</a></strong>: three new chapters, built on Baken and Orlikoff with the existing English primaries, and keeping the Brazilian literature only where no English source covers the fact.</li>
 <li><strong>None of the three publishes a cutoff.</strong> No reference value in the sources reviewed is compatible with a Praat-based pipeline, so each declares the absence rather than borrowing a number, and each states that PhonaLab displays no normal band and no severity band for that measure. The HNR chapter says explicitly that it does not apply the widely repeated 7 dB floor, and shows why: the figure traces to a 95 per cent confidence limit of 7.4 dB in one study on one algorithm, and a normally speaking elderly group in another study averages 5.54 dB, below it.</li>

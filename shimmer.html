@@ -442,7 +442,7 @@ Note
 <div id="fig-shimmer" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Two columns of paired panels. On the left the per-cycle peaks trace a nearly flat line across the waveform; on the right they rise and fall irregularly. The lower panels plot those peaks against cycle number, flat on the left and scattered on the right.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-shimmer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="shimmer_files/figure-html/fig-shimmer-output-1.png" alt="Two columns of paired panels. On the left the per-cycle peaks trace a nearly flat line across the waveform; on the right they rise and fall irregularly. The lower panels plot those peaks against cycle number, flat on the left and scattered on the right." width="724" height="481" class="figure-img">
+<img src="shimmer_files/figure-html/fig-shimmer-output-1.png" alt="Two columns of paired panels. On the left the per-cycle peaks trace a nearly flat line across the waveform; on the right they rise and fall irregularly. The lower panels plot those peaks against cycle number, flat on the left and scattered on the right." width="725" height="482" class="figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-shimmer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;6.1: Two synthetic vowels with identical periods throughout, differing only in the amplitude of successive cycles. Top: the waveform, with the peak of each cycle marked and the RMS level of the whole segment dashed. Shimmer is computed from the per-cycle peak, not from the RMS, and the two must not be confused. Bottom: the peak amplitude of each cycle. The right-hand voice measures 1.58 dB, about 17 %, against 0.10 dB for the left. Signals are synthetic and illustrative.
@@ -542,7 +542,7 @@ Table&nbsp;6.2: Shimmer values from other pipelines, for context only. Source: <
 </tr>
 <tr class="odd">
 <td>Shimmer in dB</td>
-<td>The combined sample</td>
+<td>The 31 men above</td>
 <td>As above</td>
 <td>95 per cent critical region above 0.98 dB</td>
 <td>As above</td>
@@ -593,7 +593,23 @@ Table&nbsp;6.2: Shimmer values from other pipelines, for context only. Source: <
 </div>
 </figure>
 </div>
-<p>For contrast, the same source reports pathological APQ values on the acoustic signal of 16.7 × 10⁻⁴ in two women with chronic laryngitis, 41.0 × 10⁻⁴ in two men with nodules, 111.3 × 10⁻⁴ in two men with unilateral paralysis, and 120.1 × 10⁻⁴ in one man with a tumour <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000</a>)</span>. The separation from the normal values is large, but the samples are very small and the smoothing width differs between the two source studies, so the comparison is suggestive rather than diagnostic.</p>
+<p>The same source reports pathological APQ values of 16.7 × 10⁻⁴ in two women with chronic laryngitis, 41.0 × 10⁻⁴ in two men with nodules, 111.3 × 10⁻⁴ in two men with unilateral paralysis, and 120.1 × 10⁻⁴ in one man with a tumour <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000</a>)</span>. These are not a contrast with the rows above and must not be read as one. Every pathological row in the source table carries the five-point inverse-filtering note, where the normal acoustic rows carry the eleven-point note, and the table states no signal type for the pathological block <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000</a>)</span>. The values do not separate cleanly either: chronic laryngitis at 16.7 × 10⁻⁴ falls below both normal means, and nodules at 41.0 × 10⁻⁴ sits on the normal male mean of 40.3 × 10⁻⁴. Only paralysis and tumour stand clear of the normal range, at roughly three times the normal male mean, and every row rests on one or two speakers.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Erratum, v0.3.0
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Before v0.3.0 this paragraph labelled the pathological values as acoustic-signal measurements and stated that their separation from the normal values was large. Both were wrong: the source attributes every pathological row to the inverse-filtering note, and two of the four values fall at or below the normal means. See the <a href="./release-notes.html">release notes</a>.</p>
+</div>
+</div>
+</div>
 </section>
 <section id="what-it-captures" class="level2" data-number="6.4">
 <h2 data-number="6.4" class="anchored" data-anchor-id="what-it-captures"><span class="header-section-number">6.4</span> What it captures</h2>
@@ -614,7 +630,7 @@ Table&nbsp;6.2: Shimmer values from other pipelines, for context only. Source: <
 <section id="points-of-disagreement" class="level2" data-number="6.6">
 <h2 data-number="6.6" class="anchored" data-anchor-id="points-of-disagreement"><span class="header-section-number">6.6</span> Points of disagreement</h2>
 <p><strong>Bit depth.</strong> The sources set different minima. The Behlau chapter gives a minimum of 16 bits for the analog-to-digital card <span class="citation" data-cites="behlauespecialista">(<a href="#ref-behlauespecialista" role="doc-biblioref">Behlau, n.d.</a>)</span>. Baken and Orlikoff treat bit resolution as the chief limit on shimmer accuracy but set a lower bar for clinical adequacy <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000</a>)</span>. A measurement made near the lower bound of either recommendation should be reported with its bit depth.</p>
-<p><strong>The 3 per cent limit has no traceable pipeline.</strong> It is given as an upper limit of normality for relative measures with no software, version or settings attached, and without specifying whether the unit is percent or decibels <span class="citation" data-cites="behlauespecialista">(<a href="#ref-behlauespecialista" role="doc-biblioref">Behlau, n.d.</a>)</span>. It is therefore not listed as a reference value above. The comparable figure from an English source — a 95 per cent critical region above 0.98 dB — is in decibels, on a stated task, and is not interchangeable with a percentage <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000</a>)</span>.</p>
+<p><strong>The 3 per cent limit has no traceable pipeline.</strong> It is given as an upper limit of normality for relative measures with no software, version or settings attached, and without specifying whether the unit is percent or decibels <span class="citation" data-cites="behlauespecialista">(<a href="#ref-behlauespecialista" role="doc-biblioref">Behlau, n.d.</a>)</span>. It is therefore not listed as a reference value above. The comparable figure from an English source — a 95 per cent critical region above 0.98 dB — is in decibels, is on a stated task, applies to the 31-man sample alone and not to the women, and is not interchangeable with a percentage <span class="citation" data-cites="baken2000clinical">(<a href="#ref-baken2000clinical" role="doc-biblioref">Baken and Orlikoff 2000</a>)</span>.</p>
 </section>
 <section id="compute-it-in-phonalab" class="level2" data-number="6.7">
 <h2 data-number="6.7" class="anchored" data-anchor-id="compute-it-in-phonalab"><span class="header-section-number">6.7</span> Compute it in PhonaLab</h2>
