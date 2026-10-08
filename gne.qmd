@@ -1,5 +1,12 @@
 ---
 title: "Glottal-to-Noise Excitation Ratio (GNE)"
+execute:
+  echo: true
+jupyter: python3
+format:
+  html:
+    code-fold: true
+    code-summary: "Show the code for this figure"
 ---
 
 ::: {.callout-note}
@@ -7,6 +14,23 @@ title: "Glottal-to-Noise Excitation Ratio (GNE)"
 revised as further sources are incorporated. Found an error? Use the *Report an
 issue* link in the sidebar.
 :::
+
+```{python}
+#| label: setup
+#| include: false
+import sys, os
+sys.path.insert(0, os.path.abspath("_code"))
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.lines import Line2D
+import vmsynth as vs
+
+plt.rcParams.update({
+    "figure.dpi": 110, "savefig.dpi": 200,
+    "font.size": 9.5, "axes.titlesize": 9.5, "axes.titleweight": "bold",
+    "axes.titlelocation": "left", "axes.labelsize": 9,
+})
+```
 
 ## Definition
 
@@ -159,6 +183,79 @@ on a logarithmic axis [@michaelis1997gne].
 GNE of 0.9926. Converting fixes the scale and nothing else — window length,
 bandwidth, frequency step and software still differ between every pair of
 sources below.
+
+```{python}
+#| label: fig-gne-scale
+#| fig-cap: "The two GNE scales, using the normative values of @godino2010gne at a 1000-Hz bandwidth. Left: the transform. Because GNEl is the logarithm of (1 − GNE), the curve steepens as GNE approaches 1, so a small change in GNE near the top of its range is a large change in GNEl. Right: the same three values placed on each ruler, both drawn so that a cleaner voice lies to the right. On GNE's nominal 0-to-1 scale the normal mean, the normal 95th percentile and the pathological mean fall within 0.031 of one another, close enough that they cannot be labelled separately; the same three values spread across 7.1 dB of GNEl. This is why a GNE value and a GNEl value cannot be compared without converting, and why the published norms are reported on the log scale."
+#| fig-alt: "Two panels. On the left, a curve of GNEl in decibels against GNE, falling steeply as GNE approaches 1, with three marked points. On the right, two horizontal rulers: on the upper GNE ruler the three points are crowded together at the far right end, while on the lower GNEl ruler the same three points are spread well apart, with connecting lines fanning out between the two rulers."
+
+to_gne = lambda l: 1 - 10 ** (np.asarray(l) / 10.0)
+marks = [(-21.28, vs.BLUE), (-17.92, vs.BLUE), (-14.17, vs.ORANGE)]
+
+fig, (axA, axB) = plt.subplots(
+    1, 2, figsize=(7.4, 3.6), gridspec_kw={"width_ratios": [1.15, 1.0]})
+
+# A: the transform
+l = np.linspace(-30, -5, 600)
+axA.plot(to_gne(l), l, color=vs.INK, lw=1.6, zorder=3)
+for gl, c in marks:
+    g = float(to_gne(gl))
+    axA.plot([g, g], [-30, gl], color=c, lw=1.0, ls=":", zorder=2)
+    axA.plot([0.94, g], [gl, gl], color=c, lw=1.0, ls=":", zorder=2)
+    axA.plot([g], [gl], "o", ms=5, color=c, zorder=4,
+             markeredgecolor="white", markeredgewidth=0.8)
+axA.set_xlim(0.94, 1.0); axA.set_ylim(-30, -5)
+axA.set_xlabel("GNE   (correlation maximum)")
+axA.set_ylabel("GNEl  =  10\u00b7log\u2081\u2080(1 \u2212 GNE)   [dB]")
+axA.set_title("The transform")
+vs.style_axes(axA)
+
+# B: the same values on GNE's full scale and on GNEl
+axB.set_xlim(-0.03, 1.03); axB.set_ylim(0, 1); axB.axis("off")
+axB.set_title("Same voices, two rulers")
+
+y_top, y_bot = 0.66, 0.30
+L_NEAR, L_FAR = -5.0, -30.0        # reversed, so cleaner lies to the right on both
+x_gne  = lambda g: g               # GNE on its full nominal 0-1 scale
+x_gnel = lambda v: (v - L_NEAR) / (L_FAR - L_NEAR)
+
+for y, lab, lo, hi in ((y_top, "GNE", "0", "1"),
+                       (y_bot, "GNEl  [dB]", "\u22125", "\u221230")):
+    axB.plot([0, 1], [y, y], color=vs.MUTED, lw=1.2, solid_capstyle="butt")
+    axB.text(-0.03, y + 0.075, lab, color=vs.INK, fontsize=8.5, va="bottom")
+    axB.text(0, y - 0.05, lo, color=vs.MUTED, fontsize=7.5, ha="center", va="top")
+    axB.text(1, y - 0.05, hi, color=vs.MUTED, fontsize=7.5, ha="center", va="top")
+
+for i, (gl, c) in enumerate(marks):
+    g = float(to_gne(gl))
+    xt, xb = x_gne(g), x_gnel(gl)
+    axB.plot([xt, xb], [y_top - 0.03, y_bot + 0.03], color=c, lw=1.0,
+             alpha=0.8, zorder=2)
+    for x, y in ((xt, y_top), (xb, y_bot)):
+        axB.plot([x], [y], "o", ms=5, color=c, zorder=3,
+                 markeredgecolor="white", markeredgewidth=0.8)
+    dy = 0.075 if i % 2 == 0 else 0.155
+    axB.text(xb, y_bot - dy, f"{gl:.2f}", color=c, fontsize=7.5,
+             ha="center", va="top")
+
+g_lo, g_hi = float(to_gne(-14.17)), float(to_gne(-21.28))
+axB.plot([g_lo, g_hi], [y_top + 0.05, y_top + 0.05], color=vs.INK, lw=2.2,
+         solid_capstyle="butt", zorder=3)
+axB.annotate(f"all three inside {g_hi - g_lo:.3f} of GNE",
+             xy=((g_lo + g_hi) / 2, y_top + 0.065), xytext=(0.70, y_top + 0.25),
+             color=vs.INK, fontsize=8, ha="right",
+             arrowprops=dict(arrowstyle="->", color=vs.INK, lw=0.8,
+                             shrinkA=2, shrinkB=1))
+
+axB.legend(handles=[Line2D([], [], marker="o", ls="", ms=5, color=vs.BLUE,
+                           label="Normal group"),
+                    Line2D([], [], marker="o", ls="", ms=5, color=vs.ORANGE,
+                           label="Pathological group")],
+           loc="lower center", bbox_to_anchor=(0.5, -0.04), frameon=False,
+           fontsize=8, handletextpad=0.4, ncol=2, columnspacing=1.2)
+
+fig.tight_layout()
+```
 
 ## Normative data
 
