@@ -90,7 +90,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./jitter.html" rel="next">
+<link href="./foundations-perceptual-anchors.html" rel="next">
 <link href="./foundations-signal-typing.html" rel="prev">
 <link href="./favicon.svg" rel="icon" type="image/svg+xml">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
@@ -211,6 +211,12 @@ div.csl-indent {
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Pipeline Dependence and Reference Values</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./foundations-perceptual-anchors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Perceptual Anchors (GRBAS, CAPE-V)</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -225,13 +231,13 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./jitter.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Jitter (Frequency Perturbation)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Jitter (Frequency Perturbation)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./shimmer.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Shimmer (Amplitude Perturbation)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Shimmer (Amplitude Perturbation)</span></span></a>
   </div>
 </li>
       </ul>
@@ -248,19 +254,25 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./hnr.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Harmonic-to-Noise Ratio (HNR)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Harmonic-to-Noise Ratio (HNR)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./gne.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Glottal-to-Noise Excitation Ratio (GNE)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Glottal-to-Noise Excitation Ratio (GNE)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./cpps.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Cepstral Peak Prominence (CPP and CPPS)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Cepstral Peak Prominence (CPP and CPPS)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./spectral-tilt.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Spectral Tilt</span></span></a>
   </div>
 </li>
       </ul>
@@ -277,13 +289,13 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./avqi.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Acoustic Voice Quality Index (AVQI)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Acoustic Voice Quality Index (AVQI)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./abi.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Acoustic Breathiness Index (ABI)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Acoustic Breathiness Index (ABI)</span></span></a>
   </div>
 </li>
       </ul>
@@ -670,7 +682,7 @@ Table&nbsp;4.2: Compatibility classes used in Normative data tables.
 </tr>
 <tr class="odd">
 <td>unclassified</td>
-<td>The source does not state enough of the pipeline to place the value. Always written with its reason: <code>unclassified (no software version)</code>, <code>unclassified (pipeline not stated)</code></td>
+<td>The source does not state enough of the pipeline to place the value. Always written with its reason: <code>unclassified (no software version)</code>, <code>unclassified (pipeline not stated)</code>, <code>unclassified (settings cited to a source not in this reference)</code></td>
 <td>Shown only as history, labelled as such; never a cutoff</td>
 </tr>
 </tbody>
@@ -679,6 +691,7 @@ Table&nbsp;4.2: Compatibility classes used in Normative data tables.
 </figure>
 </div>
 <p><strong>The class describes the row, not you.</strong> It says whether that row’s own pipeline is stated completely enough to be reused by someone running it. It does not say whether the value matches the pipeline <em>you</em> are measuring with: that comparison is yours to make from the Pipeline cell, which is why the Pipeline cell carries the detail. A class cell therefore never names a target pipeline, and a row can be <code>pipeline-compatible</code> for someone running that program while being no use at all to someone running another one.</p>
+<p><strong>Settings stated by citation.</strong> Many papers give their software version but state their settings only by citing another paper, as in “CPPS as described in Murton et al.”. Such a row counts as stating its settings when the cited paper is among this reference’s sources and lists the settings in full, and when every paper cited for the settings points to that same configuration. The Pipeline cell then says so, for example “Praat 6.2.11 CPPS, Murton et al.&nbsp;2020 settings (by citation)”. When the cited paper is not among the sources, the row is <code>unclassified (settings cited to a source not in this reference)</code>, which also says what would rescue it. Settings can be inherited through a citation. Values cannot: a value read from another paper’s table is attributed to the paper that reports it.</p>
 <p>Where the reviewed sources give no usable reference for a population, task or language, the table says so instead of borrowing a value from another pipeline. The measured value can still be reported; what is withheld is the comparison.</p>
 </section>
 <section id="using-a-reference-value" class="level2" data-number="4.9">
@@ -1180,8 +1193,8 @@ Watts, Christopher R., Shaheen N. Awan, and Youri Maryn. 2017. <span>“A Compar
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./jitter.html" class="pagination-link" aria-label="Jitter (Frequency Perturbation)">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Jitter (Frequency Perturbation)</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./foundations-perceptual-anchors.html" class="pagination-link" aria-label="Perceptual Anchors (GRBAS, CAPE-V)">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Perceptual Anchors (GRBAS, CAPE-V)</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

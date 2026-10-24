@@ -156,6 +156,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Pipeline Dependence and Reference Values</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./foundations-perceptual-anchors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Perceptual Anchors (GRBAS, CAPE-V)</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -170,13 +176,13 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./jitter.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Jitter (Frequency Perturbation)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Jitter (Frequency Perturbation)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./shimmer.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Shimmer (Amplitude Perturbation)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Shimmer (Amplitude Perturbation)</span></span></a>
   </div>
 </li>
       </ul>
@@ -193,19 +199,25 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./hnr.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Harmonic-to-Noise Ratio (HNR)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Harmonic-to-Noise Ratio (HNR)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./gne.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Glottal-to-Noise Excitation Ratio (GNE)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Glottal-to-Noise Excitation Ratio (GNE)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./cpps.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Cepstral Peak Prominence (CPP and CPPS)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Cepstral Peak Prominence (CPP and CPPS)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./spectral-tilt.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Spectral Tilt</span></span></a>
   </div>
 </li>
       </ul>
@@ -222,13 +234,13 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./avqi.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Acoustic Voice Quality Index (AVQI)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Acoustic Voice Quality Index (AVQI)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./abi.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Acoustic Breathiness Index (ABI)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Acoustic Breathiness Index (ABI)</span></span></a>
   </div>
 </li>
       </ul>
@@ -260,9 +272,14 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#v0.3.0-2026-10-08" id="toc-v0.3.0-2026-10-08" class="nav-link active" data-scroll-target="#v0.3.0-2026-10-08">v0.3.0 — 2026-10-08</a>
+  <li><a href="#v0.4.0-unreleased" id="toc-v0.4.0-unreleased" class="nav-link active" data-scroll-target="#v0.4.0-unreleased">v0.4.0 — unreleased</a>
   <ul class="collapse">
   <li><a href="#added" id="toc-added" class="nav-link" data-scroll-target="#added">Added</a></li>
+  <li><a href="#changed" id="toc-changed" class="nav-link" data-scroll-target="#changed">Changed</a></li>
+  </ul></li>
+  <li><a href="#v0.3.0-2026-10-08" id="toc-v0.3.0-2026-10-08" class="nav-link" data-scroll-target="#v0.3.0-2026-10-08">v0.3.0 — 2026-10-08</a>
+  <ul class="collapse">
+  <li><a href="#added-1" id="toc-added-1" class="nav-link" data-scroll-target="#added-1">Added</a></li>
   <li><a href="#corrections-to-v0.2.0" id="toc-corrections-to-v0.2.0" class="nav-link" data-scroll-target="#corrections-to-v0.2.0">Corrections to v0.2.0</a></li>
   <li><a href="#fixed" id="toc-fixed" class="nav-link" data-scroll-target="#fixed">Fixed</a></li>
   <li><a href="#corrections-to-the-gne-chapter-before-its-first-release" id="toc-corrections-to-the-gne-chapter-before-its-first-release" class="nav-link" data-scroll-target="#corrections-to-the-gne-chapter-before-its-first-release">Corrections to the GNE chapter, before its first release</a></li>
@@ -271,7 +288,7 @@ ul.task-list li input[type="checkbox"] {
   </ul></li>
   <li><a href="#v0.2.0-2026-10-06" id="toc-v0.2.0-2026-10-06" class="nav-link" data-scroll-target="#v0.2.0-2026-10-06">v0.2.0 — 2026-10-06</a>
   <ul class="collapse">
-  <li><a href="#added-1" id="toc-added-1" class="nav-link" data-scroll-target="#added-1">Added</a></li>
+  <li><a href="#added-2" id="toc-added-2" class="nav-link" data-scroll-target="#added-2">Added</a></li>
   <li><a href="#corrections-to-v0.1.1" id="toc-corrections-to-v0.1.1" class="nav-link" data-scroll-target="#corrections-to-v0.1.1">Corrections to v0.1.1</a></li>
   <li><a href="#provenance-corrections-no-value-changed" id="toc-provenance-corrections-no-value-changed" class="nav-link" data-scroll-target="#provenance-corrections-no-value-changed">Provenance corrections — no value changed</a></li>
   <li><a href="#corrected-after-deposit" id="toc-corrected-after-deposit" class="nav-link" data-scroll-target="#corrected-after-deposit">Corrected after deposit</a></li>
@@ -312,11 +329,36 @@ ul.task-list li input[type="checkbox"] {
 
 <p>This reference is written to be revised, and each release is deposited on Zenodo with its own versioned DOI. When a value or a statement that appeared in an earlier release is corrected, the change is recorded here, so that a reader working from an earlier version can see exactly what moved and why. Corrections are not made silently.</p>
 <p>Entries are newest first. “v0.1.0 said” refers to the text as deposited in that release’s Zenodo record, not to the live site, which is revised continuously between releases.</p>
+<section id="v0.4.0-unreleased" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="v0.4.0-unreleased">v0.4.0 — unreleased</h2>
+<p><strong>Three chapters gain their first reference values computed on PhonaLab’s own engine</strong>, from a <em>Journal of Voice</em> study of algorithm agreement and concurrent validity on the Perceptual Voice Qualities Database. Each is a candidate cutoff from an exploratory analysis, labelled as such in the table itself. None replaces a value published in an earlier release, and nothing in v0.3.0 is corrected here.</p>
+<section id="added" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="added">Added</h3>
+<ul>
+<li><strong><a href="./spectral-tilt.html">Spectral Tilt</a></strong>, in Part III, beginning with H1–H2. The implementations in use and how they differ, including the ABI script’s own; a declared absence of any H1–H2 reference value; the evidence linking H1–H2 to breathiness, to pressed and breathy phonation, to glottal closure seen with high-speed imaging, and to roughness and strain ratings; and the cautions, of which the largest is sex: on sustained vowels the difference between women and men in typical phonation is as large as the effect of phonation type. H1–A1, H1–A3 and spectral slope follow in a later release.</li>
+<li><strong><a href="./cpps.html">CPPS</a></strong>: two cautions from studies of simulated pressed and breathy phonation. Pressed phonation <em>raises</em> CPP on average, so a higher CPP is not always a better voice and a fall after therapy can be an improvement; and that group shift did not make CPP a usable test for pressed phonation in individual speakers.</li>
+<li><strong><a href="./foundations-perceptual-anchors.html">Perceptual Anchors (GRBAS, CAPE-V)</a></strong>, in Part I. The instruments every threshold in this reference was derived against, the four-point GRBAS grading and the acoustic correlates stated for each of its five scales in the original description, and a table of the perceptual reference standard each validation study actually used, which is not the same standard across studies. The chapter also sets out the PVQD’s rating procedure in detail, because that database is the sample behind the American English rows added below, and records what its reliability figures do and do not cover. The CAPE-V’s own 2009 documentation is not yet in the source library, so the chapter declares that absence rather than describing the instrument from secondary accounts.</li>
+<li><strong><a href="./avqi.html">AVQI</a></strong>: two American English rows from the PVQD, both with a candidate cutoff of 1.96, one against CAPE-V overall severity and one against GRBAS grade. The chapter states why they do not disagree with the existing US English row, which uses a different program, a different speech task and a different reference standard.</li>
+<li><strong><a href="./abi.html">ABI</a></strong>: two rows from the same analysis, 3.75 against GRBAS breathiness and 2.97 against CAPE-V breathiness, with the DeLong comparisons against HNR and CPPS in the same sample.</li>
+<li><strong><a href="./cpps.html">CPPS</a></strong>: one row from the same analysis, a candidate cutoff of 13.33 dB for the sustained vowel, together with the full parameter settings of the official AVQI/ABI script. That study is the first source in this reference to disclose them in full.</li>
+</ul>
+</section>
+<section id="changed" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="changed">Changed</h3>
+<ul>
+<li><strong>Settings stated by citation.</strong> A source that gives its software version but states its settings only by citing another paper now counts as stating them, when the cited paper is among this reference’s sources and lists the settings in full. Otherwise the row is unclassified, with a new reason that names what would rescue it. See <a href="./foundations-pipeline.html">Pipeline dependence</a>.</li>
+<li><strong>Where <code>pipeline-identical</code> may be claimed.</strong> That class names one platform’s engine, so it is a claim about a target as well as about a row, while every other class in the column describes the row alone. Chapters now carry <code>pipeline-compatible</code> for such a row, and the <code>pipeline-identical</code> claim is made only where the platform build is known and recorded with it.</li>
+<li><strong>A third kind of measure in the compatibility rule.</strong> Model-derived measures (any score produced by a fitted model) require everything an algorithm-defined measure requires and, in addition, the fitted artefact itself. The boundary against the composite indices of Part IV is fixed, published coefficients: anyone can implement AVQI or ABI from the paper, so there the artefact is the equation. This settles the compatibility class for the Part V chapters before they are written.</li>
+<li><strong>Performance metrics are not reference values.</strong> AUROC, sensitivity, specificity and accuracy may stand beside a cutoff in their own columns, as the threshold tables do, but are never the value of a row.</li>
+</ul>
+<p>The study behind these rows was written by this reference’s author, who developed and operates PhonaLab. The chapters say so where the rows appear.</p>
+</section>
+</section>
 <section id="v0.3.0-2026-10-08" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="v0.3.0-2026-10-08">v0.3.0 — 2026-10-08</h2>
 <p><strong>Part III gains the Glottal-to-Noise Excitation Ratio</strong>, and the three chapters released in v0.2.0 are corrected in six places. None of the six is a wrong number. All six are a claim that says more than the page it cites, which is the failure mode a numeric check cannot see.</p>
-<section id="added" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="added">Added</h3>
+<section id="added-1" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="added-1">Added</h3>
 <ul>
 <li><strong><a href="./gne.html">Glottal-to-Noise Excitation Ratio</a></strong>, built on Michaelis, Gramss and Strube’s 1997 primary with the Göttingen follow-ups, the hoarseness-diagram paper, Godino-Llorente’s screening study and the two recent cutoff sources. The chapter publishes no normal band: every GNE reference value available was computed by software other than Praat, and the published norms are on GNEl, a negative inverted scale, so a scale section sits between the measure and the first table and no figure can be reached without passing it. It is the first chapter in this reference to be claim-audited before its first release rather than after; what that found is below.</li>
 <li><strong>A figure for the GNE scale</strong>, showing the transform and placing the same three normative values on both the GNE and the GNEl ruler, which is where the compression that causes the misreadings becomes visible.</li>
@@ -372,8 +414,8 @@ ul.task-list li input[type="checkbox"] {
 <section id="v0.2.0-2026-10-06" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="v0.2.0-2026-10-06">v0.2.0 — 2026-10-06</h2>
 <p>The first release to add chapters rather than correct them. <strong>Part II — Periodicity and Stability opens</strong>, with Jitter and Shimmer, and the Harmonic-to-Noise Ratio joins CPPS in Part III. One published value is corrected, and a round of provenance corrections changes where values come from without changing any of them.</p>
-<section id="added-1" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="added-1">Added</h3>
+<section id="added-2" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="added-2">Added</h3>
 <ul>
 <li><strong><a href="./jitter.html">Jitter</a></strong>, <strong><a href="./shimmer.html">Shimmer</a></strong> and <strong><a href="./hnr.html">Harmonic-to-Noise Ratio</a></strong>: three new chapters, built on Baken and Orlikoff with the existing English primaries, and keeping the Brazilian literature only where no English source covers the fact.</li>
 <li><strong>None of the three publishes a cutoff.</strong> No reference value in the sources reviewed is compatible with a Praat-based pipeline, so each declares the absence rather than borrowing a number, and each states that PhonaLab displays no normal band and no severity band for that measure. The HNR chapter says explicitly that it does not apply the widely repeated 7 dB floor, and shows why: the figure traces to a 95 per cent confidence limit of 7.4 dB in one study on one algorithm, and a normally speaking elderly group in another study averages 5.54 dB, below it.</li>
@@ -864,7 +906,7 @@ ul.task-list li input[type="checkbox"] {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./abi.html" class="pagination-link" aria-label="Acoustic Breathiness Index (ABI)">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Acoustic Breathiness Index (ABI)</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Acoustic Breathiness Index (ABI)</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

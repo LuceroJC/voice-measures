@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.19">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>11&nbsp; Spectral Tilt – Acoustic Measures of Voice Quality</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./avqi.html" rel="next">
+<link href="./cpps.html" rel="prev">
+<link href="./favicon.svg" rel="icon" type="image/svg+xml">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-5c01c0ce2b51dbeda25ce515ef8205e7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{&quot;token&quot;: &quot;b81dffd01ef647da838f61336a77571c&quot;}"></script><!-- End Cloudflare Web Analytics -->
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./hnr.html">Part III — Noise and Harmonic Structure</a></li><li class="breadcrumb-item"><a href="./spectral-tilt.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Spectral Tilt</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Acoustic Measures of Voice Quality</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/LuceroJC/voice-measures" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part I — Foundations</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./foundations-signal.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Signal Fundamentals</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./foundations-signal-typing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Signal Typing</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./foundations-pipeline.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Pipeline Dependence and Reference Values</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./foundations-perceptual-anchors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Perceptual Anchors (GRBAS, CAPE-V)</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part II — Periodicity and Stability</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./jitter.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Jitter (Frequency Perturbation)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./shimmer.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Shimmer (Amplitude Perturbation)</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part III — Noise and Harmonic Structure</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./hnr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Harmonic-to-Noise Ratio (HNR)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./gne.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Glottal-to-Noise Excitation Ratio (GNE)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cpps.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Cepstral Peak Prominence (CPP and CPPS)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./spectral-tilt.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Spectral Tilt</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part IV — Composite Indices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./avqi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Acoustic Voice Quality Index (AVQI)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./abi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Acoustic Breathiness Index (ABI)</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Back matter</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./release-notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Release notes and errata</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#what-spectral-tilt-measures" id="toc-what-spectral-tilt-measures" class="nav-link active" data-scroll-target="#what-spectral-tilt-measures"><span class="header-section-number">11.1</span> What spectral tilt measures</a></li>
+  <li><a href="#h1h2" id="toc-h1h2" class="nav-link" data-scroll-target="#h1h2"><span class="header-section-number">11.2</span> H1–H2</a>
+  <ul class="collapse">
+  <li><a href="#definition" id="toc-definition" class="nav-link" data-scroll-target="#definition"><span class="header-section-number">11.2.1</span> Definition</a></li>
+  <li><a href="#how-it-is-computed" id="toc-how-it-is-computed" class="nav-link" data-scroll-target="#how-it-is-computed"><span class="header-section-number">11.2.2</span> How it is computed</a></li>
+  <li><a href="#reference-values" id="toc-reference-values" class="nav-link" data-scroll-target="#reference-values"><span class="header-section-number">11.2.3</span> Reference values</a></li>
+  <li><a href="#what-it-captures" id="toc-what-it-captures" class="nav-link" data-scroll-target="#what-it-captures"><span class="header-section-number">11.2.4</span> What it captures</a></li>
+  <li><a href="#sec-h1h2-cautions" id="toc-sec-h1h2-cautions" class="nav-link" data-scroll-target="#sec-h1h2-cautions"><span class="header-section-number">11.2.5</span> Confounds and cautions</a></li>
+  <li><a href="#sec-h1h2-disagreement" id="toc-sec-h1h2-disagreement" class="nav-link" data-scroll-target="#sec-h1h2-disagreement"><span class="header-section-number">11.2.6</span> Where the sources disagree</a></li>
+  <li><a href="#validation" id="toc-validation" class="nav-link" data-scroll-target="#validation"><span class="header-section-number">11.2.7</span> Validation</a></li>
+  </ul></li>
+  <li><a href="#compute-it-in-phonalab" id="toc-compute-it-in-phonalab" class="nav-link" data-scroll-target="#compute-it-in-phonalab"><span class="header-section-number">11.3</span> Compute it in PhonaLab</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/LuceroJC/voice-measures/edit/main/spectral-tilt.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/LuceroJC/voice-measures/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./hnr.html">Part III — Noise and Harmonic Structure</a></li><li class="breadcrumb-item"><a href="./spectral-tilt.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Spectral Tilt</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Spectral Tilt</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Living draft.</strong> This chapter reflects the sources cited below and will be revised as further sources are incorporated. Found an error? Use the <em>Report an issue</em> link in the sidebar.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>This first version covers H1–H2 only.</strong> The other spectral-balance measures planned for this chapter, H1–A1, H1–A3 and spectral slope, will be added when their primary sources, including formant-corrected methods, are in the source library. The LTAS slope and tilt used in the AVQI are described in the <a href="./avqi.html">AVQI</a> chapter.</p>
+</div>
+</div>
+<section id="what-spectral-tilt-measures" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="what-spectral-tilt-measures"><span class="header-section-number">11.1</span> What spectral tilt measures</h2>
+<p>Many acoustic measures describe how a voice’s energy is distributed across the spectrum. One family compares the amplitude of the first harmonic with a later harmonic or a formant: H1 against H2 gives H1–H2, and H1 against the first or third formant gives H1–A1 and H1–A3 <span class="citation" data-cites="kreiman2011foundations">(<a href="#ref-kreiman2011foundations" role="doc-biblioref">Kreiman and Sidtis 2011</a>)</span>. What they share is the observation that weakness and breathiness go with less high-frequency energy in the voice <span class="citation" data-cites="kreiman2011foundations">(<a href="#ref-kreiman2011foundations" role="doc-biblioref">Kreiman and Sidtis 2011</a>)</span>.</p>
+</section>
+<section id="h1h2" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="h1h2"><span class="header-section-number">11.2</span> H1–H2</h2>
+<section id="definition" class="level3" data-number="11.2.1">
+<h3 data-number="11.2.1" class="anchored" data-anchor-id="definition"><span class="header-section-number">11.2.1</span> Definition</h3>
+<p>H1–H2 is the difference in amplitude between the first harmonic (H1) and the second harmonic (H2) of the voice spectrum, in decibels <span class="citation" data-cites="kreiman2011foundations toles2025pressed">(<a href="#ref-kreiman2011foundations" role="doc-biblioref">Kreiman and Sidtis 2011</a>; <a href="#ref-toles2025pressed" role="doc-biblioref">Toles and Murton 2025</a>)</span>. It indirectly measures the relative length of the open phase of glottal oscillation <span class="citation" data-cites="barsties2018meta delgado2018avqi">(<a href="#ref-barsties2018meta" role="doc-biblioref">Barsties v. Latoszek et al. 2018</a>; <a href="#ref-delgado2018avqi" role="doc-biblioref">Delgado Hernández et al. 2018</a>)</span>. In breathy voices the first harmonic is relatively strong compared with the weaker harmonics that follow it <span class="citation" data-cites="barsties2018meta delgado2018avqi">(<a href="#ref-barsties2018meta" role="doc-biblioref">Barsties v. Latoszek et al. 2018</a>; <a href="#ref-delgado2018avqi" role="doc-biblioref">Delgado Hernández et al. 2018</a>)</span>, so increasing weakness or breathiness generally raises H1–H2 <span class="citation" data-cites="kreiman2011foundations">(<a href="#ref-kreiman2011foundations" role="doc-biblioref">Kreiman and Sidtis 2011</a>)</span>. Lower values are taken to reflect greater glottal closure, and higher values less vocal fold adduction <span class="citation" data-cites="toles2025pressed">(<a href="#ref-toles2025pressed" role="doc-biblioref">Toles and Murton 2025</a>)</span>. That reading is an assumption in the literature, and the evidence below tests it.</p>
+<p>H1–H2 is also one of the nine components of the <a href="./abi.html">Acoustic Breathiness Index</a> <span class="citation" data-cites="barsties2017abi">(<a href="#ref-barsties2017abi" role="doc-biblioref">Barsties v. Latoszek et al. 2017</a>)</span>.</p>
+</section>
+<section id="how-it-is-computed" class="level3" data-number="11.2.2">
+<h3 data-number="11.2.2" class="anchored" data-anchor-id="how-it-is-computed"><span class="header-section-number">11.2.2</span> How it is computed</h3>
+<p>The formula is trivial:</p>
+<p><span class="math display">\[
+\text{H1–H2} = A(\text{H1}) - A(\text{H2}) \quad \text{[dB]}
+\]</span></p>
+<p>Everything that makes two H1–H2 values comparable lies outside it: how the first harmonic is found, which spectrum its amplitude is read from, over what stretch of signal, and whether the harmonic amplitudes are corrected for the formants of the vowel. The sources in this reference compute it in at least three different ways, and they are not interchangeable.</p>
+<div id="tbl-h1h2-variants" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-h1h2-variants-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;11.1: Implementations of H1–H2 in the sources of this chapter.
+</figcaption>
+<div aria-describedby="tbl-h1h2-variants-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Implementation</th>
+<th>Harmonic location</th>
+<th>Spectrum</th>
+<th>Averaging</th>
+<th>Formant correction</th>
+<th>Stated in full?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ABI script <span class="citation" data-cites="barsties2017abi">(<a href="#ref-barsties2017abi" role="doc-biblioref">Barsties v. Latoszek et al. 2017</a>)</span></td>
+<td>F0 from the cepstral peak (60–400 Hz search); H1 = spectral maximum within ±20 Hz of it; H2 within ±20 Hz of twice that frequency</td>
+<td>LTAS of each window, 6-Hz bandwidth</td>
+<td>consecutive 0.1-s windows of the concatenated speech-and-vowel signal, then the mean</td>
+<td>none</td>
+<td>yes</td>
+</tr>
+<tr class="even">
+<td>PhonaLab <span class="citation" data-cites="lucero2026subsets">(<a href="#ref-lucero2026subsets" role="doc-biblioref">Lucero 2026</a>)</span></td>
+<td>computed as one of the ABI components</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>engine stated: Parselmouth 0.4.7 (Praat 6.1.38)</td>
+</tr>
+<tr class="odd">
+<td>Toles laboratory <span class="citation" data-cites="toles2025pressed toles2026kinematics">(<a href="#ref-toles2025pressed" role="doc-biblioref">Toles and Murton 2025</a>; <a href="#ref-toles2026kinematics" role="doc-biblioref">Toles et al. 2026</a>)</span></td>
+<td>not stated</td>
+<td>not stated</td>
+<td>not stated</td>
+<td>not stated</td>
+<td>no: a custom script (“Phonanium CommV”)</td>
+</tr>
+<tr class="even">
+<td>Fröhlich et al. <span class="citation" data-cites="frohlich2000breathiness">(<a href="#ref-frohlich2000breathiness" role="doc-biblioref">Fröhlich et al. 2000</a>)</span></td>
+<td>two forms: a peak-level and a regional-level difference</td>
+<td>short-time power spectrum</td>
+<td>not stated here</td>
+<td>not stated here</td>
+<td>partly</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Two details of the ABI script deserve attention. Its own comment says the signal is cut into 0.05-s portions, but the code sets the window to 0.1 s, and the code is what runs. And it reads H1 and H2 from the uncorrected spectrum: there is no step that compensates for a formant lying near either harmonic.</p>
+<p>Toles and Murton note that H1–H2 is missing from commercial packages such as ADSV, and that it can be computed in Praat <span class="citation" data-cites="toles2025pressed">(<a href="#ref-toles2025pressed" role="doc-biblioref">Toles and Murton 2025</a>)</span>.</p>
+</section>
+<section id="reference-values" class="level3" data-number="11.2.3">
+<h3 data-number="11.2.3" class="anchored" data-anchor-id="reference-values"><span class="header-section-number">11.2.3</span> Reference values</h3>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>No reference value for H1–H2 exists in the sources of this reference.</strong> There is no normative range for typical voices, on sustained vowels or connected speech, and no diagnostic cutoff.</p>
+</div>
+</div>
+<div id="tbl-h1h2-reference" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-h1h2-reference-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;11.2: H1–H2 reference values: declared absence.
+</figcaption>
+<div aria-describedby="tbl-h1h2-reference-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Population</th>
+<th>Task</th>
+<th>Value</th>
+<th>Pipeline</th>
+<th>Class</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Adults with typical voice</td>
+<td>Sustained vowel</td>
+<td>No published reference in the sources reviewed</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>Adults with typical voice</td>
+<td>Connected speech</td>
+<td>No published reference in the sources reviewed</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>Voice disorder vs.&nbsp;typical voice</td>
+<td>Any</td>
+<td>No published cutoff in the sources reviewed</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>The only typical-voice means available come from a study of simulated phonation types in healthy speakers, computed with a script whose method is not stated <span class="citation" data-cites="toles2025pressed">(<a href="#ref-toles2025pressed" role="doc-biblioref">Toles and Murton 2025</a>)</span>. They appear in <a href="#fig-h1h2-phonation" class="quarto-xref">Figure&nbsp;<span>11.1</span></a> and under <a href="#sec-h1h2-cautions">Confounds and cautions</a> as descriptive values, classed <code>unclassified (pipeline not stated)</code>. They are not a normal range. The correlations, odds ratios and AUCs reported below are performance metrics, not reference values.</p>
+</section>
+<section id="what-it-captures" class="level3" data-number="11.2.4">
+<h3 data-number="11.2.4" class="anchored" data-anchor-id="what-it-captures"><span class="header-section-number">11.2.4</span> What it captures</h3>
+<p><strong>Breathiness, on sustained vowels.</strong> In the 2018 meta-analysis of acoustic correlates of roughness and breathiness, H1–H2 reached a pooled effect size of <em>r</em><sub>w</sub> = .66 (N = 248) for breathiness, from four studies on different sustained vowels in healthy and pathological speakers <span class="citation" data-cites="barsties2018meta">(<a href="#ref-barsties2018meta" role="doc-biblioref">Barsties v. Latoszek et al. 2018</a>)</span>. It was one of the twelve measures the authors named as the most promising predictors of breathiness <span class="citation" data-cites="barsties2018meta">(<a href="#ref-barsties2018meta" role="doc-biblioref">Barsties v. Latoszek et al. 2018</a>)</span>. The ABI development study found almost no relationship in its own data; see <a href="#sec-h1h2-disagreement">Where the sources disagree</a>.</p>
+<p><strong>Breathiness, in connected speech.</strong> Only one study tested it, with <em>r</em> = −.57 and N = 16, among the single-study measures below the meta-analysis’s .60 threshold <span class="citation" data-cites="barsties2018meta">(<a href="#ref-barsties2018meta" role="doc-biblioref">Barsties v. Latoszek et al. 2018</a>)</span>. The appendix lists the negative sign without comment.</p>
+<p><strong>Pressed and breathy phonation.</strong> Toles and Murton recorded 50 vocally healthy adults producing sustained /ɑ/, /i/ and /u/ and an all-voiced sentence in typical, pressed and breathy phonation <span class="citation" data-cites="toles2025pressed">(<a href="#ref-toles2025pressed" role="doc-biblioref">Toles and Murton 2025</a>)</span>. On the sentence, H1–H2 differed among all three: higher in breathy and lower in pressed phonation, with means of 8.3, 2.3 and 0.6 dB <span class="citation" data-cites="toles2025pressed">(<a href="#ref-toles2025pressed" role="doc-biblioref">Toles and Murton 2025</a>)</span>. On sustained vowels the picture depends on sex. Women had lower H1–H2 in pressed than in typical phonation, but higher H1–H2 in breathy phonation only on /ɑ/. Men showed no difference between pressed and typical phonation on any vowel <span class="citation" data-cites="toles2025pressed">(<a href="#ref-toles2025pressed" role="doc-biblioref">Toles and Murton 2025</a>)</span>.</p>
+<div id="cell-fig-h1h2-phonation" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Show the code for this figure</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>tasks <span class="op">=</span> [<span class="st">"Sentence"</span>, <span class="st">"/ɑ/"</span>, <span class="st">"/i/"</span>, <span class="st">"/u/"</span>]</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Table 2 of Toles &amp; Murton (2025): mean (SD), dB. Order: breathy, typical, pressed.</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Women (n = 36)"</span>: {</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Breathy"</span>: [(<span class="fl">9.0</span>, <span class="fl">5.5</span>), (<span class="fl">12.8</span>, <span class="fl">4.4</span>), (<span class="fl">14.2</span>, <span class="fl">6.1</span>), (<span class="fl">11.5</span>, <span class="fl">4.6</span>)],</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Typical"</span>: [(<span class="fl">2.7</span>, <span class="fl">3.9</span>), (<span class="fl">8.5</span>, <span class="fl">3.6</span>), (<span class="fl">13.3</span>, <span class="fl">5.4</span>), (<span class="fl">9.4</span>, <span class="fl">5.5</span>)],</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Pressed"</span>: [(<span class="fl">0.8</span>, <span class="fl">3.5</span>), (<span class="fl">5.3</span>, <span class="fl">3.1</span>), (<span class="fl">8.9</span>, <span class="fl">6.4</span>), (<span class="fl">4.5</span>, <span class="fl">6.0</span>)],</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    },</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Men (n = 14)"</span>: {</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Breathy"</span>: [(<span class="fl">6.4</span>, <span class="fl">3.1</span>), (<span class="fl">9.1</span>, <span class="fl">4.1</span>), (<span class="fl">7.7</span>, <span class="fl">5.5</span>), (<span class="fl">7.4</span>, <span class="fl">3.9</span>)],</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Typical"</span>: [(<span class="fl">1.6</span>, <span class="fl">2.6</span>), (<span class="fl">4.9</span>, <span class="fl">3.1</span>), (<span class="fl">0.1</span>, <span class="fl">3.6</span>), (<span class="fl">0.4</span>, <span class="fl">3.5</span>)],</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Pressed"</span>: [(<span class="op">-</span><span class="fl">0.2</span>, <span class="fl">2.2</span>), (<span class="fl">4.0</span>, <span class="fl">2.6</span>), (<span class="fl">1.0</span>, <span class="fl">5.6</span>), (<span class="op">-</span><span class="fl">0.7</span>, <span class="fl">3.4</span>)],</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    },</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>style <span class="op">=</span> {<span class="st">"Breathy"</span>: (vs.BLUE, <span class="st">"o"</span>, <span class="op">-</span><span class="fl">0.18</span>),</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Typical"</span>: (vs.INK, <span class="st">"s"</span>, <span class="fl">0.0</span>),</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Pressed"</span>: (vs.ORANGE, <span class="st">"D"</span>, <span class="fl">0.18</span>)}</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="fl">7.4</span>, <span class="fl">3.5</span>), sharey<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="bu">len</span>(tasks))</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax, (panel, groups) <span class="kw">in</span> <span class="bu">zip</span>(axes, data.items()):</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> cond, rows <span class="kw">in</span> groups.items():</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>        c, m, dx <span class="op">=</span> style[cond]</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>        mu <span class="op">=</span> np.array([r[<span class="dv">0</span>] <span class="cf">for</span> r <span class="kw">in</span> rows])<span class="op">;</span> sd <span class="op">=</span> np.array([r[<span class="dv">1</span>] <span class="cf">for</span> r <span class="kw">in</span> rows])</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>        ax.errorbar(x <span class="op">+</span> dx, mu, yerr<span class="op">=</span>sd, fmt<span class="op">=</span>m, ms<span class="op">=</span><span class="dv">5</span>, color<span class="op">=</span>c, ecolor<span class="op">=</span>c,</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>                    elinewidth<span class="op">=</span><span class="fl">1.0</span>, capsize<span class="op">=</span><span class="fl">2.5</span>, markeredgecolor<span class="op">=</span><span class="st">"white"</span>,</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>                    markeredgewidth<span class="op">=</span><span class="fl">0.6</span>, zorder<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    ax.axhline(<span class="dv">0</span>, color<span class="op">=</span>vs.MUTED, lw<span class="op">=</span><span class="fl">0.8</span>, zorder<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    ax.set_xticks(x, tasks)</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    ax.set_xlim(<span class="op">-</span><span class="fl">0.5</span>, <span class="bu">len</span>(tasks) <span class="op">-</span> <span class="fl">0.5</span>)</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    ax.set_title(panel)</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    vs.style_axes(ax)</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_ylabel(<span class="st">"H1–H2  [dB]"</span>)</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>handles <span class="op">=</span> [Line2D([], [], marker<span class="op">=</span>style[k][<span class="dv">1</span>], ls<span class="op">=</span><span class="st">""</span>, ms<span class="op">=</span><span class="dv">5</span>, color<span class="op">=</span>style[k][<span class="dv">0</span>],</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>                  label<span class="op">=</span>k) <span class="cf">for</span> k <span class="kw">in</span> (<span class="st">"Breathy"</span>, <span class="st">"Typical"</span>, <span class="st">"Pressed"</span>)]</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>fig.legend(handles<span class="op">=</span>handles, loc<span class="op">=</span><span class="st">"lower center"</span>, ncol<span class="op">=</span><span class="dv">3</span>, frameon<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>           fontsize<span class="op">=</span><span class="dv">8</span>, bbox_to_anchor<span class="op">=</span>(<span class="fl">0.5</span>, <span class="op">-</span><span class="fl">0.02</span>))</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>fig.tight_layout(rect<span class="op">=</span>(<span class="dv">0</span>, <span class="fl">0.06</span>, <span class="dv">1</span>, <span class="dv">1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-h1h2-phonation" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Two panels, women on the left and men on the right. Each shows four tasks on the horizontal axis (sentence, /ɑ/, /i/, /u/) and mean H1–H2 in decibels on the vertical axis, with three markers per task for breathy, typical and pressed phonation and vertical bars for one standard deviation. In the women's panel breathy is highest and pressed lowest on every task. In the men's panel breathy is highest, while typical and pressed nearly coincide on the three vowels.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-h1h2-phonation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="spectral-tilt_files/figure-html/fig-h1h2-phonation-output-1.png" alt="Two panels, women on the left and men on the right. Each shows four tasks on the horizontal axis (sentence, /ɑ/, /i/, /u/) and mean H1–H2 in decibels on the vertical axis, with three markers per task for breathy, typical and pressed phonation and vertical bars for one standard deviation. In the women's panel breathy is highest and pressed lowest on every task. In the men's panel breathy is highest, while typical and pressed nearly coincide on the three vowels." width="804" height="391" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-h1h2-phonation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11.1: Mean H1–H2 (± 1 SD) by task and phonation type, in 36 women and 14 men (by sex assigned at birth) simulating typical, breathy and pressed phonation. Data from Table 2 of <span class="citation" data-cites="toles2025pressed">Toles and Murton (<a href="#ref-toles2025pressed" role="doc-biblioref">2025</a>)</span>. In women the means are ordered on every task, breathy highest and pressed lowest, although breathy and typical phonation differed significantly only on /ɑ/. In men, pressed and typical phonation overlap on every sustained vowel and separate only on the sentence. Note also the scale of the sex difference in typical phonation on /i/ and /u/. These are descriptive means from simulated phonation in healthy speakers, computed with a script whose method is not stated: unclassified (pipeline not stated), and not reference values.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Telling the phonation types apart.</strong> The study tested discrimination with logistic models at a significance level of 0.0125 <span class="citation" data-cites="toles2025pressed">(<a href="#ref-toles2025pressed" role="doc-biblioref">Toles and Murton 2025</a>)</span>. H1–H2 separated pressed from typical phonation on /ɑ/ (<em>P</em> = 0.005) and /u/ (<em>P</em> = 0.003), but not on the sentence (<em>P</em> = 0.027) or /i/ (<em>P</em> = 0.103) <span class="citation" data-cites="toles2025pressed">(<a href="#ref-toles2025pressed" role="doc-biblioref">Toles and Murton 2025</a>)</span>. Its AUCs were 0.62 to 0.75 for pressed against typical phonation, and 0.64 to 0.86 for breathy against typical <span class="citation" data-cites="toles2025pressed">(<a href="#ref-toles2025pressed" role="doc-biblioref">Toles and Murton 2025</a>)</span>. For breathy phonation, each 1-dB increase in H1–H2 raised the odds of breathy phonation by 11% to 48% across tasks, and intensity did not contribute significantly to those models <span class="citation" data-cites="toles2025pressed">(<a href="#ref-toles2025pressed" role="doc-biblioref">Toles and Murton 2025</a>)</span>.</p>
+<p><strong>Glottal closure, seen directly.</strong> A later study from the same group recorded 40 healthy adults with high-speed videoendoscopy while they sustained /i:/ in the three phonation types <span class="citation" data-cites="toles2026kinematics">(<a href="#ref-toles2026kinematics" role="doc-biblioref">Toles et al. 2026</a>)</span>. H1–H2 rose with the closing quotient (<em>r</em> = .53), the share of the cycle spent closing, and with the amplitude-to-length ratio (<em>r</em> = .40). It fell as closure became faster and more abrupt: <em>r</em> = −.56 with the normalized maximum area declination rate, −.40 with the speed index and −.61 with the stiffness index <span class="citation" data-cites="toles2026kinematics">(<a href="#ref-toles2026kinematics" role="doc-biblioref">Toles et al. 2026</a>)</span>. The relationships with the three closure-speed measures were strong in breathy phonation and small or negligible in pressed phonation; only the closing-quotient relationship held across all three phonation types <span class="citation" data-cites="toles2026kinematics">(<a href="#ref-toles2026kinematics" role="doc-biblioref">Toles et al. 2026</a>)</span>. The authors suggest that hyperadduction may introduce nonlinear source–filter interaction that hides the kinematics from the acoustic signal <span class="citation" data-cites="toles2026kinematics">(<a href="#ref-toles2026kinematics" role="doc-biblioref">Toles et al. 2026</a>)</span>.</p>
+<p><strong>Roughness and strain in a clinical database.</strong> In 288 recordings from the Perceptual Voice Qualities Database, H1–H2 entered the best subset for CAPE-V roughness with a coefficient of β = −0.43 and the best subset for CAPE-V strain with β = −0.52 <span class="citation" data-cites="lucero2026subsets">(<a href="#ref-lucero2026subsets" role="doc-biblioref">Lucero 2026</a>)</span>. These are coefficients in multivariable regression models, not simple correlations. In a QR factorization with column pivoting, F0 and H1–H2 were pivoted first among 14 parameters, which the paper reads as contributing the most linearly independent information <span class="citation" data-cites="lucero2026subsets">(<a href="#ref-lucero2026subsets" role="doc-biblioref">Lucero 2026</a>)</span>. The paper reads the roughness coefficient as irregular vibration producing a flatter spectral envelope <span class="citation" data-cites="lucero2026subsets">(<a href="#ref-lucero2026subsets" role="doc-biblioref">Lucero 2026</a>)</span>. That study was written by this reference’s author.</p>
+<p><strong>A low value is not specific.</strong> Lower H1–H2 accompanies simulated pressed phonation <span class="citation" data-cites="toles2025pressed">(<a href="#ref-toles2025pressed" role="doc-biblioref">Toles and Murton 2025</a>)</span>, and in the database models it also accompanies higher roughness and higher strain ratings <span class="citation" data-cites="lucero2026subsets">(<a href="#ref-lucero2026subsets" role="doc-biblioref">Lucero 2026</a>)</span>. A low H1–H2 on its own does not say which of these is present. That is this reference’s reading of the two sources together, not a finding of either.</p>
+</section>
+<section id="sec-h1h2-cautions" class="level3" data-number="11.2.5">
+<h3 data-number="11.2.5" class="anchored" data-anchor-id="sec-h1h2-cautions"><span class="header-section-number">11.2.5</span> Confounds and cautions</h3>
+<p><strong>Implementation.</strong> The variants in <a href="#tbl-h1h2-variants" class="quarto-xref">Table&nbsp;<span>11.1</span></a> differ in how they locate the harmonics, in spectral resolution and in averaging, and one does not state its method at all. No study in this reference compares H1–H2 across implementations on the same recordings. Do not compare an H1–H2 value with one from another implementation.</p>
+<p><strong>Speech task.</strong> In the same 50 typical speakers, mean H1–H2 in typical phonation was 2.3 dB on the sentence and 7.5, 9.6 and 6.9 dB on sustained /ɑ/, /i/ and /u/ <span class="citation" data-cites="toles2025pressed">(<a href="#ref-toles2025pressed" role="doc-biblioref">Toles and Murton 2025</a>)</span>. A value means little without its task.</p>
+<p><strong>Sex.</strong> On sustained vowels in typical phonation, women’s means were 8.5, 13.3 and 9.4 dB on /ɑ/, /i/ and /u/, against 4.9, 0.1 and 0.4 dB in men <span class="citation" data-cites="toles2025pressed">(<a href="#ref-toles2025pressed" role="doc-biblioref">Toles and Murton 2025</a>)</span>. On the sentence the two were close, 2.7 and 1.6 dB <span class="citation" data-cites="toles2025pressed">(<a href="#ref-toles2025pressed" role="doc-biblioref">Toles and Murton 2025</a>)</span>. On vowels the sex difference is as large as the phonation-type effects, so an H1–H2 value read without the speaker’s sex is not interpretable. No source in this reference explains why the difference is so large on /i/ and /u/. For the pressed-phonation effect, Toles and Murton point to the small posterior glottal gap common in women during typical phonation, which pressing can close. Men’s typical phonation usually has complete closure already, so there is less to change <span class="citation" data-cites="toles2025pressed">(<a href="#ref-toles2025pressed" role="doc-biblioref">Toles and Murton 2025</a>)</span>.</p>
+<p><strong>Sign and range.</strong> H1–H2 can be negative. Men’s mean on the sentence in pressed phonation was −0.2 dB <span class="citation" data-cites="toles2025pressed">(<a href="#ref-toles2025pressed" role="doc-biblioref">Toles and Murton 2025</a>)</span>. Across 288 database recordings the mean was 4.20 dB, with SD 6.14 dB and a range from −20.62 to 25.15 dB, which is why it was analysed untransformed <span class="citation" data-cites="lucero2026subsets">(<a href="#ref-lucero2026subsets" role="doc-biblioref">Lucero 2026</a>)</span>.</p>
+<p><strong>Simulated phonation in healthy speakers.</strong> The phonation-type findings come from healthy speakers imitating pressed and breathy voice, and may not generalize to people with voice disorders <span class="citation" data-cites="toles2026kinematics">(<a href="#ref-toles2026kinematics" role="doc-biblioref">Toles et al. 2026</a>)</span>. A single blinded voice-specialized speech-language pathologist rated the productions in the 2025 study and identified the nonmodal phonation correctly 96% of the time <span class="citation" data-cites="toles2025pressed">(<a href="#ref-toles2025pressed" role="doc-biblioref">Toles and Murton 2025</a>)</span>. The 2026 recordings were made during rigid transoral endoscopy, with the posture and tongue position that requires <span class="citation" data-cites="toles2026kinematics">(<a href="#ref-toles2026kinematics" role="doc-biblioref">Toles et al. 2026</a>)</span>.</p>
+<p><strong>Two studies, probably one cohort.</strong> The two Toles studies share a laboratory, an ethics protocol and a recording chain, and report the same enrolment and exclusion counts <span class="citation" data-cites="toles2025pressed toles2026kinematics">(<a href="#ref-toles2025pressed" role="doc-biblioref">Toles and Murton 2025</a>; <a href="#ref-toles2026kinematics" role="doc-biblioref">Toles et al. 2026</a>)</span>. They very probably draw on largely the same speakers. They are therefore not independent confirmations of each other. This is this reference’s inference; neither paper states it.</p>
+<p><strong>Language.</strong> In some languages phonation type is contrastive, and H1–H2 carries the contrast. Breathy vowels in Hmong differ from modal vowels in H1–H2, and laryngealization in Mixtec lowers it <span class="citation" data-cites="kreiman2011foundations">(<a href="#ref-kreiman2011foundations" role="doc-biblioref">Kreiman and Sidtis 2011</a>)</span>. Green Mong vowels can be sorted correctly 92% of the time from H1–H2, duration, F0, jitter and shimmer, with H1–H2 doing most of the work <span class="citation" data-cites="kreiman2011foundations">(<a href="#ref-kreiman2011foundations" role="doc-biblioref">Kreiman and Sidtis 2011</a>)</span>. In such a language a clinical reading of H1–H2 has to allow for the linguistic contrast.</p>
+</section>
+<section id="sec-h1h2-disagreement" class="level3" data-number="11.2.6">
+<h3 data-number="11.2.6" class="anchored" data-anchor-id="sec-h1h2-disagreement"><span class="header-section-number">11.2.6</span> Where the sources disagree</h3>
+<p><strong>How strongly H1–H2 tracks breathiness.</strong> The meta-analysis reports <em>r</em><sub>w</sub> = .66 on sustained vowels <span class="citation" data-cites="barsties2018meta">(<a href="#ref-barsties2018meta" role="doc-biblioref">Barsties v. Latoszek et al. 2018</a>)</span>. In the ABI development study, H1–H2 correlated with breathiness ratings at only <em>r</em><sub>s</sub> = 0.098 on 1042 concatenated Dutch speech-and-vowel samples, one of the weakest of the candidate measures <span class="citation" data-cites="barsties2017abi">(<a href="#ref-barsties2017abi" role="doc-biblioref">Barsties v. Latoszek et al. 2017</a>)</span>. It was kept in the index all the same, on the strength of its earlier record as a breathiness predictor <span class="citation" data-cites="barsties2017abi">(<a href="#ref-barsties2017abi" role="doc-biblioref">Barsties v. Latoszek et al. 2017</a>)</span>. The two figures differ in task, sample and pipeline, and neither source reconciles them. This chapter reports both.</p>
+<p><strong>What the phonation-type study shows.</strong> Toles and Murton’s discussion calls H1–H2 the only variable significant for pressed phonation in both sustained vowels and connected speech <span class="citation" data-cites="toles2025pressed">(<a href="#ref-toles2025pressed" role="doc-biblioref">Toles and Murton 2025</a>)</span>. Their own table gives <em>P</em> = 0.027 on the sentence and <em>P</em> = 0.103 on /i/, against their stated significance level of 0.0125, and their abstract correctly reports that neither measure separated pressed from typical phonation on /i/ <span class="citation" data-cites="toles2025pressed">(<a href="#ref-toles2025pressed" role="doc-biblioref">Toles and Murton 2025</a>)</span>. This chapter follows the table.</p>
+</section>
+<section id="validation" class="level3" data-number="11.2.7">
+<h3 data-number="11.2.7" class="anchored" data-anchor-id="validation"><span class="header-section-number">11.2.7</span> Validation</h3>
+<p>The perceptual evidence for H1–H2 is the breathiness meta-analysis <span class="citation" data-cites="barsties2018meta">(<a href="#ref-barsties2018meta" role="doc-biblioref">Barsties v. Latoszek et al. 2018</a>)</span> and the index development study that included it <span class="citation" data-cites="barsties2017abi">(<a href="#ref-barsties2017abi" role="doc-biblioref">Barsties v. Latoszek et al. 2017</a>)</span>, and the two disagree about its strength. The physiological evidence is two studies of simulated phonation in healthy adults from one laboratory, one acoustic <span class="citation" data-cites="toles2025pressed">(<a href="#ref-toles2025pressed" role="doc-biblioref">Toles and Murton 2025</a>)</span> and one with simultaneous high-speed imaging <span class="citation" data-cites="toles2026kinematics">(<a href="#ref-toles2026kinematics" role="doc-biblioref">Toles et al. 2026</a>)</span>. A database analysis places it in the roughness and strain subsets <span class="citation" data-cites="lucero2026subsets">(<a href="#ref-lucero2026subsets" role="doc-biblioref">Lucero 2026</a>)</span>. What is still missing is any H1–H2 reference computed with a stated pipeline, and any comparison between implementations. Until one exists, this chapter publishes no H1–H2 normal range.</p>
+</section>
+</section>
+<section id="compute-it-in-phonalab" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="compute-it-in-phonalab"><span class="header-section-number">11.3</span> Compute it in PhonaLab</h2>
+<blockquote class="blockquote">
+<p><strong><a href="https://phonalab.com">Open PhonaLab →</a></strong></p>
+<p><em>PhonaLab is developed by the author of this reference; see <a href="./intro.html#competing-interests">Competing interests</a>.</em></p>
+<p>H1–H2 is computed as a component of the Acoustic Breathiness Index, where the reference value that applies is the ABI cutoff for your language and task. No H1–H2 reference value exists to display beside it.</p>
+</blockquote>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-barsties2017abi" class="csl-entry" role="listitem">
+Barsties v. Latoszek, Ben, Youri Maryn, Ellen Gerrits, and Marc De Bodt. 2017. <span>“The <span>Acoustic</span> <span>Breathiness</span> <span>Index</span> (<span>ABI</span>): A Multivariate Acoustic Model for Breathiness.”</span> <em>Journal of Voice</em> 31 (4): 511.e11–27. <a href="https://doi.org/10.1016/j.jvoice.2016.11.017">https://doi.org/10.1016/j.jvoice.2016.11.017</a>.
+</div>
+<div id="ref-barsties2018meta" class="csl-entry" role="listitem">
+Barsties v. Latoszek, Ben, Youri Maryn, Ellen Gerrits, and Marc De Bodt. 2018. <span>“A Meta-Analysis: Acoustic Measurement of Roughness and Breathiness.”</span> <em>Journal of Speech, Language, and Hearing Research</em> 61 (2): 298–323. <a href="https://doi.org/10.1044/2017_JSLHR-S-16-0188">https://doi.org/10.1044/2017_JSLHR-S-16-0188</a>.
+</div>
+<div id="ref-delgado2018avqi" class="csl-entry" role="listitem">
+Delgado Hernández, Jonathan, Nieves M. León Gómez, Alejandra Jiménez, Laura M. Izquierdo, and Ben Barsties v. Latoszek. 2018. <span>“Validation of the <span>Acoustic</span> <span>Voice</span> <span>Quality</span> <span>Index</span> Version 03.01 and the <span>Acoustic</span> <span>Breathiness</span> <span>Index</span> in the <span>Spanish</span> Language.”</span> <em>Annals of Otology, Rhinology &amp; Laryngology</em> 127 (5): 317–26. <a href="https://doi.org/10.1177/0003489418761096">https://doi.org/10.1177/0003489418761096</a>.
+</div>
+<div id="ref-frohlich2000breathiness" class="csl-entry" role="listitem">
+Fröhlich, Matthias, Dirk Michaelis, Jan Lessing, Hans Werner Strube, and Eberhard Kruse. 2000. <span>“<span>‘Breathiness Measures’</span> in Acoustic Voice Analysis.”</span> In <em>Advances in Quantitative Laryngoscopy, Voice and Speech Research: Proceedings of the 4th International Workshop</em>, edited by T. Braunschweig, J. Hanson, P. Schelhorn-Neise, and H. Witte. Jena.
+</div>
+<div id="ref-kreiman2011foundations" class="csl-entry" role="listitem">
+Kreiman, Jody, and Diana Van Lancker Sidtis. 2011. <em>Foundations of Voice Studies: An Interdisciplinary Approach to Voice Production and Perception</em>. Wiley-Blackwell.
+</div>
+<div id="ref-lucero2026subsets" class="csl-entry" role="listitem">
+Lucero, Jorge C. 2026. <span>“Optimal Acoustic Parameter Subsets for Dimension-Specific Voice Quality Prediction.”</span> <em>Journal of Voice</em>, ahead of print. <a href="https://doi.org/10.1016/j.jvoice.2026.07.051">https://doi.org/10.1016/j.jvoice.2026.07.051</a>.
+</div>
+<div id="ref-toles2026kinematics" class="csl-entry" role="listitem">
+Toles, Laura E., Avery Moore, Melanie A. Turner Tice, Caroline Crocker Hurt, Rita R. Patel, and Ted Mau. 2026. <span>“Vocal Fold Vibratory Kinematics and Acoustic Correlates in Pressed and Breathy Phonation.”</span> <em>Journal of Speech, Language, and Hearing Research</em> 69: 2417–36. <a href="https://doi.org/10.1044/2026_JSLHR-25-00797">https://doi.org/10.1044/2026_JSLHR-25-00797</a>.
+</div>
+<div id="ref-toles2025pressed" class="csl-entry" role="listitem">
+Toles, Laura E., and Olivia Murton. 2025. <span>“Estimating Pressed and Breathy Phonation from Cepstral and Spectral Measures.”</span> <em>Journal of Voice</em>, ahead of print. <a href="https://doi.org/10.1016/j.jvoice.2025.02.017">https://doi.org/10.1016/j.jvoice.2025.02.017</a>.
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/voicemeasures\.org");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./cpps.html" class="pagination-link" aria-label="Cepstral Peak Prominence (CPP and CPPS)">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Cepstral Peak Prominence (CPP and CPPS)</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./avqi.html" class="pagination-link" aria-label="Acoustic Voice Quality Index (AVQI)">
+        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Acoustic Voice Quality Index (AVQI)</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Jorge C. Lucero · Text: CC BY 4.0 · Code: MIT</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/LuceroJC/voice-measures/edit/main/spectral-tilt.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/LuceroJC/voice-measures/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>Built with <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
