@@ -322,7 +322,7 @@ same task, and for language-dependent indices the same language.
 | pipeline-compatible | A published value whose stated pipeline meets the compatibility rule | Compare only measurements made with the same pipeline |
 | language-conditional | A cutoff validated in a named language | Use for that language, task and stated pipeline; no cutoff is endorsed for a language without its own validation |
 | meta-analytic | Pooled across studies or analysis systems | Descriptive context only, with its heterogeneity; never a cutoff, including pooled "weighted" thresholds |
-| unclassified | The source does not state enough of the pipeline to place the value. Always written with its reason: `unclassified (no software version)`, `unclassified (pipeline not stated)` | Shown only as history, labelled as such; never a cutoff |
+| unclassified | The source does not state enough of the pipeline to place the value. Always written with its reason: `unclassified (no software version)`, `unclassified (pipeline not stated)`, `unclassified (settings cited to a source not in this reference)` | Shown only as history, labelled as such; never a cutoff |
 
 : Compatibility classes used in Normative data tables. {#tbl-evidence-classes}
 
@@ -333,6 +333,18 @@ that comparison is yours to make from the Pipeline cell, which is why the
 Pipeline cell carries the detail. A class cell therefore never names a target
 pipeline, and a row can be `pipeline-compatible` for someone running that
 program while being no use at all to someone running another one.
+
+**Settings stated by citation.** Many papers give their software version but
+state their settings only by citing another paper, as in "CPPS as described in
+Murton et al.". Such a row counts as stating its settings when the cited paper
+is among this reference's sources and lists the settings in full, and when
+every paper cited for the settings points to that same configuration. The
+Pipeline cell then says so, for example "Praat 6.2.11 CPPS, Murton et al. 2020
+settings (by citation)". When the cited paper is not among the sources, the row
+is `unclassified (settings cited to a source not in this reference)`, which
+also says what would rescue it. Settings can be inherited through a citation.
+Values cannot: a value read from another paper's table is attributed to the
+paper that reports it.
 
 Where the reviewed sources give no usable reference for a population, task or
 language, the table says so instead of borrowing a value from another

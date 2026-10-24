@@ -10,6 +10,80 @@ Entries are newest first. "v0.1.0 said" refers to the text as deposited in
 that release's Zenodo record, not to the live site, which is revised
 continuously between releases.
 
+## v0.4.0 — unreleased {.unnumbered}
+
+**Three chapters gain their first reference values computed on PhonaLab's own
+engine**, from a *Journal of Voice* study of algorithm agreement and concurrent
+validity on the Perceptual Voice Qualities Database. Each is a candidate cutoff
+from an exploratory analysis, labelled as such in the table itself. None
+replaces a value published in an earlier release, and nothing in v0.3.0 is
+corrected here.
+
+### Added {.unnumbered}
+
+- **[Spectral Tilt](spectral-tilt.qmd)**, in Part III, beginning with H1–H2.
+  The implementations in use and how they differ, including the ABI script's
+  own; a declared absence of any H1–H2 reference value; the evidence linking
+  H1–H2 to breathiness, to pressed and breathy phonation, to glottal closure
+  seen with high-speed imaging, and to roughness and strain ratings; and the
+  cautions, of which the largest is sex: on sustained vowels the difference
+  between women and men in typical phonation is as large as the effect of
+  phonation type. H1–A1, H1–A3 and spectral slope follow in a later release.
+- **[CPPS](cpps.qmd)**: two cautions from studies of simulated pressed and
+  breathy phonation. Pressed phonation *raises* CPP on average, so a higher CPP
+  is not always a better voice and a fall after therapy can be an improvement;
+  and that group shift did not make CPP a usable test for pressed phonation in
+  individual speakers.
+- **[Perceptual Anchors (GRBAS, CAPE-V)](foundations-perceptual-anchors.qmd)**,
+  in Part I. The instruments every threshold in this reference was derived
+  against, the four-point GRBAS grading and the acoustic correlates stated for
+  each of its five scales in the original description, and a table of the
+  perceptual reference standard each validation study actually used, which is
+  not the same standard across studies. The chapter also sets out the PVQD's
+  rating procedure in detail, because that database is the sample behind the
+  American English rows added below, and records what its reliability figures
+  do and do not cover. The CAPE-V's own 2009 documentation is not yet in the
+  source library, so the chapter declares that absence rather than describing
+  the instrument from secondary accounts.
+- **[AVQI](avqi.qmd)**: two American English rows from the PVQD, both with a
+  candidate cutoff of 1.96, one against CAPE-V overall severity and one against
+  GRBAS grade. The chapter states why they do not disagree with the existing US
+  English row, which uses a different program, a different speech task and a
+  different reference standard.
+- **[ABI](abi.qmd)**: two rows from the same analysis, 3.75 against GRBAS
+  breathiness and 2.97 against CAPE-V breathiness, with the DeLong comparisons
+  against HNR and CPPS in the same sample.
+- **[CPPS](cpps.qmd)**: one row from the same analysis, a candidate cutoff of
+  13.33 dB for the sustained vowel, together with the full parameter settings
+  of the official AVQI/ABI script. That study is the first source in this
+  reference to disclose them in full.
+
+### Changed {.unnumbered}
+
+- **Settings stated by citation.** A source that gives its software version
+  but states its settings only by citing another paper now counts as stating
+  them, when the cited paper is among this reference's sources and lists the
+  settings in full. Otherwise the row is unclassified, with a new reason that
+  names what would rescue it. See [Pipeline dependence](foundations-pipeline.qmd).
+- **Where `pipeline-identical` may be claimed.** That class names one
+  platform's engine, so it is a claim about a target as well as about a row,
+  while every other class in the column describes the row alone. Chapters now
+  carry `pipeline-compatible` for such a row, and the `pipeline-identical`
+  claim is made only where the platform build is known and recorded with it.
+- **A third kind of measure in the compatibility rule.** Model-derived measures
+  (any score produced by a fitted model) require everything an
+  algorithm-defined measure requires and, in addition, the fitted artefact
+  itself. The boundary against the composite indices of Part IV is fixed,
+  published coefficients: anyone can implement AVQI or ABI from the paper, so
+  there the artefact is the equation. This settles the compatibility class for
+  the Part V chapters before they are written.
+- **Performance metrics are not reference values.** AUROC, sensitivity,
+  specificity and accuracy may stand beside a cutoff in their own columns, as
+  the threshold tables do, but are never the value of a row.
+
+The study behind these rows was written by this reference's author, who
+developed and operates PhonaLab. The chapters say so where the rows appear.
+
 ## v0.3.0 — 2026-10-08 {.unnumbered}
 
 **Part III gains the Glottal-to-Noise Excitation Ratio**, and the three

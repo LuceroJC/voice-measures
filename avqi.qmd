@@ -138,13 +138,33 @@ language and the AVQI version in use; see
 | US English | 148 with voice disorders, 49 non-clinic-seeking; first 22 syllables of the Rainbow Passage | AVQI 03.01 in VOXplot 2.0.0; Praat 6.3.06 for extraction | 1.17 | 0.62 | 0.95 | 0.84 | language-conditional |
 | Japanese | 455 recordings, 55 from controls; 30 syllables, time-balanced | AVQI 03.01; Praat version not stated | 2.06 | 0.721 | 0.938 | 0.915 | language-conditional |
 | Persian | 136 dysphonic, 45 vocally healthy; 20 syllables, durations balanced | AVQI 03.01 in VOXplot, version not stated | 1.63 | 0.732 | 0.91 | 0.850 | language-conditional |
+| American English, PVQD; candidate, exploratory | 181 with voice disorders, 109 vocally healthy; 288 rated; sustained /a/ plus concatenated CAPE-V sentences; GRBAS grade ≥ 0.5 | AVQI 03.01 in PhonaLab; Parselmouth 0.4.7 (Praat 6.1.38 engine) | 1.96 | 0.783 | 0.753 | 0.838 | language-conditional |
+| American English, PVQD; candidate, exploratory | the same sample and tasks; CAPE-V overall severity ≥ 10 | the same pipeline | 1.96 | 0.734 | 0.784 | 0.825 | language-conditional |
 | Pooled: eight AVQI v03 studies (context only) | 12 languages | multiple | none; study thresholds ranged 1.33–3.15 | 0.82 | 0.92 | 0.94 (SROC) | meta-analytic |
 
-: AVQI 03.01 diagnostic thresholds. Dutch: @barsties2016avqi; Spanish: @delgado2018avqi; German: @barsties2020german; French: @pommee2020avqi; Brazilian Portuguese: @englert2021avqi (150 speakers) and @englert2020material (53 speakers, two tasks); US English: @castillo2023avqi; Japanese: @hosokawa2019avqi; Persian: @aghajanzadeh2025persian; pooled: @jayakumar2024avqi. Praat versions for the Dutch, Spanish and German rows are those cited in each paper's reference list. {#tbl-avqi-thresholds}
+: AVQI 03.01 diagnostic thresholds. Dutch: @barsties2016avqi; Spanish: @delgado2018avqi; German: @barsties2020german; French: @pommee2020avqi; Brazilian Portuguese: @englert2021avqi (150 speakers) and @englert2020material (53 speakers, two tasks); US English: @castillo2023avqi; Japanese: @hosokawa2019avqi; Persian: @aghajanzadeh2025persian; pooled: @jayakumar2024avqi. American English PVQD: @lucero2026phonalab, candidate cutoffs from an exploratory analysis. Praat versions for the Dutch, Spanish and German rows are those cited in each paper's reference list. {#tbl-avqi-thresholds}
 
 The pooled row is descriptive context, not a cutoff. Its sensitivity was
 highly heterogeneous across studies (*I*² = 95.3%), its specificity much less
 so (*I*² = 16.4%) [@jayakumar2024avqi].
+
+The two American English PVQD rows are candidate cutoffs, not validated ones.
+The analysis that produced them was a secondary, exploratory objective, each
+cutoff was chosen by Youden's J index on the full sample, and the study states
+that they require external validation before clinical use
+[@lucero2026phonalab]. Ten-fold cross-validation stayed close to the
+resubstitution figures, with AUC optimism of 0.002 or less. The author of that
+study developed and operates PhonaLab.
+
+They do not disagree with the US English row above them. That row computes AVQI
+03.01 in VOXplot 2.0.0 from 22 syllables of the Rainbow Passage and classifies
+voices by mean grade [@castillo2023avqi]; these rows compute it in PhonaLab,
+through Parselmouth 0.4.7, from concatenated CAPE-V sentences, and classify
+voices by CAPE-V overall severity or GRBAS grade [@lucero2026phonalab].
+Different pipeline, different speech material, different reference standard, so
+the rows are not comparable and the distance between their thresholds is not a
+disagreement between studies. That both reference standards return the same
+candidate cutoff is a result about this sample, not a cross-validation of it.
 
 One further set of figures belongs to the Dutch internal validation, and is
 not published as a second Dutch cutoff. @barsties2015consistency, the

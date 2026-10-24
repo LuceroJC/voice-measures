@@ -1,12 +1,331 @@
 ---
 title: "Spectral Tilt"
+execute:
+  echo: true
+jupyter: python3
+format:
+  html:
+    code-fold: true
+    code-summary: "Show the code for this figure"
 ---
 
-::: {.callout-warning}
-**Placeholder.** This chapter is planned but not yet written. See the
-[book plan](https://github.com/LuceroJC/voice-measures/blob/main/PLAN.md)
-for its intended scope and target release. In the meantime, the
-[Introduction](intro.qmd) shows where this chapter sits in the reference.
+::: {.callout-note}
+**Living draft.** This chapter reflects the sources cited below and will be
+revised as further sources are incorporated. Found an error? Use the *Report an
+issue* link in the sidebar.
 :::
 
-*This page will be replaced with a full chapter in a later release.*
+::: {.callout-warning}
+**This first version covers H1–H2 only.** The other spectral-balance measures
+planned for this chapter, H1–A1, H1–A3 and spectral slope, will be added when
+their primary sources, including formant-corrected methods, are in the source
+library. The LTAS slope and tilt used in the AVQI are described in the
+[AVQI](avqi.qmd) chapter.
+:::
+
+```{python}
+#| label: setup
+#| include: false
+import sys, os
+sys.path.insert(0, os.path.abspath("_code"))
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.lines import Line2D
+import vmsynth as vs
+
+plt.rcParams.update({
+    "figure.dpi": 110, "savefig.dpi": 200,
+    "font.size": 9.5, "axes.titlesize": 9.5, "axes.titleweight": "bold",
+    "axes.titlelocation": "left", "axes.labelsize": 9,
+})
+```
+
+## What spectral tilt measures
+
+Many acoustic measures describe how a voice's energy is distributed across the
+spectrum. One family compares the amplitude of the first harmonic with a later
+harmonic or a formant: H1 against H2 gives H1–H2, and H1 against the first or
+third formant gives H1–A1 and H1–A3 [@kreiman2011foundations]. What they share
+is the observation that weakness and breathiness go with less high-frequency
+energy in the voice [@kreiman2011foundations].
+
+## H1–H2
+
+### Definition
+
+H1–H2 is the difference in amplitude between the first harmonic (H1) and the
+second harmonic (H2) of the voice spectrum, in decibels
+[@kreiman2011foundations; @toles2025pressed]. It indirectly measures the
+relative length of the open phase of glottal oscillation
+[@barsties2018meta; @delgado2018avqi]. In breathy voices the first harmonic is
+relatively strong compared with the weaker harmonics that follow it
+[@barsties2018meta; @delgado2018avqi], so increasing weakness or breathiness
+generally raises H1–H2 [@kreiman2011foundations]. Lower values are taken to
+reflect greater glottal closure, and higher values less vocal fold adduction
+[@toles2025pressed]. That reading is an assumption in the literature, and the
+evidence below tests it.
+
+H1–H2 is also one of the nine components of the
+[Acoustic Breathiness Index](abi.qmd) [@barsties2017abi].
+
+### How it is computed
+
+The formula is trivial:
+
+$$
+\text{H1–H2} = A(\text{H1}) - A(\text{H2}) \quad \text{[dB]}
+$$
+
+Everything that makes two H1–H2 values comparable lies outside it: how the
+first harmonic is found, which spectrum its amplitude is read from, over what
+stretch of signal, and whether the harmonic amplitudes are corrected for the
+formants of the vowel. The sources in this reference compute it in at least
+three different ways, and they are not interchangeable.
+
+| Implementation | Harmonic location | Spectrum | Averaging | Formant correction | Stated in full? |
+|---|---|---|---|---|---|
+| ABI script [@barsties2017abi] | F0 from the cepstral peak (60–400 Hz search); H1 = spectral maximum within ±20 Hz of it; H2 within ±20 Hz of twice that frequency | LTAS of each window, 6-Hz bandwidth | consecutive 0.1-s windows of the concatenated speech-and-vowel signal, then the mean | none | yes |
+| PhonaLab [@lucero2026subsets] | computed as one of the ABI components | — | — | — | engine stated: Parselmouth 0.4.7 (Praat 6.1.38) |
+| Toles laboratory [@toles2025pressed; @toles2026kinematics] | not stated | not stated | not stated | not stated | no: a custom script ("Phonanium CommV") |
+| Fröhlich et al. [@frohlich2000breathiness] | two forms: a peak-level and a regional-level difference | short-time power spectrum | not stated here | not stated here | partly |
+
+: Implementations of H1–H2 in the sources of this chapter. {#tbl-h1h2-variants}
+
+Two details of the ABI script deserve attention. Its own comment says the
+signal is cut into 0.05-s portions, but the code sets the window to 0.1 s, and
+the code is what runs. And it reads H1 and H2 from the uncorrected spectrum:
+there is no step that compensates for a formant lying near either harmonic.
+
+Toles and Murton note that H1–H2 is missing from commercial packages such as
+ADSV, and that it can be computed in Praat [@toles2025pressed].
+
+### Reference values
+
+::: {.callout-important}
+**No reference value for H1–H2 exists in the sources of this reference.** There
+is no normative range for typical voices, on sustained vowels or connected
+speech, and no diagnostic cutoff.
+:::
+
+| Population | Task | Value | Pipeline | Class |
+|---|---|---|---|---|
+| Adults with typical voice | Sustained vowel | No published reference in the sources reviewed | — | — |
+| Adults with typical voice | Connected speech | No published reference in the sources reviewed | — | — |
+| Voice disorder vs. typical voice | Any | No published cutoff in the sources reviewed | — | — |
+
+: H1–H2 reference values: declared absence. {#tbl-h1h2-reference}
+
+The only typical-voice means available come from a study of simulated
+phonation types in healthy speakers, computed with a script whose method is
+not stated [@toles2025pressed]. They appear in @fig-h1h2-phonation and under
+[Confounds and cautions](#sec-h1h2-cautions) as descriptive values, classed
+`unclassified (pipeline not stated)`. They are not a normal range. The
+correlations, odds ratios and AUCs reported below are performance metrics, not
+reference values.
+
+### What it captures
+
+**Breathiness, on sustained vowels.** In the 2018 meta-analysis of acoustic
+correlates of roughness and breathiness, H1–H2 reached a pooled effect size of
+*r*~w~ = .66 (N = 248) for breathiness, from four studies on different
+sustained vowels in healthy and pathological speakers [@barsties2018meta]. It
+was one of the twelve measures the authors named as the most promising
+predictors of breathiness [@barsties2018meta]. The ABI development study found
+almost no relationship in its own data; see
+[Where the sources disagree](#sec-h1h2-disagreement).
+
+**Breathiness, in connected speech.** Only one study tested it, with
+*r* = −.57 and N = 16, among the single-study measures below the
+meta-analysis's .60 threshold [@barsties2018meta]. The appendix lists the
+negative sign without comment.
+
+**Pressed and breathy phonation.** Toles and Murton recorded 50 vocally healthy
+adults producing sustained /ɑ/, /i/ and /u/ and an all-voiced sentence in
+typical, pressed and breathy phonation [@toles2025pressed]. On the sentence,
+H1–H2 differed among all three: higher in breathy and lower in pressed
+phonation, with means of 8.3, 2.3 and 0.6 dB [@toles2025pressed]. On sustained
+vowels the picture depends on sex. Women had lower H1–H2 in pressed than in
+typical phonation, but higher H1–H2 in breathy phonation only on /ɑ/. Men
+showed no difference between pressed and typical phonation on any vowel
+[@toles2025pressed].
+
+```{python}
+#| label: fig-h1h2-phonation
+#| fig-cap: "Mean H1–H2 (± 1 SD) by task and phonation type, in 36 women and 14 men (by sex assigned at birth) simulating typical, breathy and pressed phonation. Data from Table 2 of @toles2025pressed. In women the means are ordered on every task, breathy highest and pressed lowest, although breathy and typical phonation differed significantly only on /ɑ/. In men, pressed and typical phonation overlap on every sustained vowel and separate only on the sentence. Note also the scale of the sex difference in typical phonation on /i/ and /u/. These are descriptive means from simulated phonation in healthy speakers, computed with a script whose method is not stated: unclassified (pipeline not stated), and not reference values."
+#| fig-alt: "Two panels, women on the left and men on the right. Each shows four tasks on the horizontal axis (sentence, /ɑ/, /i/, /u/) and mean H1–H2 in decibels on the vertical axis, with three markers per task for breathy, typical and pressed phonation and vertical bars for one standard deviation. In the women's panel breathy is highest and pressed lowest on every task. In the men's panel breathy is highest, while typical and pressed nearly coincide on the three vowels."
+
+tasks = ["Sentence", "/ɑ/", "/i/", "/u/"]
+# Table 2 of Toles & Murton (2025): mean (SD), dB. Order: breathy, typical, pressed.
+data = {
+    "Women (n = 36)": {
+        "Breathy": [(9.0, 5.5), (12.8, 4.4), (14.2, 6.1), (11.5, 4.6)],
+        "Typical": [(2.7, 3.9), (8.5, 3.6), (13.3, 5.4), (9.4, 5.5)],
+        "Pressed": [(0.8, 3.5), (5.3, 3.1), (8.9, 6.4), (4.5, 6.0)],
+    },
+    "Men (n = 14)": {
+        "Breathy": [(6.4, 3.1), (9.1, 4.1), (7.7, 5.5), (7.4, 3.9)],
+        "Typical": [(1.6, 2.6), (4.9, 3.1), (0.1, 3.6), (0.4, 3.5)],
+        "Pressed": [(-0.2, 2.2), (4.0, 2.6), (1.0, 5.6), (-0.7, 3.4)],
+    },
+}
+style = {"Breathy": (vs.BLUE, "o", -0.18),
+         "Typical": (vs.INK, "s", 0.0),
+         "Pressed": (vs.ORANGE, "D", 0.18)}
+
+fig, axes = plt.subplots(1, 2, figsize=(7.4, 3.5), sharey=True)
+x = np.arange(len(tasks))
+for ax, (panel, groups) in zip(axes, data.items()):
+    for cond, rows in groups.items():
+        c, m, dx = style[cond]
+        mu = np.array([r[0] for r in rows]); sd = np.array([r[1] for r in rows])
+        ax.errorbar(x + dx, mu, yerr=sd, fmt=m, ms=5, color=c, ecolor=c,
+                    elinewidth=1.0, capsize=2.5, markeredgecolor="white",
+                    markeredgewidth=0.6, zorder=3)
+    ax.axhline(0, color=vs.MUTED, lw=0.8, zorder=1)
+    ax.set_xticks(x, tasks)
+    ax.set_xlim(-0.5, len(tasks) - 0.5)
+    ax.set_title(panel)
+    vs.style_axes(ax)
+axes[0].set_ylabel("H1–H2  [dB]")
+handles = [Line2D([], [], marker=style[k][1], ls="", ms=5, color=style[k][0],
+                  label=k) for k in ("Breathy", "Typical", "Pressed")]
+fig.legend(handles=handles, loc="lower center", ncol=3, frameon=False,
+           fontsize=8, bbox_to_anchor=(0.5, -0.02))
+fig.tight_layout(rect=(0, 0.06, 1, 1))
+```
+
+**Telling the phonation types apart.** The study tested discrimination with
+logistic models at a significance level of 0.0125 [@toles2025pressed]. H1–H2
+separated pressed from typical phonation on /ɑ/ (*P* = 0.005) and /u/
+(*P* = 0.003), but not on the sentence (*P* = 0.027) or /i/ (*P* = 0.103)
+[@toles2025pressed]. Its AUCs were 0.62 to 0.75 for pressed against typical
+phonation, and 0.64 to 0.86 for breathy against typical [@toles2025pressed].
+For breathy phonation, each 1-dB increase in H1–H2 raised the odds of breathy
+phonation by 11% to 48% across tasks, and intensity did not contribute
+significantly to those models [@toles2025pressed].
+
+**Glottal closure, seen directly.** A later study from the same group recorded
+40 healthy adults with high-speed videoendoscopy while they sustained /i:/ in
+the three phonation types [@toles2026kinematics]. H1–H2 rose with the closing
+quotient (*r* = .53), the share of the cycle spent closing, and with the
+amplitude-to-length ratio (*r* = .40). It fell as closure became faster and
+more abrupt: *r* = −.56 with the normalized maximum area declination rate,
+−.40 with the speed index and −.61 with the stiffness index
+[@toles2026kinematics]. The relationships with the three closure-speed
+measures were strong in breathy phonation and small or negligible in pressed
+phonation; only the closing-quotient relationship held across all three
+phonation types [@toles2026kinematics]. The authors suggest that
+hyperadduction may introduce nonlinear source–filter interaction that hides
+the kinematics from the acoustic signal [@toles2026kinematics].
+
+**Roughness and strain in a clinical database.** In 288 recordings from the
+Perceptual Voice Qualities Database, H1–H2 entered the best subset for CAPE-V
+roughness with a coefficient of β = −0.43 and the best subset for CAPE-V
+strain with β = −0.52 [@lucero2026subsets]. These are coefficients in
+multivariable regression models, not simple correlations. In a QR
+factorization with column pivoting, F0 and H1–H2 were pivoted first among 14
+parameters, which the paper reads as contributing the most linearly
+independent information [@lucero2026subsets]. The paper reads the roughness
+coefficient as irregular vibration producing a flatter spectral envelope
+[@lucero2026subsets]. That study was written by this reference's author.
+
+**A low value is not specific.** Lower H1–H2 accompanies simulated pressed
+phonation [@toles2025pressed], and in the database models it also accompanies
+higher roughness and higher strain ratings [@lucero2026subsets]. A low H1–H2
+on its own does not say which of these is present. That is this reference's
+reading of the two sources together, not a finding of either.
+
+### Confounds and cautions {#sec-h1h2-cautions}
+
+**Implementation.** The variants in @tbl-h1h2-variants differ in how they
+locate the harmonics, in spectral resolution and in averaging, and one does
+not state its method at all. No study in this reference compares H1–H2 across
+implementations on the same recordings. Do not compare an H1–H2 value with one
+from another implementation.
+
+**Speech task.** In the same 50 typical speakers, mean H1–H2 in typical
+phonation was 2.3 dB on the sentence and 7.5, 9.6 and 6.9 dB on sustained /ɑ/,
+/i/ and /u/ [@toles2025pressed]. A value means little without its task.
+
+**Sex.** On sustained vowels in typical phonation, women's means were 8.5,
+13.3 and 9.4 dB on /ɑ/, /i/ and /u/, against 4.9, 0.1 and 0.4 dB in men
+[@toles2025pressed]. On the sentence the two were close, 2.7 and 1.6 dB
+[@toles2025pressed]. On vowels the sex difference is as large as the
+phonation-type effects, so an H1–H2 value read without the speaker's sex is not
+interpretable. No source in this reference explains why the difference is so
+large on /i/ and /u/. For the pressed-phonation effect, Toles and Murton point
+to the small posterior glottal gap common in women during typical phonation,
+which pressing can close. Men's typical phonation usually has complete closure
+already, so there is less to change [@toles2025pressed].
+
+**Sign and range.** H1–H2 can be negative. Men's mean on the sentence in
+pressed phonation was −0.2 dB [@toles2025pressed]. Across 288 database
+recordings the mean was 4.20 dB, with SD 6.14 dB and a range from −20.62 to
+25.15 dB, which is why it was analysed untransformed [@lucero2026subsets].
+
+**Simulated phonation in healthy speakers.** The phonation-type findings come
+from healthy speakers imitating pressed and breathy voice, and may not
+generalize to people with voice disorders [@toles2026kinematics]. A single
+blinded voice-specialized speech-language pathologist rated the productions in
+the 2025 study and identified the nonmodal phonation correctly 96% of the time
+[@toles2025pressed]. The 2026 recordings were made during rigid transoral
+endoscopy, with the posture and tongue position that requires
+[@toles2026kinematics].
+
+**Two studies, probably one cohort.** The two Toles studies share a laboratory,
+an ethics protocol and a recording chain, and report the same enrolment and
+exclusion counts [@toles2025pressed; @toles2026kinematics]. They very probably
+draw on largely the same speakers. They are therefore not independent
+confirmations of each other. This is this reference's inference; neither paper
+states it.
+
+**Language.** In some languages phonation type is contrastive, and H1–H2
+carries the contrast. Breathy vowels in Hmong differ from modal vowels in
+H1–H2, and laryngealization in Mixtec lowers it [@kreiman2011foundations].
+Green Mong vowels can be sorted correctly 92% of the time from H1–H2,
+duration, F0, jitter and shimmer, with H1–H2 doing most of the work
+[@kreiman2011foundations]. In such a language a clinical reading of H1–H2 has
+to allow for the linguistic contrast.
+
+### Where the sources disagree {#sec-h1h2-disagreement}
+
+**How strongly H1–H2 tracks breathiness.** The meta-analysis reports
+*r*~w~ = .66 on sustained vowels [@barsties2018meta]. In the ABI development
+study, H1–H2 correlated with breathiness ratings at only *r*~s~ = 0.098 on
+1042 concatenated Dutch speech-and-vowel samples, one of the weakest of the
+candidate measures [@barsties2017abi]. It was kept in the index all the same,
+on the strength of its earlier record as a breathiness predictor
+[@barsties2017abi]. The two figures differ in task, sample and pipeline, and
+neither source reconciles them. This chapter reports both.
+
+**What the phonation-type study shows.** Toles and Murton's discussion calls
+H1–H2 the only variable significant for pressed phonation in both sustained
+vowels and connected speech [@toles2025pressed]. Their own table gives
+*P* = 0.027 on the sentence and *P* = 0.103 on /i/, against their stated
+significance level of 0.0125, and their abstract correctly reports that
+neither measure separated pressed from typical phonation on /i/
+[@toles2025pressed]. This chapter follows the table.
+
+### Validation
+
+The perceptual evidence for H1–H2 is the breathiness meta-analysis
+[@barsties2018meta] and the index development study that included it
+[@barsties2017abi], and the two disagree about its strength. The physiological
+evidence is two studies of simulated phonation in healthy adults from one
+laboratory, one acoustic [@toles2025pressed] and one with simultaneous
+high-speed imaging [@toles2026kinematics]. A database analysis places it in
+the roughness and strain subsets [@lucero2026subsets]. What is still missing
+is any H1–H2 reference computed with a stated pipeline, and any comparison
+between implementations. Until one exists, this chapter publishes no H1–H2
+normal range.
+
+## Compute it in PhonaLab
+
+> **[Open PhonaLab →](https://phonalab.com)**
+>
+> *PhonaLab is developed by the author of this reference; see
+> [Competing interests](intro.qmd#competing-interests).*
+>
+> H1–H2 is computed as a component of the Acoustic Breathiness Index, where the
+> reference value that applies is the ABI cutoff for your language and task. No
+> H1–H2 reference value exists to display beside it.

@@ -2,11 +2,225 @@
 title: "Perceptual Anchors (GRBAS, CAPE-V)"
 ---
 
-::: {.callout-warning}
-**Placeholder.** This chapter is planned but not yet written. See the
-[book plan](https://github.com/LuceroJC/voice-measures/blob/main/PLAN.md)
-for its intended scope and target release. In the meantime, the
-[Introduction](intro.qmd) shows where this chapter sits in the reference.
+::: {.callout-note}
+**Living draft.** This chapter explains the perceptual instruments that every
+diagnostic threshold in this reference was derived against. The composite
+chapters point here from their Normative data sections. Found an error? Use the
+*Report an issue* link in the sidebar.
 :::
 
-*This page will be replaced with a full chapter in a later release.*
+## Why a chapter on something that is not a measure
+
+GRBAS and the CAPE-V are auditory-perceptual rating instruments. A listener
+hears a voice and scores it on named dimensions. Neither is computed from a
+signal, and neither is an acoustic measure.
+
+They are here because every composite index in Part IV was fitted against them,
+and because every diagnostic threshold in this reference was obtained by asking
+how well an acoustic value separates two groups that a perceptual instrument
+defined. A cutoff is a statement about a perceptual standard as much as about a
+measure. Change the instrument, change the dimension, or move the point on the
+scale at which a voice counts as affected, and the cutoff moves without
+anything about the acoustics changing.
+
+That is the argument of [Pipeline Dependence and Reference
+Values](foundations-pipeline.qmd), one layer up. A measured value belongs to
+the pipeline that produced it; a *cutoff* belongs to the pipeline and to the
+perceptual standard that defined its groups.
+
+The ASHA expert panel treats auditory-perceptual assessment with the CAPE-V as
+a separate, non-instrumental part of a voice evaluation, accompanying acoustic,
+laryngeal-imaging and aerodynamic assessment rather than being replaced by them
+[@patel2018protocol]. Nothing in this reference argues otherwise. An acoustic
+index approximates a perceptual judgement; it does not supersede it.
+
+## GRBAS
+
+The scale was proposed by the Committee for Phonatory Function Tests of the
+Japan Society of Logopedics and Phoniatrics, for evaluating hoarseness. It
+consists of five scales [@hirano1981clinical].
+
+| Scale | What it represents | Stated acoustic correlate |
+|---|---|---|
+| G, grade | The degree of hoarseness or voice abnormality; it corresponds to the factor of evaluative nature obtained by the semantic differential technique | — |
+| R, rough | The psycho-acoustic impression of irregularity of vocal fold vibrations | Irregular fluctuations in the fundamental frequency and/or the amplitude of the glottal source sound |
+| B, breathy | The psycho-acoustic impression of the extent of air leakage through the glottis | Related to turbulence |
+| A, asthenic | Weakness or lack of power in the voice | A weak intensity of the glottal source sound and/or a lack of higher harmonics |
+| S, strained | The psycho-acoustic impression of a hyperfunctional state of phonation | An abnormally high fundamental frequency, noise in the high frequency range, and/or richness in high frequency harmonics |
+
+: The five GRBAS scales and the acoustic correlates stated for them in the original description [@hirano1981clinical]. {#tbl-grbas}
+
+**Each scale is graded on four points: 0 non-hoarse or normal, 1 slight, 2
+moderate, 3 extreme** [@hirano1981clinical]. A result is written as the five
+scores together, so a GRBAS rating is a profile rather than a number.
+
+Two cautions come from the proposing committee itself. The evaluation is
+subjective, so the examiner must possess a trained ear, and a standard tape of
+typical voice samples was made for training. And the committee states that
+psycho-acoustic evaluation with the GRBAS scale is not an absolute method and
+needs to be improved upon [@hirano1981clinical]. Both remarks are from 1981 and
+neither has been overtaken.
+
+## CAPE-V
+
+The CAPE-V was developed under ASHA Special Interest Division 3, first released
+in 2002 and revised in 2009 [@patel2018protocol]. It is scored on a visual
+analog scale, and its dimensions include overall severity, roughness,
+breathiness, strain, pitch and loudness [@walden2022pvqd]. Its sentences,
+recorded for the auditory-perceptual assessment of voice quality, can also
+serve as the connected-speech sample for cepstral analysis [@patel2018protocol].
+
+::: {.callout-warning}
+**This reference does not yet describe the CAPE-V from its own documentation.**
+The 2009 revision (Kempster and colleagues, as cited by @patel2018protocol) is
+the instrument's source of record for its tasks, its visual anchors and its
+scoring, and it is not yet in this project's source library. Until it is, this
+chapter states only what other sources report about the instrument. That is a
+declared absence of a source, in the same spirit as a declared absence of a
+reference value: see [Pipeline Dependence](foundations-pipeline.qmd).
+:::
+
+## Averaging, and the thresholds it creates
+
+Both instruments are applied by individual listeners. Every validation study in
+this reference uses a **mean across raters** as its reference value.
+
+That has a consequence worth stating plainly. Averaging turns GRBAS from a
+four-point ordinal scale into a continuum, which is why thresholds such as a
+mean grade of 0.5 exist at all. No single rater can return 0.5 on a scale whose
+points are 0, 1, 2 and 3. The threshold is a property of the panel, not of a
+judgement any listener made.
+
+## The reference standards behind this reference's cutoffs
+
+@tbl-anchor-standards is the set of perceptual standards that the cutoff
+studies cited in Part III and Part IV actually used. The column that matters is
+the third one.
+
+| Study and language | Instrument | A voice counted as affected when | Raters and reliability |
+|---|---|---|---|
+| Dutch, AVQI external validation | GRBAS grade, mean | $G_\text{mean} \geq 0.5$ | — |
+| Brazilian Portuguese, AVQI and ABI | GRBAS grade and breathiness, means | G < 0.5 and B < 0.5 taken as unaffected | five judges; Fleiss $\kappa$ 0.370 for G, 0.353 for B |
+| Finnish, ABI | GRBAS breathiness, mean | a nonbreathy voice was one rated B 0–0.49 | eight listeners; Fleiss $\kappa$ 0.435 |
+| Malayalam and Kannada, ABI | GRBAS breathiness | "B" of GRBAS as the reference standard | — |
+| US English, AVQI and ABI | GRBAS grade, mean | $G_\text{mean} \geq 0.5$, stated for both indices | — |
+| American English, PVQD, AVQI and CPPS | CAPE-V overall severity, 100-point scale | severity $\geq$ 10 | nineteen raters, three per file |
+| American English, PVQD, AVQI | GRBAS grade, mean | grade $\geq$ 0.5 | as above |
+| American English, PVQD, ABI | CAPE-V breathiness, 100-point scale | breathiness $\geq$ 10 | as above |
+| Six ABI validations, pooled | GRBAS, means | per study | three to five judges per study; Fleiss $\kappa$ 0.353 to 0.492 |
+
+: Perceptual reference standards used by the validation studies behind this reference's thresholds. Dutch: @barsties2016avqi; Brazilian Portuguese: @englert2020material and @englert2019abstract; Finnish: @kankare2023abi; Malayalam and Kannada: @jayakumar2024abi; US English: @castillo2023avqi; American English PVQD: @lucero2026phonalab with @walden2022pvqd; pooled: @barsties2021abi. {#tbl-anchor-standards}
+
+Two of those choices carry a stated rationale. On the 100-point scale, 10 was
+selected as a clinically meaningful boundary between normal variation and
+minimal perceptible deviance; on the averaged ordinal scale, 0.5 is the
+midpoint between normal and minimal severity [@lucero2026phonalab].
+
+The ABI meta-analysis records a reliability floor for this literature: an
+inter-rater Fleiss $\kappa$ of 0.41 is the recommended minimum, and the one
+included study that fell below it is the one whose correlation between ABI and
+perceived breathiness was lowest [@barsties2021abi].
+
+## The PVQD, in detail
+
+The Perceptual Voice Qualities Database is the sample behind this reference's
+American English rows, so its rating procedure deserves its own section.
+
+Its 296 recordings were rated by nineteen experienced voice clinicians using
+voice qualities from the CAPE-V, **without visual anchors**, and the GRBAS
+scale [@walden2022pvqd]. Raters had to be voice professionals with at least two
+years of experience, familiar with both scales and using at least one of them
+monthly; twenty-five were recruited and nineteen completed [@walden2022pvqd].
+
+| Scale | Inter-rater ICC | Intra-rater ICC |
+|---|---|---|
+| 100-point visual analog | 0.86 | 0.913 |
+| GRBAS | 0.859 | 0.889 |
+
+: Reliability of the PVQD ratings for the database as a whole, with averages used as the ratings [@walden2022pvqd]. By dimension, inter-rater ICC was 0.918 for overall severity and 0.827 for breathiness on the visual analog scale, and 0.911 for grade and 0.844 for breathiness on GRBAS. {#tbl-pvqd-reliability}
+
+Three cautions apply to those figures, and all three come from the database
+paper itself [@walden2022pvqd].
+
+**They are reliability for a mean of several raters.** The ICCs assume final
+ratings based on three raters for inter-rater reliability and two repeated
+ratings for intra-rater reliability, and were corrected upward with the
+Spearman-Brown formula to account for the higher number of ratings per target.
+A single clinician rating a voice alone is not at 0.918.
+
+**They are consistency, not agreement.** Because different raters rated
+different subsets of the database, reliability can only be assessed as
+consistency between or within raters, under Shrout and Fleiss's ICC(1, *m*)
+model. The design cannot assess agreement in the levels of the ratings. The
+same non-overlapping assignment is why the validation study built on this
+database could not model individual rater effects and used the published means
+instead [@lucero2026phonalab].
+
+**The severity scale is CAPE-V-like, not the CAPE-V.** Its dimensions were
+borrowed from the CAPE-V and scored on a 100-point visual analog scale without
+the instrument's visual anchors. A threshold written as "CAPE-V overall
+severity $\geq$ 10" on this database is a threshold on that scale.
+
+One further point concerns what "vocally healthy" means here. The database
+paper reports 296 speakers, of whom 89 had no voice complaint, 187 reported a
+complaint or had a confirmed diagnosis of dysphonia, and 20 have no data
+recorded for voice complaint or diagnosis [@walden2022pvqd]. The validation
+study using it reports 290 usable speakers as 181 with voice disorders and 109
+vocally healthy [@lucero2026phonalab]. The arithmetic reconciles only if the 20
+speakers with no recorded voice status are counted among the 109 controls, and
+all six exclusions came from the disordered group. On that reading, roughly one
+in five of the controls behind this reference's American English specificity
+figures has no documented voice status. The inference is from the counts in the
+two papers, and it should be confirmed against the database labels before it is
+relied on.
+
+## How to read a threshold
+
+- **A threshold inherits its reference standard.** A cutoff validated against
+  mean GRBAS grade answers the question "would a panel of listeners have called
+  this voice hoarse?". A cutoff validated against CAPE-V breathiness answers a
+  different question about a different dimension. A measure may separate one
+  well and the other poorly, which is the point of a dimension-targeted index:
+  see [ABI](abi.qmd) and [GNE](gne.qmd).
+- **Two reference standards on one sample are not two validations.** Where a
+  study reports the same cutoff against both CAPE-V severity and GRBAS grade,
+  that is one sample analysed twice. See [AVQI](avqi.qmd).
+- **A dichotomised perceptual rating is a summary, not a diagnosis.** The
+  instruments grade a voice. They do not identify a lesion or a mechanism
+  [@patel2018protocol].
+- **Report the instrument, the dimension and the threshold** whenever a cutoff
+  is quoted, exactly as the pipeline is reported for the measure itself.
+
+## Where the sources disagree
+
+**Where "normal" ends on an averaged GRBAS grade.** The database paper's own
+figure categories place the normal band at 0 to 0.5, mild at 0.6 to 1.5,
+moderate at 1.6 to 2.5 and severe at 2.6 to 3.0 [@walden2022pvqd]. The
+validation literature treats a mean grade of 0.5 or above as affected
+[@barsties2016avqi]. A voice with a mean grade of exactly 0.5 is therefore
+normal under the first convention and dysphonic under the second. No value in
+this reference is moved on account of it. The point matters because the
+boundary sits where the ratings are densest: the PVQD's severity distribution
+is skewed toward the normal, mild and moderate levels, and perception of
+mild-to-moderate severities is harder than of normal and severe ones
+[@walden2022pvqd].
+
+**Whether rating scales are reliable enough to serve as a reference standard at
+all.** The database paper establishes good inter- and intra-rater reliability
+for the PVQD overall and concludes that its ratings may be used with relative
+confidence for research [@walden2022pvqd]. A standard textbook treatment
+reaches a much darker verdict about dimensional rating protocols as measurement
+tools: across studies, scales and statistics, average interrater reliability
+has ranged from extremely low ($r^2 = .04$) to extremely high; listeners almost
+never agree in their ratings of a single voice; the likelihood that two raters
+agree on moderately pathological voices on seven-point scales averaged 0.21
+where chance is 0.14; and more than 60%, and as much as 78%, of the variance in
+voice quality ratings was attributable to factors other than differences among
+voices in the quality being rated [@kreiman2011foundations].
+
+Both can hold at once, and the difference is in what is being measured. The
+ICCs are for a mean of three trained raters on one database. The textbook
+figures are for individual listeners judging individual voices across the
+literature. The practical consequence is the same either way, and it is why
+this chapter exists: the perceptual threshold is the softest element in any
+acoustic cutoff, and it should be reported rather than assumed.

@@ -10,6 +10,7 @@ project:
     - foundations-signal.qmd
     - foundations-signal-typing.qmd
     - foundations-pipeline.qmd
+    - foundations-perceptual-anchors.qmd
     - cpps.qmd
     - avqi.qmd
     - abi.qmd
@@ -17,7 +18,8 @@ project:
     - shimmer.qmd
     - hnr.qmd
     - release-notes.qmd
-    - gne.qmd  
+    - gne.qmd
+    - spectral-tilt.qmd
 
 book:
   title: "Acoustic Measures of Voice Quality"
@@ -45,6 +47,7 @@ book:
         - foundations-signal.qmd
         - foundations-signal-typing.qmd
         - foundations-pipeline.qmd
+        - foundations-perceptual-anchors.qmd
     - part: "Part II — Periodicity and Stability"
       chapters:
         - jitter.qmd
@@ -54,6 +57,7 @@ book:
         - hnr.qmd
         - gne.qmd
         - cpps.qmd
+        - spectral-tilt.qmd
     - part: "Part IV — Composite Indices"
       chapters:
         - avqi.qmd
@@ -62,9 +66,9 @@ book:
     # but are neither listed nor rendered until written. To publish one, add
     # it here in its part AND to project.render above. Full plan:
     #   Part I:   foundations-recording, foundations-f0-detection,
-    #             foundations-tasks, foundations-perceptual-anchors
+    #             foundations-tasks
     #   Part II:  f0-measures, jitter, shimmer, voice-breaks, perturbation-caveats
-    #   Part III: hnr, nhr, gne, spectral-tilt
+    #   Part III: nhr
     #   Part IV:  dsi, composite-caveats
     #   Part V:   ml-landscape, ml-feature-based, ml-end-to-end
     #   Back:     appendix-adjunct-methods, appendix-reproducibility,

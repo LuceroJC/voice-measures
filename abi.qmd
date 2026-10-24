@@ -125,9 +125,11 @@ ABI validation evidence applies to Praat with the customised ABI script
 | Japanese (288 dysphonic, 55 normophonic; 30 syllables + sustained vowel) | Praat 6.0.20, ABI script | 3.44 | 76.3% | 94.1% | 0.939 | language-conditional |
 | Malayalam and Kannada (91 normophonic, 69 dysphonic; 29 syllables in Malayalam, 25 in Kannada) | Praat 6.1.42, ABI script | 3.66 | 61.73% | 94.94% | 0.816 | language-conditional |
 | Persian (136 dysphonic, 45 vocally healthy; 20 syllables, durations balanced) | VOXplot, version not stated | 2.97 | 70% | 87% | 0.826 | language-conditional |
+| American English, PVQD; candidate, exploratory (181 with voice disorders, 109 vocally healthy; 288 rated; nonbreathy = mean GRBAS breathiness < 0.5) | ABI in PhonaLab; Parselmouth 0.4.7 (Praat 6.1.38 engine) | 3.75 | 80.3% | 74.7% | 0.850 | language-conditional |
+| American English, PVQD; candidate, exploratory (the same sample; CAPE-V breathiness ≥ 10) | the same pipeline | 2.97 | 84.3% | 74.4% | 0.862 | language-conditional |
 | Pooled, six studies (context only) | Praat + ABI script; heterogeneous hardware | none | 0.84 (95% CI 0.83–0.85) | 0.92 (95% CI 0.89–0.94) | 0.94 (SROC) | meta-analytic |
 
-: ABI diagnostic thresholds. Dutch: @barsties2017abi; Spanish: @delgado2018avqi; German: @barsties2020german; Brazilian Portuguese: @englert2020material (counting 1–11 and reading text) and @englert2019abstract (counting 1–20); Japanese: @hosokawa2019abi; Malayalam and Kannada: @jayakumar2024abi; Persian: @aghajanzadeh2025persian; US English: @castillo2023avqi; Finnish: @kankare2023abi; pooled: @barsties2021abi. Praat versions for the Spanish and German rows are those cited in each paper's reference list. The Brazilian Portuguese counting 1–20 row reports diagnostic accuracy as a percentage (85.2%); it is shown here as AUC. {#tbl-abi-thresholds}
+: ABI diagnostic thresholds. Dutch: @barsties2017abi; Spanish: @delgado2018avqi; German: @barsties2020german; Brazilian Portuguese: @englert2020material (counting 1–11 and reading text) and @englert2019abstract (counting 1–20); Japanese: @hosokawa2019abi; Malayalam and Kannada: @jayakumar2024abi; Persian: @aghajanzadeh2025persian; US English: @castillo2023avqi; Finnish: @kankare2023abi; pooled: @barsties2021abi. American English PVQD: @lucero2026phonalab, candidate cutoffs from an exploratory analysis. Praat versions for the Spanish and German rows are those cited in each paper's reference list. The Brazilian Portuguese counting 1–20 row reports diagnostic accuracy as a percentage (85.2%); it is shown here as AUC. {#tbl-abi-thresholds}
 
 The six validation studies pooled by the meta-analysis cover Dutch, German,
 Spanish, Brazilian Portuguese, Korean, and Japanese — four language groups —
@@ -138,6 +140,24 @@ reference does not use it as a cutoff: a pooled value mixes languages,
 recording set-ups and Praat versions, and pooled sensitivity was highly
 heterogeneous (*I*² = 89.7%) [@barsties2021abi]. Use the row for the
 patient's language and task.
+
+The two American English PVQD rows come from the same exploratory analysis as
+the candidates in the [AVQI chapter](avqi.qmd): cutoffs chosen by Youden's J
+index on one sample, hypothesis-generating, and in need of external validation
+[@lucero2026phonalab]. Read the GRBAS row against this table. Every other row
+here defines a nonbreathy voice by a mean perceptual breathiness below 0.5, so
+3.75 is the comparable candidate and the CAPE-V row answers a different
+question. Two cautions follow. The CAPE-V candidate is numerically identical to
+the Persian threshold above it and has nothing to do with it, so neither
+confirms the other. And the gap between the two candidates inside a single
+sample measures how far the reference standard alone moves an ABI cutoff, which
+is what this table already shows across languages.
+
+In that sample ABI outperformed HNR for breathiness detection on a DeLong test
+(AUC 0.862 against 0.765, *P* < 0.001), while the difference between ABI and
+CPPS did not reach significance (0.862 against 0.843, *P* = 0.209). The study
+reads the second result as CPPS alone carrying much of the breathiness-related
+acoustic information [@lucero2026phonalab].
 
 @tbl-abi-languages lists the threshold each study reported.
 

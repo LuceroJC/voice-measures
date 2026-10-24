@@ -261,9 +261,26 @@ classes. Compare a measured value only with a row whose pipeline matches.
 | MEEI, English; 295 patients, 50 controls | Sustained /a/ | Praat 6.0.40 CPPS, Watts et al. settings | 14.45 dB | 77.4% | pipeline-compatible |
 | MEEI, English; 291 patients, 50 controls | Rainbow Passage, first 12 s | Praat 6.0.40 CPPS, Watts et al. settings | 9.33 dB | 94.5% | pipeline-compatible |
 | English; 100 voice-disordered, 70 controls | Rainbow Passage, second sentence | Praat 6.0.17 CPPS, factory settings | 19.10 dB | AUC 0.91 | pipeline-compatible |
+| PVQD, American English; 181 patients, 109 controls | Sustained /a/ | PhonaLab CPPS, official AVQI/ABI script settings; Parselmouth 0.4.7 (Praat 6.1.38 engine) | 13.33 dB (candidate) | AUC 0.796 | pipeline-compatible |
 | — | Sustained /i/ | — | No published cutoff in the sources reviewed | — | — |
 
-: Diagnostic cutoffs (voice disorder vs. typical voice). MEEI rows: @murton2020cpp. Second-sentence rows: @sauder2017cpps. Sustained /i/: @buckley2023cpp. {#tbl-cpp-cutoffs}
+: Diagnostic cutoffs (voice disorder vs. typical voice). MEEI rows: @murton2020cpp. Second-sentence rows: @sauder2017cpps. Sustained /i/: @buckley2023cpp. PVQD row: @lucero2026phonalab, a candidate cutoff from an exploratory analysis. {#tbl-cpp-cutoffs}
+
+The PhonaLab PVQD row is not comparable to the Praat rows above it, and the
+reason is settings rather than software. Those rows use the Watts et al.
+settings; this one uses the configuration of the official AVQI/ABI script:
+PowerCepstrogram with pitch floor 60 Hz, time step 0.002 s, maximum frequency
+5000 Hz and pre-emphasis from 50 Hz, then CPPS with a time averaging window of
+0.01 s, a quefrency averaging window of 0.001 s, peak search over 60 to 330 Hz,
+parabolic interpolation, a straight trend line with robust fit, and no tilt
+subtraction before smoothing [@lucero2026phonalab]. Same measure name, same
+engine family, different settings, so this row's cutoff and the Watts-settings
+cutoff for the same task are not two estimates of one quantity.
+
+Its cutoff is a candidate. The analysis was exploratory, with sensitivity 58.4%
+and specificity 87.8% on resubstitution, and 57.9% and 83.6% under ten-fold
+cross-validation [@lucero2026phonalab]. PhonaLab displays 13.33 dB as a
+boundary, so the exploratory label belongs wherever the number is shown.
 
 Other reported cutoffs are listed below for context only. Their pipelines
 are incomplete where they are reported: no software version, or values read
@@ -351,6 +368,39 @@ Male speakers tended to
 have higher CPP than female speakers, possibly through loudness. The MEEI
 controls were 22–59 years old; separate norms for older adults may be needed
 [@murton2020cpp].
+
+**A higher CPP is not always a better voice.** In 50 vocally healthy adults
+simulating three phonation types, with Praat 6.2.11 CPPS and the settings of
+@murton2020cpp, mean CPP was *higher* in pressed than in typical phonation:
+by 0.49 dB on an all-voiced sentence and by 1.01 to 1.57 dB on sustained
+vowels [@toles2025pressed]. Breathy phonation lowered it, by 2.76 dB on the
+sentence and 3.13 to 3.93 dB on vowels. The rise with pressing held for women
+on every vowel. Men showed no difference between pressed and typical phonation
+on any vowel, only on the sentence [@toles2025pressed]. With high-speed
+videoendoscopy, CPP on /i:/ rose with faster and more abrupt glottal closure,
+correlating −.62 with the closing quotient and .62 with the normalized maximum
+area declination rate [@toles2026kinematics]. The consequence for practice,
+as both papers put it: a patient with a hyperfunctional voice may sit above a
+published cutoff and be classified as typical, and a *fall* in CPP after
+therapy can then be an improvement [@toles2025pressed]. Check whether the
+direction of a change in CPP matches the therapeutic target
+[@toles2026kinematics]. The two studies come from one laboratory and very
+probably share most of their speakers, so they are not independent
+confirmations; this is this reference's inference, and neither paper states
+it.
+
+**A group shift is not an individual test.** The pressed-phonation rise is a
+difference in group means. In the same study's logistic models, at its own
+significance level of 0.0125, CPP did not separate pressed from typical
+phonation on any task (*P* = 0.464 on the sentence, 0.019 on /ɑ/, 0.060 on /i/
+and 0.013 on /u/), and its AUCs for that contrast were only 0.61 to 0.71
+[@toles2025pressed]. For breathy against typical phonation its AUCs were 0.88
+to 0.93. The paper's abstract says CPP differentiated pressed from typical
+phonation in most tasks; its tables do not support that at its stated
+significance level, and this chapter follows the tables. These figures are
+performance metrics from simulated phonation in healthy speakers, not
+cutoffs. For the spectral measure that did better on this contrast, see
+[Spectral Tilt](spectral-tilt.qmd).
 
 **Cutoff vicinity.** Published cutoffs are one possible estimate; values near a
 cutoff deserve further consideration rather than a binary reading
