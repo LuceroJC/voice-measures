@@ -20,6 +20,7 @@ project:
     - release-notes.qmd
     - gne.qmd
     - spectral-tilt.qmd
+    - composite-caveats.qmd
 
 book:
   title: "Acoustic Measures of Voice Quality"
@@ -62,6 +63,7 @@ book:
       chapters:
         - avqi.qmd
         - abi.qmd
+        - composite-caveats.qmd
     # Planned chapters are kept in the repository as placeholder .qmd files
     # but are neither listed nor rendered until written. To publish one, add
     # it here in its part AND to project.render above. Full plan:
@@ -69,7 +71,7 @@ book:
     #             foundations-tasks
     #   Part II:  f0-measures, jitter, shimmer, voice-breaks, perturbation-caveats
     #   Part III: nhr
-    #   Part IV:  dsi, composite-caveats
+    #   Part IV:  dsi
     #   Part V:   ml-landscape, ml-feature-based, ml-end-to-end
     #   Back:     appendix-adjunct-methods, appendix-reproducibility,
     #             appendix-glossary

@@ -82,6 +82,13 @@ against the publisher PDFs, so the differences are in the publications.
 When implementing the index, take the coefficients from the Praat script
 printed in the appendix of @barsties2016avqi rather than from an equation
 retyped in a later paper.
+
+A third discrepancy is of another kind. @aghajanzadeh2025persian name AVQI
+03.01 throughout and computed it in VOXplot, but the equation they print is the
+development study's, coefficient for coefficient, with its ×2.571 rescaling
+[@maryn2010ecological]. Either the printed equation or the version label is
+wrong, and the paper does not let a reader tell which. The Persian threshold
+below stays in the table, with this caveat attached.
 :::
 
 ### Versions 02.02 and 03.01

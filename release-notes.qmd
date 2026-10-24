@@ -21,6 +21,14 @@ corrected here.
 
 ### Added {.unnumbered}
 
+- **[Composite-Index Caveats](composite-caveats.qmd)**, closing Part IV. What
+  applies to the AVQI and the ABI together: why the version of the equation is
+  part of the measure; a table and a figure of what moves a threshold when one
+  factor changes and the sample stays the same (speech material, reference
+  standard, derivation criterion, Praat version); why pooled thresholds are not
+  cutoffs; what "validated" has meant in these studies, including how many
+  validations involve the index developers and which share one corpus; how the
+  two indices relate; and what a report of a composite score should state.
 - **[Spectral Tilt](spectral-tilt.qmd)**, in Part III, beginning with H1–H2.
   The implementations in use and how they differ, including the ABI script's
   own; a declared absence of any H1–H2 reference value; the evidence linking
@@ -60,6 +68,9 @@ corrected here.
 
 ### Changed {.unnumbered}
 
+- **[AVQI](avqi.qmd)**: the Persian validation prints the development study's
+  equation although it reports version 03.01. The equation callout now says so,
+  and the Persian threshold carries that caveat.
 - **Settings stated by citation.** A source that gives its software version
   but states its settings only by citing another paper now counts as stating
   them, when the cited paper is among this reference's sources and lists the

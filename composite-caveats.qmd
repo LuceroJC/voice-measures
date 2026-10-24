@@ -1,12 +1,314 @@
 ---
 title: "Composite-Index Caveats"
+execute:
+  echo: true
+jupyter: python3
+format:
+  html:
+    code-fold: true
+    code-summary: "Show the code for this figure"
 ---
 
-::: {.callout-warning}
-**Placeholder.** This chapter is planned but not yet written. See the
-[book plan](https://github.com/LuceroJC/voice-measures/blob/main/PLAN.md)
-for its intended scope and target release. In the meantime, the
-[Introduction](intro.qmd) shows where this chapter sits in the reference.
+::: {.callout-note}
+**Living draft.** This chapter reflects the sources cited below and will be
+revised as further sources are incorporated. Found an error? Use the *Report an
+issue* link in the sidebar.
 :::
 
-*This page will be replaced with a full chapter in a later release.*
+```{python}
+#| label: setup
+#| include: false
+import sys, os
+sys.path.insert(0, os.path.abspath("_code"))
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.lines import Line2D
+import vmsynth as vs
+
+plt.rcParams.update({
+    "figure.dpi": 110, "savefig.dpi": 200,
+    "font.size": 9.5, "axes.titlesize": 9.5, "axes.titleweight": "bold",
+    "axes.titlelocation": "left", "axes.labelsize": 9,
+})
+```
+
+A composite index combines several acoustic measures into one score through a
+regression equation fitted on one cohort. The [AVQI](avqi.qmd) combines six
+measures, computed on a concatenated sample of continuous speech and sustained
+vowel, into a score for overall voice quality [@barsties2016avqi]. The
+[ABI](abi.qmd) combines nine measures on the same kind of sample into a score
+for breathiness [@delgado2018avqi; @barsties2021abi]. Both run from 0 to 10
+[@maryn2010ecological; @barsties2021abi].
+
+The two chapters on the indices describe each one in detail. This chapter
+collects what applies to both and is easy to miss when each is read alone. Its
+argument fits in one sentence: **a composite threshold is a property of a whole
+configuration, and every part of that configuration has been shown to move
+it.** For the software side of the argument, see
+[Pipeline dependence](foundations-pipeline.qmd).
+
+## The equation is the measure
+
+A composite score is defined by its published coefficients. Anyone can
+implement the equation from the paper, which is what keeps the AVQI and the ABI
+algorithm-defined measures rather than model-derived ones in this reference's
+compatibility rule (see [Pipeline dependence](foundations-pipeline.qmd)). The
+corollary is that the version of the equation is part of the measure.
+
+**Versions are different measures.** AVQI versions 02.02 and 03.01 differ in
+the length of the continuous-speech part, 17 against 34 syllables in Dutch, and
+in the regression weighting [@barsties2016avqi]. Across the studies pooled in
+the AVQI meta-analysis, the mean threshold was 3.05 (± 0.22) for version 02
+and 2.22 (± 0.52) for version 03 [@jayakumar2024avqi]. A version 02.02
+threshold, such as the Japanese 3.15 [@hosokawa2017avqi], cannot be compared
+with a version 03.01 one.
+
+**Version labels do not reliably identify the equation.** A technical note
+labels the development study's equation version 2.03, and says the later
+Praat-only equation was cited both as 02.02 and as 2.06 [@zainaee2025note]. Its
+own authors had reported version 2.06 in a Persian validation but had used 2.03
+[@zainaee2025note]. A second Persian validation, by a different group, reports
+AVQI 03.01 computed in VOXplot, but the equation it prints is the development
+study's, with its ×2.571 rescaling [@aghajanzadeh2025persian;
+@maryn2010ecological]. The paper does not let a reader tell whether the
+equation or the version label is the error.
+
+**Printed equations differ.** Two validations misprint the AVQI 03.01 HNR term,
+and one also the Tilt coefficient; two print the ABI intercept with a different
+digit string. The [AVQI](avqi.qmd) and [ABI](abi.qmd) chapters tabulate these
+and say which reading this reference follows. The practical rule is the one
+those chapters give: take the coefficients from the script the developers
+published, not from an equation retyped in a later paper.
+
+## What moves a threshold
+
+There is no single threshold for either index. A threshold belongs to an index
+version, a language and its speech material, a reference standard, a
+derivation criterion, a sample and a software pipeline. Each of these has been
+shown to move it.
+
+| What changes | Everything else held fixed? | What happens | Source |
+|---|---|---|---|
+| Index version (AVQI 02 against 03) | no: pooled across studies | mean threshold 3.05 against 2.22 | @jayakumar2024avqi |
+| Speech material: counting 1–11 against reading text, same 53 speakers | yes | AVQI 1.16 → 1.56; ABI 2.38 → 3.13 | @englert2020material |
+| Reference standard: breathiness B against overall grade G, same sample | yes | ABI 3.66 against 3.41 | @jayakumar2024abi |
+| Reference standard: GRBAS breathiness against CAPE-V breathiness, same sample | yes | ABI 3.75 against 2.97 | @lucero2026phonalab |
+| Derivation criterion: Youden index against 95th percentile of controls, same sample | yes | AVQI 03.01 1.41 against 2.06 | @hosokawa2019avqi |
+| Praat version: 6.0.46, with a CPPS bug, against unaffected versions; same recordings and script | yes | at the German thresholds, sensitivity falls from 72% to 23% (AVQI) and to 9% (ABI) | @stappenbeck2020praat |
+| Language | no: samples, pipelines and standards differ too | AVQI 03.01 from 1.16 to 2.43; ABI from 2.35 to 3.69, across the language validations | @englert2020material; @castillo2023avqi; @barsties2016avqi; @barsties2021abi |
+
+: What moves a composite threshold. One documented case per factor. This is a map of what moves a threshold, not a table of cutoffs; the cutoffs, with their Pipeline and Class cells, are in the [AVQI](avqi.qmd) and [ABI](abi.qmd) chapters. {#tbl-composite-drift}
+
+The rows marked "yes" isolate one factor each, and they are the informative
+ones. The language row does not isolate anything: every pair of language
+validations also differs in sample, reference standard, derivation criterion
+and usually software. The spread across languages therefore cannot be read as
+an effect of language alone.
+
+```{python}
+#| label: fig-composite-drift
+#| fig-cap: "Threshold shifts when one factor changes and the sample stays the same. Each line joins two thresholds reported by one study on one sample. Left: AVQI 03.01, where changing only the derivation criterion (Japanese, @hosokawa2019avqi) moves the threshold further than changing the speech material does (Brazilian Portuguese, @englert2020material). Right: ABI, where changing the speech material (@englert2020material) or the perceptual reference standard (@jayakumar2024abi; @lucero2026phonalab) moves it by up to 0.78 points. The grey band behind each panel is the range of thresholds across the published language validations of that index; the PVQD values are exploratory candidates, not a validation, which is why one lies outside it. The Japanese shift alone covers half the AVQI band. These are paired study values, not cutoffs."
+#| fig-alt: "Two panels of horizontal dumbbell plots. Left panel, AVQI: two rows, one for the Japanese derivation criterion running from 1.41 to 2.06 and one for Brazilian Portuguese speech material running from 1.16 to 1.56, over a grey band from 1.16 to 2.43. Right panel, ABI: three rows, Brazilian Portuguese speech material from 2.38 to 3.13, South Indian reference standard from 3.41 to 3.66, and PVQD reference standard from 2.97 to 3.75, over a grey band from 2.35 to 3.69."
+
+panels = [
+    ("AVQI 03.01", (1.16, 2.43), [
+        ("Derivation criterion\n(Japanese)", 1.41, 2.06, "Youden", "95th pct", vs.ORANGE),
+        ("Speech material\n(Brazilian Portuguese)", 1.16, 1.56, "counting", "reading", vs.BLUE),
+    ]),
+    ("ABI", (2.35, 3.69), [
+        ("Reference standard\n(PVQD, American English)", 2.97, 3.75, "CAPE-V B", "GRBAS B", vs.GREEN),
+        ("Reference standard\n(Malayalam, Kannada)", 3.41, 3.66, "grade G", "breathiness B", vs.GREEN),
+        ("Speech material\n(Brazilian Portuguese)", 2.38, 3.13, "counting", "reading", vs.BLUE),
+    ]),
+]
+
+fig, axes = plt.subplots(1, 2, figsize=(7.6, 3.4),
+                         gridspec_kw={"width_ratios": [1, 1.15]})
+for ax, (title, band, rows) in zip(axes, panels):
+    ax.axvspan(*band, color=vs.GRID, alpha=0.9, zorder=0, lw=0)
+    for i, (label, a, b, la, lb, c) in enumerate(rows):
+        y = len(rows) - 1 - i
+        ax.plot([a, b], [y, y], color=c, lw=2.0, zorder=2, solid_capstyle="butt")
+        for x, lab, ha, dx in ((a, la, "right", -0.04), (b, lb, "left", 0.04)):
+            ax.plot([x], [y], "o", ms=6, color=c, markeredgecolor="white",
+                    markeredgewidth=0.8, zorder=3)
+            ax.text(x + dx, y + 0.18, f"{x:.2f}", color=c, fontsize=7.5,
+                    ha=ha, va="bottom")
+            ax.text(x + dx, y - 0.2, lab, color=vs.MUTED, fontsize=7,
+                    ha=ha, va="top")
+    ax.set_yticks(range(len(rows)), [r[0] for r in rows][::-1])
+    ax.set_ylim(-0.75, len(rows) - 0.35)
+    lo, hi = band
+    ax.set_xlim(lo - 0.45, hi + 0.45)
+    ax.set_xlabel("threshold (index points)")
+    ax.set_title(title)
+    ax.text(hi, len(rows) - 0.42, "range of language thresholds",
+            color=vs.MUTED, fontsize=7, ha="right", va="bottom")
+    vs.style_axes(ax, grid=False)
+    ax.tick_params(axis="y", length=0)
+fig.tight_layout()
+```
+
+**Pooled values are not cutoffs.** The ABI meta-analysis derived a weighted
+threshold of 3.40 across six studies, with pooled sensitivity highly
+heterogeneous (*I*^2^ = 89.7%) [@barsties2021abi]. Pooled AVQI version 03
+sensitivity was even more heterogeneous (*I*^2^ = 95.3%) [@jayakumar2024avqi].
+A pooled threshold averages over exactly the factors in @tbl-composite-drift.
+This reference reports such values as context and never as a cutoff.
+
+## What "validated" means
+
+**Development figures overstate accuracy.** The 60-sample study that produced
+the AVQI 03.01 weighting reports, at a threshold of 2.43, a sensitivity of
+1.00 and a specificity of 0.936 [@barsties2015consistency; @barsties2016avqi].
+That threshold was evaluated on the same samples that fitted the weights. On
+1058 new samples the same threshold gave a sensitivity of 0.785 and a
+specificity of 0.932 [@barsties2016avqi]. A perfect sensitivity in a
+development sample is a sign of where the number came from, not of how the
+index will perform. The candidate cutoffs in the PhonaLab study of the PVQD
+were checked against this by repeated ten-fold cross-validation, with AUC
+optimism of 0.002 or less [@lucero2026phonalab].
+
+**External validation, as the developers defined it.** @barsties2016avqi
+define external validity as the ability to reproduce results with alternative
+subjects and in settings outside the initial study, and tested the AVQI on a
+completely new and independent set of voices and judges. The later studies are
+of a different kind. They validate the indices in new languages and derive a
+new threshold in each [@barsties2021abi; @barsties2020german]. A threshold
+re-derived in a new sample is a new estimate, not a replication of the old one.
+
+**How independent the evidence is.** Of the thirteen development and
+language-validation studies in @tbl-composite-authors, ten include an index
+developer, Barsties v. Latoszek or Maryn, among their authors. The
+exploratory PVQD candidates are not a validation and are not counted; their
+author developed PhonaLab [@lucero2026phonalab].
+
+| Study | Index | Language | Developer among authors |
+|---|---|---|---|
+| @barsties2016avqi | AVQI | Dutch | yes |
+| @barsties2017abi | ABI | Dutch | yes |
+| @delgado2018avqi | both | Spanish | yes |
+| @barsties2020german | both | German | yes |
+| @pommee2020avqi | AVQI | French | yes |
+| @englert2020material | both | Brazilian Portuguese | no |
+| @englert2021avqi | AVQI | Brazilian Portuguese | yes |
+| @hosokawa2019avqi | AVQI | Japanese | yes |
+| @hosokawa2019abi | ABI | Japanese | yes |
+| @castillo2023avqi | both | US English | yes |
+| @kankare2023abi | ABI | Finnish | no |
+| @jayakumar2024abi | ABI | Malayalam, Kannada | no |
+| @aghajanzadeh2025persian | both | Persian | yes |
+
+: Developer authorship of the AVQI and ABI validations in this reference's sources, from the papers' author lines. {#tbl-composite-authors}
+
+One corpus of 218 German recordings underlies the German validation, the
+Praat-versions study and the VOXplot single-measure study
+[@stappenbeck2020praat; @barsties2023voxplot]. The ABI meta-analysis counts
+among its authors the first authors of five of the six studies it pools
+[@barsties2021abi]. None of this makes a result wrong, and developer
+involvement is how a protocol gets followed faithfully in a new language. It
+does mean that agreement among these studies is weaker evidence than the
+number of studies suggests.
+
+**Base rates.** The Dutch external validation sample was 8% normophonic and
+92% dysphonic. The authors used likelihood ratios because they are less
+vulnerable to such base-rate differences than ROC statistics alone
+[@barsties2016avqi]. Sensitivity and specificity from a sample that skewed are
+a poor guide to a clinic's own mix.
+
+## How the indices relate
+
+**Shared construction.** Both indices are computed on voiced segments of
+continuous speech, extracted automatically and concatenated with a sustained
+vowel [@barsties2016avqi; @barsties2021abi]. Both depend on a balance between
+the two speech types: the AVQI 03.01 weighting was built for it
+[@barsties2015consistency], and the ABI meta-analysis treated unequal
+proportions as a risk of bias [@barsties2021abi].
+
+**Shared components, different targets.** Three of the six AVQI measures are
+also ABI measures: CPPS, shimmer local and shimmer local dB
+[@barsties2016avqi; @delgado2018avqi]. In the AVQI, CPPS is the main factor
+[@barsties2016avqi]. But the AVQI estimates overall voice quality, judged as
+GRBAS grade [@barsties2016avqi], and the ABI estimates breathiness and suits
+voices dominated by it [@barsties2021abi]. The two scores are not
+interchangeable, and neither is a substitute for the other.
+
+**What a composite adds over its best component.** In the PVQD, the ABI
+outperformed HNR for breathiness on a DeLong test, but not CPPS: AUC 0.862
+against 0.843, *P* = 0.209 [@lucero2026phonalab]. In the developers' pooled
+comparison of indices, AVQI 03.01 had the highest concurrent validity with
+perceived overall voice quality, weighted *r* = 0.821, against 0.524 for the
+Dysphonia Severity Index and 0.788 and 0.748 for the Cepstral Spectral Index
+of Dysphonia on vowels and on speech [@barsties2016avqi]. Whether a composite
+earns its extra measures over CPPS alone is a question to ask of each sample,
+not a settled fact. The DSI has no chapter of its own yet, because its
+development paper is not among this reference's sources.
+
+## Software and recording
+
+**Praat versions.** One Praat version, 6.0.46, carries a CPPS bug that cut
+sensitivity at the German thresholds to 23% for the AVQI and 9% for the ABI,
+while correlations with perceptual ratings stayed intact
+[@stappenbeck2020praat]. The details are in
+[Pipeline dependence](foundations-pipeline.qmd).
+
+**Software other than the Praat scripts.** Several recent validations computed
+both indices in VOXplot [@castillo2023avqi; @kankare2023abi;
+@aghajanzadeh2025persian], which uses the Praat algorithms for signal
+processing behind its own interface [@barsties2023voxplot]. The ABI
+meta-analysis excluded studies that did not use Praat with the customised
+script [@barsties2021abi]. No study among this reference's sources compares
+VOXplot with the Praat scripts on the same recordings.
+
+**Sampling rate.** The French AVQI validation recorded at 11,025 Hz
+[@pommee2020avqi], while the AVQI script computes spectral slope and tilt over
+bands reaching 10 kHz [@barsties2016avqi]. See the [AVQI](avqi.qmd) chapter.
+
+## Reading or reporting a composite score
+
+Every factor in @tbl-composite-drift has to be known before a score can be
+compared with a threshold. A report of an AVQI or ABI score should therefore
+state:
+
+1. the index and its version, and where the equation was taken from;
+2. the software and its version, and the script version where there is one;
+3. the language, the speech material and the number of syllables of
+   continuous speech;
+4. for any threshold applied: the study it comes from, its reference standard
+   and its derivation criterion.
+
+A threshold whose study differs from the measurement on any of these is not a
+cutoff for that measurement. This list is this reference's recommendation,
+drawn from the sources above, not a published standard.
+
+## Where the sources disagree
+
+**Are the indices robust across languages?** @delgado2018avqi found the
+Spanish AVQI threshold close to the Dutch and Japanese ones and suggested that
+the AVQI may be relatively insulated from inter-language phonetic differences.
+The ABI meta-analysis found the ABI relatively robust to phonetic differences
+such as stress timing, syllable timing and intonation [@barsties2021abi].
+Later validations widened the ranges to 1.16–2.43 for the AVQI 03.01 and
+2.35–3.69 for the ABI [@englert2020material; @castillo2023avqi;
+@barsties2016avqi; @barsties2021abi].
+Those validations also differ in speech material, reference standard,
+derivation criterion and software, each of which moves a threshold on its own.
+Whether the remaining spread reflects language is therefore not established.
+This is this reference's reading of the sources together.
+
+**Which Japanese threshold.** @hosokawa2019avqi computed 1.41 by the Youden
+index and 2.06 by the 95th percentile of controls, and recommend 2.06. Most
+other language rows are Youden-derived, so the Japanese row reflects a
+different criterion as well as a different language. The [AVQI](avqi.qmd)
+chapter keeps 2.06 and flags it.
+
+## Compute it in PhonaLab
+
+> **[Open PhonaLab →](https://phonalab.com)**
+>
+> *PhonaLab is developed by the author of this reference; see
+> [Competing interests](intro.qmd#competing-interests).*
+>
+> Compute the AVQI and the ABI on your own recording, and report the score
+> with the configuration listed under
+> [Reading or reporting a composite score](#reading-or-reporting-a-composite-score).

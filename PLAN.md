@@ -87,7 +87,7 @@ chapter but is neither listed nor rendered until it is written.
 | `avqi.qmd` | Acoustic Voice Quality Index, versions 02.06 and 03.01 | Published |
 | `abi.qmd` | Acoustic Breathiness Index | Published |
 | `dsi.qmd` | Dysphonia Severity Index. The aerodynamic term is flagged as a scope exception | Planned |
-| `composite-caveats.qmd` | Cross-language validation, why thresholds drift, how the composites relate, and what external validation means | Planned |
+| `composite-caveats.qmd` | Cross-language validation, why thresholds drift, how the composites relate, and what external validation means | Published |
 
 ### Part V — Model-derived measures
 
@@ -123,7 +123,7 @@ Remaining, in intended order:
    detection.
 2. The rest of Part II: F0 measures, voice breaks, perturbation caveats.
 3. The rest of Part III: NHR, and spectral tilt beyond H1–H2.
-4. The rest of Part IV: DSI and composite caveats.
+4. The rest of Part IV: DSI.
 5. Part V: the landscape chapter first, then the two examples.
 6. Back matter.
 
