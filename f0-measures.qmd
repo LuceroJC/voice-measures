@@ -1,12 +1,258 @@
 ---
 title: "F0 Measures"
+execute:
+  echo: true
+jupyter: python3
+format:
+  html:
+    code-fold: true
+    code-summary: "Show the code for this figure"
 ---
 
-::: {.callout-warning}
-**Placeholder.** This chapter is planned but not yet written. See the
-[book plan](https://github.com/LuceroJC/voice-measures/blob/main/PLAN.md)
-for its intended scope and target release. In the meantime, the
-[Introduction](intro.qmd) shows where this chapter sits in the reference.
+::: {.callout-note}
+**Living draft.** This chapter reflects the sources cited below and will be
+revised as further sources are incorporated. Found an error? Use the *Report an
+issue* link in the sidebar.
 :::
 
-*This page will be replaced with a full chapter in a later release.*
+::: {.callout-warning}
+**This first version covers the level and variability of F0 in adults.** How
+an F0 track is extracted, and where pitch trackers fail, belongs to the
+planned F0 Detection chapter in Part I. Children's F0 and the maximum
+phonational frequency range will be added in a later release.
+:::
+
+```{python}
+#| label: setup
+#| include: false
+import sys, os
+sys.path.insert(0, os.path.abspath("_code"))
+import numpy as np
+import matplotlib.pyplot as plt
+import vmsynth as vs
+
+plt.rcParams.update({
+    "figure.dpi": 110, "savefig.dpi": 200,
+    "font.size": 9.5, "axes.titlesize": 9.5, "axes.titleweight": "bold",
+    "axes.titlelocation": "left", "axes.labelsize": 9,
+})
+```
+
+## Definition
+
+**The fundamental frequency (F0) is the rate at which a waveform repeats.** It
+is measured in hertz (Hz), and the period is its reciprocal, t = 1/F0
+[@baken2000clinical].
+
+Pitch and frequency are kept separate in this chapter. Pitch is a perceptual
+attribute, scaled from low to high. Frequency is a physical attribute of the
+signal. Pitch is not the simple perception of F0: frequency, intensity and
+spectral properties interact, and perceived pitch can be a poor reflection of
+F0 [@baken2000clinical]. That is why the F0 should be measured even when the
+clinician judges pitch by ear.
+
+Measuring F0 assumes that the signal is at least approximately periodic
+[@baken2000clinical]. A voice that is not, a Type 2 or Type 3 signal in the
+terms of [Signal Typing](foundations-signal-typing.qmd), does not have a
+dependable F0 to summarise.
+
+*Speaking fundamental frequency* (SF0) is F0 measured over running speech.
+This chapter covers SF0 and the F0 of sustained vowels, which, as set out
+below, are not the same quantity.
+
+## Computation
+
+F0 measures summarise a track of F0 estimates. The ASHA expert panel's core
+set for vocal frequency is mean F0, F0 standard deviation, and minimum and
+maximum F0, all in hertz [@patel2018protocol].
+
+| Measure | Definition | When it is the right summary |
+|---|---|---|
+| Mean F0 | The average of the F0 estimates, taken from windows of equal duration covering the whole signal; or the number of periods divided by their summed duration [@patel2018protocol] | When the distribution of estimates is roughly symmetric [@baken2000clinical] |
+| Median F0 | The middle value of the estimates | When the distribution is markedly skewed [@baken2000clinical] |
+| Modal F0 | The most frequent value | The closest objective approximation of "habitual pitch" [@baken2000clinical] |
+| F0 standard deviation ("pitch sigma") | Standard deviation of the estimates, often in semitones | Paired with the mean [@baken2000clinical] |
+| 90% (or 95%) range | The band around the average within which 90% (or 95%) of estimates fall; Curry's "effective range" | Paired with the median [@baken2000clinical] |
+| Total range | Highest minus lowest F0, commonly in semitones | Set by two extreme values, so fragile (@fig-f0-summary) [@baken2000clinical] |
+| Minimum and maximum F0 | Mean F0 over a 1-s segment at the lowest modal and the highest (falsetto included) sustainable pitch; the lowest and highest of three trials are reported | Defines the phonational range in semitones [@patel2018protocol] |
+
+: F0 summary measures. {#tbl-f0-measures}
+
+**Semitones.** The semitone difference between two frequencies is
+
+$$
+n = 39.86 \, \log_{10}\!\left(\frac{f_2}{f_1}\right),
+$$
+
+and doubling a frequency adds 12 semitones [@baken2000clinical]. A semitone
+scale with absolute values needs a zero point; Fletcher set 0 ST at 16.35 Hz
+[@baken2000clinical]. Semitones make comparisons between speakers simpler,
+which is why ranges and standard deviations are often reported in them. They
+do not scale perceived pitch [@baken2000clinical].
+
+**Task.** The ASHA panel takes mean F0 and F0 standard deviation from a reading
+passage, the first paragraph of the Rainbow Passage for adults. The whole
+passage is preferred; otherwise a consistently chosen segment at least 5 s
+long, such as the second and third sentences [@patel2018protocol]. Minimum and
+maximum F0 come from a pitch glide on /a/ [@patel2018protocol].
+
+@fig-f0-summary uses Baken and Orlikoff's own worked example to show why the
+choice of summary matters.
+
+```{python}
+#| label: fig-f0-summary
+#| fig-cap: "Twelve consecutive F0 values from Baken and Orlikoff's worked example. One reading, 121.3 Hz, stands far from the rest and may be a momentary slip of the larynx or a transient failure of the analysis software. With it, the total range is 16.5 Hz (2.5 semitones) and the mean is pulled up to about 107 Hz. Without it, the range is 1.4 Hz (0.2 semitones) and the mean is 105.7 Hz. The median is 105.85 Hz with it and 105.8 Hz without it. Values from @baken2000clinical."
+#| fig-alt: "Dot plot of twelve F0 values against their position in the sequence. Eleven dots lie between about 104.8 and 106.2 Hz; the eighth dot sits alone at 121.3 Hz. Horizontal lines mark the mean with all values, the mean without the outlier, and the median. Two vertical bars on the right compare the total range with and without the outlier."
+
+f0 = np.array([105.6, 105.9, 104.8, 105.7, 106.1, 105.9,
+               106.2, 121.3, 104.9, 105.5, 106.0, 105.8])
+clean = np.delete(f0, 7)
+st = lambda hi, lo: 39.86 * np.log10(hi / lo)
+
+fig, ax = plt.subplots(figsize=(7.0, 3.2))
+idx = np.arange(1, len(f0) + 1)
+ax.plot(idx, f0, "o", ms=5, mfc="white", mec=vs.ORANGE, mew=1.2, zorder=3)
+ax.plot(8, f0[7], "o", ms=5, color=vs.ORANGE, zorder=4)
+ax.annotate("121.3 Hz", (8, f0[7]), xytext=(8.5, 120.2), fontsize=8, color=vs.ORANGE)
+
+lines = [(f0.mean(), vs.BLUE, "-",  f"mean, all values: {f0.mean():.1f} Hz"),
+         (clean.mean(), vs.GREEN, "--", f"mean without 121.3: {clean.mean():.1f} Hz"),
+         (np.median(f0), vs.MUTED, ":", f"median, all values: {np.median(f0):.2f} Hz")]
+for y, c, ls, lab in lines:
+    ax.hlines(y, 0.3, 12.6, color=c, ls=ls, lw=1.0, label=lab, zorder=2)
+
+for x, data, c, lab in [(13.3, f0, vs.BLUE, "all"), (14.3, clean, vs.GREEN, "without")]:
+    ax.plot([x, x], [data.min(), data.max()], color=c, lw=3, solid_capstyle="butt")
+    ax.text(x, data.max() + 0.35, f"{data.max() - data.min():.1f} Hz\n"
+            f"{st(data.max(), data.min()):.1f} ST", ha="center", va="bottom",
+            fontsize=7.5, color=c)
+    ax.text(x, data.min() - 0.4, lab, ha="center", va="top", fontsize=7.5, color=c)
+
+ax.set_xlim(0.3, 15.0)
+ax.set_ylim(103.0, 127.5)
+ax.set_xticks(idx)
+ax.set_xlabel("Value in sequence")
+ax.set_ylabel("F0 (Hz)")
+ax.text(13.8, 127.2, "Total range", ha="center", va="top", fontsize=8, color=vs.INK)
+ax.legend(loc="upper left", fontsize=7.5, frameon=False)
+vs.style_axes(ax)
+fig.tight_layout()
+plt.show()
+```
+
+## Normative data
+
+**This chapter publishes no diagnostic cutoff for F0.** It publishes the
+reference values below, each with the quantity, task and method it was
+measured with.
+
+F0 in hertz is a physical quantity. Under the rule set out in
+[Pipeline Dependence and Reference Values](foundations-pipeline.qmd), a
+physical quantity can be compared with a reference that measured the same
+quantity on the same task with a documented method. For F0 the quantity
+matters more than it seems. Mean, median and modal F0 are different
+quantities, and so are the F0 of running speech and the F0 of a sustained
+vowel.
+
+Every row below is taken from Baken and Orlikoff's tabulation of older
+studies, and the primary study is named in the Pipeline cell
+[@baken2000clinical]. The methods are documented but mostly analogue: the
+Fundamental Frequency Indicator, measurement of oscillographic records, an
+early Visi-Pitch. The primary studies have not themselves been checked for
+this reference.
+
+| Population | Task | Value | Pipeline | Class |
+|---|---|---|---|---|
+| Men, 18–25.2 years (n = 100) | Reading, middle 55 words of the Rainbow Passage | Modal SF0: group average 116.65 Hz (34.0 ST); individual modes 85–155 Hz | "Florida 1" electronic device; modal SF0 only. Fitch & Holbrook 1970 | `pipeline-compatible` |
+| Women, 17.75–23.5 years (n = 100) | As above | Modal SF0: group average 217.00 Hz (44.8 ST); individual modes 165–255 Hz | As above | `pipeline-compatible` |
+| Men, 20–29 years (n = 25) | Reading, first paragraph of the Rainbow Passage | Mean SF0 119.5 Hz | Fundamental Frequency Indicator. Hollien & Shipp 1972 | `pipeline-compatible` |
+| Women, 20–29 years (n = 21), nonsmokers | Reading, first paragraph of the Rainbow Passage | Mean SF0 224.3 Hz; individual means 192.2–275.4 Hz | Fundamental Frequency Indicator. Stoicheff 1981 | `pipeline-compatible` |
+| Men, mean age 52.5 years (n = 20) | Third sentence of the Rainbow Passage, from a reading of the whole passage | Mean SF0 121.9 Hz; SD 4.63 ST; range 10.60 ST | Oscillographic readout. Murry 1978 | `pipeline-compatible` |
+| Men, 60–69 years (n = 21) | Sustained /a/ | Mean F0 118 Hz, SD 15.8 Hz | Visi-Pitch 6087A. Mueller, Sweeney & Baribeau 1984 | `pipeline-compatible` |
+| Women, 60–69 years (n = 36) | Sustained /a/ | Mean F0 179 Hz, SD 27.7 Hz | As above | `pipeline-compatible` |
+| Adults under 60 | Sustained vowel | No published reference in the sources reviewed | — | — |
+| Any | Running speech, any summary other than those above | No published reference in the sources reviewed | — | — |
+| Any | Diagnostic cutoff for an abnormal F0 | No published reference in the sources reviewed | — | — |
+
+: F0 reference values. All rows as tabulated by @baken2000clinical, with the primary study named. {#tbl-f0-reference}
+
+Three points govern how the table is read.
+
+**The two kinds of task do not stand in for each other.** The speaking rows
+are not a reference for the F0 of a sustained vowel, and the sustained-vowel
+rows are not a reference for speaking F0. See [Cautions](#sec-f0-cautions).
+
+**A range of individual modes is not a normal band.** The 85–155 Hz and
+165–255 Hz ranges in the first two rows record where young adults' habitual
+pitch fell while reading. They do not mark a voice outside them as disordered,
+and they describe the modal F0 of a reading, not the mean F0 of any other task.
+
+**Comparing studies needs care.** Normative SF0 studies differ in analysis
+method and in subject selection [@baken2000clinical]. The table of aged
+speakers behind the sustained-vowel rows draws mainly on English speakers
+[@baken2000clinical].
+
+## Clinical interpretation
+
+**Mean F0 is a weak sign of laryngeal pathology.** Most disorders of the larynx
+do not, in themselves, have a consistent influence on mean SF0
+[@baken2000clinical]. Acute laryngitis lowered SF0 in men and raised it in
+women in one series [@baken2000clinical].
+
+**Variability and range follow tissue change more closely**, at least for some
+pathologies [@baken2000clinical]. Patients with laryngeal cancer had a
+restricted SF0 range on the second sentence of the Rainbow Passage
+[@baken2000clinical]. In Murry's series, men with unilateral vocal fold
+paralysis had a significantly smaller F0 standard deviation (3.64 ST) and range
+(7.55 ST) than normal men (4.63 ST and 10.60 ST) [@baken2000clinical].
+
+**F0 changes across the life span.** In early childhood the sexes have
+comparable SF0. Adult women generally have a higher SF0 than men. SF0 falls
+with maturity and tends to rise again in old age, and the rise is greater and
+earlier in men [@baken2000clinical].
+
+**Not every F0 track is described by its mean and SD.** A steady fall in F0
+needs the slope of a regression line. A regular oscillation, such as tremor,
+needs its mean, its extent and its rate [@baken2000clinical].
+
+## Cautions {#sec-f0-cautions}
+
+**Sustained vowel against speech.** Baken and Orlikoff advise against
+estimating SF0 from a sustained vowel. The relationship of sustained-vowel F0
+to SF0 is "at the very best, unclear and probably unstable"
+[@baken2000clinical].
+
+**Reading against spontaneous speech.** Mean SF0 in reading was slightly
+higher than in spontaneous speech, by 0.47 to 1.78 ST across studies, with no
+large difference in variability [@baken2000clinical].
+
+**Sample length.** About 14 s of speech gives a mean SF0 accurate to about
+±3 Hz, and a single sentence is too short to estimate F0 variability
+[@baken2000clinical].
+
+**Intensity.** Louder speech tends to be at a higher F0, so testing should be
+done at a standard intensity where possible [@baken2000clinical].
+
+**Trial-to-trial variation.** A speaker's F0 varies from trial to trial, on the
+same day and across days, so a measured change needs caution
+[@baken2000clinical].
+
+**Outliers.** One spurious value can inflate the total range many times over
+(@fig-f0-summary) [@baken2000clinical]. A tracking error is exactly such a
+value, which is one reason to inspect the F0 track before reporting any
+summary of it.
+
+**Signal type.** Measuring F0 assumes an approximately periodic signal
+[@baken2000clinical]. See [Signal Typing](foundations-signal-typing.qmd).
+
+## Compute it in PhonaLab
+
+> **[Open PhonaLab →](https://phonalab.com)**
+>
+> *PhonaLab is developed by the author of this reference; see
+> [Competing interests](intro.qmd#competing-interests).*
+>
+> PhonaLab's Pitch Visualizer shows the F0 track of a recording with its
+> summary statistics. The values in @tbl-f0-reference describe the task and
+> the summary they were measured with; compare a PhonaLab value with a row
+> only when the task and the summary match.

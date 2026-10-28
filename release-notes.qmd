@@ -21,6 +21,14 @@ corrected here.
 
 ### Added {.unnumbered}
 
+- **[F0 Measures](f0-measures.qmd)**, opening Part II. Mean, median and modal
+  F0, F0 standard deviation, the 90% and total ranges, minimum and maximum F0,
+  and semitone conversion; a table of adult reference values, each stated with
+  the summary, the task and the method it was measured with, and declared
+  absences for sustained vowels under age 60 and for any diagnostic cutoff; and
+  the cautions, chief among them that the F0 of a sustained vowel and the F0 of
+  speech are different quantities. Children's F0 and the maximum phonational
+  frequency range follow in a later release.
 - **[Composite-Index Caveats](composite-caveats.qmd)**, closing Part IV. What
   applies to the AVQI and the ABI together: why the version of the equation is
   part of the measure; a table and a figure of what moves a threshold when one

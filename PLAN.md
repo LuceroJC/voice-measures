@@ -66,7 +66,7 @@ chapter but is neither listed nor rendered until it is written.
 |---|---|---|
 | `jitter.qmd` | Local, absolute, RAP, PPQ5, DDP. Formulas, conventions across programs, sensitivity to signal typing | Published |
 | `shimmer.qmd` | Local, local dB, APQ3, APQ5, APQ11, DDA | Published |
-| `f0-measures.qmd` | Mean F0, F0 standard deviation and F0 range as clinical measures rather than as preprocessing. Sex and age norms, task effects | Next |
+| `f0-measures.qmd` | Mean F0, F0 standard deviation and F0 range as clinical measures rather than as preprocessing. Sex and age norms, task effects | Published in part: adults |
 | `voice-breaks.qmd` | Number and degree of voice breaks, and how the definitions vary across programs | Planned |
 | `perturbation-caveats.qmd` | Why Type 2 and above break every perturbation measure. Shared cautions, so each measure chapter stays focused | Planned |
 
@@ -121,7 +121,8 @@ Remaining, in intended order:
 
 1. The rest of Part I: perceptual anchors, then recording, tasks and F0
    detection.
-2. The rest of Part II: F0 measures, voice breaks, perturbation caveats.
+2. The rest of Part II: F0 measures for children and the maximum phonational
+   frequency range, voice breaks, perturbation caveats.
 3. The rest of Part III: NHR, and spectral tilt beyond H1–H2.
 4. The rest of Part IV: DSI.
 5. Part V: the landscape chapter first, then the two examples.

@@ -14,6 +14,7 @@ project:
     - cpps.qmd
     - avqi.qmd
     - abi.qmd
+    - f0-measures.qmd
     - jitter.qmd
     - shimmer.qmd
     - hnr.qmd
@@ -51,6 +52,7 @@ book:
         - foundations-perceptual-anchors.qmd
     - part: "Part II — Periodicity and Stability"
       chapters:
+        - f0-measures.qmd
         - jitter.qmd
         - shimmer.qmd
     - part: "Part III — Noise and Harmonic Structure"
@@ -69,7 +71,7 @@ book:
     # it here in its part AND to project.render above. Full plan:
     #   Part I:   foundations-recording, foundations-f0-detection,
     #             foundations-tasks
-    #   Part II:  f0-measures, jitter, shimmer, voice-breaks, perturbation-caveats
+    #   Part II:  voice-breaks, perturbation-caveats
     #   Part III: nhr
     #   Part IV:  dsi
     #   Part V:   ml-landscape, ml-feature-based, ml-end-to-end
