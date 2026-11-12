@@ -12,6 +12,8 @@ continuously between releases.
 
 ## v0.4.0 — 2026-11-12 {.unnumbered}
 
+Version DOI: [10.5281/zenodo.24178824](https://doi.org/10.5281/zenodo.24178824).
+
 **Four chapters are added** (Perceptual Anchors, F0 Measures, Spectral Tilt
 and Composite-Index Caveats), **and three chapters gain their first reference
 values computed on PhonaLab's own engine**, from a *Journal of Voice* study of
