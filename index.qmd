@@ -46,9 +46,14 @@ the measure fails.
 - [Pipeline Dependence and Reference Values](foundations-pipeline.qmd): why a
   value belongs to the software, settings, task and language that produced
   it, and how this reference reports reference values.
+- [Perceptual Anchors (GRBAS, CAPE-V)](foundations-perceptual-anchors.qmd):
+  the rating scales every threshold here was derived against, and which
+  standard each validation study actually used.
 
 **Periodicity and stability**
 
+- [F0 Measures](f0-measures.qmd): how fast do the vocal folds vibrate, and how
+  much does that rate vary?
 - [Jitter](jitter.qmd): does each cycle last as long as the one before it?
 - [Shimmer](shimmer.qmd): is each cycle as large as the one before it?
 
@@ -56,32 +61,39 @@ the measure fails.
 
 - [Harmonic-to-Noise Ratio (HNR)](hnr.qmd): how much of the sound is periodic
   at all?
+- [Glottal-to-Noise Excitation Ratio (GNE)](gne.qmd): is the sound excited by
+  glottal pulses or by turbulent noise?
 - [Cepstral Peak Prominence (CPP and CPPS)](cpps.qmd): how strongly does a
   harmonic pattern stand out from the background?
+- [Spectral Tilt](spectral-tilt.qmd): how much stronger is the first harmonic
+  than the second? H1–H2 in this release.
 
 **Composite indices**
 
 - [Acoustic Voice Quality Index (AVQI)](avqi.qmd): how severe does the voice
   sound overall?
 - [Acoustic Breathiness Index (ABI)](abi.qmd): how breathy does it sound?
+- [Composite-Index Caveats](composite-caveats.qmd): what applies to both
+  indices, from the version of the equation to what a report should state.
 
 The jitter, shimmer and HNR chapters publish **no cutoff**: no reference value
 in the sources reviewed is compatible with a Praat-based pipeline, so the
 absence is declared. Each explains why, and what the published values from
-other systems can and cannot be used for.
+other systems can and cannot be used for. The GNE chapter publishes the
+cutoffs that exist but no normal band for a Praat or PhonaLab measurement.
+H1–H2 has no published reference value in the sources reviewed. F0 Measures
+publishes adult reference values and no diagnostic cutoff.
 
 ## Coming next
 
 The complete reference is planned in five parts. The chapters below are not
 yet written.
 
-- **Foundations:** recording protocol; F0 detection; voice tasks; perceptual
-  anchors (GRBAS, CAPE-V).
-- **Periodicity and stability:** F0 measures; voice breaks; perturbation
-  caveats.
-- **Noise and harmonic structure:** NHR; GNE; spectral tilt.
-- **Composite indices:** the Dysphonia Severity Index (DSI); caveats shared by
-  composite indices.
+- **Foundations:** recording protocol; F0 detection; voice tasks.
+- **Periodicity and stability:** F0 in children and the maximum phonational
+  frequency range; voice breaks; perturbation caveats.
+- **Noise and harmonic structure:** NHR; spectral tilt beyond H1–H2.
+- **Composite indices:** the Dysphonia Severity Index (DSI).
 - **Machine-learning-derived measures:** a landscape chapter and two worked
   examples.
 - **Appendices:** adjunct methods, reproducibility notes and a glossary.

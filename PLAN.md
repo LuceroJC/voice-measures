@@ -115,12 +115,13 @@ the table of contents.
 
 Released so far: v0.1.0 and v0.1.1 (front matter, the three Foundations
 chapters, AVQI, ABI, CPPS), v0.2.0 (jitter, shimmer, HNR), v0.3.0 (GNE, plus
-corrections to v0.2.0). See `release-notes.qmd`.
+corrections to v0.2.0), v0.4.0 (perceptual anchors, F0 measures, spectral tilt
+begun with H1–H2, composite-index caveats, and the first rows computed on
+PhonaLab's engine). See `release-notes.qmd`.
 
 Remaining, in intended order:
 
-1. The rest of Part I: perceptual anchors, then recording, tasks and F0
-   detection.
+1. The rest of Part I: recording, tasks and F0 detection.
 2. The rest of Part II: F0 measures for children and the maximum phonational
    frequency range, voice breaks, perturbation caveats.
 3. The rest of Part III: NHR, and spectral tilt beyond H1–H2.

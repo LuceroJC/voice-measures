@@ -10,14 +10,15 @@ Entries are newest first. "v0.1.0 said" refers to the text as deposited in
 that release's Zenodo record, not to the live site, which is revised
 continuously between releases.
 
-## v0.4.0 — unreleased {.unnumbered}
+## v0.4.0 — 2026-11-12 {.unnumbered}
 
-**Three chapters gain their first reference values computed on PhonaLab's own
-engine**, from a *Journal of Voice* study of algorithm agreement and concurrent
-validity on the Perceptual Voice Qualities Database. Each is a candidate cutoff
-from an exploratory analysis, labelled as such in the table itself. None
-replaces a value published in an earlier release, and nothing in v0.3.0 is
-corrected here.
+**Four chapters are added** (Perceptual Anchors, F0 Measures, Spectral Tilt
+and Composite-Index Caveats), **and three chapters gain their first reference
+values computed on PhonaLab's own engine**, from a *Journal of Voice* study of
+algorithm agreement and concurrent validity on the Perceptual Voice Qualities
+Database. Each is a candidate cutoff from an exploratory analysis, labelled as
+such in the table itself. None replaces a value published in an earlier
+release, and nothing in v0.3.0 is corrected here.
 
 ### Added {.unnumbered}
 
